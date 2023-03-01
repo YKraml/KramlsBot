@@ -1,0 +1,65 @@
+package waifu.model;
+
+import embeds.DisplayableElement;
+
+import exceptions.ExceptionMessage;
+import exceptions.MyOwnException;
+import java.util.Collections;
+import java.util.LinkedHashSet;
+import java.util.NoSuchElementException;
+import java.util.Set;
+
+public class Group implements DisplayableElement {
+
+  private final String id;
+  private final String name;
+  private final Set<Waifu> waifuSet;
+
+  public Group(String id, String name) {
+    this.id = id;
+    this.name = name;
+    this.waifuSet = new LinkedHashSet<>();
+  }
+
+  public String getId() {
+    return id;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public Set<Waifu> getWaifuSet() {
+    return Collections.unmodifiableSet(waifuSet);
+  }
+
+  public void addWaifu(Waifu waifu) throws MyOwnException {
+    if (waifuSet.contains(waifu)) {
+      throw new MyOwnException(() -> "Waifu schon in der Gruppe.", null);
+    }
+    this.waifuSet.add(waifu);
+  }
+
+  @Override
+  public String getDisplayTitle() {
+    return this.name;
+  }
+
+  @Override
+  public String getDisplayBody() {
+    return "Waifus: " + this.waifuSet.size() + " Stueck.";
+  }
+
+  @Override
+  public String getDisplayImageUrl() {
+    try {
+      return waifuSet.iterator().next().getDisplayImageUrl();
+    } catch (NoSuchElementException e) {
+      return null;
+    }
+  }
+
+  public boolean removeWaifu(Waifu waifu) {
+    return this.waifuSet.remove(waifu);
+  }
+}
