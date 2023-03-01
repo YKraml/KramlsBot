@@ -1,5 +1,6 @@
 package waifu.loader;
 
+import com.google.inject.Inject;
 import de.kraml.Terminal;
 import exceptions.MyOwnException;
 import exceptions.messages.CouldNotSavePlayer;
@@ -10,15 +11,18 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.function.BiConsumer;
+import javax.inject.Singleton;
 import waifu.model.Player;
-
+@Singleton
 public class PlayerLoaderCached implements PlayerLoader {
 
   private final PlayerLoader playerLoaderReal;
   private final Collection<Player> playerCache;
   private final ExecutorService executorService;
 
-  public PlayerLoaderCached(TeamLoader teamLoader, WaifuLoader waifuLoader, GroupLoader groupLoader) {
+  @Inject
+  public PlayerLoaderCached(TeamLoader teamLoader, WaifuLoader waifuLoader,
+      GroupLoader groupLoader) {
     playerLoaderReal = new PlayerLoaderSql(teamLoader, waifuLoader, groupLoader);
     playerCache = Collections.synchronizedList(new ArrayList<>());
     executorService = Executors.newFixedThreadPool(4);

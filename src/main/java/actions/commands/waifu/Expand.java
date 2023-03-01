@@ -3,6 +3,7 @@ package actions.commands.waifu;
 import actions.commands.Answer;
 import actions.commands.CommandType;
 import actions.commands.ACommand;
+import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
 import messages.MessageSender;
@@ -21,6 +22,7 @@ public class Expand extends ACommand {
   private final PlayerLoader playerLoader;
   private final MessageSender messageSender;
 
+  @Inject
   public Expand(PlayerLoader playerLoader, MessageSender messageSender) {
     super();
     this.playerLoader = playerLoader;

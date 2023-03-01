@@ -3,6 +3,7 @@ package actions.commands.dungeon;
 import actions.commands.Answer;
 import actions.commands.ACommand;
 import actions.commands.CommandType;
+import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
 import org.javacord.api.interaction.SlashCommandInteractionOption;
@@ -22,6 +23,7 @@ public class TeamRemove extends ACommand {
   private final PlayerLoader playerLoader;
   private final TeamLoader teamLoader;
 
+  @Inject
   public TeamRemove(PlayerLoader playerLoader, TeamLoader teamLoader) {
     super();
     this.playerLoader = playerLoader;

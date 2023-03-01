@@ -1,5 +1,6 @@
 package routines;
 
+import com.google.inject.Inject;
 import messages.MessageSender;
 import messages.messages.GuessGameEndBuilder;
 import music.GuessingGameManager;
@@ -15,6 +16,7 @@ public class RoutineGuessBuilder {
   private final MessageSender messageSender;
   private final GuessGameEndBuilder guessGameEndBuilder;
 
+  @Inject
   public RoutineGuessBuilder(GuessingGameManager guessingGameManager, PlayerLoader playerLoader,
       MessageSender messageSender, GuessGameEndBuilder guessGameEndBuilder) {
     this.guessingGameManager = guessingGameManager;

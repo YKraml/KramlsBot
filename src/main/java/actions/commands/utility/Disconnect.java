@@ -3,6 +3,7 @@ package actions.commands.utility;
 import actions.commands.ACommand;
 import actions.commands.Answer;
 import actions.commands.CommandType;
+import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
 import org.javacord.api.interaction.SlashCommandInteractionOption;
@@ -15,7 +16,7 @@ import org.javacord.api.entity.user.User;
 
 public class Disconnect extends ACommand {
 
-
+  @Inject
   public Disconnect() {
     super();
   }

@@ -3,6 +3,7 @@ package actions.commands.utility;
 import actions.commands.ACommand;
 import actions.commands.Answer;
 import actions.commands.CommandType;
+import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
 import messages.MessageSender;
@@ -18,6 +19,7 @@ public class Stats extends ACommand {
 
   private final MessageSender messageSender;
 
+  @Inject
   public Stats(MessageSender messageSender) {
     super();
     this.messageSender = messageSender;

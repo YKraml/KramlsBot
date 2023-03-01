@@ -1,5 +1,6 @@
 package actions.listeners.join;
 
+import com.google.inject.Inject;
 import de.kraml.Terminal;
 import discord.RoleChecker;
 import exceptions.MyOwnException;
@@ -15,6 +16,7 @@ public class JoinListener implements ServerVoiceChannelMemberJoinListener {
     private final PlayerLoader playerLoader;
     private final RoleChecker roleChecker;
 
+    @Inject
     public JoinListener(PlayerLoader playerLoader, RoleChecker roleChecker) {
         this.playerLoader = playerLoader;
         this.roleChecker = roleChecker;

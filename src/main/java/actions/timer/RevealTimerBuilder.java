@@ -1,5 +1,6 @@
 package actions.timer;
 
+import com.google.inject.Inject;
 import java.util.concurrent.ScheduledExecutorService;
 import messages.MessageSender;
 import messages.messages.GuessGameEndBuilder;
@@ -13,6 +14,7 @@ public class RevealTimerBuilder {
   private final GuessGameEndBuilder guessGameEndBuilder;
   private final ScheduledExecutorService scheduledExecutorService;
 
+  @Inject
   public RevealTimerBuilder(GuessingGameManager guessingGameManager, MessageSender messageSender,
       GuessGameEndBuilder guessGameEndBuilder, ScheduledExecutorService scheduledExecutorService) {
     this.guessingGameManager = guessingGameManager;

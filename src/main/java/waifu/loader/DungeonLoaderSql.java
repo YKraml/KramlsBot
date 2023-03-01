@@ -4,12 +4,14 @@ import exceptions.MyOwnException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import javax.inject.Singleton;
 import waifu.model.dungeon.Dungeon;
 import waifu.sql.commands.dungeon.InsertDungeon;
 import waifu.sql.commands.dungeon.DeleteDungeon;
 import waifu.sql.commands.dungeon.SelectAllDungeons;
 import waifu.sql.entry.DungeonEntrySet;
 
+@Singleton
 public class DungeonLoaderSql implements DungeonLoader {
 
   @Override

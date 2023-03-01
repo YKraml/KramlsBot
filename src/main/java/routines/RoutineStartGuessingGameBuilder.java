@@ -1,6 +1,7 @@
 package routines;
 
 import actions.timer.RevealTimerBuilder;
+import com.google.inject.Inject;
 import discord.ChannelFinder;
 import messages.MessageSender;
 import messages.messages.GuessGameEndBuilder;
@@ -23,6 +24,7 @@ public class RoutineStartGuessingGameBuilder {
   private final MessageSender messageSender;
   private final RoutineRevealBuilder routineRevealBuilder;
 
+  @Inject
   public RoutineStartGuessingGameBuilder(GuessingGameManager guessingGameManager,
       JikanFetcher jikanFetcher, YoutubeFetcher youtubeFetcher, ChannelFinder channelFinder,
       MusicPlayerManager musicPlayerManager, MessageSender messageSender, PlayerLoader playerLoader,

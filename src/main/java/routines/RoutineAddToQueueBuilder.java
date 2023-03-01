@@ -1,5 +1,6 @@
 package routines;
 
+import com.google.inject.Inject;
 import discord.ChannelFinder;
 import messages.MessageSender;
 import music.audio.MusicPlayerManager;
@@ -17,6 +18,7 @@ public class RoutineAddToQueueBuilder {
   private final ChannelFinder channelFinder;
   private final PlayerLoader playerLoader;
 
+  @Inject
   public RoutineAddToQueueBuilder(MusicPlayerManager musicPlayerManager,
       YoutubeFetcher youtubeFetcher, MessageSender messageSender, ChannelFinder channelFinder,
       PlayerLoader playerLoader) {

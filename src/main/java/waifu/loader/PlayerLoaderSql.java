@@ -1,5 +1,6 @@
 package waifu.loader;
 
+import com.google.inject.Inject;
 import de.kraml.Terminal;
 import exceptions.MyOwnException;
 import exceptions.messages.CouldNotLoadPlayer;
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
+import javax.inject.Singleton;
 import music.audio.QueueElement;
 import waifu.model.Group;
 import waifu.model.Player;
@@ -36,7 +38,7 @@ import waifu.sql.entry.TimeEntrySet;
 import waifu.sql.entry.UserEntrySet;
 import waifu.sql.mapper.LikedSongMapper;
 import waifu.sql.mapper.PlayerMapper;
-
+@Singleton
 public class PlayerLoaderSql implements PlayerLoader {
 
   public static final String NEW_PLAYER_SAVED = "Saved new Player. Name = '%s', Id = '%s'";
@@ -44,6 +46,7 @@ public class PlayerLoaderSql implements PlayerLoader {
   private final TeamLoader teamLoader;
   private final WaifuLoader waifuLoader;
   private final GroupLoader groupLoader;
+
 
   public PlayerLoaderSql(TeamLoader teamLoader, WaifuLoader waifuLoader, GroupLoader groupLoader) {
     this.teamLoader = teamLoader;

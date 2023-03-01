@@ -21,7 +21,7 @@ public class DungeonDeletionListListener extends MyAbstractListListener<Dungeon>
   private final String serverId;
 
   public DungeonDeletionListListener(List<Dungeon> displayableElementList,
-      DungeonLoader dungeonLoader, MessageSenderImpl messageSender, String serverId) {
+      DungeonLoader dungeonLoader, MessageSender messageSender, String serverId) {
     super(displayableElementList);
     this.dungeonLoader = dungeonLoader;
     this.messageSender = messageSender;

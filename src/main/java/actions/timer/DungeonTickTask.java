@@ -1,5 +1,6 @@
 package actions.timer;
 
+import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import routines.RoutineDungeonTickBuilder;
 import routines.RoutineRunner;
@@ -10,6 +11,7 @@ public class DungeonTickTask extends SaveRunnable {
   private final RoutineRunner routineRunner;
   private final RoutineDungeonTickBuilder routineDungeonTickBuilder;
 
+  @Inject
   public DungeonTickTask(RoutineRunner routineRunner,
       RoutineDungeonTickBuilder routineDungeonTickBuilder) {
     this.routineRunner = routineRunner;
@@ -18,8 +20,7 @@ public class DungeonTickTask extends SaveRunnable {
 
   @Override
   public void runSave() throws MyOwnException {
-      routineRunner.startRoutine(routineDungeonTickBuilder.createRoutineDungeonTick());
-
+    routineRunner.startRoutine(routineDungeonTickBuilder.createRoutineDungeonTick());
     Terminal.printLine("Dungeon tick");
   }
 

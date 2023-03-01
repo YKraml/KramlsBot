@@ -3,6 +3,7 @@ package actions.commands.gambling;
 import actions.commands.Answer;
 import actions.commands.ACommand;
 import actions.commands.CommandType;
+import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
 import org.javacord.api.interaction.SlashCommandInteractionOption;
@@ -19,6 +20,7 @@ public class DoubleOrNothingWithParameter extends ACommand {
 
   private final RoutineDoubleOrNothingWithParameterBuilder routineDoubleOrNothingWithParameterBuilder;
 
+  @Inject
   public DoubleOrNothingWithParameter(
       RoutineDoubleOrNothingWithParameterBuilder routineDoubleOrNothingWithParameterBuilder) {
     super();
@@ -37,8 +39,7 @@ public class DoubleOrNothingWithParameter extends ACommand {
 
   @Override
   protected Answer executeCommand(DiscordApi api, Server server, TextChannel channel, User user,
-      Player player, List<SlashCommandInteractionOption> arguments)
-      throws MyOwnException {
+      Player player, List<SlashCommandInteractionOption> arguments) throws MyOwnException {
     int bettedMoney = Math.toIntExact(arguments.get(0).getLongValue().get());
 
     return getRoutineRunner().startRoutine(

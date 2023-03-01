@@ -1,8 +1,10 @@
 package waifu;
 
+import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import exceptions.messages.NoWaifuToClaim;
 import java.util.function.Predicate;
+import javax.inject.Singleton;
 import model.jikan.characters.charactersSearch.CharactersSearch;
 import model.jikan.characters.charactersSearch.Datum;
 import waifu.model.Waifu;
@@ -12,11 +14,13 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 
+@Singleton
 public final class WaifuSpawnManager {
 
   private final Map<String, Waifu> serverWaifuMap;
   private final JikanFetcher jikanFetcher;
 
+  @Inject
   public WaifuSpawnManager(JikanFetcher jikanFetcher) {
     this.jikanFetcher = jikanFetcher;
     serverWaifuMap = Collections.synchronizedMap(new LinkedHashMap<>());
@@ -26,7 +30,8 @@ public final class WaifuSpawnManager {
     this.serverWaifuMap.put(serverId, waifu);
   }
 
-  public synchronized Optional<Waifu> guessWaifu(String serverId, String name) throws MyOwnException {
+  public synchronized Optional<Waifu> guessWaifu(String serverId, String name)
+      throws MyOwnException {
 
     if (isGuessRight(serverId, name)) {
       Optional<Waifu> waifuOptional = getWaifu(serverId);

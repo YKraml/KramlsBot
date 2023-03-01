@@ -3,8 +3,12 @@ package actions.commands.guess;
 import actions.commands.ACommand;
 import actions.commands.Answer;
 import actions.commands.CommandType;
+import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.Function;
 import org.javacord.api.interaction.SlashCommandInteractionOption;
 import org.javacord.api.interaction.SlashCommandOption;
 import org.javacord.api.interaction.SlashCommandOptionType;
@@ -19,6 +23,7 @@ public class Guess extends ACommand {
 
   private final RoutineGuessBuilder routineGuessBuilder;
 
+  @Inject
   public Guess(RoutineGuessBuilder routineGuessBuilder) {
     this.routineGuessBuilder = routineGuessBuilder;
   }
@@ -52,6 +57,7 @@ public class Guess extends ACommand {
   protected Answer executeCommand(DiscordApi api, Server server, TextChannel channel, User user,
       Player player, List<SlashCommandInteractionOption> arguments) throws MyOwnException {
     String guess = arguments.get(0).getStringValue().get();
+
     return getRoutineRunner().startRoutine(
         routineGuessBuilder.createRoutineGuess(server, channel, player, guess));
   }

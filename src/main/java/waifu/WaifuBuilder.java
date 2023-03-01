@@ -1,23 +1,25 @@
 package waifu;
 
+import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import exceptions.messages.CouldNotGetOriginFromCharachter;
+import javax.inject.Singleton;
 import model.jikan.characters.characterFullById.CharacterFullById;
 import waifu.model.Rarities;
 import waifu.model.Stats;
 import waifu.model.Waifu;
 
 import java.util.UUID;
-
+@Singleton
 public final class WaifuBuilder {
 
   public static final double MIN_STAT_RATIO = 0.2;
   private final JikanFetcher jikanFetcher;
 
+  @Inject
   public WaifuBuilder(JikanFetcher jikanFetcher) {
     this.jikanFetcher = jikanFetcher;
   }
-
 
 
   public synchronized Waifu createRandomWaifu() throws MyOwnException {
@@ -35,15 +37,10 @@ public final class WaifuBuilder {
 
   private Waifu createWaifu(CharacterFullById animeCharacter, String imageUrl, int level)
       throws MyOwnException {
-    return new Waifu(
-        UUID.randomUUID().toString(),
-        animeCharacter.getData().getMalId(),
-        animeCharacter.getData().getName(),
-        getOrigin(animeCharacter),
-        animeCharacter.getData().getUrl(),
-        imageUrl,
-        createStats(level, Rarities.getRandomRarity())
-    );
+    return new Waifu(UUID.randomUUID().toString(), animeCharacter.getData().getMalId(),
+        animeCharacter.getData().getName(), getOrigin(animeCharacter),
+        animeCharacter.getData().getUrl(), imageUrl,
+        createStats(level, Rarities.getRandomRarity()));
   }
 
   private Stats createStats(int level, Rarities rarity) {

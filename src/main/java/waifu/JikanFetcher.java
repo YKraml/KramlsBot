@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ExecutionException;
+import javax.inject.Singleton;
 import model.jikan.anime.animeByIdFull.AnimeFullById;
 import model.jikan.anime.animeCharacters.AnimeCharacters;
 import model.jikan.anime.animeSearch.AnimeSearch;
@@ -27,6 +28,7 @@ import model.jikan.characters.characterPictures.CharacterPictures;
 import model.jikan.characters.charactersSearch.CharactersSearch;
 import model.jikan.top.TopCharacters.TopCharacters;
 
+@Singleton
 public class JikanFetcher {
 
   private final TopCaller topCaller;

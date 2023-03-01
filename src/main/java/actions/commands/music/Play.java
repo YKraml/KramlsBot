@@ -3,6 +3,7 @@ package actions.commands.music;
 import actions.commands.ACommand;
 import actions.commands.Answer;
 import actions.commands.CommandType;
+import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
 import org.javacord.api.interaction.SlashCommandInteractionOption;
@@ -19,6 +20,7 @@ public class Play extends ACommand {
 
   private final RoutineAddToQueueBuilder builder;
 
+  @Inject
   public Play(RoutineAddToQueueBuilder builder) {
     super();
     this.builder = builder;
@@ -39,12 +41,14 @@ public class Play extends ACommand {
       Player player, List<SlashCommandInteractionOption> arguments) throws MyOwnException {
 
     String input = arguments.get(0).getStringValue().get();
-    return getRoutineRunner().startRoutine(builder.createRoutineAddToQueue(server,channel,user,input));
+    return getRoutineRunner().startRoutine(
+        builder.createRoutineAddToQueue(server, channel, user, input));
   }
 
   @Override
   public List<SlashCommandOption> getSlashCommandOptions() {
-    return List.of(SlashCommandOption.create(SlashCommandOptionType.STRING, "Titel", "Name oder URL des Songs, welches abgespielt werden soll.", true));
+    return List.of(SlashCommandOption.create(SlashCommandOptionType.STRING, "Titel",
+        "Name oder URL des Songs, welches abgespielt werden soll.", true));
   }
 
 

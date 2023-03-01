@@ -3,6 +3,7 @@ package actions.commands.group;
 import actions.commands.ACommand;
 import actions.commands.Answer;
 import actions.commands.CommandType;
+import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
 import messages.MessageSender;
@@ -22,6 +23,7 @@ public class GroupRemoveWaifu extends ACommand {
   private final GroupLoader groupLoader;
   private final MessageSender messageSender;
 
+  @Inject
   public GroupRemoveWaifu(GroupLoader groupLoader, MessageSender messageSender) {
     super();
     this.groupLoader = groupLoader;

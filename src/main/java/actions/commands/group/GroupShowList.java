@@ -3,6 +3,7 @@ package actions.commands.group;
 import actions.commands.ACommand;
 import actions.commands.Answer;
 import actions.commands.CommandType;
+import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
 import org.javacord.api.interaction.SlashCommandInteractionOption;
@@ -18,6 +19,7 @@ public class GroupShowList extends ACommand {
 
   private final RoutineShowGroupListBuilder routineShowGroupListBuilder;
 
+  @Inject
   public GroupShowList(RoutineShowGroupListBuilder routineShowGroupListBuilder) {
     super();
     this.routineShowGroupListBuilder = routineShowGroupListBuilder;
@@ -36,7 +38,8 @@ public class GroupShowList extends ACommand {
   @Override
   protected Answer executeCommand(DiscordApi api, Server server, TextChannel channel, User user,
       Player player, List<SlashCommandInteractionOption> arguments) throws MyOwnException {
-    return getRoutineRunner().startRoutine(routineShowGroupListBuilder.createRoutineShowGroupList(channel, player));
+    return getRoutineRunner().startRoutine(
+        routineShowGroupListBuilder.createRoutineShowGroupList(channel, player));
   }
 
   @Override

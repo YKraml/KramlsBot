@@ -4,6 +4,7 @@ package actions.commands.waifu;
 import actions.commands.Answer;
 import actions.commands.ACommand;
 import actions.commands.CommandType;
+import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
 import org.javacord.api.DiscordApi;
@@ -20,6 +21,7 @@ public class Claim extends ACommand {
 
   private final RoutineClaimBuilder routineClaimBuilder;
 
+  @Inject
   public Claim(RoutineClaimBuilder routineClaimBuilder) {
     super();
     this.routineClaimBuilder = routineClaimBuilder;
@@ -37,8 +39,8 @@ public class Claim extends ACommand {
 
   @Override
   protected synchronized Answer executeCommand(DiscordApi api, Server server, TextChannel channel,
-      User user, Player player,
-      List<SlashCommandInteractionOption> arguments) throws MyOwnException {
+      User user, Player player, List<SlashCommandInteractionOption> arguments)
+      throws MyOwnException {
 
     String guess = arguments.get(0).getStringValue().get();
 

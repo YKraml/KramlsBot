@@ -1,5 +1,6 @@
 package waifu.model.dungeon;
 
+import com.google.inject.Inject;
 import de.kraml.Terminal;
 import discord.ChannelFinder;
 import exceptions.MyOwnException;
@@ -25,6 +26,7 @@ public class DungeonTicker {
   private final TeamLoader teamLoader;
   private final WaifuBuilder waifuBuilder;
 
+  @Inject
   public DungeonTicker(PlayerLoader playerLoader, ChannelFinder channelFinder,
       MessageSender messageSender, TeamLoader teamLoader, WaifuBuilder waifuBuilder) {
     this.playerLoader = playerLoader;
@@ -63,20 +65,23 @@ public class DungeonTicker {
       Terminal.printLine(team.getFightHistories().toString());
       Inventory inventory = team.getInventory().losePartialInventory();
       teamsToBeRemoved.add(team);
-      Optional<TextChannel> textChannelOptional = channelFinder.getTextChannelById(dungeon.getChannelId());
+      Optional<TextChannel> textChannelOptional = channelFinder.getTextChannelById(
+          dungeon.getChannelId());
       if (textChannelOptional.isPresent()) {
         messageSender.send(new TeamKilled(team, level, inventory), textChannelOptional.get());
       }
     }
   }
 
-  private void checkIfTeamIsLow(Team team, ChannelFinder channelFinder, Dungeon dungeon) throws MyOwnException {
+  private void checkIfTeamIsLow(Team team, ChannelFinder channelFinder, Dungeon dungeon)
+      throws MyOwnException {
 
     boolean teamIsLow = team.getHpPercentage() < 25;
     boolean ownerNotJetMessaged = !team.ownerIsMessaged();
     if (teamIsLow && ownerNotJetMessaged) {
 
-      Optional<TextChannel> textChannelOptional = channelFinder.getTextChannelById(dungeon.getChannelId());
+      Optional<TextChannel> textChannelOptional = channelFinder.getTextChannelById(
+          dungeon.getChannelId());
       if (textChannelOptional.isPresent()) {
         textChannelOptional.get().sendMessage(team.getPlayer().getNameTag());
         messageSender.send(new TeamIsLow(team), textChannelOptional.get());

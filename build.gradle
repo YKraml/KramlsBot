@@ -32,6 +32,9 @@ dependencies {
     implementation 'com.google.apis:google-api-services-youtube:v3-rev20220719-2.0.0'
     implementation 'org.apache.commons:commons-text:1.9'
 
+    // Guice
+    implementation group: 'com.google.inject', name: 'guice', version: '4.0'
+
 }
 
 git {

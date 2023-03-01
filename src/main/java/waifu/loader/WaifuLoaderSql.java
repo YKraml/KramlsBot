@@ -1,6 +1,7 @@
 package waifu.loader;
 
 import exceptions.MyOwnException;
+import javax.inject.Singleton;
 import waifu.model.Player;
 import waifu.model.Rarities;
 import waifu.model.Stats;
@@ -22,6 +23,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
+@Singleton
 public final class WaifuLoaderSql implements WaifuLoader {
 
   private final List<Waifu> waifuCache;
@@ -42,17 +44,11 @@ public final class WaifuLoaderSql implements WaifuLoader {
 
     WaifuCharacterEntrySet entries = new SelectWaifuJoinedCharacter(
         player.getId()).executeCommand();
-    entries.forEach(e -> waifus.add(new Waifu(e.getId(), e.getIdMal(), e.getName(), e.getAnimeName(), e.getUrl(),
-        e.getImageUrl(), new Stats(Rarities.valueOf(e.getRarity().toUpperCase()), e.getLevel(), e.getStarLevel(), e.getXp(), e.getBaseHp(), e.getBaseAtt(), e.getBaseDef(), e.getBaseInit()))));
-
-    /*
-    WaifuEntrySet waifuEntrySet = new SelectWaifusByOwnerId(player).executeCommand();
-    for (WaifuEntrySet.WaifuEntry waifuEntry : waifuEntrySet) {
-      Optional<CharacterEntrySet.CharacterEntry> characterEntryOptional = new SelectCharacterByWaifuId(
-          waifuEntry.getId()).executeCommand().getFirst();
-      characterEntryOptional.ifPresent(
-          characterEntry -> waifus.add(createWaifu(waifuEntry, characterEntry)));
-    }*/
+    entries.forEach(e -> waifus.add(
+        new Waifu(e.getId(), e.getIdMal(), e.getName(), e.getAnimeName(), e.getUrl(),
+            e.getImageUrl(),
+            new Stats(Rarities.valueOf(e.getRarity().toUpperCase()), e.getLevel(), e.getStarLevel(),
+                e.getXp(), e.getBaseHp(), e.getBaseAtt(), e.getBaseDef(), e.getBaseInit()))));
 
     waifuCache.addAll(waifus);
     return waifus;

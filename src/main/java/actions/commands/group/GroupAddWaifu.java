@@ -3,6 +3,7 @@ package actions.commands.group;
 import actions.commands.ACommand;
 import actions.commands.Answer;
 import actions.commands.CommandType;
+import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
 import org.javacord.api.interaction.SlashCommandInteractionOption;
@@ -20,6 +21,7 @@ public class GroupAddWaifu extends ACommand {
 
   private final PlayerLoader playerLoader;
 
+  @Inject
   public GroupAddWaifu(PlayerLoader playerLoader) {
     super();
     this.playerLoader = playerLoader;

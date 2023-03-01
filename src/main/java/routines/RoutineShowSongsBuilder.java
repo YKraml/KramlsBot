@@ -1,5 +1,6 @@
 package routines;
 
+import com.google.inject.Inject;
 import messages.MessageSender;
 import music.audio.MusicPlayerManager;
 import org.javacord.api.entity.channel.TextChannel;
@@ -14,6 +15,7 @@ public class RoutineShowSongsBuilder {
   private final PlayerLoader playerLoader;
   private final MusicPlayerManager musicPlayerManager;
 
+  @Inject
   public RoutineShowSongsBuilder(MessageSender messageSender, PlayerLoader playerLoader,
       MusicPlayerManager musicPlayerManager) {
     this.messageSender = messageSender;

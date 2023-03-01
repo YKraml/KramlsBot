@@ -1,5 +1,6 @@
 package actions.listeners.reaction;
 
+import com.google.inject.Inject;
 import discord.ChannelFinder;
 import messages.MessageSender;
 import messages.messages.AnimeEndingsBuilder;
@@ -17,6 +18,7 @@ public class AnimeOpeningEndingReactionListenerBuilder {
   private final AnimeOpeningsBuilder animeOpeningsBuilder;
   private final AnimeEndingsBuilder animeEndingsBuilder;
 
+  @Inject
   public AnimeOpeningEndingReactionListenerBuilder(JikanFetcher jikanFetcher,
       MessageSender messageSender,
       AnimeOpeningsBuilder animeOpeningsBuilder, AnimeEndingsBuilder animeEndingsBuilder) {

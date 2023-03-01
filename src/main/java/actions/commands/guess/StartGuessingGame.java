@@ -4,6 +4,7 @@ import actions.commands.ACommand;
 import actions.commands.Answer;
 import actions.commands.CommandType;
 import actions.timer.RevealTimerBuilder;
+import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
 import java.util.Random;
@@ -22,6 +23,7 @@ public class StartGuessingGame extends ACommand {
   private final RoutineStartGuessingGameBuilder builder;
   private final RevealTimerBuilder revealTimerbuilder;
 
+  @Inject
   public StartGuessingGame(RoutineStartGuessingGameBuilder builder,
       RevealTimerBuilder revealTimerBuilder) {
     this.builder = builder;
@@ -42,9 +44,8 @@ public class StartGuessingGame extends ACommand {
   protected Answer executeCommand(DiscordApi api, Server server, TextChannel channel, User user,
       Player player, List<SlashCommandInteractionOption> arguments) throws MyOwnException {
 
-
     int difficulty = (new Random().nextInt(10) + 1);
-    if(!arguments.isEmpty()){
+    if (!arguments.isEmpty()) {
       difficulty = arguments.get(0).getLongValue().get().intValue();
     }
 

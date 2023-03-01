@@ -1,5 +1,6 @@
 package discord;
 
+import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import exceptions.messages.CouldNotUpdateRoles;
 import waifu.loader.PlayerLoader;
@@ -17,6 +18,7 @@ public class RoleChecker {
     private final RoleFinder roleFinder;
 
 
+    @Inject
     public RoleChecker(PlayerLoader playerLoader, RoleFinder roleFinder) {
         this.playerLoader = playerLoader;
         this.roleFinder = roleFinder;

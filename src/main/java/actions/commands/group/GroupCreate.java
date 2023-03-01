@@ -3,6 +3,7 @@ package actions.commands.group;
 import actions.commands.ACommand;
 import actions.commands.Answer;
 import actions.commands.CommandType;
+import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
 import messages.MessageSender;
@@ -22,6 +23,7 @@ public class GroupCreate extends ACommand {
   private final PlayerLoader playerLoader;
   private final MessageSender messageSender;
 
+  @Inject
   public GroupCreate(PlayerLoader playerLoader, MessageSender messageSender) {
     super();
     this.playerLoader = playerLoader;
@@ -44,8 +46,8 @@ public class GroupCreate extends ACommand {
 
     String groupName = arguments.get(0).getStringValue().get();
 
-    return getRoutineRunner().startRoutine(new RoutineCreateGroup(groupName, player, playerLoader,
-        messageSender, channel));
+    return getRoutineRunner().startRoutine(
+        new RoutineCreateGroup(groupName, player, playerLoader, messageSender, channel));
   }
 
   @Override

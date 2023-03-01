@@ -3,6 +3,7 @@ package actions.commands.guess;
 import actions.commands.Answer;
 import actions.commands.ACommand;
 import actions.commands.CommandType;
+import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
 import org.javacord.api.interaction.SlashCommandInteractionOption;
@@ -18,6 +19,7 @@ public class Reveal extends ACommand {
 
   private final RoutineRevealBuilder routineRevealBuilder;
 
+  @Inject
   public Reveal(RoutineRevealBuilder routineRevealBuilder) {
     this.routineRevealBuilder = routineRevealBuilder;
   }

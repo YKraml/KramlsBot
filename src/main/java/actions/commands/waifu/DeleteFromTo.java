@@ -3,6 +3,7 @@ package actions.commands.waifu;
 import actions.commands.Answer;
 import actions.commands.ACommand;
 import actions.commands.CommandType;
+import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
 import messages.MessageSender;
@@ -24,6 +25,7 @@ public class DeleteFromTo extends ACommand {
   private final PlayerLoader playerLoader;
   private final MessageSender messageSender;
 
+  @Inject
   public DeleteFromTo(WaifuLoader waifuLoader, PlayerLoader playerLoader,
       MessageSender messageSender) {
     super();
@@ -48,8 +50,9 @@ public class DeleteFromTo extends ACommand {
     int from = arguments.get(0).getLongValue().get().intValue();
     int to = arguments.get(1).getLongValue().get().intValue();
 
-    return getRoutineRunner().startRoutine(new RoutineDeleteWaifusFromTo(player, from, to,
-        waifuLoader, playerLoader, messageSender, channel));
+    return getRoutineRunner().startRoutine(
+        new RoutineDeleteWaifusFromTo(player, from, to, waifuLoader, playerLoader, messageSender,
+            channel));
   }
 
   @Override

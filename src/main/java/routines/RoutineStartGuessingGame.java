@@ -14,6 +14,7 @@ import model.jikan.anime.animeByIdFull.AnimeFullById;
 import music.GuessingGameManager;
 import music.audio.MusicPlayerManager;
 import music.audio.QueueElement;
+import org.javacord.api.entity.channel.ServerVoiceChannel;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
@@ -62,25 +63,33 @@ public class RoutineStartGuessingGame extends Routine {
       throw new MyOwnException(new GuessingGameAlreadyExists(), null);
     }
 
-    AnimeFullById anime = jikanFetcher.getRandomPopularAnimeFromPage(difficulty);
-    String song = getRandomSong(anime);
-    String animeTitle = anime.getData().getTitle();
+    try {
+      AnimeFullById anime = jikanFetcher.getRandomPopularAnimeFromPage(difficulty);
+      String song = getRandomSong(anime);
+      String animeTitle = anime.getData().getTitle();
 
-    String url = "https://www.youtube.com/watch?v=%s".formatted(
-        youtubeFetcher.getIdByVideoName("Anime %s Song %s".formatted(animeTitle, song)));
+      String url = "https://www.youtube.com/watch?v=%s".formatted(
+          youtubeFetcher.getIdByVideoName("Anime %s Song %s".formatted(animeTitle, song)));
 
-    musicPlayerManager.playThisSongNext(channelFinder.getServerVoiceChannelByMember(server, user),
-        textChannel, new QueueElement(animeTitle, url, user.getName(), true));
 
-    revealTimerBuilder.createRevealTimer(textChannel, serverId, url).startTimer();
+      ServerVoiceChannel voiceChannel = channelFinder.getServerVoiceChannelByMember(server, user);
+      QueueElement queueElement = new QueueElement(animeTitle, url, user.getName(), true);
+      musicPlayerManager.playThisSongNext(voiceChannel, textChannel, queueElement);
 
-    guessingGameManager.startGuessingGame(anime, url, song, serverId, difficulty);
-    messageSender.send(new GuessGameStarted(routineRunner, routineRevealBuilder,
-        guessingGameManager.getGuessingGameByServer(serverId)), textChannel);
+      guessingGameManager.startGuessingGame(anime, url, song, serverId, difficulty);
+      revealTimerBuilder.createRevealTimer(textChannel, serverId, url).startTimer();
+      messageSender.send(new GuessGameStarted(routineRunner, routineRevealBuilder,
+          guessingGameManager.getGuessingGameByServer(serverId)), textChannel);
 
-    return new Answer(
-        "Someone started guessing game. Anime = '%s', Song = '%s', URL = '%s'".formatted(animeTitle,
-            song, url));
+      return new Answer(
+          "Someone started guessing game. Anime = '%s', Song = '%s', URL = '%s'".formatted(
+              animeTitle, song, url));
+
+    } catch (Exception e) {
+      guessingGameManager.removeGuessGame(serverId);
+      throw e;
+    }
+
 
   }
 

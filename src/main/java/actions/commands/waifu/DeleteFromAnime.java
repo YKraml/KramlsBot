@@ -3,6 +3,7 @@ package actions.commands.waifu;
 import actions.commands.Answer;
 import actions.commands.ACommand;
 import actions.commands.CommandType;
+import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import messages.MessageSender;
 import org.javacord.api.interaction.SlashCommandInteractionOption;
@@ -25,6 +26,7 @@ public class DeleteFromAnime extends ACommand {
   private final PlayerLoader playerLoader;
   private final MessageSender messageSender;
 
+  @Inject
   public DeleteFromAnime(WaifuLoader waifuLoader, PlayerLoader playerLoader,
       MessageSender messageSender) {
     super();
@@ -63,8 +65,9 @@ public class DeleteFromAnime extends ACommand {
       Player player, List<SlashCommandInteractionOption> arguments) throws MyOwnException {
 
     String anime = arguments.get(0).getStringValue().get();
-    return getRoutineRunner().startRoutine(new RoutineDeleteWaifusFromAnime(waifuLoader,
-        playerLoader, player, anime, channel, messageSender));
+    return getRoutineRunner().startRoutine(
+        new RoutineDeleteWaifusFromAnime(waifuLoader, playerLoader, player, anime, channel,
+            messageSender));
   }
 
   @Override

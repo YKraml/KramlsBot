@@ -1,5 +1,6 @@
 package messages.messages;
 
+import com.google.inject.Inject;
 import discord.ChannelFinder;
 import messages.MessageSender;
 import model.jikan.anime.animeByIdFull.AnimeFullById;
@@ -18,6 +19,7 @@ public class AnimeEndingsBuilder {
   private final MusicPlayerManager musicPlayerManager;
   private final MessageSender messageSender;
 
+  @Inject
   public AnimeEndingsBuilder(PlayerLoader playerLoader, JikanFetcher jikanFetcher,
       ChannelFinder channelFinder, YoutubeFetcher youtubeFetcher,
       MusicPlayerManager musicPlayerManager, MessageSender messageSender) {

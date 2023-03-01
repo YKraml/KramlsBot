@@ -3,6 +3,7 @@ package actions.commands.waifu;
 import actions.commands.Answer;
 import actions.commands.ACommand;
 import actions.commands.CommandType;
+import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
 import org.javacord.api.interaction.SlashCommandInteractionOption;
@@ -19,6 +20,7 @@ public class GiveWaifu extends ACommand {
 
   private final RoutineGiveWaifuBuilder routineGiveWaifuBuilder;
 
+  @Inject
   public GiveWaifu(RoutineGiveWaifuBuilder routineGiveWaifuBuilder) {
     super();
     this.routineGiveWaifuBuilder = routineGiveWaifuBuilder;
@@ -47,10 +49,9 @@ public class GiveWaifu extends ACommand {
 
   @Override
   public List<SlashCommandOption> getSlashCommandOptions() {
-    return List.of(
-        SlashCommandOption.create(SlashCommandOptionType.USER, "Nutzer",
-            "Nutzer, der die Waifu erhalten soll.", true)
-        , SlashCommandOption.create(SlashCommandOptionType.LONG, "WaifuId",
+    return List.of(SlashCommandOption.create(SlashCommandOptionType.USER, "Nutzer",
+            "Nutzer, der die Waifu erhalten soll.", true),
+        SlashCommandOption.create(SlashCommandOptionType.LONG, "WaifuId",
             "Id der Waifu, die du verschenken willst.", true));
   }
 

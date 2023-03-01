@@ -3,6 +3,7 @@ package music.audio;
 import exceptions.MyOwnException;
 import exceptions.messages.QueueNonExisting;
 import java.util.function.Supplier;
+import javax.inject.Singleton;
 import org.javacord.api.entity.channel.ServerVoiceChannel;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.message.Message;
@@ -12,7 +13,7 @@ import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
-
+@Singleton
 public final class MusicPlayerManager {
 
   private final Map<Server, MusicPlayer> players;
@@ -66,9 +67,10 @@ public final class MusicPlayerManager {
       throws MyOwnException {
     Optional<MusicPlayer> playerOptional = getPlayerByServer(serverVoiceChannel.getServer());
     if (playerOptional.isPresent()) {
-      playerOptional.get().setServerVoiceChannel(serverVoiceChannel);
-      playerOptional.get().setTextChannel(textChannel);
-      playerOptional.get().startPlaying();
+      MusicPlayer musicPlayer = playerOptional.get();
+      musicPlayer.setServerVoiceChannel(serverVoiceChannel);
+      musicPlayer.setTextChannel(textChannel);
+      musicPlayer.startPlaying();
     }
   }
 

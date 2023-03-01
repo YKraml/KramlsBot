@@ -1,5 +1,6 @@
 package routines;
 
+import com.google.inject.Inject;
 import discord.ChannelFinder;
 import waifu.loader.DungeonLoader;
 import waifu.loader.PlayerLoader;
@@ -14,6 +15,7 @@ public class RoutineDungeonTickBuilder {
   private final PlayerLoader playerLoader;
   private final DungeonLoader dungeonLoader;
 
+  @Inject
   public RoutineDungeonTickBuilder(DungeonTicker dungeonTicker, ChannelFinder channelFinder,
       TeamLoader teamLoader, PlayerLoader playerLoader, DungeonLoader dungeonLoader) {
     this.dungeonTicker = dungeonTicker;

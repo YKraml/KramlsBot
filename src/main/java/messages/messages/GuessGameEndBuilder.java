@@ -1,12 +1,14 @@
 package messages.messages;
 
 import actions.listeners.reaction.AnimeInfoReactionListenerBuilder;
+import com.google.inject.Inject;
 import music.GuessingGame;
 
 public class GuessGameEndBuilder {
 
   private final AnimeInfoReactionListenerBuilder animeInfoReactionListenerBuilder;
 
+  @Inject
   public GuessGameEndBuilder(AnimeInfoReactionListenerBuilder animeInfoReactionListenerBuilder) {
     this.animeInfoReactionListenerBuilder = animeInfoReactionListenerBuilder;
   }

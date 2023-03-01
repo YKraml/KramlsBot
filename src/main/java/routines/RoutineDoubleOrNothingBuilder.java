@@ -1,5 +1,6 @@
 package routines;
 
+import com.google.inject.Inject;
 import messages.MessageSender;
 import org.javacord.api.entity.channel.TextChannel;
 import waifu.loader.PlayerLoader;
@@ -10,6 +11,7 @@ public class RoutineDoubleOrNothingBuilder {
   private final PlayerLoader playerLoader;
   private final MessageSender messageSender;
 
+  @Inject
   public RoutineDoubleOrNothingBuilder(PlayerLoader playerLoader, MessageSender messageSender) {
     this.playerLoader = playerLoader;
     this.messageSender = messageSender;

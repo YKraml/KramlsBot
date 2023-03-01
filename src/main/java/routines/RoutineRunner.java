@@ -1,10 +1,12 @@
 package routines;
 
 import actions.commands.Answer;
+import com.google.inject.Inject;
 import exceptions.MyOwnException;
 
 public class RoutineRunner {
 
+  @Inject
   public RoutineRunner() {
   }
 

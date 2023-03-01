@@ -1,6 +1,8 @@
 package waifu.loader;
 
+import com.google.inject.Inject;
 import exceptions.MyOwnException;
+import javax.inject.Singleton;
 import waifu.model.Group;
 import waifu.model.Player;
 import waifu.model.Waifu;
@@ -13,13 +15,14 @@ import waifu.sql.entry.GroupEntrySet;
 import waifu.sql.entry.GroupWaifuEntrySet;
 
 import java.util.*;
-
+@Singleton
 public final class GroupLoader {
 
   private final Collection<Group> groupCache;
   private final WaifuLoader waifuLoader;
 
 
+  @Inject
   public GroupLoader(WaifuLoader waifuLoader) {
     this.waifuLoader = waifuLoader;
     groupCache = Collections.synchronizedSet(new HashSet<>());

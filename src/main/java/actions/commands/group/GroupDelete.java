@@ -3,6 +3,7 @@ package actions.commands.group;
 import actions.commands.ACommand;
 import actions.commands.Answer;
 import actions.commands.CommandType;
+import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
 import org.javacord.api.interaction.SlashCommandInteractionOption;
@@ -20,6 +21,7 @@ public class GroupDelete extends ACommand {
 
   private final GroupLoader groupLoader;
 
+  @Inject
   public GroupDelete(GroupLoader groupLoader) {
     super();
     this.groupLoader = groupLoader;
@@ -40,8 +42,8 @@ public class GroupDelete extends ACommand {
       Player player, List<SlashCommandInteractionOption> arguments) throws MyOwnException {
     String groupName = arguments.get(0).getStringValue().get();
 
-    return getRoutineRunner().startRoutine(new RoutineDeleteGroup(player, groupName, channel,
-        groupLoader));
+    return getRoutineRunner().startRoutine(
+        new RoutineDeleteGroup(player, groupName, channel, groupLoader));
   }
 
   @Override

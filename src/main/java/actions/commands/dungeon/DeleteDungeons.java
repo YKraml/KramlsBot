@@ -3,8 +3,10 @@ package actions.commands.dungeon;
 import actions.commands.ACommand;
 import actions.commands.Answer;
 import actions.commands.CommandType;
+import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
+import messages.MessageSender;
 import messages.MessageSenderImpl;
 import messages.messages.DeleteDungeonsMessage;
 import org.javacord.api.DiscordApi;
@@ -19,9 +21,10 @@ import waifu.model.Player;
 public class DeleteDungeons extends ACommand {
 
   private final DungeonLoader dungeonLoader;
-  private final MessageSenderImpl messageSender;
+  private final MessageSender messageSender;
 
-  public DeleteDungeons(DungeonLoader dungeonLoader, MessageSenderImpl messageSender) {
+  @Inject
+  public DeleteDungeons(DungeonLoader dungeonLoader, MessageSender messageSender) {
     super();
     this.dungeonLoader = dungeonLoader;
     this.messageSender = messageSender;

@@ -3,6 +3,7 @@ package actions.commands.waifu;
 import actions.commands.Answer;
 import actions.commands.ACommand;
 import actions.commands.CommandType;
+import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
 import org.javacord.api.interaction.SlashCommandInteractionOption;
@@ -22,6 +23,7 @@ public class Merge extends ACommand {
   private final WaifuLoader waifuLoader;
   private final PlayerLoader playerLoader;
 
+  @Inject
   public Merge(WaifuLoader waifuLoader, PlayerLoader playerLoader) {
     this.waifuLoader = waifuLoader;
     this.playerLoader = playerLoader;

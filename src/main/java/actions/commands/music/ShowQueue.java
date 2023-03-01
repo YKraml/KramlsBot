@@ -3,6 +3,7 @@ package actions.commands.music;
 import actions.commands.Answer;
 import actions.commands.ACommand;
 import actions.commands.CommandType;
+import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
 import messages.MessageSender;
@@ -24,6 +25,7 @@ public class ShowQueue extends ACommand {
   private final PlayerLoader playerLoader;
   private final MessageSender messageSender;
 
+  @Inject
   public ShowQueue(MusicPlayerManager musicPlayerManager, PlayerLoader playerLoader,
       MessageSender messageSender) {
     super();

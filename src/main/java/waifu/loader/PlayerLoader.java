@@ -1,5 +1,6 @@
 package waifu.loader;
 
+import com.google.inject.Singleton;
 import exceptions.MyOwnException;
 import org.javacord.api.entity.user.User;
 import waifu.model.Player;

@@ -3,6 +3,7 @@ package actions.commands.gambling;
 import actions.commands.Answer;
 import actions.commands.ACommand;
 import actions.commands.CommandType;
+import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
 import org.javacord.api.DiscordApi;
@@ -18,6 +19,7 @@ public class DoubleOrNothing extends ACommand {
 
   private final RoutineDoubleOrNothingBuilder routineDoubleOrNothingBuilder;
 
+  @Inject
   public DoubleOrNothing(RoutineDoubleOrNothingBuilder routineDoubleOrNothingBuilder) {
     super();
     this.routineDoubleOrNothingBuilder = routineDoubleOrNothingBuilder;

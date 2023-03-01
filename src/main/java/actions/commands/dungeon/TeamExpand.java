@@ -3,6 +3,7 @@ package actions.commands.dungeon;
 import actions.commands.Answer;
 import actions.commands.ACommand;
 import actions.commands.CommandType;
+import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
 import org.javacord.api.interaction.SlashCommandInteractionOption;
@@ -20,6 +21,7 @@ public class TeamExpand extends ACommand {
 
   private final PlayerLoader playerLoader;
 
+  @Inject
   public TeamExpand(PlayerLoader playerLoader) {
     super();
     this.playerLoader = playerLoader;
@@ -37,8 +39,7 @@ public class TeamExpand extends ACommand {
 
   @Override
   protected Answer executeCommand(DiscordApi api, Server server, TextChannel channel, User user,
-      Player player,
-      List<SlashCommandInteractionOption> arguments) throws MyOwnException {
+      Player player, List<SlashCommandInteractionOption> arguments) throws MyOwnException {
 
     String teamName = arguments.get(0).getStringValue().get();
 

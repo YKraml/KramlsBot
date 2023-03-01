@@ -1,7 +1,9 @@
 package waifu.loader;
 
+import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.Optional;
+import javax.inject.Singleton;
 import waifu.model.Player;
 import waifu.model.dungeon.Dungeon;
 import waifu.model.dungeon.Inventory;
@@ -19,13 +21,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+@Singleton
 public final class TeamLoaderSql implements TeamLoader {
 
   private final List<Team> teamCache;
 
   private final DungeonLoader dungeonLoader;
 
-
+  @Inject
   public TeamLoaderSql(DungeonLoader dungeonLoader) {
     this.dungeonLoader = dungeonLoader;
     teamCache = Collections.synchronizedList(new ArrayList<>());
@@ -67,8 +70,7 @@ public final class TeamLoaderSql implements TeamLoader {
     return teamList;
   }
 
-  private Team createTeamFromEntry(Player player, TeamEntry entry)
-      throws MyOwnException {
+  private Team createTeamFromEntry(Player player, TeamEntry entry) throws MyOwnException {
 
     Optional<Team> cachedTeam = teamCache.stream()
         .filter(team -> team.getId().equals(entry.getId())).findFirst();
@@ -77,8 +79,7 @@ public final class TeamLoaderSql implements TeamLoader {
     }
 
     Team team = new Team(entry.getId(), entry.getName(), player, entry.getTeamsize(),
-        new Inventory(entry.getMoney(), entry.getStardust(), entry.getCookies())
-    );
+        new Inventory(entry.getMoney(), entry.getStardust(), entry.getCookies()));
 
     TeamFighterEntrySet teamFighterEntrySet = new SelectWaifusFromTeam(team).executeCommand();
     teamFighterEntrySet.forEach(teamFighterEntry -> player.getWaifuList().stream()

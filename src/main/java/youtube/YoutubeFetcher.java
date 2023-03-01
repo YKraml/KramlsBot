@@ -1,6 +1,7 @@
 package youtube;
 
 import java.text.MessageFormat;
+import javax.inject.Singleton;
 import youtube.model.playlist.Playlist;
 import youtube.model.search.YoutubeSearch;
 import exceptions.MyOwnException;
@@ -8,7 +9,7 @@ import exceptions.messages.CouldNotFindVideo;
 
 import java.util.Optional;
 
-
+@Singleton
 public class YoutubeFetcher {
 
 
@@ -27,7 +28,8 @@ public class YoutubeFetcher {
 
     Optional<YoutubeSearch> search = om.map(data, YoutubeSearch.class);
 
-    if (search.isPresent() && (search.get().getItems() == null || search.get().getItems().isEmpty())) {
+    if (search.isPresent() && (search.get().getItems() == null || search.get().getItems()
+        .isEmpty())) {
       return Optional.empty();
     }
     return search;

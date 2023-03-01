@@ -3,6 +3,7 @@ package actions.commands.waifu;
 import actions.commands.Answer;
 import actions.commands.ACommand;
 import actions.commands.CommandType;
+import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
 import messages.MessageSender;
@@ -21,6 +22,7 @@ public class Delete extends ACommand {
   private final WaifuLoader waifuLoader;
   private final MessageSender messageSender;
 
+  @Inject
   public Delete(WaifuLoader waifuLoader, MessageSender messageSender) {
     super();
     this.waifuLoader = waifuLoader;

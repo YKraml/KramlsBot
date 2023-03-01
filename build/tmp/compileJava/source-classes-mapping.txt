@@ -1,5 +1,5 @@
-actions/timer/RevealTimer.java
- actions.timer.RevealTimer
+actions/timer/GivePointsTask.java
+ actions.timer.GivePointsTask
 routines/RoutineCollectDaily.java
  routines.RoutineCollectDaily
 waifu/loader/WaifuLoader.java
@@ -46,14 +46,14 @@ discord/ChannelFinder.java
  discord.ChannelFinder
 music/audio/QueueElement.java
  music.audio.QueueElement
-embeds/music/SongAddedEmbed.java
- embeds.music.SongAddedEmbed
+routines/RoutineSpawnWaifuBuilder.java
+ routines.RoutineSpawnWaifuBuilder
 waifu/loader/GroupLoader.java
  waifu.loader.GroupLoader
 youtube/model/playlist/ResourceId.java
  youtube.model.playlist.ResourceId
-actions/listeners/reaction/StartGuessingGameListener.java
- actions.listeners.reaction.StartGuessingGameListener
+waifu/sql/Connector.java
+ waifu.sql.Connector
 embeds/LostMoney.java
  embeds.LostMoney
 waifu/sql/commands/user/UserExists.java
@@ -62,16 +62,16 @@ exceptions/messages/CouldNotMap.java
  exceptions.messages.CouldNotMap
 exceptions/messages/TeamNotAddedWaifu.java
  exceptions.messages.TeamNotAddedWaifu
-messages/messages/GuessGameStarted.java
- messages.messages.GuessGameStarted
+actions/commands/CommandDistributor.java
+ actions.commands.CommandDistributor
 routines/RoutineRemoveFromGroup.java
  routines.RoutineRemoveFromGroup
 actions/listeners/reaction/AnimeInfoReactionListenerBuilder.java
  actions.listeners.reaction.AnimeInfoReactionListenerBuilder
 embeds/waifu/WaifuEmbed.java
  embeds.waifu.WaifuEmbed
-embeds/dungeon/DungeonCreatedEmbed.java
- embeds.dungeon.DungeonCreatedEmbed
+messages/messages/GaveWaifu.java
+ messages.messages.GaveWaifu
 waifu/loader/PlayerLoaderCached.java
  waifu.loader.PlayerLoaderCached
 actions/commands/Answer.java
@@ -91,8 +91,8 @@ waifu/sql/entry/WaifuEntrySet.java
  waifu.sql.entry.WaifuEntrySet$WaifuEntry
 waifu/sql/commands/group/DeleteGroup.java
  waifu.sql.commands.group.DeleteGroup
-actions/timer/DungeonTickTask.java
- actions.timer.DungeonTickTask
+messages/MyMessage.java
+ messages.MyMessage
 routines/RoutineSpawnWaifu.java
  routines.RoutineSpawnWaifu
 actions/listeners/reaction/lists/Mapper.java
@@ -136,14 +136,14 @@ exceptions/messages/PlayerNotFound.java
  exceptions.messages.PlayerNotFound
 exceptions/messages/CouldNotGetDataFromApi.java
  exceptions.messages.CouldNotGetDataFromApi
-embeds/dungeon/TeamEmbed.java
- embeds.dungeon.TeamEmbed
+exceptions/messages/CouldNotGetCharacterAnime.java
+ exceptions.messages.CouldNotGetCharacterAnime
 actions/commands/gambling/DoubleOrNothing.java
  actions.commands.gambling.DoubleOrNothing
 actions/commands/dungeon/TeamRemove.java
  actions.commands.dungeon.TeamRemove
-embeds/fight/StartFightEmbed.java
- embeds.fight.StartFightEmbed
+routines/RoutineDoubleOrNothingWithParameterBuilder.java
+ routines.RoutineDoubleOrNothingWithParameterBuilder
 youtube/model/playlist/Maxres.java
  youtube.model.playlist.Maxres
 waifu/sql/entry/RecordEntrySet.java
@@ -178,26 +178,26 @@ exceptions/messages/TimeOut.java
  exceptions.messages.TimeOut
 embeds/waifu/WaifuListEmbed.java
  embeds.waifu.WaifuListEmbed
-routines/RoutineRevealBuilder.java
- routines.RoutineRevealBuilder
+embeds/ExceptionEmbed.java
+ embeds.ExceptionEmbed
 actions/commands/dungeon/TeamAdd.java
  actions.commands.dungeon.TeamAdd
 embeds/music/QueueEmbed.java
  embeds.music.QueueEmbed
 messages/messages/TeamCouldNotEnterDungeonMessage.java
  messages.messages.TeamCouldNotEnterDungeonMessage
-embeds/guess/GuessEndEmbed.java
- embeds.guess.GuessEndEmbed
+messages/messages/CharacterOverview.java
+ messages.messages.CharacterOverview
 messages/messages/GroupCreated.java
  messages.messages.GroupCreated
 waifu/model/Group.java
  waifu.model.Group
 actions/listeners/reaction/lists/GroupListListener.java
  actions.listeners.reaction.lists.GroupListListener
-de/kraml/Main.java
- de.kraml.Main
-embeds/anime/AnimeEmbed.java
- embeds.anime.AnimeEmbed
+exceptions/messages/CouldNotFindVoiceChannel.java
+ exceptions.messages.CouldNotFindVoiceChannel
+routines/RoutineGivePointsBuilder.java
+ routines.RoutineGivePointsBuilder
 exceptions/messages/TeamIsFull.java
  exceptions.messages.TeamIsFull
 routines/RoutineMergeWaifus.java
@@ -227,8 +227,8 @@ waifu/model/dungeon/DungeonInformation.java
  waifu.model.dungeon.DungeonInformation
 waifu/sql/commands/record/InsertRecord.java
  waifu.sql.commands.record.InsertRecord
-routines/RoutineReveal.java
- routines.RoutineReveal
+embeds/anime/AnimeSynopsisEmbed.java
+ embeds.anime.AnimeSynopsisEmbed
 routines/RoutineShowSongsBuilder.java
  routines.RoutineShowSongsBuilder
 routines/RoutineExpandTeam.java
@@ -242,8 +242,8 @@ messages/messages/CommandNotFound.java
 waifu/sql/entry/UserEntrySet.java
  waifu.sql.entry.UserEntrySet
  waifu.sql.entry.UserEntrySet$UserEntry
-routines/RoutineGuessBuilder.java
- routines.RoutineGuessBuilder
+de/kraml/Terminal.java
+ de.kraml.Terminal
 music/audio/MyAudioEventAdapter.java
  music.audio.MyAudioEventAdapter
 routines/RoutineRemoveFromTeam.java
@@ -267,8 +267,8 @@ messages/messages/WaifuNotFound.java
  messages.messages.WaifuNotFound
 exceptions/messages/TeamNotFound.java
  exceptions.messages.TeamNotFound
-actions/timer/GivePointsTask.java
- actions.timer.GivePointsTask
+embeds/anime/AnimeEmbed.java
+ embeds.anime.AnimeEmbed
 waifu/model/Rarities.java
  waifu.model.Rarities
  waifu.model.Rarities$1
@@ -276,8 +276,8 @@ exceptions/messages/NextSongNonExisting.java
  exceptions.messages.NextSongNonExisting
 waifu/model/Waifu.java
  waifu.model.Waifu
-embeds/anime/AnimeSynopsisEmbed.java
- embeds.anime.AnimeSynopsisEmbed
+actions/commands/waifu/GiveWaifu.java
+ actions.commands.waifu.GiveWaifu
 routines/RoutineShowWaifuById.java
  routines.RoutineShowWaifuById
 waifu/model/Stats.java
@@ -292,12 +292,12 @@ waifu/sql/commands/dungeon/SelectAllDungeons.java
  waifu.sql.commands.dungeon.SelectAllDungeons
 actions/commands/waifu/DeleteFromAnime.java
  actions.commands.waifu.DeleteFromAnime
-routines/RoutineStartGuessingGameBuilder.java
- routines.RoutineStartGuessingGameBuilder
+waifu/model/dungeon/Dungeon.java
+ waifu.model.dungeon.Dungeon
 routines/RoutineAddToQueue.java
  routines.RoutineAddToQueue
-routines/RunningEnvironment.java
- routines.RunningEnvironment
+de/kraml/Main.java
+ de.kraml.Main
 exceptions/messages/CouldNotUpdateRoles.java
  exceptions.messages.CouldNotUpdateRoles
 actions/commands/waifu/Claim.java
@@ -328,8 +328,8 @@ messages/messages/AnimeOpenings.java
  messages.messages.AnimeOpenings
 exceptions/messages/CommandWentWrong.java
  exceptions.messages.CommandWentWrong
-actions/commands/music/Stop.java
- actions.commands.music.Stop
+embeds/anime/CharacterEmbed.java
+ embeds.anime.CharacterEmbed
 youtube/model/playlist/Item.java
  youtube.model.playlist.Item
 actions/listeners/reaction/TeamEditListener.java
@@ -344,8 +344,8 @@ exceptions/messages/ReachedMaxWaifus.java
  exceptions.messages.ReachedMaxWaifus
 messages/messages/TimeIsUpMessage.java
  messages.messages.TimeIsUpMessage
-embeds/group/GroupEmbed.java
- embeds.group.GroupEmbed
+actions/timer/DungeonTickTask.java
+ actions.timer.DungeonTickTask
 actions/commands/dungeon/TeamExpand.java
  actions.commands.dungeon.TeamExpand
 exceptions/messages/CouldNotFindGroup.java
@@ -429,8 +429,8 @@ routines/RoutineSpawnWaifuCommandBuilder.java
  routines.RoutineSpawnWaifuCommandBuilder
 messages/messages/TeamGavePocketMessage.java
  messages.messages.TeamGavePocketMessage
-routines/RoutineGivePoints.java
- routines.RoutineGivePoints
+embeds/music/SongAddedEmbed.java
+ embeds.music.SongAddedEmbed
 embeds/waifu/WaifuSpawnEmbed.java
  embeds.waifu.WaifuSpawnEmbed
 waifu/model/fighting/Attack.java
@@ -467,8 +467,8 @@ messages/messages/DiceGameExistsAlready.java
  messages.messages.DiceGameExistsAlready
 routines/RoutineCreateGroup.java
  routines.RoutineCreateGroup
-embeds/anime/AnimeSongEmbed.java
- embeds.anime.AnimeSongEmbed
+waifu/sql/commands/dungeon/DeleteDungeon.java
+ waifu.sql.commands.dungeon.DeleteDungeon
 waifu/sql/commands/SQLCommandCheckExistence.java
  waifu.sql.commands.SQLCommandCheckExistence
 actions/timer/SaveRunnable.java
@@ -493,8 +493,8 @@ messages/messages/DungeonCreatedMessage.java
  messages.messages.DungeonCreatedMessage
 youtube/model/search/YoutubeSearch.java
  youtube.model.search.YoutubeSearch
-embeds/anime/CharacterEmbed.java
- embeds.anime.CharacterEmbed
+routines/RoutineRenameTeam.java
+ routines.RoutineRenameTeam
 actions/listeners/reaction/WaifuEditListener.java
  actions.listeners.reaction.WaifuEditListener
 waifu/sql/entry/TeamFighterEntrySet.java
@@ -509,8 +509,8 @@ exceptions/messages/QueueNonExisting.java
 waifu/model/fighting/Fighter.java
  waifu.model.fighting.Fighter
  waifu.model.fighting.Fighter$1
-music/GuessingGameManager.java
- music.GuessingGameManager
+routines/RoutineGivePoints.java
+ routines.RoutineGivePoints
 waifu/sql/entry/TeamEntrySet.java
  waifu.sql.entry.TeamEntrySet
  waifu.sql.entry.TeamEntrySet$TeamEntry
@@ -526,8 +526,8 @@ messages/messages/DeletedWaifuOverview.java
  messages.messages.DeletedWaifuOverview
 youtube/model/search/Snippet.java
  youtube.model.search.Snippet
-embeds/waifu/WaifuDeletedEmbed.java
- embeds.waifu.WaifuDeletedEmbed
+youtube/YoutubeFetcher.java
+ youtube.YoutubeFetcher
 waifu/sql/commands/SQLCommand.java
  waifu.sql.commands.SQLCommand
 embeds/group/GroupsListEmbed.java
@@ -545,8 +545,8 @@ waifu/sql/entry/DungeonTeamEntrySet.java
  waifu.sql.entry.DungeonTeamEntrySet$DungeonTeamEntry
 exceptions/messages/UserNotFound.java
  exceptions.messages.UserNotFound
-embeds/ExceptionEmbed.java
- embeds.ExceptionEmbed
+embeds/dungeon/DungeonCreatedEmbed.java
+ embeds.dungeon.DungeonCreatedEmbed
 waifu/sql/entry/TimeEntrySet.java
  waifu.sql.entry.TimeEntrySet
  waifu.sql.entry.TimeEntrySet$TimeEntry
@@ -556,8 +556,8 @@ routines/RoutineDoubleOrNothing.java
  routines.RoutineDoubleOrNothing
 messages/messages/WaifuRarityIncreased.java
  messages.messages.WaifuRarityIncreased
-actions/commands/MySlashCommandListener.java
- actions.commands.MySlashCommandListener
+embeds/guess/GuessStartEmbed.java
+ embeds.guess.GuessStartEmbed
 routines/RoutineAddToQueueBuilder.java
  routines.RoutineAddToQueueBuilder
 actions/commands/dungeon/TeamsList.java
@@ -619,20 +619,20 @@ messages/messages/DungeonDeleted.java
  messages.messages.DungeonDeleted
 waifu/sql/commands/group_waifu/DeleteAllWaifusFromGroup.java
  waifu.sql.commands.group_waifu.DeleteAllWaifusFromGroup
-actions/commands/guess/StartGuessingGame.java
- actions.commands.guess.StartGuessingGame
+exceptions/messages/CouldNotGetChannel.java
+ exceptions.messages.CouldNotGetChannel
 exceptions/messages/CouldNotSearchForAnimeTitles.java
  exceptions.messages.CouldNotSearchForAnimeTitles
-actions/timer/RevealTimerBuilder.java
- actions.timer.RevealTimerBuilder
+embeds/dungeon/DungeonEmbed.java
+ embeds.dungeon.DungeonEmbed
 exceptions/messages/CouldNotFindVideo.java
  exceptions.messages.CouldNotFindVideo
 messages/messages/WaifusDeleted.java
  messages.messages.WaifusDeleted
-routines/RoutineStartGuessingGame.java
- routines.RoutineStartGuessingGame
-embeds/dungeon/DungeonEmbed.java
- embeds.dungeon.DungeonEmbed
+actions/listeners/reaction/SongAddedEmbedListener.java
+ actions.listeners.reaction.SongAddedEmbedListener
+exceptions/messages/CouldNotGetUser.java
+ exceptions.messages.CouldNotGetUser
 messages/messages/SongQueueMessage.java
  messages.messages.SongQueueMessage
 messages/messages/TeamKilled.java
@@ -659,8 +659,8 @@ exceptions/messages/CouldNotStartRoutine.java
  exceptions.messages.CouldNotStartRoutine
 routines/RoutineShowGroupBuilder.java
  routines.RoutineShowGroupBuilder
-embeds/MyListEmbed.java
- embeds.MyListEmbed
+waifu/sql/mapper/AbstractMapper.java
+ waifu.sql.mapper.AbstractMapper
 actions/listeners/reaction/util/MyAbstractReactionListener.java
  actions.listeners.reaction.util.MyAbstractReactionListener
 waifu/sql/commands/SQLCommandWithResult.java
@@ -679,10 +679,10 @@ youtube/MyObjectMapper.java
  youtube.MyObjectMapper
 messages/messages/AnimeOpeningsBuilder.java
  messages.messages.AnimeOpeningsBuilder
-embeds/guess/GuessStartEmbed.java
- embeds.guess.GuessStartEmbed
-routines/RoutineGuess.java
- routines.RoutineGuess
+messages/MessageSenderImpl.java
+ messages.MessageSenderImpl
+embeds/anime/AnimeSongEmbed.java
+ embeds.anime.AnimeSongEmbed
 waifu/model/Player.java
  waifu.model.Player
 discord/Emojis.java
@@ -737,8 +737,8 @@ waifu/sql/commands/battle_waifu/InsertBattleWaifu.java
  waifu.sql.commands.battle_waifu.InsertBattleWaifu
 waifu/sql/commands/battle_waifu/BattleWaifuExists.java
  waifu.sql.commands.battle_waifu.BattleWaifuExists
-embeds/StatEmbed.java
- embeds.StatEmbed
+embeds/guess/GuessEndEmbed.java
+ embeds.guess.GuessEndEmbed
 messages/messages/WaifuStats.java
  messages.messages.WaifuStats
 exceptions/messages/CouldNotSaveLikedSong.java
@@ -766,10 +766,10 @@ messages/messages/GuessedWrong.java
 waifu/sql/entry/AbstractEntrySet.java
  waifu.sql.entry.AbstractEntrySet
  waifu.sql.entry.AbstractEntrySet$AbstractEntry
-waifu/sql/Connector.java
- waifu.sql.Connector
-de/kraml/Terminal.java
- de.kraml.Terminal
+youtube/model/playlist/Default.java
+ youtube.model.playlist.Default
+music/audio/MusicPlayerManager.java
+ music.audio.MusicPlayerManager
 exceptions/messages/CouldNotSendMessage.java
  exceptions.messages.CouldNotSendMessage
 waifu/sql/commands/character/SelectCharacterByWaifuId.java
@@ -792,6 +792,8 @@ embeds/dungeon/DungeonsDeletionListEmbed.java
  embeds.dungeon.DungeonsDeletionListEmbed
 routines/RoutineAddWaifuToGroup.java
  routines.RoutineAddWaifuToGroup
+actions/commands/waifu/DeleteFromTo.java
+ actions.commands.waifu.DeleteFromTo
 youtube/model/search/High.java
  youtube.model.search.High
 routines/RoutineShowGroup.java
@@ -802,51 +804,53 @@ routines/RoutineDoubleOrNothingWithParameter.java
  routines.RoutineDoubleOrNothingWithParameter
 waifu/sql/commands/team/SelectTeamsById.java
  waifu.sql.commands.team.SelectTeamsById
-messages/MyMessage.java
- messages.MyMessage
-exceptions/messages/CouldNotGetChannel.java
- exceptions.messages.CouldNotGetChannel
-messages/MessageSenderImpl.java
- messages.MessageSenderImpl
-routines/RoutineSpawnWaifuBuilder.java
- routines.RoutineSpawnWaifuBuilder
-actions/commands/guess/Reveal.java
- actions.commands.guess.Reveal
 actions/listeners/reaction/lists/WaifuListListener.java
  actions.listeners.reaction.lists.WaifuListListener
+embeds/group/GroupEmbed.java
+ embeds.group.GroupEmbed
+embeds/StatEmbed.java
+ embeds.StatEmbed
+actions/commands/SlashCommandListener.java
+ actions.commands.SlashCommandListener
+embeds/dungeon/TeamEmbed.java
+ embeds.dungeon.TeamEmbed
+embeds/waifu/WaifuDeletedEmbed.java
+ embeds.waifu.WaifuDeletedEmbed
+embeds/fight/StartFightEmbed.java
+ embeds.fight.StartFightEmbed
+embeds/MyListEmbed.java
+ embeds.MyListEmbed
+actions/timer/RevealTimer.java
+ actions.timer.RevealTimer
+routines/RoutineStartGuessingGameBuilder.java
+ routines.RoutineStartGuessingGameBuilder
+actions/listeners/reaction/StartGuessingGameListener.java
+ actions.listeners.reaction.StartGuessingGameListener
+messages/messages/GuessGameStarted.java
+ messages.messages.GuessGameStarted
+routines/RunningEnvironment.java
+ routines.RunningEnvironment
+music/GuessingGameManager.java
+ music.GuessingGameManager
+routines/RoutineGuess.java
+ routines.RoutineGuess
+actions/timer/RevealTimerBuilder.java
+ actions.timer.RevealTimerBuilder
+actions/commands/music/Stop.java
+ actions.commands.music.Stop
+routines/RoutineRevealBuilder.java
+ routines.RoutineRevealBuilder
+routines/RoutineReveal.java
+ routines.RoutineReveal
+routines/RoutineStartGuessingGame.java
+ routines.RoutineStartGuessingGame
+actions/commands/guess/Reveal.java
+ actions.commands.guess.Reveal
+routines/RoutineGuessBuilder.java
+ routines.RoutineGuessBuilder
 actions/commands/guess/Guess.java
  actions.commands.guess.Guess
-exceptions/messages/CouldNotGetUser.java
- exceptions.messages.CouldNotGetUser
-routines/RoutineRenameTeam.java
- routines.RoutineRenameTeam
-exceptions/messages/CouldNotFindVoiceChannel.java
- exceptions.messages.CouldNotFindVoiceChannel
-actions/commands/waifu/GiveWaifu.java
- actions.commands.waifu.GiveWaifu
-messages/messages/CharacterOverview.java
- messages.messages.CharacterOverview
-messages/messages/GaveWaifu.java
- messages.messages.GaveWaifu
-music/audio/MusicPlayerManager.java
- music.audio.MusicPlayerManager
-waifu/sql/commands/dungeon/DeleteDungeon.java
- waifu.sql.commands.dungeon.DeleteDungeon
-youtube/model/playlist/Default.java
- youtube.model.playlist.Default
-waifu/sql/mapper/AbstractMapper.java
- waifu.sql.mapper.AbstractMapper
-routines/RoutineDoubleOrNothingWithParameterBuilder.java
- routines.RoutineDoubleOrNothingWithParameterBuilder
-youtube/YoutubeFetcher.java
- youtube.YoutubeFetcher
-exceptions/messages/CouldNotGetCharacterAnime.java
- exceptions.messages.CouldNotGetCharacterAnime
-waifu/model/dungeon/Dungeon.java
- waifu.model.dungeon.Dungeon
-actions/commands/CommandManager.java
- actions.commands.CommandManager
-actions/listeners/reaction/SongAddedEmbedListener.java
- actions.listeners.reaction.SongAddedEmbedListener
-actions/commands/waifu/DeleteFromTo.java
- actions.commands.waifu.DeleteFromTo
+de/kraml/MyModule.java
+ de.kraml.MyModule
+actions/commands/guess/StartGuessingGame.java
+ actions.commands.guess.StartGuessingGame

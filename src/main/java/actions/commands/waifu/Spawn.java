@@ -3,6 +3,7 @@ package actions.commands.waifu;
 import actions.commands.ACommand;
 import actions.commands.Answer;
 import actions.commands.CommandType;
+import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
 import org.javacord.api.DiscordApi;
@@ -18,6 +19,7 @@ public class Spawn extends ACommand {
 
   private final RoutineSpawnWaifuCommandBuilder routineSpawnWaifuCommandBuilder;
 
+  @Inject
   public Spawn(RoutineSpawnWaifuCommandBuilder routineSpawnWaifuCommandBuilder) {
     super();
     this.routineSpawnWaifuCommandBuilder = routineSpawnWaifuCommandBuilder;
@@ -37,7 +39,8 @@ public class Spawn extends ACommand {
   protected Answer executeCommand(DiscordApi api, Server server, TextChannel channel, User user,
       Player player, List<SlashCommandInteractionOption> arguments) throws MyOwnException {
 
-    return getRoutineRunner().startRoutine(routineSpawnWaifuCommandBuilder.createRoutineSpawnWaifuCommand(channel, player));
+    return getRoutineRunner().startRoutine(
+        routineSpawnWaifuCommandBuilder.createRoutineSpawnWaifuCommand(channel, player));
   }
 
   @Override

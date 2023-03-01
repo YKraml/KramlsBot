@@ -3,6 +3,7 @@ package actions.commands.dungeon;
 import actions.commands.ACommand;
 import actions.commands.Answer;
 import actions.commands.CommandType;
+import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
 import org.javacord.api.DiscordApi;
@@ -20,6 +21,7 @@ public class CreateDungeon extends ACommand {
 
   private final DungeonLoader dungeonLoader;
 
+  @Inject
   public CreateDungeon(DungeonLoader dungeonLoader) {
     super();
     this.dungeonLoader = dungeonLoader;

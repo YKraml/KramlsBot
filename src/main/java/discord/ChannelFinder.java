@@ -1,5 +1,6 @@
 package discord;
 
+import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import exceptions.messages.CouldNotFindVoiceChannel;
 import org.javacord.api.DiscordApi;
@@ -14,6 +15,7 @@ public class ChannelFinder {
 
     private final DiscordApi api;
 
+    @Inject
     public ChannelFinder(DiscordApi api) {
         this.api = api;
     }

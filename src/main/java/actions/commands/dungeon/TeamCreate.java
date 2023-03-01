@@ -3,6 +3,7 @@ package actions.commands.dungeon;
 import actions.commands.Answer;
 import actions.commands.ACommand;
 import actions.commands.CommandType;
+import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
 import org.javacord.api.interaction.SlashCommandInteractionOption;
@@ -20,6 +21,7 @@ public class TeamCreate extends ACommand {
 
   private final PlayerLoader playerLoader;
 
+  @Inject
   public TeamCreate(PlayerLoader playerLoader) {
     super();
     this.playerLoader = playerLoader;

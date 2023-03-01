@@ -1,5 +1,6 @@
 package actions.listeners.reaction;
 
+import com.google.inject.Inject;
 import messages.MessageSender;
 import model.jikan.anime.animeByIdFull.AnimeFullById;
 import waifu.JikanFetcher;
@@ -10,6 +11,7 @@ public class AnimeInfoReactionListenerBuilder {
   private final MessageSender messageSender;
   private final AnimeOpeningEndingReactionListenerBuilder animeOpeningEndingReactionListenerBuilder;
 
+  @Inject
   public AnimeInfoReactionListenerBuilder(JikanFetcher jikanFetcher,
       MessageSender messageSender,
       AnimeOpeningEndingReactionListenerBuilder animeOpeningEndingReactionListenerBuilder) {

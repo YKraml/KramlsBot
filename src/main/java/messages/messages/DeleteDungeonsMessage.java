@@ -4,6 +4,7 @@ import actions.listeners.reaction.lists.DungeonDeletionListListener;
 import embeds.dungeon.DungeonsDeletionListEmbed;
 import exceptions.MyOwnException;
 import java.util.List;
+import messages.MessageSender;
 import messages.MyMessage;
 import messages.MessageSenderImpl;
 import org.javacord.api.entity.message.Message;
@@ -14,10 +15,10 @@ import waifu.model.dungeon.Dungeon;
 public class DeleteDungeonsMessage extends MyMessage {
 
   private final DungeonLoader dungeonLoader;
-  private final MessageSenderImpl messageSender;
+  private final MessageSender messageSender;
   private final String serverId;
 
-  public DeleteDungeonsMessage(DungeonLoader dungeonLoader, MessageSenderImpl messageSender,
+  public DeleteDungeonsMessage(DungeonLoader dungeonLoader, MessageSender messageSender,
       String serverId) {
     super();
     this.dungeonLoader = dungeonLoader;

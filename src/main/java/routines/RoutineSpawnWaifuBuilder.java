@@ -1,5 +1,6 @@
 package routines;
 
+import com.google.inject.Inject;
 import java.util.concurrent.ScheduledExecutorService;
 import org.javacord.api.DiscordApi;
 import waifu.WaifuBuilder;
@@ -12,6 +13,7 @@ public class RoutineSpawnWaifuBuilder {
   private final WaifuBuilder waifuBuilder;
   private final DiscordApi discordApi;
 
+  @Inject
   public RoutineSpawnWaifuBuilder(ScheduledExecutorService scheduledExecutorService,
       WaifuSpawnManager waifuSpawnManager, WaifuBuilder waifuBuilder, DiscordApi discordApi) {
     this.scheduledExecutorService = scheduledExecutorService;

@@ -3,6 +3,7 @@ package actions.commands.waifu;
 import actions.commands.Answer;
 import actions.commands.ACommand;
 import actions.commands.CommandType;
+import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
 import org.javacord.api.DiscordApi;
@@ -18,6 +19,7 @@ public class ShowWaifuList extends ACommand {
 
   private final RoutineShowWaifuListBuilder routineShowWaifuListBuilder;
 
+  @Inject
   public ShowWaifuList(RoutineShowWaifuListBuilder routineShowWaifuListBuilder) {
     super();
     this.routineShowWaifuListBuilder = routineShowWaifuListBuilder;

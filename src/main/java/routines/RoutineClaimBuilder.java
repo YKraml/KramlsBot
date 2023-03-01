@@ -1,5 +1,6 @@
 package routines;
 
+import com.google.inject.Inject;
 import messages.MessageSender;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
@@ -17,6 +18,7 @@ public class RoutineClaimBuilder {
   private final JikanFetcher jikanFetcher;
   private final MessageSender messageSender;
 
+  @Inject
   public RoutineClaimBuilder(WaifuSpawnManager waifuSpawnManager, PlayerLoader playerLoader,
       WaifuLoader waifuLoader, JikanFetcher jikanFetcher, MessageSender messageSender) {
     this.waifuSpawnManager = waifuSpawnManager;

@@ -1,11 +1,15 @@
 package music;
 
+import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import exceptions.messages.CouldNotGetGuessingGameByServer;
 import exceptions.messages.GuessingGameAlreadyExists;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Objects;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import javax.inject.Singleton;
 import model.jikan.anime.animeByIdFull.AnimeFullById;
 import model.jikan.anime.animeByIdFull.Data;
 import model.jikan.anime.animeByIdFull.Entry;
@@ -15,12 +19,13 @@ import waifu.JikanFetcher;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
+@Singleton
 public final class GuessingGameManager {
 
   private final List<GuessingGame> guessingGameList;
   private final JikanFetcher jikanFetcher;
 
+  @Inject
   public GuessingGameManager(JikanFetcher jikanFetcher) {
     this.jikanFetcher = jikanFetcher;
     this.guessingGameList = Collections.synchronizedList(new ArrayList<>());
@@ -30,10 +35,6 @@ public final class GuessingGameManager {
   public synchronized void startGuessingGame(AnimeFullById anime, String url, String songName, String serverId,
       int difficulty) {
 
-    if(gameExists(serverId)){
-      removeGuessGame(serverId);
-    }
-
     Collection<String> possibleAnswers = new HashSet<>();
     Data data = anime.getData();
     possibleAnswers.add(data.getTitle());
@@ -42,7 +43,7 @@ public final class GuessingGameManager {
     possibleAnswers.addAll(data.getTitleSynonyms());
     possibleAnswers.addAll(data.getTitles().stream().map(Title::getTitle).collect(Collectors.toSet()));
     possibleAnswers.addAll(data.getRelations().stream().flatMap(relation -> relation.getEntry().stream()).map(Entry::getName).collect(Collectors.toSet()));
-
+    possibleAnswers.removeIf(Objects::isNull);
 
     GuessingGame guessingGame = new GuessingGame(anime, url, songName, serverId, difficulty, possibleAnswers);
     this.guessingGameList.add(guessingGame);

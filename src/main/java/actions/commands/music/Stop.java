@@ -3,6 +3,7 @@ package actions.commands.music;
 import actions.commands.Answer;
 import actions.commands.ACommand;
 import actions.commands.CommandType;
+import com.google.inject.Inject;
 import java.util.List;
 import org.javacord.api.interaction.SlashCommandInteractionOption;
 import org.javacord.api.interaction.SlashCommandOption;
@@ -19,6 +20,7 @@ public class Stop extends ACommand {
   private final MusicPlayerManager musicPlayerManager;
   private final GuessingGameManager guessingGameManager;
 
+  @Inject
   public Stop(MusicPlayerManager musicPlayerManager, GuessingGameManager guessingGameManager) {
     super();
     this.musicPlayerManager = musicPlayerManager;

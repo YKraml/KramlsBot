@@ -1,5 +1,6 @@
 package routines;
 
+import com.google.inject.Inject;
 import messages.MessageSender;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.user.User;
@@ -9,6 +10,7 @@ public class RoutineGiveWaifuBuilder {
   private final PlayerLoader playerLoader;
   private final MessageSender messageSender;
 
+  @Inject
   public RoutineGiveWaifuBuilder(PlayerLoader playerLoader, MessageSender messageSender) {
     this.playerLoader = playerLoader;
     this.messageSender = messageSender;
