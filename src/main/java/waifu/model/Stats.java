@@ -2,7 +2,7 @@ package waifu.model;
 
 public class Stats {
 
-  public static final int MAX_STAR_LEVEL = 6;
+  public static final int MAX_STAR_LEVEL = 10;
   private Rarities rarity;
   private int level;
   private int starLevel;

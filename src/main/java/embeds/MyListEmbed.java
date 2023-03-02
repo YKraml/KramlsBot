@@ -39,7 +39,7 @@ public abstract class MyListEmbed<Type extends DisplayableElement> extends Embed
 
                 String rawTitle  = displayableElement.getDisplayTitle();
                 String fieldTitle = Emojis.getCountEmojis()[i % ELEMENTS_PER_PAGE] + " " + rawTitle;
-                String fieldBody = "Nr. " + i + " | " + displayableElement.getDisplayBody();
+                String fieldBody = "Nr. %2d | %s".formatted(i, displayableElement.getDisplayBody());
 
                 if (useInlineFields) {
                     this.addInlineField(fieldTitle, fieldBody);

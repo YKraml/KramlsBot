@@ -111,14 +111,13 @@ public class Waifu implements DisplayableElement {
 
   @Override
   public String getDisplayTitle() {
-    return name + " " + String.valueOf(Emojis.STAR.getEmoji())
-        .repeat(Math.max(0, stats.getStarLevel()));
+    return name + " " + getStarEmoji().repeat(stats.getStarLevel());
   }
 
   @Override
   public String getDisplayBody() {
-    return "lvl " + stats.getLevel() + " | " + " power " + stats.getStatsSum() + " | "
-        + stats.getRarity() + " | " + animeName;
+    return "lvl %3d |  power %4d | %s | %s".formatted(stats.getLevel(), stats.getStatsSum(),
+        stats.getRarity(), animeName);
   }
 
   @Override
@@ -129,10 +128,6 @@ public class Waifu implements DisplayableElement {
 
   public void raiseStarLevelBy(int starLevelToAdd) {
     stats.raiseStarLevelBy(starLevelToAdd);
-  }
-
-  public Stats getStats() {
-    return stats;
   }
 
   @Override
@@ -156,5 +151,17 @@ public class Waifu implements DisplayableElement {
 
   public void setImageUrl(String imageUrl) {
     this.imageUrl = imageUrl;
+  }
+
+  public String getStarEmoji() {
+    String starEmoji = Emojis.STAR.getEmoji();
+    if (stats.getStarLevel() > 5) {
+      starEmoji = Emojis.STAR2.getEmoji();
+    }
+
+    if (stats.getStarLevel() == 10) {
+      starEmoji = Emojis.SPARKLES.getEmoji();
+    }
+    return starEmoji;
   }
 }
