@@ -52,9 +52,9 @@ public class Main {
     discordApi.addSlashCommandCreateListener(slashCommandListener);
 
     ScheduledExecutorService scheduler = injector.getInstance(ScheduledExecutorService.class);
-    scheduler.schedule(spawnWaifuTask, 1, TimeUnit.MINUTES);
-    scheduler.scheduleAtFixedRate(givePointsTask, 1, 5, TimeUnit.MINUTES);
-    scheduler.scheduleAtFixedRate(dungeonTickTask, 1, 5, TimeUnit.MINUTES);
+    scheduler.schedule(spawnWaifuTask, 5, TimeUnit.MINUTES);
+    scheduler.scheduleAtFixedRate(givePointsTask, 5, 5, TimeUnit.MINUTES);
+    scheduler.scheduleAtFixedRate(dungeonTickTask, 5, 5, TimeUnit.MINUTES);
   }
 
   private static void initSlashCommands(List<ACommand> commands) {

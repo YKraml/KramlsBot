@@ -116,8 +116,8 @@ public class Waifu implements DisplayableElement {
 
   @Override
   public String getDisplayBody() {
-    return "lvl %3d |  power %4d | %s | %s".formatted(stats.getLevel(), stats.getStatsSum(),
-        stats.getRarity(), animeName);
+    return "lvl %1$s | power %2$s | %3$s | %4$s".formatted(stats.getLevel(),
+        stats.getStatsSum(), stats.getRarity(), animeName);
   }
 
   @Override

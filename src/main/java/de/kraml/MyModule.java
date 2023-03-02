@@ -82,13 +82,13 @@ public class MyModule extends AbstractModule {
   @Provides
   @Singleton
   ExecutorService provideExecutorService() {
-    return Executors.newFixedThreadPool(16);
+    return Executors.newCachedThreadPool();
   }
 
   @Provides
   @Singleton
   ScheduledExecutorService provideScheduledExecutorService() {
-    return Executors.newSingleThreadScheduledExecutor();
+    return Executors.newScheduledThreadPool(4);
   }
 
   @Provides
