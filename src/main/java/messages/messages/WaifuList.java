@@ -1,6 +1,6 @@
 package messages.messages;
 
-import actions.listeners.reaction.lists.WaifuListListener;
+import actions.listeners.reaction.WaifuListListener;
 import discord.Emojis;
 import embeds.waifu.WaifuListEmbed;
 import exceptions.MyOwnException;

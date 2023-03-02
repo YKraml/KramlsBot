@@ -1,6 +1,6 @@
 package routines;
 
-import actions.commands.Answer;
+import actions.listeners.commands.Answer;
 import actions.timer.RevealTimerBuilder;
 import discord.ChannelFinder;
 import exceptions.MyOwnException;

@@ -1,6 +1,5 @@
 package actions.listeners.reaction;
 
-import actions.listeners.reaction.util.MyAbstractReactionListener;
 import exceptions.MyOwnException;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.channel.TextChannel;

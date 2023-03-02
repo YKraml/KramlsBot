@@ -1,6 +1,6 @@
 package messages.messages;
 
-import actions.listeners.reaction.lists.DungeonListListener;
+import actions.listeners.reaction.DungeonListListener;
 import embeds.dungeon.DungeonListEmbed;
 import exceptions.MyOwnException;
 import messages.MessageSender;

@@ -1,6 +1,5 @@
 package actions.listeners.reaction;
 
-import actions.listeners.reaction.util.MyAbstractReactionListener;
 import discord.ChannelFinder;
 import discord.Emojis;
 import embeds.anime.AnimeSongEmbed;

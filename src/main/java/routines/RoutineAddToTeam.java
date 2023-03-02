@@ -1,6 +1,6 @@
 package routines;
 
-import actions.commands.Answer;
+import actions.listeners.commands.Answer;
 import exceptions.MyOwnException;
 import exceptions.messages.TeamIsInDungeon;
 import exceptions.messages.TeamNotAddedWaifu;

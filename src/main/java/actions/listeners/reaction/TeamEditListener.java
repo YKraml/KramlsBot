@@ -1,6 +1,5 @@
 package actions.listeners.reaction;
 
-import actions.listeners.reaction.util.MyAbstractReactionListener;
 import embeds.dungeon.TeamEmbed;
 import exceptions.MyOwnException;
 import discord.Emojis;

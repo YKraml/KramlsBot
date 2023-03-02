@@ -1,6 +1,5 @@
 package actions.listeners.reaction;
 
-import actions.listeners.reaction.util.MyAbstractReactionListener;
 import discord.ChannelFinder;
 import embeds.music.QueueEmbed;
 import exceptions.MyOwnException;

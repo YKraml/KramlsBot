@@ -1,7 +1,7 @@
 package de.kraml;
 
-import actions.commands.ACommand;
-import actions.commands.SlashCommandListener;
+import actions.listeners.commands.ACommand;
+import actions.listeners.commands.SlashCommandListener;
 import actions.listeners.join.JoinListener;
 import actions.timer.DungeonTickTask;
 import actions.timer.GivePointsTask;

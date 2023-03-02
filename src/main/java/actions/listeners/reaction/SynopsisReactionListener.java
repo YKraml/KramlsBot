@@ -1,6 +1,5 @@
 package actions.listeners.reaction;
 
-import actions.listeners.reaction.util.MyAbstractReactionListener;
 import discord.Emojis;
 import exceptions.MyOwnException;
 import messages.MessageSenderImpl;

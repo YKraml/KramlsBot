@@ -1,6 +1,6 @@
 package messages.messages;
 
-import actions.listeners.reaction.lists.GroupListListener;
+import actions.listeners.reaction.GroupListListener;
 import embeds.group.GroupsListEmbed;
 import exceptions.MyOwnException;
 import messages.MessageSender;

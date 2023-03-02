@@ -1,6 +1,6 @@
 package messages.messages;
 
-import actions.listeners.reaction.lists.TeamListListener;
+import actions.listeners.reaction.TeamListListener;
 import embeds.dungeon.TeamsListEmbed;
 import exceptions.MyOwnException;
 import messages.MessageSender;

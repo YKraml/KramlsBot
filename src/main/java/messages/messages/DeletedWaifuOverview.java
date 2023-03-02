@@ -1,6 +1,6 @@
 package messages.messages;
 
-import actions.listeners.reaction.lists.DeleteWaifuListListener;
+import actions.listeners.reaction.DeleteWaifuListListener;
 import embeds.waifu.DeleteWaifuListEmbed;
 import exceptions.MyOwnException;
 import messages.MessageSender;

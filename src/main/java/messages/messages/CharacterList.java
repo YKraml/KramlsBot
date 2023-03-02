@@ -1,6 +1,6 @@
 package messages.messages;
 
-import actions.listeners.reaction.lists.CharacterListListener;
+import actions.listeners.reaction.CharacterListListener;
 import embeds.anime.CharacterListEmbed;
 import exceptions.MyOwnException;
 import messages.MyMessage;

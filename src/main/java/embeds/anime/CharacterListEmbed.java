@@ -1,6 +1,6 @@
 package embeds.anime;
 
-import actions.listeners.reaction.lists.Mapper;
+import actions.listeners.reaction.Mapper;
 import embeds.DisplayableElement;
 import embeds.MyListEmbed;
 import java.util.ArrayList;

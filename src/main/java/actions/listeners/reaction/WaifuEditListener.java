@@ -1,14 +1,13 @@
 package actions.listeners.reaction;
 
-import actions.listeners.reaction.util.MyAbstractReactionListener;
 import de.kraml.Terminal;
 import discord.Emojis;
 import embeds.waifu.WaifuDeletedEmbed;
 import embeds.waifu.WaifuEmbed;
 import exceptions.MyOwnException;
 import messages.MessageSender;
-import messages.MessageSenderImpl;
 import messages.messages.ButtonNotForYou;
+import messages.messages.ChangedPicture;
 import messages.messages.NotEnoughStardust;
 import messages.messages.WaifuHasMaxLevel;
 import messages.messages.WaifuLEvelTooLow;
@@ -79,10 +78,12 @@ public class WaifuEditListener extends MyAbstractReactionListener implements Rea
   }
 
   private void changePicture(Message message) throws MyOwnException {
-    player.getInventory().removeMoney(1000);
+    int cost = 1000;
+    player.getInventory().removeMoney(cost);
     String randomPictureFrom = jikanFetcher.getRandomPictureFrom(waifu.getIdMal());
     waifu.setImageUrl(randomPictureFrom);
     message.edit(new WaifuEmbed(waifu));
+    messageSender.send(new ChangedPicture(player, cost), message.getChannel());
   }
 
   private void delete(Message message) throws MyOwnException {
@@ -101,11 +102,7 @@ public class WaifuEditListener extends MyAbstractReactionListener implements Rea
   private void levelUp(TextChannel textChannel, Message message, int cookies) throws MyOwnException {
 
     if (waifu.getLevel() >= 100) {
-      MessageSenderImpl result;
-      synchronized (MessageSenderImpl.class) {
-        result = new MessageSenderImpl();
-      }
-      result.send(new WaifuHasMaxLevel(),textChannel);
+      messageSender.send(new WaifuHasMaxLevel(),textChannel);
       return;
     }
 
@@ -136,7 +133,7 @@ public class WaifuEditListener extends MyAbstractReactionListener implements Rea
 
   private void makeBattleWaifu(TextChannel textChannel) {
     player.setBattleWaifu(waifu);
-    textChannel.sendMessage("%s, '%s' ist deine Waifu zum kaempfen.".formatted(player.getName(), waifu.getName()));
+    textChannel.sendMessage("%s, '%s' ist deine Waifu zum kämpfen.".formatted(player.getName(), waifu.getName()));
   }
 
 

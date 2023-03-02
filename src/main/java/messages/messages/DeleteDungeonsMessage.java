@@ -1,12 +1,11 @@
 package messages.messages;
 
-import actions.listeners.reaction.lists.DungeonDeletionListListener;
+import actions.listeners.reaction.DungeonDeletionListListener;
 import embeds.dungeon.DungeonsDeletionListEmbed;
 import exceptions.MyOwnException;
 import java.util.List;
 import messages.MessageSender;
 import messages.MyMessage;
-import messages.MessageSenderImpl;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import waifu.loader.DungeonLoader;

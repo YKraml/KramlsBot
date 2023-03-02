@@ -1,7 +1,5 @@
 package actions.listeners.reaction;
 
-import actions.listeners.reaction.util.MyAbstractReactionListener;
-import discord.ChannelFinder;
 import discord.Emojis;
 import exceptions.MyOwnException;
 import messages.MessageSender;
@@ -9,7 +7,6 @@ import messages.messages.AnimeEndingsBuilder;
 import messages.messages.AnimeOpeningsBuilder;
 import model.jikan.anime.animeByIdFull.AnimeFullById;
 import model.jikan.anime.animeThemes.AnimeThemes;
-import music.audio.MusicPlayerManager;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.emoji.Emoji;
@@ -18,8 +15,6 @@ import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import org.javacord.api.listener.message.reaction.ReactionAddListener;
 import waifu.JikanFetcher;
-import waifu.loader.PlayerLoader;
-import youtube.YoutubeFetcher;
 
 public class AnimeOpeningEndingReactionListener extends MyAbstractReactionListener implements
     ReactionAddListener {

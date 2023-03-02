@@ -1,6 +1,6 @@
 package routines;
 
-import actions.commands.Answer;
+import actions.listeners.commands.Answer;
 import de.kraml.Terminal;
 import exceptions.MyOwnException;
 import exceptions.messages.CouldNotSpawnWaifu;

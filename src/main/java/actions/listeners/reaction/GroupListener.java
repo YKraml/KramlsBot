@@ -1,6 +1,5 @@
 package actions.listeners.reaction;
 
-import actions.listeners.reaction.util.MyAbstractReactionListener;
 import embeds.group.GroupEmbed;
 import exceptions.MyOwnException;
 import messages.MessageSender;

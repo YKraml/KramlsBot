@@ -1,6 +1,6 @@
 package routines;
 
-import actions.commands.Answer;
+import actions.listeners.commands.Answer;
 import exceptions.MyOwnException;
 import exceptions.messages.CouldNotFindWaifu;
 import exceptions.messages.WaifuStarLevelAlreadyMax;

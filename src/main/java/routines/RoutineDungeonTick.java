@@ -1,6 +1,6 @@
 package routines;
 
-import actions.commands.Answer;
+import actions.listeners.commands.Answer;
 import discord.ChannelFinder;
 import embeds.dungeon.DungeonEmbed;
 import exceptions.MyOwnException;

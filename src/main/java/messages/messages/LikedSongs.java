@@ -1,6 +1,6 @@
 package messages.messages;
 
-import actions.listeners.reaction.lists.SongsListReactionListener;
+import actions.listeners.reaction.SongsListReactionListener;
 import embeds.music.LikedSongsEmbed;
 import exceptions.MyOwnException;
 import messages.MessageSender;

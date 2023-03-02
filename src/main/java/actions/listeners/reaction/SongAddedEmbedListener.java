@@ -1,6 +1,5 @@
 package actions.listeners.reaction;
 
-import actions.listeners.reaction.util.MyAbstractReactionListener;
 import exceptions.MyOwnException;
 import music.audio.MusicPlayerManager;
 import messages.MessageSenderImpl;
