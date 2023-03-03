@@ -1,11 +1,13 @@
 package waifu.loader;
 
 import exceptions.MyOwnException;
+import javax.inject.Inject;
 import javax.inject.Singleton;
 import waifu.model.Player;
 import waifu.model.Rarities;
 import waifu.model.Stats;
 import waifu.model.Waifu;
+import waifu.sql.SQLCommandExecutor;
 import waifu.sql.commands.battle_waifu.DeleteBattleWaifu;
 import waifu.sql.commands.character.InsertCharacterOrIgnore;
 import waifu.sql.commands.character.SelectCharacterByWaifuId;
@@ -27,23 +29,26 @@ import java.util.Optional;
 public final class WaifuLoaderSql implements WaifuLoader {
 
   private final List<Waifu> waifuCache;
+  private final SQLCommandExecutor sqlCommandExecutor;
 
-  public WaifuLoaderSql() {
+  @Inject
+  public WaifuLoaderSql(SQLCommandExecutor sqlCommandExecutor) {
+    this.sqlCommandExecutor = sqlCommandExecutor;
     waifuCache = Collections.synchronizedList(new ArrayList<>());
   }
 
   @Override
   public void saveWaifu(Waifu waifu, Player player) throws MyOwnException {
-    new InsertCharacterOrIgnore(waifu).executeCommand();
-    new InsertWaifuOrUpdate(player, waifu).executeCommand();
+    sqlCommandExecutor.execute(new InsertCharacterOrIgnore(waifu));
+    sqlCommandExecutor.execute(new InsertWaifuOrUpdate(player, waifu));
   }
 
   @Override
   public List<Waifu> getWaifusFromPlayer(Player player) throws MyOwnException {
     List<Waifu> waifus = new ArrayList<>();
 
-    WaifuCharacterEntrySet entries = new SelectWaifuJoinedCharacter(
-        player.getId()).executeCommand();
+    WaifuCharacterEntrySet entries = sqlCommandExecutor.execute(new SelectWaifuJoinedCharacter(
+        player.getId()));
     entries.forEach(e -> waifus.add(
         new Waifu(e.getId(), e.getIdMal(), e.getName(), e.getAnimeName(), e.getUrl(),
             e.getImageUrl(),
@@ -67,10 +72,10 @@ public final class WaifuLoaderSql implements WaifuLoader {
 
     Optional<Waifu> waifuOptional = Optional.empty();
 
-    CharacterEntrySet characterEntrySet = new SelectCharacterByWaifuId(id).executeCommand();
+    CharacterEntrySet characterEntrySet = sqlCommandExecutor.execute(new SelectCharacterByWaifuId(id));
     Optional<CharacterEntrySet.CharacterEntry> characterEntryOptional = characterEntrySet.getFirst();
 
-    WaifuEntrySet waifuEntrySet = new SelectWaifuById(id).executeCommand();
+    WaifuEntrySet waifuEntrySet = sqlCommandExecutor.execute(new SelectWaifuById(id));
     Optional<WaifuEntrySet.WaifuEntry> waifuEntryOptional = waifuEntrySet.getFirst();
 
     if (characterEntryOptional.isPresent() && waifuEntryOptional.isPresent()) {
@@ -92,10 +97,10 @@ public final class WaifuLoaderSql implements WaifuLoader {
     this.waifuCache.remove(waifu);
     player.deleteWaifu(waifu);
 
-    new DeleteBattleWaifu(waifu).executeCommand();
-    new DeleteWaifuFromAllGroups(waifu).executeCommand();
-    new DeleteTeamFighter(waifu).executeCommand();
-    new DeleteWaifu(waifu).executeCommand();
+    sqlCommandExecutor.execute(new DeleteBattleWaifu(waifu));
+    sqlCommandExecutor.execute(new DeleteWaifuFromAllGroups(waifu));
+    sqlCommandExecutor.execute(new DeleteTeamFighter(waifu));
+    sqlCommandExecutor.execute(new DeleteWaifu(waifu));
   }
 
   private Waifu createWaifu(WaifuEntrySet.WaifuEntry waifuEntry,

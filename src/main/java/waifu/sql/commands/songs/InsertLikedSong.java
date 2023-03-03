@@ -1,6 +1,6 @@
 package waifu.sql.commands.songs;
 
-import music.audio.QueueElement;
+import music.queue.QueueElement;
 import waifu.sql.commands.SQLCommandWithoutResult;
 
 public class InsertLikedSong extends SQLCommandWithoutResult {

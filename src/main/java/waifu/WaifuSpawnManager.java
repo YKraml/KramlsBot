@@ -47,11 +47,13 @@ public final class WaifuSpawnManager {
   }
 
   private boolean isGuessRight(String serverId, String name) throws MyOwnException {
-    Waifu waifu = serverWaifuMap.getOrDefault(serverId, null);
 
-    if (waifu == null) {
+    if (!serverWaifuMap.containsKey(serverId)) {
       throw new MyOwnException(new NoWaifuToClaim(), null);
-    } else if (name.equalsIgnoreCase(waifu.getName())) {
+    }
+
+    Waifu waifu = serverWaifuMap.get(serverId);
+    if (name.equalsIgnoreCase(waifu.getName())) {
       return true;
     } else {
       CharactersSearch characterSearch = jikanFetcher.getCharacterSearch(name);

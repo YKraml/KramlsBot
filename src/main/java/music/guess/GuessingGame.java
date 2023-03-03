@@ -1,4 +1,4 @@
-package music;
+package music.guess;
 
 import java.util.Collection;
 import java.util.Collections;

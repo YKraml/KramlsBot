@@ -1,7 +1,7 @@
 package waifu.sql.mapper;
 
 import exceptions.MyOwnException;
-import music.audio.QueueElement;
+import music.queue.QueueElement;
 import waifu.sql.entry.LikedSongEntrySet;
 import waifu.sql.entry.AbstractEntrySet;
 

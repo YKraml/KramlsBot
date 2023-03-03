@@ -4,8 +4,8 @@ import actions.listeners.commands.Answer;
 import exceptions.MyOwnException;
 import messages.MessageSender;
 import messages.messages.GuessGameEndBuilder;
-import music.GuessingGame;
-import music.GuessingGameManager;
+import music.guess.GuessingGame;
+import music.guess.GuessingGameManager;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
 

@@ -5,7 +5,7 @@ import exceptions.messages.CouldNotFindWaifu;
 import exceptions.messages.ReachedMaxWaifus;
 import exceptions.messages.WaifuAlreadyInList;
 import java.util.function.Predicate;
-import music.audio.QueueElement;
+import music.queue.QueueElement;
 import waifu.model.dungeon.Inventory;
 import waifu.model.dungeon.Team;
 

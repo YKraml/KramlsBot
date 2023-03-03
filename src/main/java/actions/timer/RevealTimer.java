@@ -6,8 +6,8 @@ import java.util.concurrent.TimeUnit;
 import messages.MessageSender;
 import messages.messages.GuessGameEndBuilder;
 import messages.messages.TimeIsUpMessage;
-import music.GuessingGame;
-import music.GuessingGameManager;
+import music.guess.GuessingGame;
+import music.guess.GuessingGameManager;
 import org.javacord.api.entity.channel.TextChannel;
 
 public class RevealTimer {

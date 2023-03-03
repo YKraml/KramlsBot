@@ -13,7 +13,7 @@ import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import music.audio.MusicPlayerManager;
-import music.GuessingGameManager;
+import music.guess.GuessingGameManager;
 
 public class Stop extends ACommand {
 

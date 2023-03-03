@@ -9,7 +9,7 @@ import messages.MessageSender;
 import messages.messages.SongAdded;
 import model.jikan.anime.animeByIdFull.AnimeFullById;
 import music.audio.MusicPlayerManager;
-import music.audio.QueueElement;
+import music.queue.QueueElement;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.channel.ServerVoiceChannel;
 import org.javacord.api.entity.channel.TextChannel;

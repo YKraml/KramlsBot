@@ -3,7 +3,7 @@ package routines;
 import com.google.inject.Inject;
 import messages.MessageSender;
 import messages.messages.GuessGameEndBuilder;
-import music.GuessingGameManager;
+import music.guess.GuessingGameManager;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
 import waifu.loader.PlayerLoader;

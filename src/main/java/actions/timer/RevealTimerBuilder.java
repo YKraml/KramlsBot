@@ -4,7 +4,7 @@ import com.google.inject.Inject;
 import java.util.concurrent.ScheduledExecutorService;
 import messages.MessageSender;
 import messages.messages.GuessGameEndBuilder;
-import music.GuessingGameManager;
+import music.guess.GuessingGameManager;
 import org.javacord.api.entity.channel.TextChannel;
 
 public class RevealTimerBuilder {

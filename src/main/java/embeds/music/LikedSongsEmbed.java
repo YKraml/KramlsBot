@@ -1,7 +1,7 @@
 package embeds.music;
 
 import embeds.MyListEmbed;
-import music.audio.QueueElement;
+import music.queue.QueueElement;
 import waifu.model.Player;
 
 public class LikedSongsEmbed extends MyListEmbed<QueueElement> {

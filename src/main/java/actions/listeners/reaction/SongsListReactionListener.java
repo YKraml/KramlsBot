@@ -6,7 +6,7 @@ import exceptions.MyOwnException;
 import messages.MessageSender;
 import messages.messages.SongAdded;
 import music.audio.MusicPlayerManager;
-import music.audio.QueueElement;
+import music.queue.QueueElement;
 import waifu.loader.PlayerLoader;
 import waifu.model.Player;
 import org.javacord.api.entity.channel.ServerVoiceChannel;

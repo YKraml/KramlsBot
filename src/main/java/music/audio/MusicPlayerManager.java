@@ -2,8 +2,9 @@ package music.audio;
 
 import exceptions.MyOwnException;
 import exceptions.messages.QueueNonExisting;
-import java.util.function.Supplier;
 import javax.inject.Singleton;
+import music.queue.Queue;
+import music.queue.QueueElement;
 import org.javacord.api.entity.channel.ServerVoiceChannel;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.message.Message;
@@ -13,6 +14,7 @@ import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
+
 @Singleton
 public final class MusicPlayerManager {
 
@@ -44,12 +46,12 @@ public final class MusicPlayerManager {
     }
   }
 
-  public void playCurrentSong(ServerVoiceChannel voiceChannel, TextChannel textChannel) {
+  public void restartSong(ServerVoiceChannel voiceChannel, TextChannel textChannel) {
     Server server = voiceChannel.getServer();
     getPlayerByServer(server).ifPresent(musicPlayer -> {
       musicPlayer.setServerVoiceChannel(voiceChannel);
       musicPlayer.setTextChannel(textChannel);
-      musicPlayer.playCurrentSong();
+      musicPlayer.restartSong();
     });
   }
 
@@ -70,7 +72,7 @@ public final class MusicPlayerManager {
       MusicPlayer musicPlayer = playerOptional.get();
       musicPlayer.setServerVoiceChannel(serverVoiceChannel);
       musicPlayer.setTextChannel(textChannel);
-      musicPlayer.startPlaying();
+      musicPlayer.start();
     }
   }
 
@@ -102,7 +104,7 @@ public final class MusicPlayerManager {
 
   private MusicPlayer createPlayer(Server server, ServerVoiceChannel serverVoiceChannel,
       TextChannel textChannel) {
-    MusicPlayer musicPlayer = new MusicPlayer(serverVoiceChannel, textChannel);
+    MusicPlayer musicPlayer = MusicPlayer.createMusicPlayer(serverVoiceChannel, textChannel);
     players.put(server, musicPlayer);
     return musicPlayer;
   }

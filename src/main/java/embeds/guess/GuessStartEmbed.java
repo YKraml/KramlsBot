@@ -1,7 +1,7 @@
 package embeds.guess;
 
 import de.kraml.Main;
-import music.GuessingGame;
+import music.guess.GuessingGame;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 
 public class GuessStartEmbed extends EmbedBuilder {

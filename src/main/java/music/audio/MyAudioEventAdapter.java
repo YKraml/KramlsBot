@@ -40,15 +40,11 @@ class MyAudioEventAdapter extends AudioEventAdapter {
     }
 
     private void tryCurrentSong() {
-        musicPlayer.playCurrentSong();
+        musicPlayer.restartSong();
     }
 
     private void tryNextSong() {
-        try {
-            musicPlayer.playNextSong();
-        } catch (MyOwnException e) {
-            Terminal.printError(e.getExceptionMessage().getContent());
-        }
+        musicPlayer.playNextSong();
     }
 
 

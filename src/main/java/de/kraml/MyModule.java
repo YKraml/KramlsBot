@@ -58,6 +58,7 @@ import waifu.loader.TeamLoader;
 import waifu.loader.TeamLoaderSql;
 import waifu.loader.WaifuLoader;
 import waifu.loader.WaifuLoaderSql;
+import waifu.sql.ConnectionPool;
 
 public class MyModule extends AbstractModule {
 
@@ -89,6 +90,16 @@ public class MyModule extends AbstractModule {
   @Singleton
   ScheduledExecutorService provideScheduledExecutorService() {
     return Executors.newScheduledThreadPool(4);
+  }
+
+  @Provides
+  @Singleton
+  ConnectionPool provideConnectionPool() {
+    String url = "jdbc:mysql://%s/KRAMLSBOT?serverTimezone=Europe/Berlin&useSSL=false&allowPublicKeyRetrieval=true".formatted(
+        Main.getIp());
+    String userName = Main.getUserName();
+    String password = Main.getPassword();
+    return new ConnectionPool(url, userName, password);
   }
 
   @Provides

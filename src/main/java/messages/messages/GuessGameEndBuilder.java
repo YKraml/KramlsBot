@@ -2,7 +2,7 @@ package messages.messages;
 
 import actions.listeners.reaction.AnimeInfoReactionListenerBuilder;
 import com.google.inject.Inject;
-import music.GuessingGame;
+import music.guess.GuessingGame;
 
 public class GuessGameEndBuilder {
 

@@ -1,7 +1,6 @@
-package music.audio;
+package music.queue;
 
 import embeds.DisplayableElement;
-import java.util.Objects;
 
 public class QueueElement implements DisplayableElement, Comparable<QueueElement>{
 

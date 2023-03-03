@@ -5,12 +5,12 @@ import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioSourceManager;
 import embeds.music.QueueEmbed;
-import exceptions.MyOwnException;
-import exceptions.messages.LastSongNonExisting;
-import exceptions.messages.NextSongNonExisting;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import music.queue.Queue;
+import music.queue.QueueElement;
+import music.queue.QueueImpl;
 import org.javacord.api.audio.AudioConnection;
 import org.javacord.api.entity.channel.ServerVoiceChannel;
 import org.javacord.api.entity.channel.TextChannel;
@@ -24,87 +24,88 @@ class MusicPlayer {
   private final AudioPlayer audioPlayer;
   private final MyAudioLoadResultHandler myAudioLoadResultHandler;
   private AudioConnection audioConnection;
-
   private final Queue queue;
   private final List<Message> messages;
 
-  MusicPlayer(ServerVoiceChannel serverVoiceChannel, TextChannel textChannel) {
+  private MusicPlayer(ServerVoiceChannel serverVoiceChannel, TextChannel textChannel,
+      AudioPlayerManager audioPlayerManager, AudioPlayer audioPlayer, Queue queue,
+      List<Message> messages) {
     this.serverVoiceChannel = serverVoiceChannel;
+    this.audioPlayerManager = audioPlayerManager;
+    this.audioPlayer = audioPlayer;
 
-    this.audioPlayerManager = new DefaultAudioPlayerManager();
+    myAudioLoadResultHandler = new MyAudioLoadResultHandler(this.audioPlayer, textChannel, this);
+    this.audioPlayer.addListener(new MyAudioEventAdapter(this));
+
+    this.queue = queue;
+    this.messages = messages;
+  }
+
+  static MusicPlayer createMusicPlayer(ServerVoiceChannel serverVoiceChannel,
+      TextChannel textChannel) {
+
+    AudioPlayerManager audioPlayerManager = new DefaultAudioPlayerManager();
     audioPlayerManager.registerSourceManager(new YoutubeAudioSourceManager());
-    audioPlayer = audioPlayerManager.createPlayer();
-    myAudioLoadResultHandler = new MyAudioLoadResultHandler(audioPlayer, textChannel, this);
+    Queue queue = new QueueImpl(new ArrayList<>(), new ArrayList<>());
+    List<Message> messages = Collections.synchronizedList(new ArrayList<>());
 
-    audioPlayer.addListener(new MyAudioEventAdapter(this));
-
-    this.queue = new QueueImpl(new ArrayList<>(), new ArrayList<>());
-    this.messages = Collections.synchronizedList(new ArrayList<>());
+    return new MusicPlayer(serverVoiceChannel, textChannel, audioPlayerManager,
+        audioPlayerManager.createPlayer(), queue, messages);
   }
 
-  void addSongToQue(QueueElement queueElement) {
-    queue.addToEnd(queueElement);
-    this.updateMessages();
-  }
-
-  void playNow(QueueElement queueElement) throws MyOwnException {
-    queue.addToStart(queueElement);
-    playNextSong();
-  }
-
-  void playNextSong() throws MyOwnException {
-    queue.goToNextElement();
-    if (queue.getCurrentElement() == null) {
-      throw new MyOwnException(new NextSongNonExisting(), null);
-    }
-
-    resetAudioConnection();
-    audioPlayerManager.loadItem(queue.getCurrentElement().getUrl(), myAudioLoadResultHandler);
-
-  }
-
-  void playPreviousSong() throws MyOwnException {
-    if (!queue.hasPreviousSongs()) {
-      throw new MyOwnException(new LastSongNonExisting(), null);
-    }
-    resetAudioConnection();
-    queue.goToPreviousElement();
-    audioPlayerManager.loadItem(queue.getCurrentElement().getUrl(), myAudioLoadResultHandler);
-  }
-
-  void playCurrentSong() {
-    resetAudioConnection();
-    audioPlayerManager.loadItem(queue.getCurrentElement().getUrl(), myAudioLoadResultHandler);
-  }
-
-  void startPlaying() throws MyOwnException {
-    if (queue.getCurrentElement() == null) {
-      playNextSong();
-    }
-    resetAudioConnection();
-    audioConnection.moveTo(serverVoiceChannel);
-  }
-
-  void stop() {
-    audioPlayer.stopTrack();
-    if (this.audioConnection != null) {
-      audioConnection.close().join();
-      audioConnection = null;
+  public void addQueueMessage(Message message) {
+    this.messages.add(message);
+    int MAX_MESSAGES = 3;
+    if (messages.size() > MAX_MESSAGES) {
+      this.messages.remove(MAX_MESSAGES);
     }
   }
 
-  private void resetAudioConnection() {
-    AudioSource audioSource = new AudioSource(this.serverVoiceChannel.getApi(), audioPlayer);
-    if (audioConnection == null || audioConnection.getChannel() != this.serverVoiceChannel) {
-      audioConnection = serverVoiceChannel.connect().join();
-      audioConnection.setAudioSource(audioSource);
-    }
+  public void updateMessages() {
+    new Thread(() -> messages.forEach(message -> message.edit(new QueueEmbed(queue)))).start();
   }
 
   Queue getQueue() {
     return queue;
   }
 
+  void addSongToQue(QueueElement queueElement) {
+    queue.addToEnd(queueElement);
+    updateMessages();
+  }
+
+  public void start() {
+    if(audioConnection == null){
+      playNextSong();
+    }
+  }
+
+  void playNow(QueueElement queueElement) {
+    queue.addToFront(queueElement);
+    playNextSong();
+  }
+
+  void playNextSong() {
+    queue.goToNextElement();
+    playCurrentQueueElement();
+  }
+
+  void playPreviousSong() {
+    queue.goToPreviousElement();
+    playCurrentQueueElement();
+  }
+
+  void restartSong() {
+    playCurrentQueueElement();
+  }
+
+  void stop() {
+    audioPlayer.stopTrack();
+    if (audioConnection != null) {
+      audioConnection.close().join();
+      audioConnection = null;
+    }
+  }
 
   void setServerVoiceChannel(ServerVoiceChannel serverVoiceChannel) {
     this.serverVoiceChannel = serverVoiceChannel;
@@ -114,14 +115,17 @@ class MusicPlayer {
     this.myAudioLoadResultHandler.setChannel(textChannel);
   }
 
-  public void addQueueMessage(Message message) {
-    this.messages.add(message);
-    if (messages.size() > 10) {
-      this.messages.remove(10);
+  private void resetAudioConnection() {
+    AudioSource audioSource = new AudioSource(this.serverVoiceChannel.getApi(), audioPlayer);
+    if (audioConnection == null || audioConnection.getChannel() != serverVoiceChannel) {
+      audioConnection = serverVoiceChannel.connect().join();
+      audioConnection.setAudioSource(audioSource);
     }
   }
 
-  public void updateMessages() {
-    new Thread(() -> messages.forEach(message -> message.edit(new QueueEmbed(queue)))).start();
+  private void playCurrentQueueElement() {
+    resetAudioConnection();
+    queue.getCurrentElement().map(QueueElement::getUrl)
+        .ifPresent(url -> audioPlayerManager.loadItem(url, myAudioLoadResultHandler));
   }
 }

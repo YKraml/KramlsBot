@@ -1,7 +1,7 @@
 package embeds.music;
 
 import de.kraml.Main;
-import music.audio.QueueElement;
+import music.queue.QueueElement;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 
 public class SongAddedEmbed extends EmbedBuilder {

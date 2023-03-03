@@ -5,7 +5,6 @@ import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.tools.FriendlyException;
 import com.sedmelluq.discord.lavaplayer.track.AudioPlaylist;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
-import de.kraml.Terminal;
 import embeds.ExceptionEmbed;
 import exceptions.MyOwnException;
 import org.javacord.api.entity.channel.TextChannel;
@@ -39,21 +38,13 @@ class MyAudioLoadResultHandler implements AudioLoadResultHandler {
   @Override
   public void noMatches() {
     channel.sendMessage(new ExceptionEmbed(new MyOwnException(() -> "No match for Url", null)));
-    try {
-      musicPlayer.playNextSong();
-    } catch (MyOwnException e) {
-      Terminal.printError(e.getExceptionMessage().getContent());
-    }
+    musicPlayer.playNextSong();
   }
 
   @Override
   public void loadFailed(FriendlyException exception) {
     channel.sendMessage("Could not play song, because the load failed");
-    try {
-      musicPlayer.playNextSong();
-    } catch (MyOwnException e) {
-      Terminal.printError(e.getExceptionMessage().getContent());
-    }
+    musicPlayer.playNextSong();
   }
 
   public void setChannel(TextChannel channel) {

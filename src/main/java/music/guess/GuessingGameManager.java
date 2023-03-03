@@ -1,13 +1,11 @@
-package music;
+package music.guess;
 
 import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import exceptions.messages.CouldNotGetGuessingGameByServer;
-import exceptions.messages.GuessingGameAlreadyExists;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Objects;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import javax.inject.Singleton;
 import model.jikan.anime.animeByIdFull.AnimeFullById;

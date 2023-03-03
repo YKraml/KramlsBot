@@ -35,11 +35,7 @@ public class Main {
     userName = args[2];
     password = args[3];
 
-    //slashCommands();
-
     Injector injector = Guice.createInjector(new MyModule());
-
-    discordApi = injector.getInstance(DiscordApi.class);
 
     SlashCommandListener slashCommandListener = injector.getInstance(SlashCommandListener.class);
     JoinListener joinListener = injector.getInstance(JoinListener.class);
@@ -48,6 +44,7 @@ public class Main {
     GivePointsTask givePointsTask = injector.getInstance(GivePointsTask.class);
     DungeonTickTask dungeonTickTask = injector.getInstance(DungeonTickTask.class);
 
+    discordApi = injector.getInstance(DiscordApi.class);
     discordApi.addServerVoiceChannelMemberJoinListener(joinListener);
     discordApi.addSlashCommandCreateListener(slashCommandListener);
 

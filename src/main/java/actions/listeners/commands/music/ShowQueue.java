@@ -8,7 +8,7 @@ import exceptions.MyOwnException;
 import java.util.List;
 import messages.MessageSender;
 import music.audio.MusicPlayerManager;
-import music.audio.Queue;
+import music.queue.Queue;
 import messages.messages.SongQueueMessage;
 import org.javacord.api.interaction.SlashCommandInteractionOption;
 import org.javacord.api.interaction.SlashCommandOption;

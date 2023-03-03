@@ -3,9 +3,11 @@ package actions.listeners.reaction;
 import discord.ChannelFinder;
 import embeds.music.QueueEmbed;
 import exceptions.MyOwnException;
+import java.util.Optional;
+import music.queue.QueueElement;
 import waifu.loader.PlayerLoader;
 import music.audio.MusicPlayerManager;
-import music.audio.Queue;
+import music.queue.Queue;
 import discord.Emojis;
 import waifu.model.Player;
 import org.javacord.api.DiscordApi;
@@ -46,16 +48,23 @@ public class QueueListener extends MyAbstractReactionListener {
     }
 
     if (emoji.equalsEmoji(Emojis.ARROWS_COUNTERCLOCKWISE.getEmoji())) {
-      musicPlayerManager.playCurrentSong(serverVoiceChannel, textChannel);
+      musicPlayerManager.restartSong(serverVoiceChannel, textChannel);
 
     }
 
     if (emoji.equalsEmoji(Emojis.STAR.getEmoji())) {
+
+      Optional<QueueElement> currentElement = queue.getCurrentElement();
+      if (currentElement.isEmpty()) {
+        return;
+      }
+
       Player playerThatLiked = playerLoader.getPlayerByUser(user);
-      playerThatLiked.addQueueElement(queue.getCurrentElement());
+      playerThatLiked.addQueueElement(currentElement.get());
       playerLoader.savePlayer(playerThatLiked);
-      textChannel.sendMessage("\"" + queue.getCurrentElement().getName()
-          + "\" deinen Favoriten hinzugefuegt. Nutze 'songs' um deine Favoriten zu sehen.");
+      textChannel.sendMessage(
+          "'%s' deinen Favoriten hinzugefügt. Nutze 'songs' um deine Favoriten zu sehen.".formatted(
+              currentElement.get().getName()));
     }
 
     message.edit(new QueueEmbed(queue));

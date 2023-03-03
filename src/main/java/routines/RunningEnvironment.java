@@ -3,7 +3,7 @@ package routines;
 import discord.ChannelFinder;
 import java.util.concurrent.ScheduledExecutorService;
 import messages.MessageSender;
-import music.GuessingGameManager;
+import music.guess.GuessingGameManager;
 import music.audio.MusicPlayerManager;
 import waifu.JikanFetcher;
 import waifu.WaifuSpawnManager;

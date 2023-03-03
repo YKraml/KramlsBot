@@ -1,6 +1,5 @@
 package waifu.loader;
 
-import com.google.inject.Inject;
 import de.kraml.Terminal;
 import exceptions.MyOwnException;
 import exceptions.messages.CouldNotLoadPlayer;
@@ -13,11 +12,12 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import javax.inject.Singleton;
-import music.audio.QueueElement;
+import music.queue.QueueElement;
 import waifu.model.Group;
 import waifu.model.Player;
 import waifu.model.Waifu;
 import waifu.model.dungeon.Team;
+import waifu.sql.SQLCommandExecutor;
 import waifu.sql.commands.battle_waifu.AlterBattleWaifu;
 import waifu.sql.commands.battle_waifu.BattleWaifuExists;
 import waifu.sql.commands.battle_waifu.InsertBattleWaifu;
@@ -38,6 +38,7 @@ import waifu.sql.entry.TimeEntrySet;
 import waifu.sql.entry.UserEntrySet;
 import waifu.sql.mapper.LikedSongMapper;
 import waifu.sql.mapper.PlayerMapper;
+
 @Singleton
 public class PlayerLoaderSql implements PlayerLoader {
 
@@ -47,22 +48,25 @@ public class PlayerLoaderSql implements PlayerLoader {
   private final WaifuLoader waifuLoader;
   private final GroupLoader groupLoader;
 
+  private final SQLCommandExecutor sqlCommandExecutor;
 
-  public PlayerLoaderSql(TeamLoader teamLoader, WaifuLoader waifuLoader, GroupLoader groupLoader) {
+  public PlayerLoaderSql(TeamLoader teamLoader, WaifuLoader waifuLoader, GroupLoader groupLoader,
+      SQLCommandExecutor sqlCommandExecutor) {
     this.teamLoader = teamLoader;
     this.waifuLoader = waifuLoader;
     this.groupLoader = groupLoader;
+    this.sqlCommandExecutor = sqlCommandExecutor;
   }
 
   @Override
   public void savePlayer(Player player) throws MyOwnException {
 
     try {
-      if (!new UserExists(player).executeCommand()) {
-        new InsertUser(player).executeCommand();
+      if (!sqlCommandExecutor.execute(new UserExists(player))) {
+        sqlCommandExecutor.execute(new InsertUser(player));
         Terminal.printLine(NEW_PLAYER_SAVED.formatted(player.getName(), player.getId()));
       } else {
-        new AlterUser(player).executeCommand();
+        sqlCommandExecutor.execute(new AlterUser(player));
         saveWaifus(player);
         saveBattleWaifu(player);
         saveGroups(player);
@@ -84,7 +88,7 @@ public class PlayerLoaderSql implements PlayerLoader {
 
       synchronized (this) {
 
-        UserEntrySet userEntrySet = new SelectUsersById(userId).executeCommand();
+        UserEntrySet userEntrySet = sqlCommandExecutor.execute(new SelectUsersById(userId));
         Optional<Player> playerOptional = new PlayerMapper(userEntrySet).getFirst();
 
         if (playerOptional.isEmpty()) {
@@ -115,10 +119,10 @@ public class PlayerLoaderSql implements PlayerLoader {
 
   private void saveBattleWaifu(Player player) throws MyOwnException {
     if (player.getBattleWaifu().isPresent()) {
-      if (new BattleWaifuExists(player).executeCommand()) {
-        new AlterBattleWaifu(player.getBattleWaifu().get(), player).executeCommand();
+      if (sqlCommandExecutor.execute(new BattleWaifuExists(player))) {
+        sqlCommandExecutor.execute(new AlterBattleWaifu(player.getBattleWaifu().get(), player));
       } else if (player.getBattleWaifu().isPresent()) {
-        new InsertBattleWaifu(player.getBattleWaifu().get(), player).executeCommand();
+        sqlCommandExecutor.execute(new InsertBattleWaifu(player.getBattleWaifu().get(), player));
       }
     }
   }
@@ -157,7 +161,7 @@ public class PlayerLoaderSql implements PlayerLoader {
   }
 
   private void loadSongs(String userId, Player player) throws MyOwnException {
-    LikedSongEntrySet likedSongEntrySet = new SelectLikedSongs(userId).executeCommand();
+    LikedSongEntrySet likedSongEntrySet = sqlCommandExecutor.execute(new SelectLikedSongs(userId));
     List<QueueElement> queueElements = new LikedSongMapper(likedSongEntrySet,
         player.getName()).getList();
     for (QueueElement element : queueElements) {
@@ -166,7 +170,7 @@ public class PlayerLoaderSql implements PlayerLoader {
   }
 
   private void loadTimes(String userId, Player player) throws MyOwnException {
-    TimeEntrySet timeEntrySet = new SelectTime(userId).executeCommand();
+    TimeEntrySet timeEntrySet = sqlCommandExecutor.execute(new SelectTime(userId));
     for (TimeEntrySet.TimeEntry timeEntry : timeEntrySet) {
       player.addToTimeOnServer(timeEntry.getIdServer(), timeEntry.getTime());
     }
@@ -187,8 +191,9 @@ public class PlayerLoaderSql implements PlayerLoader {
   }
 
   private void loadBattleWaifu(Player player) throws MyOwnException {
-    AbstractEntrySet<BattleWaifuEntry> battleWaifuEntrySet = new SelectBattleWaifuByUserId(
-        player).executeCommand();
+    AbstractEntrySet<BattleWaifuEntry> battleWaifuEntrySet = sqlCommandExecutor.execute(
+        new SelectBattleWaifuByUserId(
+            player));
     Optional<BattleWaifuEntry> battleWaifuEntry = battleWaifuEntrySet.getFirst();
     if (battleWaifuEntry.isPresent()) {
       Optional<Waifu> waifu = waifuLoader.getWaifuById(battleWaifuEntry.get().getWaifuId());
@@ -202,7 +207,7 @@ public class PlayerLoaderSql implements PlayerLoader {
 
   private void saveTime(String userId, String serverId, Long time) throws MyOwnException {
     try {
-      new InsertTimeOrUpdate(userId, serverId, time).executeCommand();
+      sqlCommandExecutor.execute(new InsertTimeOrUpdate(userId, serverId, time));
     } catch (MyOwnException e) {
       throw new MyOwnException(new CouldNotSaveTime(serverId, userId), e);
     }
@@ -210,8 +215,8 @@ public class PlayerLoaderSql implements PlayerLoader {
 
   private void saveLikedSong(String userId, QueueElement queueElement) throws MyOwnException {
     try {
-      if (!new LikedSongExists(userId, queueElement.getUrl()).executeCommand()) {
-        new InsertLikedSong(userId, queueElement).executeCommand();
+      if (!sqlCommandExecutor.execute(new LikedSongExists(userId, queueElement.getUrl()))) {
+        sqlCommandExecutor.execute(new InsertLikedSong(userId, queueElement));
       }
     } catch (MyOwnException e) {
       throw new MyOwnException(new CouldNotSaveLikedSong(userId, queueElement.getName()), e);

@@ -5,7 +5,7 @@ import embeds.guess.GuessEndEmbed;
 import exceptions.MyOwnException;
 import messages.MyMessage;
 import discord.Emojis;
-import music.GuessingGame;
+import music.guess.GuessingGame;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 

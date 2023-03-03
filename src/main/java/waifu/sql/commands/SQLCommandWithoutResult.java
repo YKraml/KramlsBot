@@ -2,7 +2,7 @@ package waifu.sql.commands;
 
 import exceptions.MyOwnException;
 import exceptions.messages.CouldNotExecuteMySQLQuery;
-import waifu.sql.Connector;
+import waifu.sql.ConnectionPool;
 import de.kraml.Terminal;
 
 import java.sql.Connection;
@@ -11,22 +11,23 @@ import java.sql.Statement;
 
 public abstract class SQLCommandWithoutResult extends SQLCommand {
 
-    public void executeCommand() throws MyOwnException {
+  public void executeCommand(ConnectionPool connectionPool) throws MyOwnException {
 
-        Connection connection = null;
-        try {
-            connection = Connector.getInstance().getConnection();
-            Statement statement = connection.createStatement();
-            statement.execute(getCommand());
-            statement.close();
-        } catch (SQLException e) {
-            Terminal.printError("Could not execute \"" + this.getCommand() + "\"");
-            Connector.getInstance().giveConnection(connection);
-            throw new MyOwnException(new CouldNotExecuteMySQLQuery(this.getCommand()), e);
-        }
+    Connection connection = null;
 
-        Connector.getInstance().giveConnection(connection);
-
+    try {
+      connection = connectionPool.getConnection();
+      Statement statement = connection.createStatement();
+      statement.execute(getCommand());
+      statement.close();
+    } catch (SQLException e) {
+      Terminal.printError("Could not execute \"" + this.getCommand() + "\"");
+      connectionPool.giveConnection(connection);
+      throw new MyOwnException(new CouldNotExecuteMySQLQuery(this.getCommand()), e);
     }
+
+    connectionPool.giveConnection(connection);
+
+  }
 
 }

@@ -6,10 +6,9 @@ import exceptions.MyOwnException;
 import exceptions.messages.PlaylistNotFound;
 import exceptions.messages.YoutubeSearchEmpty;
 import messages.MessageSender;
-import messages.messages.SongQueueMessage;
+import messages.messages.SongAdded;
 import music.audio.MusicPlayerManager;
-import music.audio.Queue;
-import music.audio.QueueElement;
+import music.queue.QueueElement;
 import org.javacord.api.entity.channel.ServerVoiceChannel;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
@@ -55,8 +54,6 @@ public class RoutineAddToQueue extends Routine {
     addToQueue(voiceChannel);
 
     musicPlayerManager.startPlaying(voiceChannel, channel);
-    Queue queue = musicPlayerManager.getQueueByServer(server);
-    messageSender.send(new SongQueueMessage(queue, musicPlayerManager, playerLoader), channel);
 
     return new Answer("Added Song to queue");
   }
@@ -66,17 +63,14 @@ public class RoutineAddToQueue extends Routine {
     boolean songNameIsPlaylist = input.contains("&list") || input.contains("?list");
 
     if (songNameIsVideo && !songNameIsPlaylist) {
-      addOneSongToQueue(TITLE_FILLER, input, voiceChannel);
+      QueueElement queueElement = new QueueElement(TITLE_FILLER, input, user.getName());
+      musicPlayerManager.addToQueue(server, voiceChannel, channel, queueElement);
+      messageSender.send(new SongAdded(queueElement, musicPlayerManager, playerLoader), channel);
     } else if (songNameIsPlaylist) {
       addPlayListToQueue(input, voiceChannel);
     } else {
       searchVideoAndAddToQueue(voiceChannel);
     }
-  }
-
-  private void addOneSongToQueue(String title, String url, ServerVoiceChannel voiceChannel) {
-    QueueElement queueElement = new QueueElement(title, url, user.getName());
-    musicPlayerManager.addToQueue(server, voiceChannel, channel, queueElement);
   }
 
   private void addPlayListToQueue(String playlistUrl, ServerVoiceChannel voiceChannel)
@@ -90,7 +84,8 @@ public class RoutineAddToQueue extends Routine {
       String title = item.getSnippet().getTitle();
       String videoId = item.getSnippet().getResourceId().getVideoId();
       String url = "https://www.youtube.com/watch?v=%s".formatted(videoId);
-      addOneSongToQueue(url, title, voiceChannel);
+      QueueElement queueElement = new QueueElement(title, url, user.getName());
+      musicPlayerManager.addToQueue(server, voiceChannel, channel, queueElement);
     }
   }
 
@@ -103,7 +98,9 @@ public class RoutineAddToQueue extends Routine {
 
     String url = "https://www.youtube.com/watch?v=%s".formatted(item.getId().getVideoId());
     String title = item.getSnippet().getTitle();
-    addOneSongToQueue(title, url, voiceChannel);
+    QueueElement queueElement = new QueueElement(title, url, user.getName());
+    musicPlayerManager.addToQueue(server, voiceChannel, channel, queueElement);
+    messageSender.send(new SongAdded(queueElement, musicPlayerManager, playerLoader), channel);
 
   }
 

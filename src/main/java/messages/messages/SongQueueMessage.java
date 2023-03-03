@@ -4,7 +4,7 @@ import actions.listeners.reaction.QueueListener;
 import embeds.music.QueueEmbed;
 import exceptions.MyOwnException;
 import music.audio.MusicPlayerManager;
-import music.audio.Queue;
+import music.queue.Queue;
 import messages.MyMessage;
 import discord.Emojis;
 import org.javacord.api.entity.message.Message;
