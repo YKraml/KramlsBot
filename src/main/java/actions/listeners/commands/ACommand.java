@@ -15,8 +15,6 @@ import org.javacord.api.interaction.SlashCommandInteraction;
 import org.javacord.api.interaction.SlashCommandInteractionOption;
 import org.javacord.api.interaction.SlashCommandOption;
 import routines.RoutineRunner;
-import waifu.loader.PlayerLoader;
-import waifu.model.Player;
 
 public abstract class ACommand {
 
@@ -27,49 +25,49 @@ public abstract class ACommand {
     this.routineRunner = routineRunner;
   }
 
-  public abstract CommandType getCommandType();
-
   public abstract String getName();
 
   public abstract String getDescription();
 
-  public Answer execute(SlashCommandCreateEvent event, PlayerLoader playerLoader)
+  public abstract List<SlashCommandOption> getSlashCommandOptions();
+
+  public Answer execute(SlashCommandCreateEvent event)
       throws MyOwnException {
+
     DiscordApi api = event.getApi();
     SlashCommandInteraction interaction = event.getSlashCommandInteraction();
-    TextChannel channel = interaction.getChannel().orElseThrow(() -> new MyOwnException(new CouldNotGetChannel(), null));
-    Server server = interaction.getServer().orElseThrow(() -> new MyOwnException(new CouldNotGetServer(), null));
+    TextChannel channel = interaction.getChannel()
+        .orElseThrow(() -> new MyOwnException(new CouldNotGetChannel(), null));
+    Server server = interaction.getServer()
+        .orElseThrow(() -> new MyOwnException(new CouldNotGetServer(), null));
     User user = interaction.getUser();
-    List<SlashCommandInteractionOption> arguments = event.getSlashCommandInteraction().getArguments();
+    List<SlashCommandInteractionOption> arguments = event.getSlashCommandInteraction()
+        .getArguments();
 
     if (isForAdmins() && !userIsAdmin(server, user)) {
       throw new MyOwnException(new NotAdmin(user.getName()), null);
     }
 
-    Player player = playerLoader.getPlayerById(user.getIdAsString());
-    Answer answer = executeCommand(api, server, channel, user, player, arguments);
-    playerLoader.savePlayer(player);
-    return answer;
+    return execute(api, server, channel, user, arguments);
   }
 
   protected RoutineRunner getRoutineRunner() {
     return routineRunner;
   }
 
+  protected abstract Answer execute(DiscordApi api, Server server, TextChannel channel,
+      User user,
+      List<SlashCommandInteractionOption> arguments) throws MyOwnException;
+
   protected abstract boolean isForAdmins();
 
   protected abstract String getErrorMessage();
 
-  protected abstract Answer executeCommand(DiscordApi api, Server server, TextChannel channel,
-      User user, Player player,
-      List<SlashCommandInteractionOption> arguments) throws MyOwnException;
-
-  private static boolean userIsAdmin(Server server, User user) {
+  private boolean userIsAdmin(Server server, User user) {
     return user.getRoles(server).stream()
         .flatMap(role -> role.getPermissions().getAllowedPermission().stream())
         .map(PermissionType::getValue)
         .anyMatch(value -> value == ADMIN_VALUE);
   }
 
-  public abstract List<SlashCommandOption> getSlashCommandOptions();
 }

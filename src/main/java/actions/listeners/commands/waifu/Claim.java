@@ -3,7 +3,6 @@ package actions.listeners.commands.waifu;
 
 import actions.listeners.commands.ACommand;
 import actions.listeners.commands.Answer;
-import actions.listeners.commands.CommandType;
 import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
@@ -15,7 +14,6 @@ import org.javacord.api.interaction.SlashCommandInteractionOption;
 import org.javacord.api.interaction.SlashCommandOption;
 import org.javacord.api.interaction.SlashCommandOptionType;
 import routines.RoutineClaimBuilder;
-import waifu.model.Player;
 
 public class Claim extends ACommand {
 
@@ -38,14 +36,14 @@ public class Claim extends ACommand {
   }
 
   @Override
-  protected synchronized Answer executeCommand(DiscordApi api, Server server, TextChannel channel,
-      User user, Player player, List<SlashCommandInteractionOption> arguments)
+  protected synchronized Answer execute(DiscordApi api, Server server, TextChannel channel,
+      User user, List<SlashCommandInteractionOption> arguments)
       throws MyOwnException {
 
     String guess = arguments.get(0).getStringValue().get();
 
     return getRoutineRunner().startRoutine(
-        routineClaimBuilder.createRoutineClaim(server, channel, player, guess));
+        routineClaimBuilder.createRoutineClaim(server, channel, user, guess));
   }
 
   @Override
@@ -58,11 +56,6 @@ public class Claim extends ACommand {
   @Override
   protected String getErrorMessage() {
     return "Konnte die Waifu nicht claimen.";
-  }
-
-  @Override
-  public CommandType getCommandType() {
-    return CommandType.WAIFU;
   }
 
   @Override

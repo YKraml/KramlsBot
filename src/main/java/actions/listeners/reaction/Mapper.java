@@ -4,8 +4,8 @@ import embeds.DisplayableElement;
 
 import java.util.List;
 
-public interface Mapper<ListType2> {
+public interface Mapper<ListType> {
 
-    List<DisplayableElement> map(List<ListType2> list);
+    List<DisplayableElement> map(List<ListType> list);
 
 }

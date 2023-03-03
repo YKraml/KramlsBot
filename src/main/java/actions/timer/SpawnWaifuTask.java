@@ -25,13 +25,11 @@ public class SpawnWaifuTask extends SaveRunnable {
   @Override
   public void runSave() throws MyOwnException {
 
-    int time = ((int) (Math.random() * 30) + 10) * 60;
-    scheduledExecutorService.schedule(this, time, TimeUnit.SECONDS);
-    Terminal.printLine("Next waifu spawn in " + (time / 60) + "min");
+    int timeInMinutes = ((int) (Math.random() * 30) + 10);
+    scheduledExecutorService.schedule(this, timeInMinutes, TimeUnit.MINUTES);
+    Terminal.printLine("Next waifu spawn in %d min.".formatted(timeInMinutes));
 
     routineRunner.startRoutine(routineSpawnWaifuBuilder.createRoutineSpawnWaifu());
-
-
   }
 
 

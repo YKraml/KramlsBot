@@ -7,32 +7,38 @@ import java.text.MessageFormat;
 import messages.MessageSender;
 import messages.messages.WaifuNotFound;
 import org.javacord.api.entity.channel.TextChannel;
+import org.javacord.api.entity.user.User;
 import waifu.loader.GroupLoader;
+import waifu.loader.PlayerLoader;
 import waifu.model.Group;
 import waifu.model.Player;
 import waifu.model.Waifu;
 
 public class RoutineRemoveFromGroup extends Routine {
 
-  private final Player player;
+  private final User user;
   private final String groupName;
   private final int waifuNumber;
   private final TextChannel channel;
   private final GroupLoader groupLoader;
   private final MessageSender messageSender;
+  private final PlayerLoader playerLoader;
 
-  public RoutineRemoveFromGroup(Player player, String groupName, int waifuNumber,
-      TextChannel channel, GroupLoader groupLoader, MessageSender messageSender) {
-    this.player = player;
+  public RoutineRemoveFromGroup(User user, String groupName, int waifuNumber,
+      TextChannel channel, GroupLoader groupLoader, MessageSender messageSender,
+      PlayerLoader playerLoader) {
+    this.user = user;
     this.groupName = groupName;
     this.waifuNumber = waifuNumber;
     this.channel = channel;
     this.groupLoader = groupLoader;
     this.messageSender = messageSender;
+    this.playerLoader = playerLoader;
   }
 
   @Override
   Answer start(RoutineRunner routineRunner) throws MyOwnException {
+    Player player = playerLoader.getPlayerByUser(user);
     Group group = player.getGroupByName(groupName)
         .orElseThrow(() -> new MyOwnException(new CouldNotFindGroup(groupName), null));
 

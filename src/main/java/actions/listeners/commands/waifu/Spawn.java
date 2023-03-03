@@ -2,7 +2,6 @@ package actions.listeners.commands.waifu;
 
 import actions.listeners.commands.ACommand;
 import actions.listeners.commands.Answer;
-import actions.listeners.commands.CommandType;
 import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
@@ -13,7 +12,6 @@ import org.javacord.api.entity.user.User;
 import org.javacord.api.interaction.SlashCommandInteractionOption;
 import org.javacord.api.interaction.SlashCommandOption;
 import routines.RoutineSpawnWaifuCommandBuilder;
-import waifu.model.Player;
 
 public class Spawn extends ACommand {
 
@@ -36,11 +34,11 @@ public class Spawn extends ACommand {
   }
 
   @Override
-  protected Answer executeCommand(DiscordApi api, Server server, TextChannel channel, User user,
-      Player player, List<SlashCommandInteractionOption> arguments) throws MyOwnException {
+  protected Answer execute(DiscordApi api, Server server, TextChannel channel, User user,
+      List<SlashCommandInteractionOption> arguments) throws MyOwnException {
 
     return getRoutineRunner().startRoutine(
-        routineSpawnWaifuCommandBuilder.createRoutineSpawnWaifuCommand(channel, player));
+        routineSpawnWaifuCommandBuilder.createRoutineSpawnWaifuCommand(channel, user));
   }
 
   @Override
@@ -52,11 +50,6 @@ public class Spawn extends ACommand {
   @Override
   protected String getErrorMessage() {
     return "Konnte keine neue Waifu spawnen.";
-  }
-
-  @Override
-  public CommandType getCommandType() {
-    return CommandType.WAIFU;
   }
 
   @Override

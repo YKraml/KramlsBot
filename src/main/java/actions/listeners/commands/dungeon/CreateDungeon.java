@@ -2,7 +2,6 @@ package actions.listeners.commands.dungeon;
 
 import actions.listeners.commands.ACommand;
 import actions.listeners.commands.Answer;
-import actions.listeners.commands.CommandType;
 import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
@@ -15,7 +14,6 @@ import org.javacord.api.interaction.SlashCommandOption;
 import org.javacord.api.interaction.SlashCommandOptionType;
 import routines.RoutineCreateDungeon;
 import waifu.loader.DungeonLoader;
-import waifu.model.Player;
 
 public class CreateDungeon extends ACommand {
 
@@ -38,8 +36,8 @@ public class CreateDungeon extends ACommand {
   }
 
   @Override
-  protected Answer executeCommand(DiscordApi api, Server server, TextChannel channel, User user,
-      Player player, List<SlashCommandInteractionOption> arguments) throws MyOwnException {
+  protected Answer execute(DiscordApi api, Server server, TextChannel channel, User user,
+      List<SlashCommandInteractionOption> arguments) throws MyOwnException {
     int difficulty = arguments.get(0).getLongValue().get().intValue();
     String name = arguments.get(1).getStringValue().get();
     return getRoutineRunner().startRoutine(
@@ -57,11 +55,6 @@ public class CreateDungeon extends ACommand {
   @Override
   protected String getErrorMessage() {
     return "Konnte keinen Dungeon erzeugen.";
-  }
-
-  @Override
-  public CommandType getCommandType() {
-    return CommandType.DUNGEON;
   }
 
   @Override

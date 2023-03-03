@@ -14,17 +14,15 @@ import waifu.model.Player;
 public class RoutineShowSongs extends Routine {
 
   private final MessageSender messageSender;
-  private final Player player;
   private final Server server;
   private final User user;
   private final PlayerLoader playerLoader;
   private final MusicPlayerManager musicPlayerManager;
   private final TextChannel channel;
 
-  public RoutineShowSongs(MessageSender messageSender, Player player, Server server, User user,
+  public RoutineShowSongs(MessageSender messageSender, Server server, User user,
       PlayerLoader playerLoader, MusicPlayerManager musicPlayerManager, TextChannel channel) {
     this.messageSender = messageSender;
-    this.player = player;
     this.server = server;
     this.user = user;
     this.playerLoader = playerLoader;
@@ -34,7 +32,7 @@ public class RoutineShowSongs extends Routine {
 
   @Override
   Answer start(RoutineRunner routineRunner) throws MyOwnException {
-
+    Player player = playerLoader.getPlayerByUser(user);
     messageSender.send(new LikedSongs(player, server, user, playerLoader,
         messageSender, musicPlayerManager), channel);
 

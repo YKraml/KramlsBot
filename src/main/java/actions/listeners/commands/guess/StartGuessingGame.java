@@ -2,7 +2,6 @@ package actions.listeners.commands.guess;
 
 import actions.listeners.commands.ACommand;
 import actions.listeners.commands.Answer;
-import actions.listeners.commands.CommandType;
 import actions.timer.RevealTimerBuilder;
 import com.google.inject.Inject;
 import exceptions.MyOwnException;
@@ -16,7 +15,6 @@ import org.javacord.api.interaction.SlashCommandInteractionOption;
 import org.javacord.api.interaction.SlashCommandOption;
 import org.javacord.api.interaction.SlashCommandOptionType;
 import routines.RoutineStartGuessingGameBuilder;
-import waifu.model.Player;
 
 public class StartGuessingGame extends ACommand {
 
@@ -41,8 +39,8 @@ public class StartGuessingGame extends ACommand {
   }
 
   @Override
-  protected Answer executeCommand(DiscordApi api, Server server, TextChannel channel, User user,
-      Player player, List<SlashCommandInteractionOption> arguments) throws MyOwnException {
+  protected Answer execute(DiscordApi api, Server server, TextChannel channel, User user,
+      List<SlashCommandInteractionOption> arguments) throws MyOwnException {
 
     int difficulty = (new Random().nextInt(10) + 1);
     if (!arguments.isEmpty()) {
@@ -64,11 +62,6 @@ public class StartGuessingGame extends ACommand {
   @Override
   protected String getErrorMessage() {
     return "Konnte kein Ratespiel starten.";
-  }
-
-  @Override
-  public CommandType getCommandType() {
-    return CommandType.GUESS;
   }
 
   @Override

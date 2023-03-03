@@ -2,14 +2,12 @@ package actions.listeners.commands.group;
 
 import actions.listeners.commands.ACommand;
 import actions.listeners.commands.Answer;
-import actions.listeners.commands.CommandType;
 import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
 import org.javacord.api.interaction.SlashCommandInteractionOption;
 import org.javacord.api.interaction.SlashCommandOption;
 import routines.RoutineShowGroupListBuilder;
-import waifu.model.Player;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
@@ -36,10 +34,10 @@ public class GroupShowList extends ACommand {
   }
 
   @Override
-  protected Answer executeCommand(DiscordApi api, Server server, TextChannel channel, User user,
-      Player player, List<SlashCommandInteractionOption> arguments) throws MyOwnException {
+  protected Answer execute(DiscordApi api, Server server, TextChannel channel, User user,
+      List<SlashCommandInteractionOption> arguments) throws MyOwnException {
     return getRoutineRunner().startRoutine(
-        routineShowGroupListBuilder.createRoutineShowGroupList(channel, player));
+        routineShowGroupListBuilder.createRoutineShowGroupList(channel, user));
   }
 
   @Override
@@ -50,11 +48,6 @@ public class GroupShowList extends ACommand {
   @Override
   protected String getErrorMessage() {
     return "Konnte die Gruppenliste nicht anzeigen.";
-  }
-
-  @Override
-  public CommandType getCommandType() {
-    return CommandType.GROUP;
   }
 
   @Override

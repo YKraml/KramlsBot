@@ -8,23 +8,25 @@ import messages.MessageSenderImpl;
 import messages.messages.DailyAlreadyUsed;
 import messages.messages.DailyUsed;
 import org.javacord.api.entity.channel.TextChannel;
+import org.javacord.api.entity.user.User;
 import waifu.loader.PlayerLoader;
 import waifu.model.Player;
 
 public class RoutineCollectDaily extends Routine {
 
-  private final Player player;
+  private final User user;
   private final TextChannel channel;
   private final PlayerLoader playerLoader;
 
-  public RoutineCollectDaily(TextChannel channel, Player player, PlayerLoader playerLoader) {
+  public RoutineCollectDaily(TextChannel channel, User user, PlayerLoader playerLoader) {
     this.channel = channel;
-    this.player = player;
+    this.user = user;
     this.playerLoader = playerLoader;
   }
 
   @Override
   Answer start(RoutineRunner routineRunner) throws MyOwnException {
+    Player player = playerLoader.getPlayerByUser(user);
     String oldDate = player.getLastDaily();
     String newDate = DateTimeFormatter.ofPattern("dd.MM.yyyy").format(LocalDateTime.now());
 

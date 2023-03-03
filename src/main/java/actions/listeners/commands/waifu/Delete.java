@@ -2,7 +2,6 @@ package actions.listeners.commands.waifu;
 
 import actions.listeners.commands.ACommand;
 import actions.listeners.commands.Answer;
-import actions.listeners.commands.CommandType;
 import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
@@ -10,8 +9,8 @@ import messages.MessageSender;
 import messages.messages.DeletedWaifuOverview;
 import org.javacord.api.interaction.SlashCommandInteractionOption;
 import org.javacord.api.interaction.SlashCommandOption;
+import waifu.loader.PlayerLoader;
 import waifu.loader.WaifuLoader;
-import waifu.model.Player;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
@@ -21,12 +20,14 @@ public class Delete extends ACommand {
 
   private final WaifuLoader waifuLoader;
   private final MessageSender messageSender;
+  private final PlayerLoader playerLoader;
 
   @Inject
-  public Delete(WaifuLoader waifuLoader, MessageSender messageSender) {
+  public Delete(WaifuLoader waifuLoader, MessageSender messageSender, PlayerLoader playerLoader) {
     super();
     this.waifuLoader = waifuLoader;
     this.messageSender = messageSender;
+    this.playerLoader = playerLoader;
   }
 
   @Override
@@ -40,9 +41,9 @@ public class Delete extends ACommand {
   }
 
   @Override
-  protected Answer executeCommand(DiscordApi api, Server server, TextChannel channel, User user,
-      Player player, List<SlashCommandInteractionOption> arguments) throws MyOwnException {
-    messageSender.send(new DeletedWaifuOverview(player, waifuLoader, messageSender), channel);
+  protected Answer execute(DiscordApi api, Server server, TextChannel channel, User user,
+      List<SlashCommandInteractionOption> arguments) throws MyOwnException {
+    messageSender.send(new DeletedWaifuOverview(user, waifuLoader, messageSender, playerLoader), channel);
     return new Answer("Someone ordered his Delete-List");
   }
 
@@ -54,11 +55,6 @@ public class Delete extends ACommand {
   @Override
   protected String getErrorMessage() {
     return "Konnte die Waifu nicht löschen.";
-  }
-
-  @Override
-  public CommandType getCommandType() {
-    return CommandType.WAIFU;
   }
 
   @Override

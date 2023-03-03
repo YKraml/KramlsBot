@@ -1,50 +1,32 @@
 package routines;
 
 import actions.listeners.commands.Answer;
-import embeds.LostMoney;
 import exceptions.MyOwnException;
-import messages.MessageSender;
-import messages.MessageSenderImpl;
-import messages.messages.WonMoney;
 import org.javacord.api.entity.channel.TextChannel;
+import org.javacord.api.entity.user.User;
 import waifu.loader.PlayerLoader;
 import waifu.model.Player;
 
 public class RoutineDoubleOrNothing extends Routine {
 
-  private final Player player;
+  private final User user;
   private final TextChannel channel;
+  private final RoutineGamblingDoubleBuilder builder;
   private final PlayerLoader playerLoader;
-  private final MessageSender messageSender;
 
-  public RoutineDoubleOrNothing(Player player, TextChannel channel, PlayerLoader playerLoader,
-      MessageSender messageSender) {
-    this.player = player;
+  public RoutineDoubleOrNothing(User user, TextChannel channel,
+      RoutineGamblingDoubleBuilder builder, PlayerLoader playerLoader) {
+    this.user = user;
     this.channel = channel;
+    this.builder = builder;
     this.playerLoader = playerLoader;
-    this.messageSender = messageSender;
   }
 
   @Override
   Answer start(RoutineRunner routineRunner) throws MyOwnException {
-
-    double r = Math.random();
+    Player player = playerLoader.getPlayerByUser(user);
     long wonMoney = player.getInventory().getMoney();
-
-    if (r < 0.5) {
-      player.getInventory().addMoney(Math.toIntExact(wonMoney));
-      messageSender.send(new WonMoney(player, (int) wonMoney), channel);
-    } else {
-      player.getInventory().removeMoney(Math.toIntExact(wonMoney));
-      MessageSenderImpl result;
-      synchronized (MessageSenderImpl.class) {
-        result = new MessageSenderImpl();
-      }
-      result.send(new LostMoney(player, wonMoney), channel);
-    }
-
-    playerLoader.savePlayer(player);
-
-    return new Answer("Doppel oder Nichts ohne Parameter");
+    return routineRunner.startRoutine(
+        builder.createRoutineDoubleOrNothingWithParameter(user, wonMoney, channel));
   }
 }

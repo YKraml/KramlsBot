@@ -20,11 +20,9 @@ import waifu.loader.PlayerLoader;
 public final class CommandDistributor {
 
   private final List<ACommand> commands;
-  private final PlayerLoader playerLoader;
 
   @Inject
-  public CommandDistributor(PlayerLoader playerLoader, List<ACommand> commands) {
-    this.playerLoader = playerLoader;
+  public CommandDistributor(List<ACommand> commands) {
     this.commands = commands;
   }
 
@@ -49,7 +47,7 @@ public final class CommandDistributor {
     event.getSlashCommandInteraction().respondLater();
     Answer answer;
     try {
-      answer = command.execute(event, playerLoader);
+      answer = command.execute(event);
     } catch (Exception e) {
       answer = event.getSlashCommandInteraction().getChannel()
           .map(textChannel -> exceptionAnswer(e, textChannel, command.getErrorMessage()))

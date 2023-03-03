@@ -2,7 +2,6 @@ package actions.listeners.commands.dungeon;
 
 import actions.listeners.commands.ACommand;
 import actions.listeners.commands.Answer;
-import actions.listeners.commands.CommandType;
 import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
@@ -11,7 +10,6 @@ import org.javacord.api.interaction.SlashCommandOption;
 import org.javacord.api.interaction.SlashCommandOptionType;
 import routines.RoutineRenameTeam;
 import waifu.loader.PlayerLoader;
-import waifu.model.Player;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
@@ -38,13 +36,13 @@ public class TeamRename extends ACommand {
   }
 
   @Override
-  protected Answer executeCommand(DiscordApi api, Server server, TextChannel channel, User user,
-      Player player, List<SlashCommandInteractionOption> arguments) throws MyOwnException {
+  protected Answer execute(DiscordApi api, Server server, TextChannel channel, User user,
+      List<SlashCommandInteractionOption> arguments) throws MyOwnException {
     String oldName = arguments.get(0).getStringValue().get();
     String newName = arguments.get(1).getStringValue().get();
 
     return getRoutineRunner().startRoutine(
-        new RoutineRenameTeam(player, playerLoader, channel, newName, oldName));
+        new RoutineRenameTeam(user, playerLoader, channel, newName, oldName));
   }
 
   @Override
@@ -58,11 +56,6 @@ public class TeamRename extends ACommand {
   @Override
   protected String getErrorMessage() {
     return "Konnte das Team nicht umbenennen.";
-  }
-
-  @Override
-  public CommandType getCommandType() {
-    return CommandType.DUNGEON;
   }
 
   @Override

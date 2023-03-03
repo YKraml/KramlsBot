@@ -2,7 +2,6 @@ package actions.listeners.commands.gambling;
 
 import actions.listeners.commands.ACommand;
 import actions.listeners.commands.Answer;
-import actions.listeners.commands.CommandType;
 import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
@@ -13,7 +12,6 @@ import org.javacord.api.entity.user.User;
 import org.javacord.api.interaction.SlashCommandInteractionOption;
 import org.javacord.api.interaction.SlashCommandOption;
 import routines.RoutineDoubleOrNothingBuilder;
-import waifu.model.Player;
 
 public class DoubleOrNothing extends ACommand {
 
@@ -36,10 +34,10 @@ public class DoubleOrNothing extends ACommand {
   }
 
   @Override
-  protected Answer executeCommand(DiscordApi api, Server server, TextChannel channel, User user,
-      Player player, List<SlashCommandInteractionOption> arguments) throws MyOwnException {
+  protected Answer execute(DiscordApi api, Server server, TextChannel channel, User user,
+      List<SlashCommandInteractionOption> arguments) throws MyOwnException {
     return getRoutineRunner().startRoutine(
-        routineDoubleOrNothingBuilder.createRoutineDoubleOrNothing(player, channel));
+        routineDoubleOrNothingBuilder.createRoutineDoubleOrNothing(user, channel));
   }
 
   @Override
@@ -50,11 +48,6 @@ public class DoubleOrNothing extends ACommand {
   @Override
   protected String getErrorMessage() {
     return "Konnte das Glücksspiel nicht ausführen.";
-  }
-
-  @Override
-  public CommandType getCommandType() {
-    return CommandType.GAMBLING;
   }
 
   @Override

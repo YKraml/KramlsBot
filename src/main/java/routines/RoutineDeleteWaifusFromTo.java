@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import messages.MessageSender;
 import messages.messages.WaifusDeleted;
 import org.javacord.api.entity.channel.TextChannel;
+import org.javacord.api.entity.user.User;
 import waifu.loader.PlayerLoader;
 import waifu.loader.WaifuLoader;
 import waifu.model.Player;
@@ -14,7 +15,7 @@ import waifu.model.Waifu;
 
 public class RoutineDeleteWaifusFromTo extends Routine {
 
-  private final Player player;
+  private final User user;
   private final int from;
   private final int to;
   private final WaifuLoader waifuLoader;
@@ -22,9 +23,9 @@ public class RoutineDeleteWaifusFromTo extends Routine {
   private final MessageSender messageSender;
   private final TextChannel channel;
 
-  public RoutineDeleteWaifusFromTo(Player player, int from, int to, WaifuLoader waifuLoader,
+  public RoutineDeleteWaifusFromTo(User user, int from, int to, WaifuLoader waifuLoader,
       PlayerLoader playerLoader, MessageSender messageSender, TextChannel channel) {
-    this.player = player;
+    this.user = user;
     this.from = from;
     this.to = to;
     this.waifuLoader = waifuLoader;
@@ -35,6 +36,7 @@ public class RoutineDeleteWaifusFromTo extends Routine {
 
   @Override
   Answer start(RoutineRunner routineRunner) throws MyOwnException {
+    Player player = playerLoader.getPlayerByUser(user);
     int deletedWaifus = 0;
     int stardust = 0;
     int cookies = 0;

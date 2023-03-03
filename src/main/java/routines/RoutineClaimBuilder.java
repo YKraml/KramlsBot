@@ -4,11 +4,11 @@ import com.google.inject.Inject;
 import messages.MessageSender;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
+import org.javacord.api.entity.user.User;
 import waifu.JikanFetcher;
 import waifu.WaifuSpawnManager;
 import waifu.loader.PlayerLoader;
 import waifu.loader.WaifuLoader;
-import waifu.model.Player;
 
 public class RoutineClaimBuilder {
 
@@ -29,9 +29,9 @@ public class RoutineClaimBuilder {
   }
 
 
-  public RoutineClaim createRoutineClaim(Server server, TextChannel channel, Player player,
+  public RoutineClaim createRoutineClaim(Server server, TextChannel channel, User user,
       String guess) {
-    return new RoutineClaim(server, channel, player, guess, waifuSpawnManager, playerLoader,
+    return new RoutineClaim(server, channel, user, guess, waifuSpawnManager, playerLoader,
         waifuLoader, jikanFetcher, messageSender);
   }
 }

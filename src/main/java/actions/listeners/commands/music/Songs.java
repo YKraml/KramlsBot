@@ -2,14 +2,12 @@ package actions.listeners.commands.music;
 
 import actions.listeners.commands.ACommand;
 import actions.listeners.commands.Answer;
-import actions.listeners.commands.CommandType;
 import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
 import org.javacord.api.interaction.SlashCommandInteractionOption;
 import org.javacord.api.interaction.SlashCommandOption;
 import routines.RoutineShowSongsBuilder;
-import waifu.model.Player;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
@@ -36,10 +34,10 @@ public class Songs extends ACommand {
   }
 
   @Override
-  protected Answer executeCommand(DiscordApi api, Server server, TextChannel channel, User user,
-      Player player, List<SlashCommandInteractionOption> arguments) throws MyOwnException {
+  protected Answer execute(DiscordApi api, Server server, TextChannel channel, User user,
+      List<SlashCommandInteractionOption> arguments) throws MyOwnException {
     return getRoutineRunner().startRoutine(
-        routineShowSongsBuilder.createRoutineShowSongs(server, channel, user, player));
+        routineShowSongsBuilder.createRoutineShowSongs(server, channel, user));
   }
 
   @Override
@@ -50,11 +48,6 @@ public class Songs extends ACommand {
   @Override
   protected String getErrorMessage() {
     return "Konnte deine gespeicherten Songs nicht anzeigen.";
-  }
-
-  @Override
-  public CommandType getCommandType() {
-    return CommandType.MUSIC;
   }
 
   @Override

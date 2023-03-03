@@ -2,7 +2,6 @@ package actions.listeners.commands.group;
 
 import actions.listeners.commands.ACommand;
 import actions.listeners.commands.Answer;
-import actions.listeners.commands.CommandType;
 import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
@@ -12,22 +11,25 @@ import org.javacord.api.interaction.SlashCommandOption;
 import org.javacord.api.interaction.SlashCommandOptionType;
 import routines.RoutineRemoveFromGroup;
 import waifu.loader.GroupLoader;
-import waifu.model.Player;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
+import waifu.loader.PlayerLoader;
 
 public class GroupRemoveWaifu extends ACommand {
 
   private final GroupLoader groupLoader;
   private final MessageSender messageSender;
+  private final PlayerLoader playerLoader;
 
   @Inject
-  public GroupRemoveWaifu(GroupLoader groupLoader, MessageSender messageSender) {
+  public GroupRemoveWaifu(GroupLoader groupLoader, MessageSender messageSender,
+      PlayerLoader playerLoader) {
     super();
     this.groupLoader = groupLoader;
     this.messageSender = messageSender;
+    this.playerLoader = playerLoader;
   }
 
   @Override
@@ -41,15 +43,15 @@ public class GroupRemoveWaifu extends ACommand {
   }
 
   @Override
-  protected Answer executeCommand(DiscordApi api, Server server, TextChannel channel, User user,
-      Player player, List<SlashCommandInteractionOption> arguments) throws MyOwnException {
+  protected Answer execute(DiscordApi api, Server server, TextChannel channel, User user,
+      List<SlashCommandInteractionOption> arguments) throws MyOwnException {
 
     String groupName = arguments.get(0).getStringValue().get();
     int waifuNumber = arguments.get(1).getLongValue().get().intValue();
 
     return getRoutineRunner().startRoutine(
-        new RoutineRemoveFromGroup(player, groupName, waifuNumber, channel, groupLoader,
-            messageSender));
+        new RoutineRemoveFromGroup(user, groupName, waifuNumber, channel, groupLoader,
+            messageSender, playerLoader));
   }
 
   @Override
@@ -63,11 +65,6 @@ public class GroupRemoveWaifu extends ACommand {
   @Override
   protected String getErrorMessage() {
     return "Konnte niemanden vom Team entfernen.";
-  }
-
-  @Override
-  public CommandType getCommandType() {
-    return CommandType.GROUP;
   }
 
   @Override

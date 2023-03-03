@@ -2,7 +2,6 @@ package actions.listeners.commands.waifu;
 
 import actions.listeners.commands.ACommand;
 import actions.listeners.commands.Answer;
-import actions.listeners.commands.CommandType;
 import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
@@ -10,7 +9,6 @@ import org.javacord.api.interaction.SlashCommandInteractionOption;
 import org.javacord.api.interaction.SlashCommandOption;
 import org.javacord.api.interaction.SlashCommandOptionType;
 import routines.RoutineGiveWaifuBuilder;
-import waifu.model.Player;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
@@ -37,8 +35,8 @@ public class GiveWaifu extends ACommand {
   }
 
   @Override
-  protected Answer executeCommand(DiscordApi api, Server server, TextChannel channel, User user,
-      Player player, List<SlashCommandInteractionOption> arguments) throws MyOwnException {
+  protected Answer execute(DiscordApi api, Server server, TextChannel channel, User user,
+      List<SlashCommandInteractionOption> arguments) throws MyOwnException {
 
     User receiver = arguments.get(0).getUserValue().get();
     int waifuNumber = arguments.get(1).getLongValue().get().intValue();
@@ -58,11 +56,6 @@ public class GiveWaifu extends ACommand {
   @Override
   protected String getErrorMessage() {
     return "Konnte die Waifu nicht weitergeben.";
-  }
-
-  @Override
-  public CommandType getCommandType() {
-    return CommandType.WAIFU;
   }
 
   @Override

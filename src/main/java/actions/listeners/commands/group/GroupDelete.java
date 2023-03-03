@@ -2,7 +2,6 @@ package actions.listeners.commands.group;
 
 import actions.listeners.commands.ACommand;
 import actions.listeners.commands.Answer;
-import actions.listeners.commands.CommandType;
 import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
@@ -11,20 +10,22 @@ import org.javacord.api.interaction.SlashCommandOption;
 import org.javacord.api.interaction.SlashCommandOptionType;
 import routines.RoutineDeleteGroup;
 import waifu.loader.GroupLoader;
-import waifu.model.Player;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
+import waifu.loader.PlayerLoader;
 
 public class GroupDelete extends ACommand {
 
   private final GroupLoader groupLoader;
+  private final PlayerLoader playerLoader;
 
   @Inject
-  public GroupDelete(GroupLoader groupLoader) {
+  public GroupDelete(GroupLoader groupLoader, PlayerLoader playerLoader) {
     super();
     this.groupLoader = groupLoader;
+    this.playerLoader = playerLoader;
   }
 
   @Override
@@ -38,12 +39,12 @@ public class GroupDelete extends ACommand {
   }
 
   @Override
-  protected Answer executeCommand(DiscordApi api, Server server, TextChannel channel, User user,
-      Player player, List<SlashCommandInteractionOption> arguments) throws MyOwnException {
+  protected Answer execute(DiscordApi api, Server server, TextChannel channel, User user,
+      List<SlashCommandInteractionOption> arguments) throws MyOwnException {
     String groupName = arguments.get(0).getStringValue().get();
 
     return getRoutineRunner().startRoutine(
-        new RoutineDeleteGroup(player, groupName, channel, groupLoader));
+        new RoutineDeleteGroup(user, groupName, channel, groupLoader, playerLoader));
   }
 
   @Override
@@ -55,11 +56,6 @@ public class GroupDelete extends ACommand {
   @Override
   protected String getErrorMessage() {
     return "Konnte die Gruppe nicht löschen.";
-  }
-
-  @Override
-  public CommandType getCommandType() {
-    return CommandType.GROUP;
   }
 
   @Override

@@ -23,9 +23,8 @@ public class RoutineShowSongsBuilder {
     this.musicPlayerManager = musicPlayerManager;
   }
 
-  public RoutineShowSongs createRoutineShowSongs(Server server, TextChannel channel, User user,
-      Player player) {
-    return new RoutineShowSongs(messageSender, player, server, user, playerLoader,
+  public RoutineShowSongs createRoutineShowSongs(Server server, TextChannel channel, User user) {
+    return new RoutineShowSongs(messageSender, server, user, playerLoader,
         musicPlayerManager, channel);
   }
 }

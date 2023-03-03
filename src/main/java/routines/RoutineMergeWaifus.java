@@ -9,6 +9,7 @@ import messages.MessageSenderImpl;
 import messages.messages.Merged;
 import messages.messages.WaifusAreDiffernt;
 import org.javacord.api.entity.channel.TextChannel;
+import org.javacord.api.entity.user.User;
 import waifu.loader.PlayerLoader;
 import waifu.loader.WaifuLoader;
 import waifu.model.Player;
@@ -17,17 +18,17 @@ import waifu.model.Waifu;
 
 public class RoutineMergeWaifus extends Routine {
 
-  private final Player player;
+  private final User user;
   private final int waifuId2;
   private final int waifuId1;
   private final TextChannel channel;
   private final WaifuLoader waifuLoader;
   private final PlayerLoader playerLoader;
 
-  public RoutineMergeWaifus(TextChannel channel, Player player, int waifuId1, int waifuId2,
+  public RoutineMergeWaifus(TextChannel channel, User user, int waifuId1, int waifuId2,
       WaifuLoader waifuLoader, PlayerLoader playerLoader) {
     this.channel = channel;
-    this.player = player;
+    this.user = user;
     this.waifuId1 = waifuId1;
     this.waifuId2 = waifuId2;
     this.waifuLoader = waifuLoader;
@@ -36,6 +37,7 @@ public class RoutineMergeWaifus extends Routine {
 
   @Override
   Answer start(RoutineRunner routineRunner) throws MyOwnException {
+    Player player = playerLoader.getPlayerByUser(user);
     List<Waifu> waifuList = player.getWaifuList();
     if (waifuList.size() <= waifuId2) {
       throw new MyOwnException(new CouldNotFindWaifu(waifuId2), null);

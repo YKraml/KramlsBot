@@ -2,7 +2,6 @@ package actions.listeners.commands.group;
 
 import actions.listeners.commands.ACommand;
 import actions.listeners.commands.Answer;
-import actions.listeners.commands.CommandType;
 import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
@@ -12,7 +11,6 @@ import org.javacord.api.interaction.SlashCommandOption;
 import org.javacord.api.interaction.SlashCommandOptionType;
 import routines.RoutineCreateGroup;
 import waifu.loader.PlayerLoader;
-import waifu.model.Player;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
@@ -41,13 +39,13 @@ public class GroupCreate extends ACommand {
   }
 
   @Override
-  protected Answer executeCommand(DiscordApi api, Server server, TextChannel channel, User user,
-      Player player, List<SlashCommandInteractionOption> arguments) throws MyOwnException {
+  protected Answer execute(DiscordApi api, Server server, TextChannel channel, User user,
+      List<SlashCommandInteractionOption> arguments) throws MyOwnException {
 
     String groupName = arguments.get(0).getStringValue().get();
 
     return getRoutineRunner().startRoutine(
-        new RoutineCreateGroup(groupName, player, playerLoader, messageSender, channel));
+        new RoutineCreateGroup(groupName, user, playerLoader, messageSender, channel));
   }
 
   @Override
@@ -59,11 +57,6 @@ public class GroupCreate extends ACommand {
   @Override
   protected String getErrorMessage() {
     return "Konnte keine Gruppe erstellen.";
-  }
-
-  @Override
-  public CommandType getCommandType() {
-    return CommandType.GROUP;
   }
 
   @Override

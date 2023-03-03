@@ -3,10 +3,10 @@ package routines;
 import com.google.inject.Inject;
 import messages.MessageSender;
 import org.javacord.api.entity.channel.TextChannel;
+import org.javacord.api.entity.user.User;
 import waifu.JikanFetcher;
 import waifu.loader.PlayerLoader;
 import waifu.loader.WaifuLoader;
-import waifu.model.Player;
 
 public class RoutineShowWaifuListBuilder {
 
@@ -24,7 +24,7 @@ public class RoutineShowWaifuListBuilder {
     this.jikanFetcher = jikanFetcher;
   }
 
-  public RoutineShowWaifuList createRoutineShowWaifuList(Player player, TextChannel channel) {
-    return new RoutineShowWaifuList(messageSender, player, playerLoader, waifuLoader, jikanFetcher, channel);
+  public RoutineShowWaifuList createRoutineShowWaifuList(User user, TextChannel channel) {
+    return new RoutineShowWaifuList(messageSender, user, playerLoader, waifuLoader, jikanFetcher, channel);
   }
 }

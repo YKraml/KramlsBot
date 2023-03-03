@@ -45,8 +45,7 @@ public class RevealTimer {
 
   private void showMessage() throws MyOwnException {
     GuessingGame game = guessingGameManager.getGuessingGameByServer(serverId);
-    boolean gameExists = guessingGameManager.gameExists(serverId);
-    boolean sameGameIsStillRunning = gameExists && game.getUrl().equals(url);
+    boolean sameGameIsStillRunning = game.getUrl().equals(url);
     if (sameGameIsStillRunning) {
       guessingGameManager.removeGuessGame(serverId);
       messageSender.send(new TimeIsUpMessage(), channel);

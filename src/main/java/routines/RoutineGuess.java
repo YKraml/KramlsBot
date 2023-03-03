@@ -10,6 +10,7 @@ import music.guess.GuessingGame;
 import music.guess.GuessingGameManager;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
+import org.javacord.api.entity.user.User;
 import waifu.loader.PlayerLoader;
 import waifu.model.Player;
 
@@ -17,19 +18,19 @@ public class RoutineGuess extends Routine {
 
   private final String guess;
   private final Server server;
-  private final Player player;
+  private final User user;
   private final TextChannel channel;
   private final GuessingGameManager guessingGameManager;
   private final PlayerLoader playerLoader;
   private final MessageSender messageSender;
   private final GuessGameEndBuilder guessGameEndBuilder;
 
-  public RoutineGuess(Server server, TextChannel channel, Player player, String guess,
+  public RoutineGuess(Server server, TextChannel channel, User user, String guess,
       GuessingGameManager guessingGameManager, PlayerLoader playerLoader,
       MessageSender messageSender, GuessGameEndBuilder guessGameEndBuilder) {
     this.server = server;
     this.channel = channel;
-    this.player = player;
+    this.user = user;
     this.guess = guess;
     this.guessingGameManager = guessingGameManager;
     this.playerLoader = playerLoader;
@@ -39,6 +40,7 @@ public class RoutineGuess extends Routine {
 
   @Override
   Answer start(RoutineRunner routineRunner) throws MyOwnException {
+    Player player = playerLoader.getPlayerByUser(user);
     boolean guessedRight = guessingGameManager.makeGuess(guess, server.getIdAsString());
     if (guessedRight) {
 

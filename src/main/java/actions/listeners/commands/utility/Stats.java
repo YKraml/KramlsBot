@@ -2,7 +2,6 @@ package actions.listeners.commands.utility;
 
 import actions.listeners.commands.ACommand;
 import actions.listeners.commands.Answer;
-import actions.listeners.commands.CommandType;
 import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
@@ -13,16 +12,18 @@ import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import org.javacord.api.interaction.SlashCommandInteractionOption;
 import org.javacord.api.interaction.SlashCommandOption;
-import waifu.model.Player;
+import waifu.loader.PlayerLoader;
 
 public class Stats extends ACommand {
 
   private final MessageSender messageSender;
+  private final PlayerLoader playerLoader;
 
   @Inject
-  public Stats(MessageSender messageSender) {
+  public Stats(MessageSender messageSender, PlayerLoader playerLoader) {
     super();
     this.messageSender = messageSender;
+    this.playerLoader = playerLoader;
   }
 
   @Override
@@ -36,10 +37,10 @@ public class Stats extends ACommand {
   }
 
   @Override
-  protected Answer executeCommand(DiscordApi api, Server server, TextChannel channel, User user,
-      Player player, List<SlashCommandInteractionOption> arguments) throws MyOwnException {
+  protected Answer execute(DiscordApi api, Server server, TextChannel channel, User user,
+      List<SlashCommandInteractionOption> arguments) throws MyOwnException {
 
-    messageSender.send(new messages.messages.Stats(player, user, server), channel);
+    messageSender.send(new messages.messages.Stats(user, server, playerLoader), channel);
 
     return new Answer("Showed someone his stats. User = " + user.getDiscriminatedName());
   }
@@ -52,11 +53,6 @@ public class Stats extends ACommand {
   @Override
   protected String getErrorMessage() {
     return "Konnte die Statistiken des Spielers nicht anzeigen.";
-  }
-
-  @Override
-  public CommandType getCommandType() {
-    return CommandType.UTIL;
   }
 
   @Override

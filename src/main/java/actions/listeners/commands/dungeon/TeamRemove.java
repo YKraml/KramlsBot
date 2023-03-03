@@ -2,7 +2,6 @@ package actions.listeners.commands.dungeon;
 
 import actions.listeners.commands.ACommand;
 import actions.listeners.commands.Answer;
-import actions.listeners.commands.CommandType;
 import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
@@ -12,7 +11,6 @@ import org.javacord.api.interaction.SlashCommandOptionType;
 import routines.RoutineRemoveFromTeam;
 import waifu.loader.PlayerLoader;
 import waifu.loader.TeamLoader;
-import waifu.model.Player;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
@@ -41,13 +39,13 @@ public class TeamRemove extends ACommand {
   }
 
   @Override
-  protected Answer executeCommand(DiscordApi api, Server server, TextChannel channel, User user,
-      Player player, List<SlashCommandInteractionOption> arguments) throws MyOwnException {
+  protected Answer execute(DiscordApi api, Server server, TextChannel channel, User user,
+      List<SlashCommandInteractionOption> arguments) throws MyOwnException {
     String teamName = arguments.get(0).getStringValue().get();
     int waifuNumber = arguments.get(1).getLongValue().get().intValue();
 
     return getRoutineRunner().startRoutine(
-        new RoutineRemoveFromTeam(player, teamName, waifuNumber, channel, playerLoader,
+        new RoutineRemoveFromTeam(user, teamName, waifuNumber, channel, playerLoader,
             teamLoader));
   }
 
@@ -62,11 +60,6 @@ public class TeamRemove extends ACommand {
   @Override
   protected String getErrorMessage() {
     return "Konnte niemanden aus dem Team entfernen.";
-  }
-
-  @Override
-  public CommandType getCommandType() {
-    return CommandType.DUNGEON;
   }
 
   @Override

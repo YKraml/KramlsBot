@@ -2,7 +2,6 @@ package actions.listeners.commands.waifu;
 
 import actions.listeners.commands.ACommand;
 import actions.listeners.commands.Answer;
-import actions.listeners.commands.CommandType;
 import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
@@ -12,7 +11,6 @@ import org.javacord.api.interaction.SlashCommandOptionType;
 import routines.RoutineMergeWaifus;
 import waifu.loader.PlayerLoader;
 import waifu.loader.WaifuLoader;
-import waifu.model.Player;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
@@ -40,14 +38,14 @@ public class Merge extends ACommand {
   }
 
   @Override
-  protected Answer executeCommand(DiscordApi api, Server server, TextChannel channel, User user,
-      Player player, List<SlashCommandInteractionOption> arguments) throws MyOwnException {
+  protected Answer execute(DiscordApi api, Server server, TextChannel channel, User user,
+      List<SlashCommandInteractionOption> arguments) throws MyOwnException {
 
     int waifuId1 = arguments.get(0).getLongValue().get().intValue();
     int waifuId2 = arguments.get(1).getLongValue().get().intValue();
 
     return getRoutineRunner().startRoutine(
-        new RoutineMergeWaifus(channel, player, waifuId1, waifuId2, waifuLoader, playerLoader));
+        new RoutineMergeWaifus(channel, user, waifuId1, waifuId2, waifuLoader, playerLoader));
   }
 
   @Override
@@ -61,11 +59,6 @@ public class Merge extends ACommand {
   @Override
   protected String getErrorMessage() {
     return "Konnte die Waifus nicht miteinander verbinden.";
-  }
-
-  @Override
-  public CommandType getCommandType() {
-    return CommandType.WAIFU;
   }
 
   @Override

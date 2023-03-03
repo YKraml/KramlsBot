@@ -1,23 +1,23 @@
 package routines;
 
 import com.google.inject.Inject;
-import messages.MessageSender;
 import org.javacord.api.entity.channel.TextChannel;
+import org.javacord.api.entity.user.User;
 import waifu.loader.PlayerLoader;
-import waifu.model.Player;
 
 public class RoutineDoubleOrNothingBuilder {
 
+  private final RoutineGamblingDoubleBuilder routineGamblingDoubleBuilder;
   private final PlayerLoader playerLoader;
-  private final MessageSender messageSender;
 
   @Inject
-  public RoutineDoubleOrNothingBuilder(PlayerLoader playerLoader, MessageSender messageSender) {
+  public RoutineDoubleOrNothingBuilder(RoutineGamblingDoubleBuilder routineGamblingDoubleBuilder,
+      PlayerLoader playerLoader) {
+    this.routineGamblingDoubleBuilder = routineGamblingDoubleBuilder;
     this.playerLoader = playerLoader;
-    this.messageSender = messageSender;
   }
 
-  public RoutineDoubleOrNothing createRoutineDoubleOrNothing(Player player, TextChannel channel) {
-    return new RoutineDoubleOrNothing(player, channel, playerLoader, messageSender);
+  public RoutineDoubleOrNothing createRoutineDoubleOrNothing(User user, TextChannel channel) {
+    return new RoutineDoubleOrNothing(user, channel, routineGamblingDoubleBuilder, playerLoader);
   }
 }

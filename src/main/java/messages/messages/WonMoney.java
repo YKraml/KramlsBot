@@ -8,23 +8,25 @@ import org.javacord.api.entity.message.embed.EmbedBuilder;
 
 public class WonMoney extends MyMessage {
 
-    private final Player player;
-    private final int wonMoney;
+  private final Player player;
+  private final long wonMoney;
 
-    public WonMoney(Player player, int wonMoney) {
-        this.player = player;
-        this.wonMoney = wonMoney;
-    }
+  public WonMoney(Player player, long wonMoney) {
+    this.player = player;
+    this.wonMoney = wonMoney;
+  }
 
 
-    @Override
-    protected void startRoutine(Message message) throws MyOwnException {
+  @Override
+  protected void startRoutine(Message message) throws MyOwnException {
 
-    }
+  }
 
-    @Override
-    protected EmbedBuilder getContent() throws MyOwnException {
-        return this.convertStringToEmbed(player.getNameTag() + ", du hast " + wonMoney + " Euro gewonnen. Du hast jetzt " + player.getInventory().getMoney() + " Euro");
-    }
+  @Override
+  protected EmbedBuilder getContent() throws MyOwnException {
+    return this.convertStringToEmbed(
+        "%s, du hast %d Euro gewonnen. Du hast jetzt %d Euro".formatted(player.getNameTag(),
+            wonMoney, player.getInventory().getMoney()));
+  }
 
 }

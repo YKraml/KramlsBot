@@ -6,21 +6,22 @@ import java.util.Optional;
 import messages.MessageSenderImpl;
 import messages.messages.TeamRenamedMessage;
 import org.javacord.api.entity.channel.TextChannel;
+import org.javacord.api.entity.user.User;
 import waifu.loader.PlayerLoader;
 import waifu.model.Player;
 import waifu.model.dungeon.Team;
 
 public class RoutineRenameTeam extends Routine {
 
-  private final Player player;
+  private final User user;
   private final PlayerLoader playerLoader;
   private final TextChannel channel;
   private final String newName;
   private final String oldName;
 
-  public RoutineRenameTeam(Player player, PlayerLoader playerLoader, TextChannel channel,
+  public RoutineRenameTeam(User user, PlayerLoader playerLoader, TextChannel channel,
       String newName, String oldName) {
-    this.player = player;
+    this.user = user;
     this.playerLoader = playerLoader;
     this.channel = channel;
     this.newName = newName;
@@ -29,6 +30,7 @@ public class RoutineRenameTeam extends Routine {
 
   @Override
   Answer start(RoutineRunner routineRunner) throws MyOwnException {
+    Player player = playerLoader.getPlayerByUser(user);
     Optional<Team> team = player.getTeamByName(oldName);
     if (team.isPresent()) {
       team.get().setName(newName);

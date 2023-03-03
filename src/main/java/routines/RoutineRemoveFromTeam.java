@@ -4,6 +4,7 @@ import actions.listeners.commands.Answer;
 import exceptions.MyOwnException;
 import java.util.Optional;
 import org.javacord.api.entity.message.Messageable;
+import org.javacord.api.entity.user.User;
 import waifu.loader.PlayerLoader;
 import waifu.loader.TeamLoader;
 import waifu.model.Player;
@@ -12,16 +13,16 @@ import waifu.model.fighting.Fighter;
 
 public class RoutineRemoveFromTeam extends Routine {
 
-  private final Player player;
+  private final User user;
   private final String teamName;
   private final int waifuNumber;
   private final Messageable channel;
   private final PlayerLoader playerLoader;
   private final TeamLoader teamLoader;
 
-  public RoutineRemoveFromTeam(Player player, String teamName, int waifuNumber, Messageable channel,
+  public RoutineRemoveFromTeam(User user, String teamName, int waifuNumber, Messageable channel,
       PlayerLoader playerLoader, TeamLoader teamLoader) {
-    this.player = player;
+    this.user = user;
     this.teamName = teamName;
     this.waifuNumber = waifuNumber;
     this.channel = channel;
@@ -31,6 +32,7 @@ public class RoutineRemoveFromTeam extends Routine {
 
   @Override
   Answer start(RoutineRunner routineRunner) throws MyOwnException {
+    Player player = playerLoader.getPlayerByUser(user);
     Optional<Team> team = player.getTeamByName(teamName);
     if (team.isPresent()) {
       if (waifuNumber >= team.get().getFighterList().size()) {

@@ -2,7 +2,6 @@ package actions.listeners.commands.dungeon;
 
 import actions.listeners.commands.ACommand;
 import actions.listeners.commands.Answer;
-import actions.listeners.commands.CommandType;
 import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
@@ -15,7 +14,6 @@ import org.javacord.api.entity.user.User;
 import org.javacord.api.interaction.SlashCommandInteractionOption;
 import org.javacord.api.interaction.SlashCommandOption;
 import waifu.loader.DungeonLoader;
-import waifu.model.Player;
 
 public class DeleteDungeons extends ACommand {
 
@@ -40,8 +38,8 @@ public class DeleteDungeons extends ACommand {
   }
 
   @Override
-  protected Answer executeCommand(DiscordApi api, Server server, TextChannel channel, User user,
-      Player player, List<SlashCommandInteractionOption> arguments) throws MyOwnException {
+  protected Answer execute(DiscordApi api, Server server, TextChannel channel, User user,
+      List<SlashCommandInteractionOption> arguments) throws MyOwnException {
 
     String serverId = server.getIdAsString();
     messageSender.send(new DeleteDungeonsMessage(dungeonLoader, messageSender, serverId), channel);
@@ -56,11 +54,6 @@ public class DeleteDungeons extends ACommand {
   @Override
   protected String getErrorMessage() {
     return "Konnte die Dungeonlöschliste nicht anzeigen.";
-  }
-
-  @Override
-  public CommandType getCommandType() {
-    return CommandType.DUNGEON;
   }
 
   @Override

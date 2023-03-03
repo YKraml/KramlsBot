@@ -2,7 +2,6 @@ package actions.listeners.commands.waifu;
 
 import actions.listeners.commands.ACommand;
 import actions.listeners.commands.Answer;
-import actions.listeners.commands.CommandType;
 import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import messages.MessageSender;
@@ -12,7 +11,6 @@ import org.javacord.api.interaction.SlashCommandOptionType;
 import routines.RoutineDeleteWaifusFromAnime;
 import waifu.loader.PlayerLoader;
 import waifu.loader.WaifuLoader;
-import waifu.model.Player;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
@@ -51,22 +49,17 @@ public class DeleteFromAnime extends ACommand {
   }
 
   @Override
-  public CommandType getCommandType() {
-    return CommandType.WAIFU;
-  }
-
-  @Override
   protected boolean isForAdmins() {
     return false;
   }
 
   @Override
-  protected Answer executeCommand(DiscordApi api, Server server, TextChannel channel, User user,
-      Player player, List<SlashCommandInteractionOption> arguments) throws MyOwnException {
+  protected Answer execute(DiscordApi api, Server server, TextChannel channel, User user,
+      List<SlashCommandInteractionOption> arguments) throws MyOwnException {
 
     String anime = arguments.get(0).getStringValue().get();
     return getRoutineRunner().startRoutine(
-        new RoutineDeleteWaifusFromAnime(waifuLoader, playerLoader, player, anime, channel,
+        new RoutineDeleteWaifusFromAnime(waifuLoader, playerLoader, user, anime, channel,
             messageSender));
   }
 

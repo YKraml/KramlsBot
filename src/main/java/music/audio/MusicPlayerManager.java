@@ -2,6 +2,7 @@ package music.audio;
 
 import exceptions.MyOwnException;
 import exceptions.messages.QueueNonExisting;
+import java.util.function.Consumer;
 import javax.inject.Singleton;
 import music.queue.Queue;
 import music.queue.QueueElement;
@@ -35,15 +36,20 @@ public final class MusicPlayerManager {
         () -> createPlayer(server, voiceChannel, textChannel).addSongToQue(queueElement));
   }
 
-  public void playNextSong(ServerVoiceChannel serverVoiceChannel, TextChannel textChannel)
-      throws MyOwnException {
-    Optional<MusicPlayer> playerOptional = getPlayerByServer(serverVoiceChannel.getServer());
+  public void startPlaying(ServerVoiceChannel voiceChannel, TextChannel textChannel) {
+    getPlayerByServer(voiceChannel.getServer()).ifPresent(musicPlayer -> {
+      musicPlayer.setServerVoiceChannel(voiceChannel);
+      musicPlayer.setTextChannel(textChannel);
+      musicPlayer.start();
+    });
+  }
 
-    if (playerOptional.isPresent()) {
-      playerOptional.get().setServerVoiceChannel(serverVoiceChannel);
-      playerOptional.get().setTextChannel(textChannel);
-      playerOptional.get().playNextSong();
-    }
+  public void playNextSong(ServerVoiceChannel serverVoiceChannel, TextChannel textChannel) {
+    getPlayerByServer(serverVoiceChannel.getServer()).ifPresent(musicPlayer -> {
+      musicPlayer.setServerVoiceChannel(serverVoiceChannel);
+      musicPlayer.setTextChannel(textChannel);
+      musicPlayer.playNextSong();
+    });
   }
 
   public void restartSong(ServerVoiceChannel voiceChannel, TextChannel textChannel) {
@@ -55,35 +61,22 @@ public final class MusicPlayerManager {
     });
   }
 
-  public void playPreviousSong(ServerVoiceChannel voiceChannel, TextChannel textChannel)
-      throws MyOwnException {
-    Optional<MusicPlayer> playerOptional = getPlayerByServer(voiceChannel.getServer());
-    if (playerOptional.isPresent()) {
-      playerOptional.get().setServerVoiceChannel(voiceChannel);
-      playerOptional.get().setTextChannel(textChannel);
-      playerOptional.get().playPreviousSong();
-    }
-  }
-
-  public void startPlaying(ServerVoiceChannel serverVoiceChannel, TextChannel textChannel)
-      throws MyOwnException {
-    Optional<MusicPlayer> playerOptional = getPlayerByServer(serverVoiceChannel.getServer());
-    if (playerOptional.isPresent()) {
-      MusicPlayer musicPlayer = playerOptional.get();
-      musicPlayer.setServerVoiceChannel(serverVoiceChannel);
+  public void playPreviousSong(ServerVoiceChannel voiceChannel, TextChannel textChannel) {
+    getPlayerByServer(voiceChannel.getServer()).ifPresent(musicPlayer -> {
+      musicPlayer.setServerVoiceChannel(voiceChannel);
       musicPlayer.setTextChannel(textChannel);
-      musicPlayer.start();
-    }
+      musicPlayer.playPreviousSong();
+    });
   }
 
   public void playThisSongNext(ServerVoiceChannel voiceChannel, TextChannel textChannel,
-      QueueElement queueElement) throws MyOwnException {
+      QueueElement queueElement) {
+
     MusicPlayer musicPlayer = getPlayerByServer(voiceChannel.getServer())
         .orElseGet(() -> createPlayer(voiceChannel.getServer(), voiceChannel, textChannel));
     musicPlayer.setServerVoiceChannel(voiceChannel);
     musicPlayer.setTextChannel(textChannel);
     musicPlayer.playNow(queueElement);
-
   }
 
   public Queue getQueueByServer(Server server) throws MyOwnException {
