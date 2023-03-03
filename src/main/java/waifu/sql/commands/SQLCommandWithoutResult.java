@@ -21,7 +21,7 @@ public abstract class SQLCommandWithoutResult extends SQLCommand {
       statement.execute(getCommand());
       statement.close();
     } catch (SQLException e) {
-      Terminal.printError("Could not execute \"" + this.getCommand() + "\"");
+      Terminal.printError("Could not execute '%s'. Grund: '%s'".formatted(this.getCommand(), e.getMessage()));
       connectionPool.giveConnection(connection);
       throw new MyOwnException(new CouldNotExecuteMySQLQuery(this.getCommand()), e);
     }

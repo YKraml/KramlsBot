@@ -16,30 +16,12 @@ public class InsertWaifuOrUpdate extends SQLCommandWithoutResult {
 
     @Override
     protected String getCommand() {
-        return "insert into KRAMLSBOT.WAIFU values (" +
-            "'" + waifu.getId() + "'" + "," +
-                waifu.getIdMal() + "," +
-            "'" + waifu.getRarity() + "'" + "," +
-                waifu.getLevel() + "," +
-                waifu.getXp() + "," +
-                waifu.getBaseHp() + "," +
-                waifu.getBaseAtt() + "," +
-                waifu.getBaseDef() + "," +
-                waifu.getBaseInit() + "," +
-            "'" + player.getId() + "'" + "," +
-            "'" + waifu.getImageUrl() + "'" + "," +
-                waifu.getStarLevel() +
-                ") on duplicate key update " +
-                "rarity = " + "'" + waifu.getRarity() + "'" + "," +
-                "level = " + waifu.getLevel() + "," +
-                "xp = " + waifu.getXp() + "," +
-                "baseHp = " + waifu.getBaseHp() + "," +
-                "baseAtt = " + waifu.getBaseAtt() + "," +
-                "baseDef = " + waifu.getBaseDef() + "," +
-                "baseInit = " + waifu.getBaseInit() + "," +
-                "owner = " + "'" + player.getId() + "'" + "," +
-                "imageUrl = " + "'" + waifu.getImageUrl() + "'" + "," +
-                "starLevel = " + waifu.getStarLevel()+
-                ";";
+        return "insert into KRAMLSBOT.WAIFU values ('%s',%s,'%s',%d,%d,%d,%d,%d,%d,'%s','%s',%d) on duplicate key update rarity = '%s',level = %d,xp = %d,baseHp = %d,baseAtt = %d,baseDef = %d,baseInit = %d,owner = '%s',imageUrl = '%s',starLevel = %d;".formatted(
+            waifu.getId(), waifu.getIdMal(), waifu.getRarity(), waifu.getLevel(), waifu.getXp(),
+            waifu.getBaseHp(), waifu.getBaseAtt(), waifu.getBaseDef(), waifu.getBaseInit(),
+            player.getId(), waifu.getImageUrl(), waifu.getStarLevel(), waifu.getRarity(),
+            waifu.getLevel(), waifu.getXp(), waifu.getBaseHp(), waifu.getBaseAtt(),
+            waifu.getBaseDef(), waifu.getBaseInit(), player.getId(), waifu.getImageUrl(),
+            waifu.getStarLevel());
     }
 }

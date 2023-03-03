@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.*;
+import javax.inject.Inject;
 import javax.inject.Singleton;
 
 @Singleton
@@ -17,40 +18,43 @@ public final class ConnectionPool {
   private final String userName;
   private final String password;
 
+  @Inject
   public ConnectionPool(String url, String userName, String password) {
     this.url = url;
     this.userName = userName;
     this.password = password;
-    this.availableConnections = Collections.synchronizedList(new ArrayList<>());
-    this.usedConnections = Collections.synchronizedList(new ArrayList<>());
+    availableConnections = Collections.synchronizedList(new ArrayList<>());
+    usedConnections = Collections.synchronizedList(new ArrayList<>());
   }
 
   private Connection createConnection() throws SQLException {
+    Terminal.printLine("Connection was created. There are %d connections. ".formatted(availableConnections.size() + usedConnections.size()));
     return DriverManager.getConnection(url, userName, password);
   }
 
 
   public Connection getConnection() throws SQLException {
 
-    Connection connection = availableConnections.stream().findFirst().orElse(createConnection());
+    synchronized (availableConnections) {
+      Connection connection =
+          availableConnections.size() > 0 ? availableConnections.get(0) : createConnection();
 
-    if (connection.isClosed()) {
-      connection = createConnection();
-      Terminal.printLine("Connection was opened, after it was closed.");
+      if (connection.isClosed()) {
+        connection = createConnection();
+      }
+
+      availableConnections.remove(connection);
+      usedConnections.add(connection);
+      return connection;
     }
-
-    availableConnections.remove(connection);
-    usedConnections.add(connection);
-    return connection;
   }
 
   public void giveConnection(Connection connection) {
     if (connection == null) {
       return;
     }
-
-    this.usedConnections.remove(connection);
-    this.availableConnections.add(connection);
+    usedConnections.remove(connection);
+    availableConnections.add(connection);
   }
 
 }

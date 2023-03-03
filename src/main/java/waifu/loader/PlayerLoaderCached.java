@@ -46,6 +46,7 @@ public class PlayerLoaderCached implements PlayerLoader {
         RuntimeException previousException = new RuntimeException(throwable);
         MyOwnException e = new MyOwnException(new CouldNotSavePlayer(player), previousException);
         Terminal.printError(e);
+        throwable.printStackTrace();
       }
     };
 

@@ -2,15 +2,14 @@ package waifu.sql;
 
 import exceptions.MyOwnException;
 import javax.inject.Inject;
-import waifu.sql.ConnectionPool;
+import javax.inject.Singleton;
 import waifu.sql.commands.SQLCommandCheckExistence;
 import waifu.sql.commands.SQLCommandWithResult;
 import waifu.sql.commands.SQLCommandWithoutResult;
-import waifu.sql.commands.group.SelectGroupsByOwnerId;
 import waifu.sql.entry.AbstractEntrySet;
 import waifu.sql.entry.AbstractEntrySet.AbstractEntry;
-import waifu.sql.entry.GroupEntrySet;
 
+@Singleton
 public class SQLCommandExecutor {
 
   private final ConnectionPool connectionPool;

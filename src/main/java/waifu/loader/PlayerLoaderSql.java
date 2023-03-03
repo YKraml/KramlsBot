@@ -76,6 +76,7 @@ public class PlayerLoaderSql implements PlayerLoader {
         Terminal.printLine(EXISTING_PLAYER_SAVED.formatted(player.getName(), player.getId()));
       }
     } catch (MyOwnException e) {
+      e.printStackTrace();
       throw new MyOwnException(new CouldNotSavePlayer(player), e);
     }
 
