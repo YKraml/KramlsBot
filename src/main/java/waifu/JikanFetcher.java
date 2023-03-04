@@ -8,7 +8,6 @@ import enums.AnimeSearchQueryOrderBy;
 import enums.SearchQuerySort;
 import exceptions.MyOwnException;
 import exceptions.messages.CouldNotGetAnimeCharactersFromAnime;
-import exceptions.messages.CouldNotGetPictures;
 import exceptions.messages.CouldNotGetRandomAnimeOnPage;
 import exceptions.messages.CouldNotGetRandomTopAnimeCharacter;
 import exceptions.messages.CouldNotGetThemeFromAnime;
@@ -16,8 +15,10 @@ import exceptions.messages.CouldNotSearchForAnimeTitles;
 import exceptions.messages.CouldNotSearchForCharacter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ThreadLocalRandom;
 import javax.inject.Singleton;
 import model.jikan.anime.animeByIdFull.AnimeFullById;
 import model.jikan.anime.animeCharacters.AnimeCharacters;
@@ -122,15 +123,15 @@ public class JikanFetcher {
     }
   }
 
-  public String getRandomPictureFrom(String malId) throws MyOwnException {
+  public Optional<String> getRandomPictureByMalId(String malId) {
 
     try {
       CharacterPictures characterPictures = characterCaller.pictures(Integer.parseInt(malId))
           .consume().get();
-      int index = new Random().nextInt(characterPictures.getData().size());
-      return characterPictures.getData().get(index).getJpg().getImageUrl();
-    } catch (InterruptedException | ExecutionException e) {
-      throw new MyOwnException(new CouldNotGetPictures(malId), e);
+      int index = ThreadLocalRandom.current().nextInt(characterPictures.getData().size());
+      return Optional.ofNullable(characterPictures.getData().get(index).getJpg().getImageUrl());
+    } catch (Exception e) {
+      return Optional.empty();
     }
 
   }

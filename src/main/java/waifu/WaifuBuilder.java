@@ -10,6 +10,7 @@ import waifu.model.Stats;
 import waifu.model.Waifu;
 
 import java.util.UUID;
+
 @Singleton
 public final class WaifuBuilder {
 
@@ -24,8 +25,11 @@ public final class WaifuBuilder {
 
   public synchronized Waifu createRandomWaifu() throws MyOwnException {
     CharacterFullById animeCharacter = jikanFetcher.getRandomTopAnimeCharacter();
-    String imageUrl = jikanFetcher.getRandomPictureFrom(
-        String.valueOf(animeCharacter.getData().getMalId()));
+
+    String defaultImageUrl = animeCharacter.getData().getImages().getJpg().getImageUrl();
+    String malId = String.valueOf(animeCharacter.getData().getMalId());
+    String imageUrl = jikanFetcher.getRandomPictureByMalId(malId).orElse(defaultImageUrl);
+    
     return createWaifu(animeCharacter, imageUrl, 1);
   }
 

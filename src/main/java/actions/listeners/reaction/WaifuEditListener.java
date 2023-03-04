@@ -5,9 +5,12 @@ import discord.Emojis;
 import embeds.waifu.WaifuDeletedEmbed;
 import embeds.waifu.WaifuEmbed;
 import exceptions.MyOwnException;
+import java.util.Optional;
+import java.util.function.Consumer;
 import messages.MessageSender;
 import messages.messages.ButtonNotForYou;
 import messages.messages.ChangedPicture;
+import messages.messages.ImageNotFound;
 import messages.messages.NotEnoughStardust;
 import messages.messages.WaifuHasMaxLevel;
 import messages.messages.WaifuLEvelTooLow;
@@ -50,13 +53,15 @@ public class WaifuEditListener extends MyAbstractReactionListener implements Rea
 
     boolean buttonForUser = user.getIdAsString().equals(player.getId());
     if (!buttonForUser) {
-      messageSender.send(new ButtonNotForYou(user.getMentionTag(), player.getNameTag()),textChannel);
+      messageSender.send(new ButtonNotForYou(user.getMentionTag(), player.getNameTag()),
+          textChannel);
       return;
     }
 
     boolean userIsOwner = player.getWaifuList().contains(waifu);
     if (!userIsOwner) {
-      messageSender.send(new ButtonNotForYou(user.getMentionTag(), player.getNameTag()),textChannel);
+      messageSender.send(new ButtonNotForYou(user.getMentionTag(), player.getNameTag()),
+          textChannel);
       return;
     }
 
@@ -79,11 +84,17 @@ public class WaifuEditListener extends MyAbstractReactionListener implements Rea
 
   private void changePicture(Message message) throws MyOwnException {
     int cost = 1000;
-    player.getInventory().removeMoney(cost);
-    String randomPictureFrom = jikanFetcher.getRandomPictureFrom(waifu.getIdMal());
-    waifu.setImageUrl(randomPictureFrom);
-    message.edit(new WaifuEmbed(waifu));
-    messageSender.send(new ChangedPicture(player, cost), message.getChannel());
+
+    Optional<String> randomPictureByMalId = jikanFetcher.getRandomPictureByMalId(waifu.getIdMal());
+    if (randomPictureByMalId.isPresent()) {
+      player.getInventory().removeMoney(cost);
+      waifu.setImageUrl(randomPictureByMalId.get());
+      message.edit(new WaifuEmbed(waifu));
+      messageSender.send(new ChangedPicture(player, cost), message.getChannel());
+    }else {
+      messageSender.send(new ImageNotFound(waifu),message.getChannel());
+    }
+
   }
 
   private void delete(Message message) throws MyOwnException {
@@ -99,14 +110,16 @@ public class WaifuEditListener extends MyAbstractReactionListener implements Rea
     Terminal.printLine(player.getName() + " deleted waifu " + waifu.getName());
   }
 
-  private void levelUp(TextChannel textChannel, Message message, int cookies) throws MyOwnException {
+  private void levelUp(TextChannel textChannel, Message message, int cookies)
+      throws MyOwnException {
 
     if (waifu.getLevel() >= 100) {
-      messageSender.send(new WaifuHasMaxLevel(),textChannel);
+      messageSender.send(new WaifuHasMaxLevel(), textChannel);
       return;
     }
 
-    int newXP = Math.min((int) Math.pow(waifu.getLevel() + cookies, 3) - waifu.getXp(), cookies * 10000);
+    int newXP = Math.min((int) Math.pow(waifu.getLevel() + cookies, 3) - waifu.getXp(),
+        cookies * 10000);
     player.getInventory().removeCookies(cookies);
     waifu.addXp(newXP);
 
@@ -115,7 +128,8 @@ public class WaifuEditListener extends MyAbstractReactionListener implements Rea
 
   private void riseRarity(TextChannel textChannel, Message message) throws MyOwnException {
     if (!player.getInventory().hasStardust(waifu.getRarity().getUpgradeCost())) {
-      messageSender.send(new NotEnoughStardust(player, waifu.getRarity().getUpgradeCost()), textChannel);
+      messageSender.send(new NotEnoughStardust(player, waifu.getRarity().getUpgradeCost()),
+          textChannel);
       return;
     }
 
@@ -133,7 +147,8 @@ public class WaifuEditListener extends MyAbstractReactionListener implements Rea
 
   private void makeBattleWaifu(TextChannel textChannel) {
     player.setBattleWaifu(waifu);
-    textChannel.sendMessage("%s, '%s' ist deine Waifu zum kämpfen.".formatted(player.getName(), waifu.getName()));
+    textChannel.sendMessage(
+        "%s, '%s' ist deine Waifu zum kämpfen.".formatted(player.getName(), waifu.getName()));
   }
 
 
