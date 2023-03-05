@@ -66,7 +66,7 @@ public class MyModule extends AbstractModule {
 
   @Override
   protected void configure() {
-    bind(PlayerLoader.class).to(PlayLoaderOffline.class);
+    bind(PlayerLoader.class).to(PlayerLoaderCached.class);
     bind(WaifuLoader.class).to(WaifuLoaderSql.class);
     bind(DungeonLoader.class).to(DungeonLoaderSql.class);
     bind(TeamLoader.class).to(TeamLoaderSql.class);
