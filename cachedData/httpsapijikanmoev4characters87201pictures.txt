@@ -1,0 +1,1 @@
+{"data":[{"jpg":{"image_url":"https:\/\/cdn.myanimelist.net\/images\/characters\/11\/317500.jpg"}},{"jpg":{"image_url":"https:\/\/cdn.myanimelist.net\/images\/characters\/6\/317501.jpg"}}]}

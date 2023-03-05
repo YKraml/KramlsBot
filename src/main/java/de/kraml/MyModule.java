@@ -52,6 +52,7 @@ import org.javacord.api.DiscordApiBuilder;
 import routines.RoutineRunner;
 import waifu.loader.DungeonLoader;
 import waifu.loader.DungeonLoaderSql;
+import waifu.loader.PlayLoaderOffline;
 import waifu.loader.PlayerLoader;
 import waifu.loader.PlayerLoaderCached;
 import waifu.loader.TeamLoader;
@@ -65,7 +66,7 @@ public class MyModule extends AbstractModule {
 
   @Override
   protected void configure() {
-    bind(PlayerLoader.class).to(PlayerLoaderCached.class);
+    bind(PlayerLoader.class).to(PlayLoaderOffline.class);
     bind(WaifuLoader.class).to(WaifuLoaderSql.class);
     bind(DungeonLoader.class).to(DungeonLoaderSql.class);
     bind(TeamLoader.class).to(TeamLoaderSql.class);
