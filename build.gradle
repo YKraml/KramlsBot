@@ -18,6 +18,7 @@ repositories {
 
 //Fat jar
 jar {
+    destinationDirectory.set(file("$rootDir"))
     doFirst {
         from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
     }
