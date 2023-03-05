@@ -1,1 +1,0 @@
-{"data":[{"jpg":{"image_url":"https:\/\/cdn.myanimelist.net\/images\/characters\/11\/343623.jpg"}},{"jpg":{"image_url":"https:\/\/cdn.myanimelist.net\/images\/characters\/13\/385348.jpg"}},{"jpg":{"image_url":"https:\/\/cdn.myanimelist.net\/images\/characters\/11\/419773.jpg"}},{"jpg":{"image_url":"https:\/\/cdn.myanimelist.net\/images\/characters\/9\/440370.jpg"}}]}
