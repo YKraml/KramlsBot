@@ -5,8 +5,10 @@ import exceptions.MyOwnException;
 import messages.MessageSender;
 import messages.MessageSenderImpl;
 import messages.messages.TeamOverview;
+import waifu.JikanFetcher;
 import waifu.loader.DungeonLoader;
 import waifu.loader.PlayerLoader;
+import waifu.loader.WaifuLoader;
 import waifu.model.Player;
 import waifu.model.dungeon.Team;
 import org.javacord.api.entity.channel.TextChannel;
@@ -18,14 +20,18 @@ public class TeamListListener extends MyAbstractListListener<Team> {
     private final DungeonLoader dungeonLoader;
     private final PlayerLoader playerLoader   ;
     private final MessageSender messageSender;
+    private final WaifuLoader waifuLoader;
+    private final JikanFetcher jikanFetcher;
 
     public TeamListListener(Player player, DungeonLoader dungeonLoader, PlayerLoader playerLoader,
-        MessageSender messageSender) {
+        MessageSender messageSender, WaifuLoader waifuLoader, JikanFetcher jikanFetcher) {
         super(player.getTeamList());
         this.player = player;
         this.dungeonLoader = dungeonLoader;
         this.playerLoader = playerLoader;
         this.messageSender = messageSender;
+        this.waifuLoader = waifuLoader;
+        this.jikanFetcher = jikanFetcher;
     }
 
     @Override
@@ -40,7 +46,8 @@ public class TeamListListener extends MyAbstractListListener<Team> {
       synchronized (MessageSenderImpl.class) {
         result = new MessageSenderImpl();
       }
-      result.send(new TeamOverview(team, dungeonLoader, playerLoader, messageSender), textChannel);
+      result.send(new TeamOverview(team, dungeonLoader, playerLoader, messageSender, waifuLoader,
+          jikanFetcher), textChannel);
     }
 
     @Override

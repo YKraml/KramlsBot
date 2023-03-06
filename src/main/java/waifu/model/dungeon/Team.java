@@ -45,7 +45,7 @@ public class Team implements DisplayableElement {
 
     //Überprüft, ob die Waifu schon in einem anderen Team ist
     for (Team team : player.getTeamList()) {
-      for (Fighter fighter : team.getFighterList()) {
+      for (Fighter fighter : team.getFighters()) {
         if (fighter.getWaifu().equals(waifu)) {
           throw new MyOwnException(new WaifuInTeam(team.getPlayer(), team, waifu), null);
         }
@@ -106,7 +106,7 @@ public class Team implements DisplayableElement {
     this.fightHistories.add(fightHistoryList);
   }
 
-  public List<Fighter> getFighterList() {
+  public List<Fighter> getFighters() {
     return Collections.unmodifiableList(fighterList);
   }
 
@@ -231,13 +231,13 @@ public class Team implements DisplayableElement {
   public String getDisplayBody() {
 
     StringBuilder body = new StringBuilder();
-    if (this.getFighterList().isEmpty()) {
+    if (this.getFighters().isEmpty()) {
       body.append("Leer");
     } else {
       body.append("Size: ").append(this.teamSize).append(" | HP: ").append(this.getHpPercentage())
           .append("%");
     }
-    for (Fighter fighter : this.getFighterList()) {
+    for (Fighter fighter : this.getFighters()) {
       body.append("\n").append(fighter.getWaifu().getName());
     }
 

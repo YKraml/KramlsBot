@@ -34,6 +34,7 @@ public class WaifuList extends MyMessage {
     @Override
     protected void startRoutine(Message message) throws MyOwnException {
         this.addCountEmojis(message, player.getWaifuList().size());
+        message.addReaction(Emojis.ARROWS_COUNTERCLOCKWISE.getEmoji());
         message.addReaction(Emojis.COOKIE.getEmoji());
         message.addReaction(Emojis.STAR2.getEmoji());
         message.addReaction(Emojis.ABC.getEmoji());

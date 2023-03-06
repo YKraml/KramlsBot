@@ -39,7 +39,6 @@ public class WaifuStats extends MyMessage {
     message.addReaction(Emojis.COOKIE.getEmoji());
     message.addReaction(Emojis.CUPCAKE.getEmoji());
     message.addReaction(Emojis.STAR2.getEmoji());
-    message.addReaction(Emojis.RING.getEmoji());
     message.addReaction(Emojis.HAT.getEmoji());
     message.addReaction(Emojis.X.getEmoji());
     message.addReactionAddListener(new WaifuEditListener(waifu, player, playerLoader, waifuLoader,

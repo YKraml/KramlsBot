@@ -1,11 +1,12 @@
 package waifu.model.fighting;
 
+import embeds.DisplayableElement;
 import waifu.model.Rarities;
 import waifu.model.Waifu;
 
 import static java.lang.Math.floor;
 
-public class Fighter {
+public class Fighter implements DisplayableElement {
 
   private final Waifu waifu;
   private int currentHp;
@@ -145,5 +146,20 @@ public class Fighter {
     int xp = (b * killedWaifuLevel);
     this.waifu.addXp(xp);
 
+  }
+
+  @Override
+  public String getDisplayTitle() {
+    return waifu.getDisplayTitle();
+  }
+
+  @Override
+  public String getDisplayBody() {
+    return waifu.getDisplayBody();
+  }
+
+  @Override
+  public String getDisplayImageUrl() {
+    return waifu.getDisplayImageUrl();
   }
 }

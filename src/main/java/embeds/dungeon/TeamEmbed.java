@@ -19,12 +19,12 @@ public class TeamEmbed extends EmbedBuilder {
             team.getCurrentDungeon().getName(), team.getCurrentDungeon().getDifficulty(),
             team.getCurrentLevel()));
 
-    if (!team.getFighterList().isEmpty()) {
-      this.setThumbnail(team.getFighterList().get(0).getWaifu().getImageUrl());
+    if (!team.getFighters().isEmpty()) {
+      this.setThumbnail(team.getFighters().get(0).getWaifu().getImageUrl());
     }
 
     int i = 0;
-    for (Fighter fighter : team.getFighterList()) {
+    for (Fighter fighter : team.getFighters()) {
 
       Waifu waifu = fighter.getWaifu();
 

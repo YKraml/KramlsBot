@@ -41,7 +41,7 @@ public final class TeamLoaderSql implements TeamLoader {
   @Override
   public void saveTeam(Team team) throws MyOwnException {
     sqlCommandExecutor.execute(new InsertTeamOrUpdate(team));
-    for (Fighter fighter : new ArrayList<>(team.getFighterList())) {
+    for (Fighter fighter : new ArrayList<>(team.getFighters())) {
       sqlCommandExecutor.execute(new InsertTeamFighterOrUpdate(team, fighter));
     }
   }

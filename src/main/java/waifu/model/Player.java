@@ -23,7 +23,6 @@ public class Player {
   private final List<Group> groupList;
   private final List<Team> teamList;
   private final List<QueueElement> likedSongs;
-  private Waifu battleWaifu;
   private int maxWaifus;
 
   public Player(String userId, String name, int rightGuesses, String lastDaily, Inventory inventory,
@@ -78,10 +77,6 @@ public class Player {
     return rightGuesses;
   }
 
-  public Optional<Waifu> getBattleWaifu() {
-    return Optional.ofNullable(battleWaifu);
-  }
-
   public List<Waifu> getWaifuList() {
     return Collections.unmodifiableList(waifuList);
   }
@@ -100,10 +95,6 @@ public class Player {
 
   public void setName(String name) {
     this.name = name;
-  }
-
-  public void setBattleWaifu(Waifu battleWaifu) {
-    this.battleWaifu = battleWaifu;
   }
 
   public void addToGuessesRight(int rightGuesses) {
@@ -160,16 +151,16 @@ public class Player {
   }
 
 
-  public boolean deleteGroup(Group group) {
-    return this.groupList.remove(group);
+  public void deleteGroup(Group group) {
+    this.groupList.remove(group);
   }
 
-  public boolean deleteWaifu(Waifu waifu) throws MyOwnException {
+  public void deleteWaifu(Waifu waifu) throws MyOwnException {
     this.groupList.forEach(group -> group.removeWaifu(waifu));
     for (Team team : this.teamList) {
       team.removeWaifu(waifu);
     }
-    return this.waifuList.remove(waifu);
+    this.waifuList.remove(waifu);
   }
 
   public void sortWaifuList(Comparator<Waifu> comparator) {

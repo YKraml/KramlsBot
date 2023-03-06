@@ -29,7 +29,7 @@ public class StatEmbed extends EmbedBuilder {
     this.addField("Waifus",
         player.getWaifuList().size() + " / " + player.getMaxWaifus() + " Stueck");
     this.addField("Items",
-        "Konto: %d Euro | Stardust: %d | Cookies: %d | Morphsteine : %d".formatted(
+        "Geld: %d | Stardust: %d | Cookies: %d | Morphsteine : %d".formatted(
             player.getInventory().getMoney(),
             player.getInventory().getStardust(), player.getInventory().getCookies(),
             player.getInventory().getMorphStones())
@@ -58,13 +58,6 @@ public class StatEmbed extends EmbedBuilder {
       this.addField("Rollen", roleString.toString());
     }
 
-    if (player.getBattleWaifu().isPresent()) {
-      Waifu battleWaifu = player.getBattleWaifu().get();
-      this.addField("Aktive Waifu zum kaempfen",
-          battleWaifu.getDisplayTitle()
-              + "\n"
-              + battleWaifu.getDisplayBody());
-    }
   }
 
 }

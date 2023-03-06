@@ -35,9 +35,9 @@ public class RoutineRemoveFromTeam extends Routine {
     Player player = playerLoader.getPlayerByUser(user);
     Optional<Team> team = player.getTeamByName(teamName);
     if (team.isPresent()) {
-      if (waifuNumber >= team.get().getFighterList().size()) {
+      if (waifuNumber >= team.get().getFighters().size()) {
         channel.sendMessage("Die Zahl muss zwischen " + 0 + " und " + (
-            team.get().getFighterList().size() - 1) + " sein.");
+            team.get().getFighters().size() - 1) + " sein.");
         return new Answer("Someone tried to remove a Waifu from his Team, but the Number was to large");
       }
 
@@ -46,7 +46,7 @@ public class RoutineRemoveFromTeam extends Routine {
         return new Answer("Someone tried to remove a Waifu from his Team, but the team is in a dungeon");
       }
 
-      Fighter fighter = team.get().getFighterList().get(waifuNumber);
+      Fighter fighter = team.get().getFighters().get(waifuNumber);
       team.get().removeWaifu(fighter.getWaifu());
       channel.sendMessage(player.getNameTag() + ", \"" + fighter.getWaifu().getName() + "\" wurde aus deinem Team entfernt");
       playerLoader.savePlayer(player);

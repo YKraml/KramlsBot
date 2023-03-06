@@ -71,13 +71,17 @@ public class WaifuListListener extends MyAbstractListListener<Waifu> {
     if (emoji.equalsEmoji(Emojis.COOKIE.getEmoji())) {
       sortDirection *= -1;
       player.sortWaifuList((o1, o2) -> (o2.getStatsSum() - o1.getStatsSum()) * sortDirection);
-      this.updateMessage(message, super.getPageNumber());
-    } else if (emoji.equalsEmoji(Emojis.STAR2.getEmoji())) {
+    }
+
+
+    if (emoji.equalsEmoji(Emojis.STAR2.getEmoji())) {
       sortDirection *= -1;
       player.sortWaifuList((o1, o2) -> (o2.getRarity().getStatsSum() - o1.getRarity().getStatsSum())
           * sortDirection);
-      this.updateMessage(message, super.getPageNumber());
-    } else if (emoji.equalsEmoji(Emojis.ABC.getEmoji())) {
+    }
+
+
+    if (emoji.equalsEmoji(Emojis.ABC.getEmoji())) {
       sortDirection *= -1;
       Comparator<Waifu> comparator = (o1, o2) -> {
         int com = (o2.getAnimeName().compareTo(o1.getAnimeName())) * sortDirection;
@@ -87,8 +91,8 @@ public class WaifuListListener extends MyAbstractListListener<Waifu> {
         return com;
       };
       player.sortWaifuList(comparator);
-      this.updateMessage(message, super.getPageNumber());
     }
 
+    updateMessage(message, super.getPageNumber());
   }
 }

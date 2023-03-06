@@ -3,13 +3,17 @@ package actions.listeners.reaction;
 import embeds.dungeon.TeamEmbed;
 import exceptions.MyOwnException;
 import discord.Emojis;
+import exceptions.messages.FighterNotFound;
 import exceptions.messages.TeamIsInDungeon;
 import messages.MessageSender;
 import messages.messages.ButtonNotForYou;
 import messages.messages.DungeonList;
 import messages.messages.TeamGavePocketMessage;
+import messages.messages.WaifuStats;
+import waifu.JikanFetcher;
 import waifu.loader.DungeonLoader;
 import waifu.loader.PlayerLoader;
+import waifu.loader.WaifuLoader;
 import waifu.model.dungeon.Dungeon;
 import waifu.model.dungeon.Team;
 import org.javacord.api.DiscordApi;
@@ -21,25 +25,52 @@ import org.javacord.api.entity.user.User;
 import org.javacord.api.listener.message.reaction.ReactionAddListener;
 
 import java.util.List;
+import waifu.model.fighting.Fighter;
 
-public class TeamEditListener extends MyAbstractReactionListener implements ReactionAddListener {
+public class TeamEditListener extends MyAbstractListListener<Fighter> implements
+    ReactionAddListener {
 
   private final Team team;
   private final PlayerLoader playerLoader;
   private final DungeonLoader dungeonLoader;
   private final MessageSender messageSender;
+  private final WaifuLoader waifuLoader;
+  private final JikanFetcher jikanFetcher;
 
   public TeamEditListener(Team team, PlayerLoader playerLoader, DungeonLoader dungeonLoader,
-      MessageSender messageSender) {
+      MessageSender messageSender, WaifuLoader waifuLoader, JikanFetcher jikanFetcher) {
+    super(team.getFighters());
     this.team = team;
     this.playerLoader = playerLoader;
     this.dungeonLoader = dungeonLoader;
     this.messageSender = messageSender;
+    this.waifuLoader = waifuLoader;
+    this.jikanFetcher = jikanFetcher;
+  }
+
+  @Override
+  protected void updateMessage(Message message, int page) throws MyOwnException {
+    message.edit(new TeamEmbed(team));
+  }
+
+  @Override
+  protected void reactToCountEmoji(TextChannel textChannel, int listPosition)
+      throws MyOwnException {
+    messageSender.send(
+        new WaifuStats(team.getFighters().get(listPosition).getWaifu(), team.getPlayer(),
+            playerLoader, waifuLoader, jikanFetcher, messageSender), textChannel);
+  }
+
+  @Override
+  protected void reactToTooHighCountEmoji(TextChannel textChannel, int listPosition)
+      throws MyOwnException {
+    throw new MyOwnException(new FighterNotFound(listPosition), null);
   }
 
   @Override
   protected void startRoutine(DiscordApi discordApi, Server server, TextChannel textChannel,
       Message message, User user, Emoji emoji) throws MyOwnException {
+    super.startRoutine(discordApi,server,textChannel,message,user,emoji);
 
     if (!user.getIdAsString().equals(team.getPlayer().getId())) {
       messageSender.send(new ButtonNotForYou(user.getMentionTag(), team.getPlayer().getNameTag()),

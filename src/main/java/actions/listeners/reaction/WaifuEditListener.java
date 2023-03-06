@@ -72,8 +72,6 @@ public class WaifuEditListener extends MyAbstractReactionListener implements Rea
       levelUp(textChannel, message, 10);
     } else if (emoji.equalsEmoji(Emojis.STAR2.getEmoji())) {
       riseRarity(textChannel, message);
-    } else if (emoji.equalsEmoji(Emojis.RING.getEmoji())) {
-      makeBattleWaifu(textChannel);
     } else if (emoji.equalsEmoji(Emojis.HAT.getEmoji())) {
       changePicture(message);
     }
@@ -90,8 +88,8 @@ public class WaifuEditListener extends MyAbstractReactionListener implements Rea
       waifu.setImageUrl(randomPictureByMalId.get());
       message.edit(new WaifuEmbed(waifu));
       messageSender.send(new ChangedPicture(player, cost), message.getChannel());
-    }else {
-      messageSender.send(new ImageNotFound(waifu),message.getChannel());
+    } else {
+      messageSender.send(new ImageNotFound(waifu), message.getChannel());
     }
 
   }
@@ -142,12 +140,6 @@ public class WaifuEditListener extends MyAbstractReactionListener implements Rea
 
     messageSender.send(new WaifuRarityIncreased(waifu, waifu.getRarity()), textChannel);
     message.edit(new WaifuEmbed(waifu));
-  }
-
-  private void makeBattleWaifu(TextChannel textChannel) {
-    player.setBattleWaifu(waifu);
-    textChannel.sendMessage(
-        "%s, '%s' ist deine Waifu zum kämpfen.".formatted(player.getName(), waifu.getName()));
   }
 
 

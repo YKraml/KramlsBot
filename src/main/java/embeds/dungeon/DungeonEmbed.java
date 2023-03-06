@@ -36,7 +36,7 @@ public class DungeonEmbed extends EmbedBuilder {
           .append(" | ")
           .append(team.getHpPercentage())
           .append("% HP\n");
-      for (Fighter fighter : team.getFighterList()) {
+      for (Fighter fighter : team.getFighters()) {
         body.append(fighter.getWaifu().getName())
             .append(" | lvl ")
             .append(fighter.getWaifu().getLevel())

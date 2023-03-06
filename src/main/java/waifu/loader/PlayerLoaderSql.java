@@ -18,10 +18,6 @@ import waifu.model.Player;
 import waifu.model.Waifu;
 import waifu.model.dungeon.Team;
 import waifu.sql.SQLCommandExecutor;
-import waifu.sql.commands.battle_waifu.AlterBattleWaifu;
-import waifu.sql.commands.battle_waifu.BattleWaifuExists;
-import waifu.sql.commands.battle_waifu.InsertBattleWaifu;
-import waifu.sql.commands.battle_waifu.SelectBattleWaifuByUserId;
 import waifu.sql.commands.songs.InsertLikedSong;
 import waifu.sql.commands.songs.LikedSongExists;
 import waifu.sql.commands.songs.SelectLikedSongs;
@@ -31,8 +27,6 @@ import waifu.sql.commands.user.AlterUser;
 import waifu.sql.commands.user.InsertUser;
 import waifu.sql.commands.user.SelectUsersById;
 import waifu.sql.commands.user.UserExists;
-import waifu.sql.entry.AbstractEntrySet;
-import waifu.sql.entry.BattleWaifuEntrySet.BattleWaifuEntry;
 import waifu.sql.entry.LikedSongEntrySet;
 import waifu.sql.entry.TimeEntrySet;
 import waifu.sql.entry.UserEntrySet;
@@ -68,7 +62,6 @@ public class PlayerLoaderSql implements PlayerLoader {
       } else {
         sqlCommandExecutor.execute(new AlterUser(player));
         saveWaifus(player);
-        saveBattleWaifu(player);
         saveGroups(player);
         saveTeams(player);
         saveTimes(player);
@@ -98,7 +91,6 @@ public class PlayerLoaderSql implements PlayerLoader {
 
         Player player = playerOptional.get();
         loadWaifus(player);
-        loadBattleWaifu(player);
         loadGroups(player);
         loadTeams(player);
         loadTimes(userId, player);
@@ -115,16 +107,6 @@ public class PlayerLoaderSql implements PlayerLoader {
     List<Waifu> copiedWaifuList = new ArrayList<>(player.getWaifuList());
     for (Waifu waifu : copiedWaifuList) {
       waifuLoader.saveWaifu(waifu, player);
-    }
-  }
-
-  private void saveBattleWaifu(Player player) throws MyOwnException {
-    if (player.getBattleWaifu().isPresent()) {
-      if (sqlCommandExecutor.execute(new BattleWaifuExists(player))) {
-        sqlCommandExecutor.execute(new AlterBattleWaifu(player.getBattleWaifu().get(), player));
-      } else if (player.getBattleWaifu().isPresent()) {
-        sqlCommandExecutor.execute(new InsertBattleWaifu(player.getBattleWaifu().get(), player));
-      }
     }
   }
 
@@ -188,20 +170,6 @@ public class PlayerLoaderSql implements PlayerLoader {
     List<Group> groupList = groupLoader.getGroupsFromPlayer(player);
     for (Group group : groupList) {
       player.addGroup(group);
-    }
-  }
-
-  private void loadBattleWaifu(Player player) throws MyOwnException {
-    AbstractEntrySet<BattleWaifuEntry> battleWaifuEntrySet = sqlCommandExecutor.execute(
-        new SelectBattleWaifuByUserId(
-            player));
-    Optional<BattleWaifuEntry> battleWaifuEntry = battleWaifuEntrySet.getFirst();
-    if (battleWaifuEntry.isPresent()) {
-      Optional<Waifu> waifu = waifuLoader.getWaifuById(battleWaifuEntry.get().getWaifuId());
-      waifu.ifPresent(player::setBattleWaifu);
-    }
-    if (!player.getWaifuList().isEmpty() && player.getBattleWaifu().isEmpty()) {
-      player.setBattleWaifu(player.getWaifuList().get(0));
     }
   }
 

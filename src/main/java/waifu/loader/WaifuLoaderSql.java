@@ -1,6 +1,10 @@
 package waifu.loader;
 
 import exceptions.MyOwnException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import waifu.model.Player;
@@ -8,7 +12,6 @@ import waifu.model.Rarities;
 import waifu.model.Stats;
 import waifu.model.Waifu;
 import waifu.sql.SQLCommandExecutor;
-import waifu.sql.commands.battle_waifu.DeleteBattleWaifu;
 import waifu.sql.commands.character.InsertCharacterOrIgnore;
 import waifu.sql.commands.character.SelectCharacterByWaifuId;
 import waifu.sql.commands.group_waifu.DeleteWaifuFromAllGroups;
@@ -20,10 +23,6 @@ import waifu.sql.commands.waifu.SelectWaifuJoinedCharacter;
 import waifu.sql.entry.CharacterEntrySet;
 import waifu.sql.entry.WaifuCharacterEntrySet;
 import waifu.sql.entry.WaifuEntrySet;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
 
 @Singleton
 public final class WaifuLoaderSql implements WaifuLoader {
@@ -72,7 +71,8 @@ public final class WaifuLoaderSql implements WaifuLoader {
 
     Optional<Waifu> waifuOptional = Optional.empty();
 
-    CharacterEntrySet characterEntrySet = sqlCommandExecutor.execute(new SelectCharacterByWaifuId(id));
+    CharacterEntrySet characterEntrySet = sqlCommandExecutor.execute(
+        new SelectCharacterByWaifuId(id));
     Optional<CharacterEntrySet.CharacterEntry> characterEntryOptional = characterEntrySet.getFirst();
 
     WaifuEntrySet waifuEntrySet = sqlCommandExecutor.execute(new SelectWaifuById(id));
@@ -89,15 +89,9 @@ public final class WaifuLoaderSql implements WaifuLoader {
   @Override
   public void deleteWaifu(Waifu waifu, Player player) throws MyOwnException {
 
-    if (!player.getWaifuList().isEmpty() && player.getBattleWaifu().isPresent()
-        && player.getBattleWaifu().get().equals(waifu)) {
-      player.setBattleWaifu(player.getWaifuList().get(0));
-    }
-
     this.waifuCache.remove(waifu);
     player.deleteWaifu(waifu);
 
-    sqlCommandExecutor.execute(new DeleteBattleWaifu(waifu));
     sqlCommandExecutor.execute(new DeleteWaifuFromAllGroups(waifu));
     sqlCommandExecutor.execute(new DeleteTeamFighter(waifu));
     sqlCommandExecutor.execute(new DeleteWaifu(waifu));
