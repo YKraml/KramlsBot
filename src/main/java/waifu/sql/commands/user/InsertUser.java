@@ -23,6 +23,7 @@ public class InsertUser extends SQLCommandWithoutResult {
                 + "," + player.getInventory().getStardust()
                 + "," + player.getInventory().getCookies()
                 + "," + player.getMaxWaifus()
+                + "," + player.getInventory().getMorphStones()
                 + ");";
     }
 }

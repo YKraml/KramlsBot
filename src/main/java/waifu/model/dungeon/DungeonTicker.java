@@ -1,7 +1,6 @@
 package waifu.model.dungeon;
 
 import com.google.inject.Inject;
-import de.kraml.Terminal;
 import discord.ChannelFinder;
 import exceptions.MyOwnException;
 import java.util.ArrayList;
@@ -44,7 +43,7 @@ public class DungeonTicker {
 
     for (Team team : teams) {
 
-      giveTeamReward(team.getLevel(), team, dungeon);
+      giveReward(team.getLevel(), team, dungeon.getDifficulty());
       team.raiseLevel();
       fightEnemies(team, team.getLevel(), dungeon);
       checkIfTeamIsLow(team, channelFinder, dungeon);
@@ -62,9 +61,10 @@ public class DungeonTicker {
   private void checkIfTeamDied(List<Team> teamsToBeRemoved, Team team, int level,
       ChannelFinder channelFinder, Dungeon dungeon) throws MyOwnException {
     if (!team.isAlive()) {
-      Terminal.printLine(team.getFightHistories().toString());
+
       Inventory inventory = team.getInventory().losePartialInventory();
       teamsToBeRemoved.add(team);
+
       Optional<TextChannel> textChannelOptional = channelFinder.getTextChannelById(
           dungeon.getChannelId());
       if (textChannelOptional.isPresent()) {
@@ -91,17 +91,16 @@ public class DungeonTicker {
     }
   }
 
-  private void fightEnemies(Team team, int level, Dungeon dungeon) throws MyOwnException {
+  private void fightEnemies(Team team, int level, Dungeon dungeon) {
     Team enemyTeam = createEnemies(level, dungeon);
     List<FightHistory> fightHistoryList = team.fight(enemyTeam);
     team.addFightHistoryList(fightHistoryList);
   }
 
-  private Team createEnemies(int dungeonLevel, Dungeon dungeon) throws MyOwnException {
+  private Team createEnemies(int dungeonLevel, Dungeon dungeon) {
 
     int numberOfEnemies = (int) ((Math.random() * dungeon.getDifficulty()) + 1);
     Player tempPlayer = new Player("DUNGEON", "DUNGEON");
-    DungeonInformation dungeonInformation = new DungeonInformation();
     Team team = new Team("TEMP", "TEMP", tempPlayer, numberOfEnemies, new Inventory());
     tempPlayer.addTeam(team);
 
@@ -119,13 +118,15 @@ public class DungeonTicker {
     return team;
   }
 
-  private void giveTeamReward(int level, Team team, Dungeon dungeon) {
-    int wonMoney = (int) (dungeon.getDifficulty() * (Math.random() * 20) + level);
-    int wonStardust = (int) (dungeon.getDifficulty() * (Math.random() * 10) + level);
-    int wonCookies = (int) (dungeon.getDifficulty() * 0.05 + Math.random());
+  private void giveReward(int level, Team team, int difficulty) {
+    int wonMoney = (int) (difficulty * (Math.random() * 20) + level);
+    int wonStardust = (int) (difficulty * (Math.random() * 10) + level);
+    int wonCookies = (int) (difficulty * 0.05 + Math.random());
+    int wonMorphStones = level % 100 == 99 && Math.random() < difficulty ? 1 : 0;
 
     team.getInventory().addMoney(wonMoney);
     team.getInventory().addStardust(wonStardust);
     team.getInventory().addCookies(wonCookies);
+    team.getInventory().addMorphStones(wonMorphStones);
   }
 }

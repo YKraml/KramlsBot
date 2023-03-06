@@ -25,11 +25,12 @@ public class InsertTeamOrUpdate extends SQLCommandWithoutResult {
     String name = team.getName();
     String playerId = team.getPlayer().getId();
     int level = team.getLevel();
+    long morphStones = team.getInventory().getMorphStones();
 
     return String.format(Locale.US,
-        "insert into KRAMLSBOT.TEAM values ('%s','%s','%s',%d,%b,%d,%d,%d,'%s',%d) on duplicate key update name = '%s',teamsize = %d,isInDungeon = %b,money = %d,stardust = %d,cookies = %d,dungeon = '%s',level = %d;",
+        "insert into KRAMLSBOT.TEAM values ('%s','%s','%s',%d,%b,%d,%d,%d,'%s',%d, %d) on duplicate key update name = '%s',teamsize = %d,isInDungeon = %b,money = %d,stardust = %d,cookies = %d,dungeon = '%s',level = %d, morphStones = %d;",
         id, name, playerId, teamSize, inDungeon, money, stardust, cookies,
-        channelId, level,
-        name, teamSize, inDungeon, money, stardust, cookies, channelId, level);
+        channelId, level, morphStones,
+        name, teamSize, inDungeon, money, stardust, cookies, channelId, level, morphStones);
   }
 }

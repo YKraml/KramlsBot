@@ -154,10 +154,11 @@ public class Team implements DisplayableElement {
 
   public void givePocketToPlayer() throws MyOwnException {
     checkIfTeamIsInDungeon();
-    this.player.getInventory().addMoney(this.inventory.getMoney());
-    this.player.getInventory().addStardust(this.inventory.getStardust());
-    this.player.getInventory().addCookies(this.inventory.getCookies());
-    this.inventory.clear();
+    player.getInventory().addMoney(inventory.getMoney());
+    player.getInventory().addStardust(inventory.getStardust());
+    player.getInventory().addCookies(inventory.getCookies());
+    player.getInventory().addMorphStones(inventory.getMorphStones());
+    inventory.clear();
   }
 
   public boolean expand() throws MyOwnException {
@@ -252,5 +253,9 @@ public class Team implements DisplayableElement {
     if (this.dungeonInformation.isInDungeon()) {
       throw new MyOwnException(new TeamIsInDungeon(this), null);
     }
+  }
+
+  public int getCurrentLevel() {
+    return dungeonInformation.getLevel();
   }
 }

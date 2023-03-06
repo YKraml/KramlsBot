@@ -27,9 +27,11 @@ public class TeamGavePocketMessage extends MyMessage {
     long money = team.getInventory().getMoney();
     long stardust = team.getInventory().getStardust();
     long cookies = team.getInventory().getCookies();
+    long morphStones = team.getInventory().getMorphStones();
 
     return this.convertStringToEmbed(
-        "%s, du hast %d Euro, %d Stardust und %d Cookies erhalten".formatted(playerName, money,
-            stardust, cookies));
+        "%s, du hast %d Euro, %d Stardust; %d Cookies und %d Morphsteine erhalten".formatted(
+            playerName, money,
+            stardust, cookies, morphStones));
   }
 }

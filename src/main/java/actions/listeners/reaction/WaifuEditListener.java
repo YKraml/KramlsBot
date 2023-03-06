@@ -6,7 +6,6 @@ import embeds.waifu.WaifuDeletedEmbed;
 import embeds.waifu.WaifuEmbed;
 import exceptions.MyOwnException;
 import java.util.Optional;
-import java.util.function.Consumer;
 import messages.MessageSender;
 import messages.messages.ButtonNotForYou;
 import messages.messages.ChangedPicture;
@@ -83,11 +82,11 @@ public class WaifuEditListener extends MyAbstractReactionListener implements Rea
   }
 
   private void changePicture(Message message) throws MyOwnException {
-    int cost = 1000;
+    int cost = 1;
 
     Optional<String> randomPictureByMalId = jikanFetcher.getRandomPictureByMalId(waifu.getIdMal());
     if (randomPictureByMalId.isPresent()) {
-      player.getInventory().removeMoney(cost);
+      player.getInventory().removeMorphStones(cost);
       waifu.setImageUrl(randomPictureByMalId.get());
       message.edit(new WaifuEmbed(waifu));
       messageSender.send(new ChangedPicture(player, cost), message.getChannel());

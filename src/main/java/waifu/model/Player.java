@@ -46,7 +46,8 @@ public class Player {
   }
 
   public static Player createEmptyPlayer() {
-    return new Player("1234", "Temporärer Name", 1, "1234", new Inventory(10000, 10000, 10000), 1);
+    return new Player("1234", "Temporärer Name", 1, "1234", new Inventory(10000, 10000, 10000,
+        100), 1);
   }
 
   public String getLastDaily() {

@@ -19,6 +19,7 @@ public class PlayerMapper extends AbstractMapper<Player, UserEntrySet.UserEntry>
         inventory.setMoney(entry.getMoney());
         inventory.setStardust(entry.getStardust());
         inventory.setCookies(entry.getCookies());
+        inventory.setMorphStones(entry.getMorphStones());
 
         return new Player(entry.getId(), entry.getName(), entry.getRightGuesses(), entry.getLastDaily(), inventory, entry.getMaxWaifus());
     }

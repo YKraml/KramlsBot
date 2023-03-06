@@ -84,7 +84,7 @@ public final class TeamLoaderSql implements TeamLoader {
     }
 
     Team team = new Team(entry.getId(), entry.getName(), player, entry.getTeamsize(),
-        new Inventory(entry.getMoney(), entry.getStardust(), entry.getCookies()));
+        new Inventory(entry.getMoney(), entry.getStardust(), entry.getCookies(), entry.getMorphStones()));
 
     TeamFighterEntrySet teamFighterEntrySet = sqlCommandExecutor.execute(
         new SelectWaifusFromTeam(team));

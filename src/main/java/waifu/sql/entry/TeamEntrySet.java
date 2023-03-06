@@ -16,8 +16,10 @@ public class TeamEntrySet extends AbstractEntrySet<TeamEntrySet.TeamEntry> {
         int cookies = resultSet.getInt(8);
         String dungeon = resultSet.getString(9);
         int level = resultSet.getInt(10);
+        int morphStones = resultSet.getInt(11);
 
-        TeamEntry teamEntry = new TeamEntry(id, name, playerId, teamsize, isInDungeon, money, stardust, cookies, dungeon, level);
+        TeamEntry teamEntry = new TeamEntry(id, name, playerId, teamsize, isInDungeon, money, stardust, cookies, dungeon, level,
+            morphStones);
         this.addEntry(teamEntry);
 
     }
@@ -34,8 +36,10 @@ public class TeamEntrySet extends AbstractEntrySet<TeamEntrySet.TeamEntry> {
         private final int cookies;
         private final String dungeon;
         private final int level;
+        private final int morphStones;
 
-        public TeamEntry(String id, String name, String playerId, int teamsize, boolean isInDungeon, int money, int stardust, int cookies, String dungeon, int level) {
+        public TeamEntry(String id, String name, String playerId, int teamsize, boolean isInDungeon, int money, int stardust, int cookies, String dungeon, int level,
+            int morphStones) {
             this.id = id;
             this.name = name;
             this.playerId = playerId;
@@ -46,6 +50,7 @@ public class TeamEntrySet extends AbstractEntrySet<TeamEntrySet.TeamEntry> {
             this.cookies = cookies;
             this.dungeon = dungeon;
             this.level = level;
+            this.morphStones = morphStones;
         }
 
         public String getId() {
@@ -86,6 +91,10 @@ public class TeamEntrySet extends AbstractEntrySet<TeamEntrySet.TeamEntry> {
 
         public int getLevel() {
             return level;
+        }
+
+        public int getMorphStones() {
+            return morphStones;
         }
     }
 }

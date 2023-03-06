@@ -42,7 +42,7 @@ public class RoutineSpawnWaifuCommand extends Routine {
   Answer start(RoutineRunner routineRunner) throws MyOwnException {
     Player player = playerLoader.getPlayerByUser(user);
     if (player.getInventory().getMoney() < 1000) {
-      throw new MyOwnException(new NotEnoughResource(player.getInventory(), 1000, "Geld"), null);
+      throw new MyOwnException(new NotEnoughResource(player.getInventory().getMoney(), 1000, "Geld"), null);
     }
 
     Waifu waifu = waifuBuilder.createRandomWaifu();

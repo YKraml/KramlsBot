@@ -24,7 +24,7 @@ public class ChangedPicture extends MyMessage {
   @Override
   protected EmbedBuilder getContent() throws MyOwnException {
     return convertStringToEmbed(
-        "%s, das Bild wurde gewechselt. Es hat dich %d Geld gekostet.".formatted(player.getNameTag(),
+        "%s, das Bild wurde gewechselt. Es hat dich %d Morphstein(e) gekostet.".formatted(player.getNameTag(),
             cost));
   }
 }
