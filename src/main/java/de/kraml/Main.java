@@ -50,8 +50,11 @@ public class Main {
 
     ScheduledExecutorService scheduler = injector.getInstance(ScheduledExecutorService.class);
     scheduler.schedule(spawnWaifuTask, 5, TimeUnit.MINUTES);
-    scheduler.scheduleAtFixedRate(givePointsTask, 5, 5, TimeUnit.MINUTES);
+    int timeInMinutes = givePointsTask.getTimeInMinutes();
+    scheduler.scheduleAtFixedRate(givePointsTask, 5, timeInMinutes, TimeUnit.MINUTES);
     scheduler.scheduleAtFixedRate(dungeonTickTask, 5, 5, TimeUnit.MINUTES);
+
+
   }
 
   private static void initSlashCommands(List<ACommand> commands) {

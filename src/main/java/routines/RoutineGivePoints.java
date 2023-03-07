@@ -37,7 +37,7 @@ public class RoutineGivePoints extends Routine {
           player.getInventory().addMoney(addedMoney);
           player.addToTimeOnServer(server.getIdAsString(), passedTimeInMinutes);
           playerLoader.savePlayer(player);
-          Terminal.printLine("Gave points to '" + player.getName() + "'");
+          Terminal.printLine("Gave points to '%s'".formatted(player.getName()));
         }
       }
     }

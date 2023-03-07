@@ -4,12 +4,13 @@ package de.kraml;
 import actions.listeners.commands.ACommand;
 import actions.listeners.commands.dungeon.CreateDungeon;
 import actions.listeners.commands.dungeon.DeleteDungeons;
-import actions.listeners.commands.dungeon.TeamAdd;
-import actions.listeners.commands.dungeon.TeamCreate;
-import actions.listeners.commands.dungeon.TeamExpand;
-import actions.listeners.commands.dungeon.TeamRemove;
-import actions.listeners.commands.dungeon.TeamRename;
-import actions.listeners.commands.dungeon.TeamsList;
+import actions.listeners.commands.teams.Fight;
+import actions.listeners.commands.teams.TeamAdd;
+import actions.listeners.commands.teams.TeamCreate;
+import actions.listeners.commands.teams.TeamExpand;
+import actions.listeners.commands.teams.TeamRemove;
+import actions.listeners.commands.teams.TeamRename;
+import actions.listeners.commands.teams.TeamsList;
 import actions.listeners.commands.gambling.DoubleOrNothing;
 import actions.listeners.commands.gambling.DoubleOrNothingWithParameter;
 import actions.listeners.commands.group.GroupAddWaifu;
@@ -52,7 +53,6 @@ import org.javacord.api.DiscordApiBuilder;
 import routines.RoutineRunner;
 import waifu.loader.DungeonLoader;
 import waifu.loader.DungeonLoaderSql;
-import waifu.loader.PlayLoaderOffline;
 import waifu.loader.PlayerLoader;
 import waifu.loader.PlayerLoaderCached;
 import waifu.loader.TeamLoader;
@@ -113,7 +113,8 @@ public class MyModule extends AbstractModule {
       GroupShowList groupShowList, GroupRemoveWaifu groupRemoveWaifu, GroupDelete groupDelete,
       TeamAdd teamAdd, TeamRemove teamRemove, TeamCreate teamCreate, TeamExpand teamExpand,
       TeamsList teamsList, TeamRename teamRename, CreateDungeon createDungeon,
-      DeleteDungeons deleteDungeons, Play play, Stop stop, ShowQueue showQueue, Songs songs) {
+      DeleteDungeons deleteDungeons, Play play, Stop stop, ShowQueue showQueue, Songs songs,
+      Fight fight) {
 
     List<ACommand> commands = new ArrayList<>();
     commands.add(disconnect);
@@ -151,6 +152,7 @@ public class MyModule extends AbstractModule {
     commands.add(stop);
     commands.add(showQueue);
     commands.add(songs);
+    commands.add(fight);
 
     commands.forEach(abstractCommand -> abstractCommand.setRoutineRunner(routineRunner));
 
