@@ -31,8 +31,8 @@ public class ChooseTeam extends MyMessage {
       }
 
       @Override
-      protected void reactToCountEmoji(TextChannel textChannel, int listPosition, Server server,
-          User user)
+      protected void reactToCountEmoji(Server server, TextChannel textChannel, User user,
+          int listPosition)
           throws MyOwnException {
         // TODO: 07.03.2023 Nachdem das Team ausgewählt wurde, sollte irgendwie die Klasse RoutineStartFight davon in Erfahrung kommen.
       }

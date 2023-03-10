@@ -40,8 +40,8 @@ public class GroupListListener extends MyAbstractListListener<Group> {
     }
 
     @Override
-    protected void reactToCountEmoji(TextChannel textChannel, int listPosition, Server server,
-        User user) throws MyOwnException {
+    protected void reactToCountEmoji(Server server, TextChannel textChannel, User user,
+        int listPosition) throws MyOwnException {
         Group group = player.getGroupList().get(listPosition);
         MessageSenderImpl result;
         synchronized (MessageSenderImpl.class) {

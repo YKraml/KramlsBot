@@ -85,9 +85,8 @@ public class AnimeStartSongReactionListener extends
   }
 
   @Override
-  protected void reactToCountEmoji(TextChannel textChannel, int listPosition, Server server,
-      User user)
-      throws MyOwnException {
+  protected void reactToCountEmoji(Server server, TextChannel textChannel, User user,
+      int listPosition) throws MyOwnException {
     String animeTitle = this.anime.getData().getTitleEnglish();
     String song = songs.get(listPosition);
     String titleToBeSearched = jikanFetcher.parseOpeningName(animeTitle, song);

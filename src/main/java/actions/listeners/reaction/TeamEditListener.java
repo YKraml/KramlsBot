@@ -54,8 +54,8 @@ public class TeamEditListener extends MyAbstractListListener<Fighter> implements
   }
 
   @Override
-  protected void reactToCountEmoji(TextChannel textChannel, int listPosition, Server server,
-      User user)
+  protected void reactToCountEmoji(Server server, TextChannel textChannel, User user,
+      int listPosition)
       throws MyOwnException {
     messageSender.send(
         new WaifuStats(team.getFighters().get(listPosition).getWaifu(), team.getPlayer(),

@@ -35,8 +35,8 @@ public class DungeonListListener extends MyAbstractListListener<Dungeon> {
   }
 
   @Override
-  protected void reactToCountEmoji(TextChannel textChannel, int listPosition, Server server,
-      User user)
+  protected void reactToCountEmoji(Server server, TextChannel textChannel, User user,
+      int listPosition)
       throws MyOwnException {
     Dungeon dungeon = dungeonList.get(listPosition);
     team.entersDungeon(dungeon, 1);

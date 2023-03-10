@@ -35,8 +35,8 @@ public class DungeonDeletionListListener extends MyAbstractListListener<Dungeon>
   }
 
   @Override
-  protected void reactToCountEmoji(TextChannel textChannel, int listPosition, Server server,
-      User user)
+  protected void reactToCountEmoji(Server server, TextChannel textChannel, User user,
+      int listPosition)
       throws MyOwnException {
     List<Dungeon> dungeons = dungeonLoader.getAllDungeonsFromServer(serverId);
     Dungeon dungeonToDelete = dungeons.get(listPosition);

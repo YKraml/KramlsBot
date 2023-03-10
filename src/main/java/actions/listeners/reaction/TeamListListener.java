@@ -42,8 +42,8 @@ public class TeamListListener extends MyAbstractListListener<Team> {
     }
 
     @Override
-    protected void reactToCountEmoji(TextChannel textChannel, int listPosition, Server server,
-        User user) throws MyOwnException {
+    protected void reactToCountEmoji(Server server, TextChannel textChannel, User user,
+        int listPosition) throws MyOwnException {
         Team team = player.getTeamList().get(listPosition);
       MessageSenderImpl result;
       synchronized (MessageSenderImpl.class) {

@@ -42,8 +42,8 @@ public class SongsListReactionListener extends MyAbstractListListener<QueueEleme
     }
 
     @Override
-    protected void reactToCountEmoji(TextChannel textChannel, int listPosition, Server server,
-        User user) throws MyOwnException {
+    protected void reactToCountEmoji(Server server, TextChannel textChannel, User user,
+        int listPosition) throws MyOwnException {
 
         ChannelFinder channelFinder = new ChannelFinder(textChannel.getApi());
         ServerVoiceChannel voiceChannel = channelFinder.getServerVoiceChannelByMember(this.server,

@@ -49,8 +49,8 @@ public class GroupListener extends MyAbstractListListener<Waifu> implements Reac
   }
 
   @Override
-  protected void reactToCountEmoji(TextChannel textChannel, int listPosition, Server server,
-      User user)
+  protected void reactToCountEmoji(Server server, TextChannel textChannel, User user,
+      int listPosition)
       throws MyOwnException {
     Waifu waifu = group.getWaifuList().get(listPosition);
     messageSender.send(new WaifuStats(waifu, player, playerLoader,

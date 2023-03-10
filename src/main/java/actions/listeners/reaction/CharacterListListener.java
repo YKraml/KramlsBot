@@ -55,8 +55,8 @@ public class CharacterListListener extends MyAbstractListListener<DisplayableEle
     }
 
     @Override
-    protected void reactToCountEmoji(TextChannel textChannel, int listPosition, Server server,
-        User user) throws MyOwnException {
+    protected void reactToCountEmoji(Server server, TextChannel textChannel, User user,
+        int listPosition) throws MyOwnException {
       MessageSenderImpl result;
       synchronized (MessageSenderImpl.class) {
         result = new MessageSenderImpl();

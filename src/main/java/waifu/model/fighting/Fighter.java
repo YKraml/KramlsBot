@@ -38,34 +38,19 @@ public class Fighter implements DisplayableElement {
 
   public Attack attack(Fighter defender) {
 
-    double level = this.waifu.getLevel();
     double basisschaden = 60;
-    double att = this.waifu.getAtt();
     double def = defender.getWaifu().getDef();
-    double f1 = 1;
-    double volltreffer = 1;
-    double f2 = 1;
     double z = 100 - (int) (Math.random() * 16);
-    double stab = 1;
-    double typ1 = 1;
-    double typ2 = 1;
-    double f3 = 1;
 
-    double c1 = floor(level * 0.4);
+    double c1 = floor((double) this.waifu.getLevel() * 0.4);
     double c2 = floor(c1 + 2);
     double c3 = floor(c2 * basisschaden);
-    double c4 = floor(c3 * att);
-    double c5 = floor(c4 / (50 * def));
-    double c6 = floor(c5 * f1);
-    double c7 = floor(c6 + 2);
-    double c8 = floor(c7 * volltreffer);
-    double c9 = floor(c8 * f2);
+    double c4 = floor(c3 * (double) this.waifu.getAtt());
+    double c6 = floor(c4 / (50 * def));
+    double c9 = floor(c6 + 2);
     double c10 = floor(c9 * z);
     double c11 = floor(c10 / 100);
-    double c12 = floor(c11 * stab);
-    double c13 = floor(c12 * typ1);
-    double c14 = floor(c13 * typ2);
-    double c15 = floor(c14 * f3);
+    double c15 = floor(c11);
 
     int damage = (int) (c15 * 1.5);
 
