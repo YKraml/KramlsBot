@@ -17,6 +17,7 @@ import org.javacord.api.entity.message.Message;
 
 class MusicPlayer {
 
+  private final static int MAX_MESSAGES = 3;
   private ServerVoiceChannel serverVoiceChannel;
   private final AudioPlayerManager audioPlayerManager;
   private final AudioPlayer audioPlayer;
@@ -56,7 +57,6 @@ class MusicPlayer {
 
   public void addQueueMessage(Message message) {
     this.messages.add(message);
-    int MAX_MESSAGES = 3;
     if (messages.size() > MAX_MESSAGES) {
       this.messages.remove(MAX_MESSAGES);
     }

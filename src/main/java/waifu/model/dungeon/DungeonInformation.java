@@ -10,7 +10,7 @@ public class DungeonInformation {
   public DungeonInformation() {
     this.isOwnerMessaged = false;
     this.isInDungeon = false;
-    this.currentDungeon = Dungeon.HOME;
+    this.currentDungeon = Dungeon.getHOME();
     this.level = 0;
   }
 
@@ -24,7 +24,7 @@ public class DungeonInformation {
   public void leavesDungeon() {
     this.level = 0;
     isOwnerMessaged = false;
-    currentDungeon = Dungeon.HOME;
+    currentDungeon = Dungeon.getHOME();
     isInDungeon = false;
   }
 

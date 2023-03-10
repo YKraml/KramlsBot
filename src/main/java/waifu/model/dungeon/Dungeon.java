@@ -7,7 +7,7 @@ import java.util.*;
 
 public class Dungeon implements DisplayableElement {
 
-  public static Dungeon HOME = new Dungeon("", "", "Home", 0);
+  private static final Dungeon HOME = new Dungeon("", "", "Home", 0);
   private final String serverId;
   private final String channelId;
   private final String name;
@@ -20,6 +20,10 @@ public class Dungeon implements DisplayableElement {
     this.name = name;
     this.difficulty = difficulty;
     this.records = Collections.synchronizedList(new ArrayList<>());
+  }
+
+  public static Dungeon getHOME() {
+    return HOME;
   }
 
   public String getChannelId() {

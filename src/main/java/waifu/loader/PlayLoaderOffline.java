@@ -5,7 +5,7 @@ import waifu.model.Player;
 
 public class PlayLoaderOffline implements PlayerLoader{
 
-  private static final Player player = Player.createEmptyPlayer();
+  private static final Player PLAYER = Player.createEmptyPlayer();
 
   @Override
   public void savePlayer(Player player) throws MyOwnException {
@@ -14,6 +14,6 @@ public class PlayLoaderOffline implements PlayerLoader{
 
   @Override
   public Player getPlayerById(String userId) throws MyOwnException {
-    return player;
+    return PLAYER;
   }
 }
