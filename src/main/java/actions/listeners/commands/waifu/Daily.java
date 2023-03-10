@@ -42,7 +42,7 @@ public class Daily extends ACommand {
 
   @Override
   public List<SlashCommandOption> getSlashCommandOptions() {
-    return null;
+    return List.of();
   }
 
   @Override

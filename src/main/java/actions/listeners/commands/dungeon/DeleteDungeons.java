@@ -22,7 +22,6 @@ public class DeleteDungeons extends ACommand {
 
   @Inject
   public DeleteDungeons(DungeonLoader dungeonLoader, MessageSender messageSender) {
-    super();
     this.dungeonLoader = dungeonLoader;
     this.messageSender = messageSender;
   }
