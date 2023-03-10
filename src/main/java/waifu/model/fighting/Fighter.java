@@ -98,36 +98,42 @@ public class Fighter implements DisplayableElement {
   public FightHistory fight(Fighter enemy) {
 
     Fighter fighter1 = this;
-
-    Fighter temp;
+    Fighter fighter2 = enemy;
     if (fighter1.getWaifu().getInit() < enemy.getWaifu().getInit()) {
-      temp = fighter1;
       fighter1 = enemy;
-      enemy = temp;
+      fighter2 = this;
     }
 
-    FightHistory history = new FightHistory(fighter1, enemy);
-    while (fighter1.isAlive() && enemy.isAlive()) {
+    FightHistory history = startFight(fighter1, fighter2);
+    setWinner(fighter1, fighter2, history);
 
-      Attack attack1 = fighter1.attack(enemy);
+    return history;
+  }
+
+  private static FightHistory startFight(Fighter fighter1, Fighter fighter2) {
+    FightHistory history = new FightHistory(fighter1, fighter2);
+    while (fighter1.isAlive() && fighter2.isAlive()) {
+
+      Attack attack1 = fighter1.attack(fighter2);
       history.addAttack(attack1);
 
-      if (enemy.isAlive()) {
-        Attack attack2 = enemy.attack(fighter1);
+      if (fighter2.isAlive()) {
+        Attack attack2 = fighter2.attack(fighter1);
         history.addAttack(attack2);
 
       }
     }
+    return history;
+  }
 
+  private static void setWinner(Fighter fighter1, Fighter fighter2, FightHistory history) {
     if (fighter1.isAlive()) {
       history.setWinner(fighter1);
-      fighter1.addXpByKill(enemy.getWaifu().getRarity(), enemy.getWaifu().getLevel());
-    } else if (enemy.isAlive()) {
-      history.setWinner(enemy);
-      enemy.addXpByKill(fighter1.getWaifu().getRarity(), fighter1.getWaifu().getLevel());
+      fighter1.addXpByKill(fighter2.getWaifu().getRarity(), fighter2.getWaifu().getLevel());
+    } else if (fighter2.isAlive()) {
+      history.setWinner(fighter2);
+      fighter2.addXpByKill(fighter1.getWaifu().getRarity(), fighter1.getWaifu().getLevel());
     }
-
-    return history;
   }
 
 

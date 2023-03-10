@@ -34,7 +34,7 @@ public class GroupOverview extends MyMessage {
 
     @Override
     protected void startRoutine(Message message) throws MyOwnException {
-        this.addCountEmojis(message, group.getWaifuSet().size());
+        this.addCountEmojis(message, group.getWaifuList().size());
         message.addReactionAddListener(new GroupListener(group, player, playerLoader, waifuLoader,
             jikanFetcher, messageSender));
     }

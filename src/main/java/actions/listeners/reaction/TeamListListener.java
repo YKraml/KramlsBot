@@ -5,6 +5,8 @@ import exceptions.MyOwnException;
 import messages.MessageSender;
 import messages.MessageSenderImpl;
 import messages.messages.TeamOverview;
+import org.javacord.api.entity.server.Server;
+import org.javacord.api.entity.user.User;
 import waifu.JikanFetcher;
 import waifu.loader.DungeonLoader;
 import waifu.loader.PlayerLoader;
@@ -40,7 +42,8 @@ public class TeamListListener extends MyAbstractListListener<Team> {
     }
 
     @Override
-    protected void reactToCountEmoji(TextChannel textChannel, int listPosition) throws MyOwnException {
+    protected void reactToCountEmoji(TextChannel textChannel, int listPosition, Server server,
+        User user) throws MyOwnException {
         Team team = player.getTeamList().get(listPosition);
       MessageSenderImpl result;
       synchronized (MessageSenderImpl.class) {

@@ -2,10 +2,11 @@ package waifu.model;
 
 import embeds.DisplayableElement;
 
-import exceptions.ExceptionMessage;
 import exceptions.MyOwnException;
 import java.util.Collections;
 import java.util.LinkedHashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
@@ -13,12 +14,12 @@ public class Group implements DisplayableElement {
 
   private final String id;
   private final String name;
-  private final Set<Waifu> waifuSet;
+  private final List<Waifu> waifus;
 
   public Group(String id, String name) {
     this.id = id;
     this.name = name;
-    this.waifuSet = new LinkedHashSet<>();
+    this.waifus = new LinkedList<>();
   }
 
   public String getId() {
@@ -29,15 +30,15 @@ public class Group implements DisplayableElement {
     return name;
   }
 
-  public Set<Waifu> getWaifuSet() {
-    return Collections.unmodifiableSet(waifuSet);
+  public List<Waifu> getWaifuList() {
+    return Collections.unmodifiableList(waifus);
   }
 
   public void addWaifu(Waifu waifu) throws MyOwnException {
-    if (waifuSet.contains(waifu)) {
+    if (waifus.contains(waifu)) {
       throw new MyOwnException(() -> "Waifu schon in der Gruppe.", null);
     }
-    this.waifuSet.add(waifu);
+    this.waifus.add(waifu);
   }
 
   @Override
@@ -47,19 +48,19 @@ public class Group implements DisplayableElement {
 
   @Override
   public String getDisplayBody() {
-    return "Waifus: " + this.waifuSet.size() + " Stueck.";
+    return "Waifus: " + this.waifus.size() + " Stueck.";
   }
 
   @Override
   public String getDisplayImageUrl() {
     try {
-      return waifuSet.iterator().next().getDisplayImageUrl();
+      return waifus.iterator().next().getDisplayImageUrl();
     } catch (NoSuchElementException e) {
       return null;
     }
   }
 
   public boolean removeWaifu(Waifu waifu) {
-    return this.waifuSet.remove(waifu);
+    return this.waifus.remove(waifu);
   }
 }

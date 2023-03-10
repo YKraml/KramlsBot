@@ -39,7 +39,8 @@ public class DeleteWaifuListListener extends MyAbstractListListener<Waifu> {
     }
 
     @Override
-    protected void reactToCountEmoji(TextChannel textChannel, int listPosition) throws MyOwnException {
+    protected void reactToCountEmoji(TextChannel textChannel, int listPosition, Server server,
+        User user) throws MyOwnException {
 
         Waifu waifu = player.getWaifuList().get(listPosition);
 

@@ -17,7 +17,7 @@ public class GroupEmbed extends EmbedBuilder {
         this.setDescription("Seite: " + (page + 1));
         this.setColor(Main.COLOR);
 
-        Iterator<Waifu> iterator = group.getWaifuSet().iterator();
+        Iterator<Waifu> iterator = group.getWaifuList().iterator();
 
         int i = page * 10;
         while (iterator.hasNext()) {

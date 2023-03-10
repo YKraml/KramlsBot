@@ -42,13 +42,17 @@ public class SongsListReactionListener extends MyAbstractListListener<QueueEleme
     }
 
     @Override
-    protected void reactToCountEmoji(TextChannel textChannel, int listPosition) throws MyOwnException {
+    protected void reactToCountEmoji(TextChannel textChannel, int listPosition, Server server,
+        User user) throws MyOwnException {
 
         ChannelFinder channelFinder = new ChannelFinder(textChannel.getApi());
-        ServerVoiceChannel voiceChannel = channelFinder.getServerVoiceChannelByMember(server, user);
+        ServerVoiceChannel voiceChannel = channelFinder.getServerVoiceChannelByMember(this.server,
+            this.user);
 
-        musicPlayerManager.addToQueue(server, voiceChannel, textChannel, player.getLikedSongs().get(listPosition));
-        musicPlayerManager.startPlaying(new ChannelFinder(textChannel.getApi()).getServerVoiceChannelByMember(server, user), textChannel);
+        musicPlayerManager.addToQueue(
+            this.server, voiceChannel, textChannel, player.getLikedSongs().get(listPosition));
+        musicPlayerManager.startPlaying(new ChannelFinder(textChannel.getApi()).getServerVoiceChannelByMember(
+            this.server, this.user), textChannel);
         messageSender.send(new SongAdded(player.getLikedSongs().get(listPosition),
             musicPlayerManager, playerLoader), textChannel);
     }

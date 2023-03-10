@@ -24,37 +24,38 @@ public class DungeonEmbed extends EmbedBuilder {
 
     int i = 1;
     for (Team team : teams) {
-
       if (i % 3 == 0) {
         this.addField(".", ".");
       }
-
-      String title = team.getName();
-      StringBuilder body = new StringBuilder();
-      body.append("Ebene: ")
-          .append(team.getLevel())
-          .append(" | ")
-          .append(team.getHpPercentage())
-          .append("% HP\n");
-      for (Fighter fighter : team.getFighters()) {
-        body.append(fighter.getWaifu().getName())
-            .append(" | lvl ")
-            .append(fighter.getWaifu().getLevel())
-            .append(" | ")
-            .append(fighter.getCurrentHp())
-            .append("/")
-            .append(fighter.getWaifu().getHp())
-            .append(" HP \n");
-      }
-      String inventoryBody = "%d Euro | %d Stardust | %d Cookies | %d Morphsteine".formatted(
-          team.getInventory().getMoney(), team.getInventory().getStardust(),
-          team.getInventory().getCookies(), team.getInventory().getMorphStones());
-
-      body.append(inventoryBody);
-      this.addInlineField(title, body.toString());
-
+      addTeam(team);
       i++;
     }
 
+  }
+
+  private void addTeam(Team team) {
+    String title = team.getName();
+    StringBuilder stringBuilder = new StringBuilder();
+    stringBuilder.append("Ebene: ")
+        .append(team.getLevel())
+        .append(" | ")
+        .append(team.getHpPercentage())
+        .append("% HP\n");
+    for (Fighter fighter : team.getFighters()) {
+      stringBuilder.append(fighter.getWaifu().getName())
+          .append(" | lvl ")
+          .append(fighter.getWaifu().getLevel())
+          .append(" | ")
+          .append(fighter.getCurrentHp())
+          .append("/")
+          .append(fighter.getWaifu().getHp())
+          .append(" HP \n");
+    }
+    String inventoryBody = "%d Euro | %d Stardust | %d Cookies | %d Morphsteine".formatted(
+        team.getInventory().getMoney(), team.getInventory().getStardust(),
+        team.getInventory().getCookies(), team.getInventory().getMorphStones());
+
+    stringBuilder.append(inventoryBody);
+    this.addInlineField(title, stringBuilder.toString());
   }
 }

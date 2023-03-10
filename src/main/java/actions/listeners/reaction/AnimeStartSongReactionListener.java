@@ -1,10 +1,12 @@
 package actions.listeners.reaction;
 
 import discord.ChannelFinder;
-import discord.Emojis;
+import embeds.DisplayableElement;
 import embeds.anime.AnimeSongEmbed;
 import exceptions.MyOwnException;
 import exceptions.messages.CouldNotFindSong;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import messages.MessageSender;
 import messages.messages.SongAdded;
 import model.jikan.anime.animeByIdFull.AnimeFullById;
@@ -26,13 +28,13 @@ import youtube.model.search.YoutubeSearch;
 import java.util.List;
 import java.util.Optional;
 
-public class AnimeStartSongReactionListener extends MyAbstractReactionListener implements
+public class AnimeStartSongReactionListener extends
+    MyAbstractListListener<DisplayableElement> implements
     ReactionAddListener {
 
   private final List<String> songs;
   private final AnimeFullById anime;
   private final String type;
-  private int pageNumber = 0;
   private final ChannelFinder channelFinder;
   private final YoutubeFetcher youtubeFetcher;
   private final MusicPlayerManager musicPlayerManager;
@@ -44,6 +46,7 @@ public class AnimeStartSongReactionListener extends MyAbstractReactionListener i
       ChannelFinder channelFinder, YoutubeFetcher youtubeFetcher,
       MusicPlayerManager musicPlayerManager, PlayerLoader playerLoader, JikanFetcher jikanFetcher,
       MessageSender messageSender) {
+    super(mapSongs(songs));
     this.songs = songs;
     this.anime = anime;
     this.type = type;
@@ -55,56 +58,65 @@ public class AnimeStartSongReactionListener extends MyAbstractReactionListener i
     this.messageSender = messageSender;
   }
 
+  private static List<DisplayableElement> mapSongs(List<String> songs) {
+    return songs.stream()
+        .map((Function<String, DisplayableElement>) s -> new DisplayableElement() {
+          @Override
+          public String getDisplayTitle() {
+            return s;
+          }
+
+          @Override
+          public String getDisplayBody() {
+            return s;
+          }
+
+          @Override
+          public String getDisplayImageUrl() {
+            return "";
+          }
+        }).collect(Collectors.toList());
+  }
+
+
+  @Override
+  protected void updateMessage(Message message, int page) throws MyOwnException {
+    message.edit(new AnimeSongEmbed(type, songs, page));
+  }
+
+  @Override
+  protected void reactToCountEmoji(TextChannel textChannel, int listPosition, Server server,
+      User user)
+      throws MyOwnException {
+    String animeTitle = this.anime.getData().getTitleEnglish();
+    String song = songs.get(listPosition);
+    String titleToBeSearched = jikanFetcher.parseOpeningName(animeTitle, song);
+
+    Optional<YoutubeSearch> youtubeSearch = youtubeFetcher.getSearchByTitle(titleToBeSearched);
+    if (youtubeSearch.isEmpty()) {
+      throw new MyOwnException(new CouldNotFindSong(titleToBeSearched), null);
+    }
+
+    String videoId = youtubeSearch.get().getItems().get(0).getId().getVideoId();
+    String url = "https://www.youtube.com/watch?v=" + videoId;
+    QueueElement queueElement = new QueueElement(titleToBeSearched, url, user.getName());
+    ServerVoiceChannel voiceChannel = channelFinder.getServerVoiceChannelByMember(server, user);
+    musicPlayerManager.addToQueue(server, voiceChannel, textChannel, queueElement);
+    musicPlayerManager.startPlaying(voiceChannel, textChannel);
+    messageSender.send(new SongAdded(queueElement, musicPlayerManager, playerLoader), textChannel);
+  }
+
+  @Override
+  protected void reactToTooHighCountEmoji(TextChannel textChannel, int listPosition)
+      throws MyOwnException {
+
+  }
 
   @Override
   protected void startRoutine(DiscordApi discordApi, Server server, TextChannel textChannel,
       Message message, User user, Emoji emoji) throws MyOwnException {
+    super.startRoutine(discordApi, server, textChannel, message, user, emoji);
 
-    for (int i = 0; i < Emojis.getCountEmojis().length; i++) {
-
-      if (emoji.equalsEmoji(Emojis.getCountEmojis()[i])) {
-
-        ServerVoiceChannel voiceChannel = channelFinder.getServerVoiceChannelByMember(server, user);
-
-        if (songs.size() <= i + 10 * this.pageNumber) {
-          textChannel.sendMessage("Diesen Song gibt es nicht.");
-
-          return;
-        }
-
-        String animeTitle = this.anime.getData().getTitleEnglish();
-        String song = songs.get(i + 10 * this.pageNumber);
-        String titleToBeSearched = jikanFetcher.parseOpeningName(animeTitle, song);
-
-        Optional<YoutubeSearch> youtubeSearch = youtubeFetcher.getSearchByTitle(titleToBeSearched);
-        if (youtubeSearch.isEmpty()) {
-          throw new MyOwnException(new CouldNotFindSong(titleToBeSearched), null);
-        }
-
-        String videoId = youtubeSearch.get().getItems().get(0).getId().getVideoId();
-        String url = "https://www.youtube.com/watch?v=" + videoId;
-        QueueElement queueElement = new QueueElement(titleToBeSearched, url, user.getName());
-        musicPlayerManager.addToQueue(server, voiceChannel, textChannel, queueElement);
-        musicPlayerManager.startPlaying(voiceChannel, textChannel);
-        messageSender.send(new SongAdded(queueElement, musicPlayerManager, playerLoader), textChannel);
-        return;
-      }
-    }
-
-    int pages = this.songs.size() / 10;
-    if (this.songs.size() % 10 != 0) {
-      pages++;
-    }
-
-    if (emoji.equalsEmoji(Emojis.REWIND.getEmoji())) {
-      pageNumber--;
-      pageNumber = (pageNumber + pages) % pages;
-      message.edit(new AnimeSongEmbed(this.type, this.songs, this.pageNumber));
-    } else if (emoji.equalsEmoji(Emojis.FAST_FORWARD.getEmoji())) {
-      pageNumber++;
-      pageNumber = (pageNumber + pages) % pages;
-      message.edit(new AnimeSongEmbed(this.type, this.songs, this.pageNumber));
-    }
 
   }
 }

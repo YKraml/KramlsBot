@@ -4,6 +4,8 @@ import exceptions.MyOwnException;
 import messages.MessageSender;
 import messages.messages.DungeonNotFound;
 import messages.messages.TeamEnteredDungeon;
+import org.javacord.api.entity.server.Server;
+import org.javacord.api.entity.user.User;
 import waifu.loader.PlayerLoader;
 import waifu.model.dungeon.Dungeon;
 import waifu.model.dungeon.Team;
@@ -33,7 +35,8 @@ public class DungeonListListener extends MyAbstractListListener<Dungeon> {
   }
 
   @Override
-  protected void reactToCountEmoji(TextChannel textChannel, int listPosition)
+  protected void reactToCountEmoji(TextChannel textChannel, int listPosition, Server server,
+      User user)
       throws MyOwnException {
     Dungeon dungeon = dungeonList.get(listPosition);
     team.entersDungeon(dungeon, 1);

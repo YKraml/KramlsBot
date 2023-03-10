@@ -7,6 +7,8 @@ import messages.MyMessage;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
+import org.javacord.api.entity.server.Server;
+import org.javacord.api.entity.user.User;
 import waifu.model.Player;
 import waifu.model.dungeon.Team;
 
@@ -29,7 +31,8 @@ public class ChooseTeam extends MyMessage {
       }
 
       @Override
-      protected void reactToCountEmoji(TextChannel textChannel, int listPosition)
+      protected void reactToCountEmoji(TextChannel textChannel, int listPosition, Server server,
+          User user)
           throws MyOwnException {
         // TODO: 07.03.2023 Nachdem das Team ausgewählt wurde, sollte irgendwie die Klasse RoutineStartFight davon in Erfahrung kommen.
       }

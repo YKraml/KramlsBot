@@ -43,7 +43,8 @@ public abstract class MyAbstractListListener<ListType extends DisplayableElement
 
     protected abstract void updateMessage(Message message, int page) throws MyOwnException;
 
-    protected abstract void reactToCountEmoji(TextChannel textChannel, int listPosition) throws MyOwnException;
+    protected abstract void reactToCountEmoji(TextChannel textChannel, int listPosition,
+        Server server, User user) throws MyOwnException;
 
     protected abstract void reactToTooHighCountEmoji(TextChannel textChannel, int listPosition) throws MyOwnException;
 
@@ -63,7 +64,7 @@ public abstract class MyAbstractListListener<ListType extends DisplayableElement
 
                 int listPosition = i + 10 * pageNumber;
                 if (displayableElementList.size() > listPosition) {
-                    this.reactToCountEmoji(textChannel, i + 10 * pageNumber);
+                    this.reactToCountEmoji(textChannel, i + 10 * pageNumber, server, user);
                     updateMessage(message, pageNumber);
                 } else {
                     this.reactToTooHighCountEmoji(textChannel, i + 10 * pageNumber);

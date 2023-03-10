@@ -13,6 +13,8 @@ import org.javacord.api.entity.message.Message;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.javacord.api.entity.server.Server;
+import org.javacord.api.entity.user.User;
 
 public class CharacterListListener extends MyAbstractListListener<DisplayableElement> {
 
@@ -53,7 +55,8 @@ public class CharacterListListener extends MyAbstractListListener<DisplayableEle
     }
 
     @Override
-    protected void reactToCountEmoji(TextChannel textChannel, int listPosition) throws MyOwnException {
+    protected void reactToCountEmoji(TextChannel textChannel, int listPosition, Server server,
+        User user) throws MyOwnException {
       MessageSenderImpl result;
       synchronized (MessageSenderImpl.class) {
         result = new MessageSenderImpl();

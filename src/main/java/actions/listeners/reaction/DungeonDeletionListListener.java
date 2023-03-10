@@ -9,6 +9,8 @@ import messages.messages.DungeonNotFound;
 import org.javacord.api.entity.channel.ServerChannel;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.message.Message;
+import org.javacord.api.entity.server.Server;
+import org.javacord.api.entity.user.User;
 import waifu.loader.DungeonLoader;
 import waifu.model.dungeon.Dungeon;
 
@@ -33,7 +35,8 @@ public class DungeonDeletionListListener extends MyAbstractListListener<Dungeon>
   }
 
   @Override
-  protected void reactToCountEmoji(TextChannel textChannel, int listPosition)
+  protected void reactToCountEmoji(TextChannel textChannel, int listPosition, Server server,
+      User user)
       throws MyOwnException {
     List<Dungeon> dungeons = dungeonLoader.getAllDungeonsFromServer(serverId);
     Dungeon dungeonToDelete = dungeons.get(listPosition);

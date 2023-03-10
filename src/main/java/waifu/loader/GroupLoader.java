@@ -38,7 +38,7 @@ public final class GroupLoader {
       sqlCommandExecutor.execute(new InsertGroup(group, owner));
     }
 
-    Set<Waifu> waifuSetCopy = new LinkedHashSet<>(group.getWaifuSet());
+    Set<Waifu> waifuSetCopy = new LinkedHashSet<>(group.getWaifuList());
     for (Waifu waifu : waifuSetCopy) {
       if (!sqlCommandExecutor.execute(new GroupWaifuExists(group, waifu))) {
         sqlCommandExecutor.execute(new InsertGroupWaifu(group, waifu));

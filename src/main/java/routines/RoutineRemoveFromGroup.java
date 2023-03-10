@@ -44,7 +44,7 @@ public class RoutineRemoveFromGroup extends Routine {
 
     boolean removed = false;
     int i = 0;
-    for (Waifu waifu : group.getWaifuSet()) {
+    for (Waifu waifu : group.getWaifuList()) {
 
       if (i == waifuNumber) {
         removed = group.removeWaifu(waifu);

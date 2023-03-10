@@ -6,6 +6,8 @@ import messages.MessageSender;
 import messages.MessageSenderImpl;
 import messages.messages.GroupNotFound;
 import messages.messages.GroupOverview;
+import org.javacord.api.entity.server.Server;
+import org.javacord.api.entity.user.User;
 import waifu.JikanFetcher;
 import waifu.loader.PlayerLoader;
 import waifu.loader.WaifuLoader;
@@ -38,7 +40,8 @@ public class GroupListListener extends MyAbstractListListener<Group> {
     }
 
     @Override
-    protected void reactToCountEmoji(TextChannel textChannel, int listPosition) throws MyOwnException {
+    protected void reactToCountEmoji(TextChannel textChannel, int listPosition, Server server,
+        User user) throws MyOwnException {
         Group group = player.getGroupList().get(listPosition);
         MessageSenderImpl result;
         synchronized (MessageSenderImpl.class) {

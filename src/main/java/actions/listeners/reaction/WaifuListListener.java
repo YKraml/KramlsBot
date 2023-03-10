@@ -46,7 +46,8 @@ public class WaifuListListener extends MyAbstractListListener<Waifu> {
   }
 
   @Override
-  protected void reactToCountEmoji(TextChannel textChannel, int listPosition)
+  protected void reactToCountEmoji(TextChannel textChannel, int listPosition, Server server,
+      User user)
       throws MyOwnException {
     Waifu waifu = player.getWaifuList().get(listPosition);
     messageSender.send(new WaifuStats(waifu, player, playerLoader, waifuLoader,
