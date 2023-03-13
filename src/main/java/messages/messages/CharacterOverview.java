@@ -9,21 +9,23 @@ import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 
 public class CharacterOverview extends MyMessage {
-    private final AnimeFullById anime;
-    private final Datum characterStaffEntry;
-    public CharacterOverview(AnimeFullById anime, Datum characterStaffEntry) {
-        super();
-        this.anime = anime;
-        this.characterStaffEntry = characterStaffEntry;
-    }
 
-    @Override
-    protected void startRoutine(Message message) throws MyOwnException {
+  private final AnimeFullById anime;
+  private final Datum characterStaffEntry;
 
-    }
+  public CharacterOverview(AnimeFullById anime, Datum characterStaffEntry) {
+    super();
+    this.anime = anime;
+    this.characterStaffEntry = characterStaffEntry;
+  }
 
-    @Override
-    protected EmbedBuilder getContent() throws MyOwnException {
-        return new CharacterEmbed(anime, characterStaffEntry);
-    }
+  @Override
+  protected void startRoutine(Message message) throws MyOwnException {
+    //Ignore.
+  }
+
+  @Override
+  protected EmbedBuilder getContent() throws MyOwnException {
+    return new CharacterEmbed(anime, characterStaffEntry);
+  }
 }

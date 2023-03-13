@@ -9,6 +9,7 @@ import waifu.model.Waifu;
 public class ImageNotFound extends MyMessage {
 
   private final Waifu waifu;
+
   public ImageNotFound(Waifu waifu) {
     super();
     this.waifu = waifu;
@@ -16,7 +17,7 @@ public class ImageNotFound extends MyMessage {
 
   @Override
   protected void startRoutine(Message message) throws MyOwnException {
-
+    //Ignore.
   }
 
   @Override

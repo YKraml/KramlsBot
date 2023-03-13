@@ -19,7 +19,7 @@ public class WonMoney extends MyMessage {
 
   @Override
   protected void startRoutine(Message message) throws MyOwnException {
-
+    //Ignore.
   }
 
   @Override

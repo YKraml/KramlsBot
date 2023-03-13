@@ -7,7 +7,7 @@ import exceptions.messages.WaifuStarLevelAlreadyMax;
 import java.util.List;
 import messages.MessageSenderImpl;
 import messages.messages.Merged;
-import messages.messages.WaifusAreDiffernt;
+import messages.messages.WaifusAreDifferent;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.user.User;
 import waifu.loader.PlayerLoader;
@@ -67,7 +67,7 @@ public class RoutineMergeWaifus extends Routine {
       synchronized (MessageSenderImpl.class) {
         result = new MessageSenderImpl();
       }
-      result.send(new WaifusAreDiffernt(player), channel);
+      result.send(new WaifusAreDifferent(player), channel);
     }
 
 

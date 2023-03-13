@@ -11,13 +11,12 @@ public class TeamIsLow extends MyMessage {
   private final Team team;
 
   public TeamIsLow(Team team) {
-    super();
     this.team = team;
   }
 
   @Override
   protected void startRoutine(Message message) throws MyOwnException {
-
+    //Ignore.
   }
 
   @Override

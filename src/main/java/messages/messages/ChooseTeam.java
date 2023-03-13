@@ -17,7 +17,6 @@ public class ChooseTeam extends MyMessage {
   private final Player player;
 
   public ChooseTeam(Player player) {
-    super();
     this.player = player;
   }
 
@@ -38,9 +37,8 @@ public class ChooseTeam extends MyMessage {
       }
 
       @Override
-      protected void reactToTooHighCountEmoji(TextChannel textChannel, int listPosition)
-          throws MyOwnException {
-
+      protected void reactToTooHighCountEmoji(TextChannel textChannel, int listPosition) {
+        //Just ignore.
       }
     };
 

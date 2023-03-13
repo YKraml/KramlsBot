@@ -46,7 +46,7 @@ public final class WaifuSpawnManager {
     return Optional.ofNullable(serverWaifuMap.getOrDefault(serverId, null));
   }
 
-  private boolean isGuessRight(String serverId, String name) throws MyOwnException {
+  public boolean isGuessRight(String serverId, String name) throws MyOwnException {
 
     if (!serverWaifuMap.containsKey(serverId)) {
       throw new MyOwnException(new NoWaifuToClaim(), null);

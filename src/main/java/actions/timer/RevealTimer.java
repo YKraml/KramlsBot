@@ -37,6 +37,7 @@ public class RevealTimer {
       try {
         showMessage();
       } catch (MyOwnException ignored) {
+        //Ignore.
       }
     };
     scheduledExecutorService.schedule(showMessageRunnable, 1, TimeUnit.MINUTES);

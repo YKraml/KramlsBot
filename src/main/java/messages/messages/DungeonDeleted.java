@@ -9,6 +9,7 @@ import waifu.model.dungeon.Dungeon;
 public class DungeonDeleted extends MyMessage {
 
   private final Dungeon dungeon;
+
   public DungeonDeleted(Dungeon dungeonToDelete) {
     super();
     dungeon = dungeonToDelete;
@@ -16,7 +17,7 @@ public class DungeonDeleted extends MyMessage {
 
   @Override
   protected void startRoutine(Message message) throws MyOwnException {
-
+    //Ignore.
   }
 
   @Override

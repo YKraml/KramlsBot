@@ -18,11 +18,12 @@ public class FightDeclined extends MyMessage {
 
   @Override
   protected void startRoutine(Message message) throws MyOwnException {
-
+    //Ignore.
   }
 
   @Override
   protected EmbedBuilder getContent() throws MyOwnException {
-    return convertStringToEmbed("%s, %s hat deine Herausforderung abgelehnt.".formatted(user.getName(), enemy.getName()));
+    return convertStringToEmbed(
+        "%s, %s hat deine Herausforderung abgelehnt.".formatted(user.getName(), enemy.getName()));
   }
 }

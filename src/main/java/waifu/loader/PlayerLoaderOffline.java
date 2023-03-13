@@ -3,13 +3,13 @@ package waifu.loader;
 import exceptions.MyOwnException;
 import waifu.model.Player;
 
-public class PlayLoaderOffline implements PlayerLoader{
+public class PlayerLoaderOffline implements PlayerLoader {
 
   private static final Player PLAYER = Player.createEmptyPlayer();
 
   @Override
   public void savePlayer(Player player) throws MyOwnException {
-
+    //Can't save players without DB.
   }
 
   @Override

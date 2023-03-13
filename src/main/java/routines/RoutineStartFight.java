@@ -64,6 +64,7 @@ public class RoutineStartFight extends Routine {
       try {
         messageSender.send(new FightDeclined(user, userEnemy), textChannel);
       } catch (MyOwnException ignored) {
+        //Ignore.
       }
     }
 
@@ -71,16 +72,18 @@ public class RoutineStartFight extends Routine {
       fightRequestMessage.delete();
       textChannel.sendMessage(user.getMentionTag());
       try {
-        messageSender.send(new FightAcceptet(user, userEnemy, money, stardust, morphStones), textChannel);
+        messageSender.send(new FightAcceptet(user, userEnemy, money, stardust, morphStones),
+            textChannel);
 
         Player player = playerLoader.getPlayerByUser(user);
         Player playerEnemy = playerLoader.getPlayerByUser(userEnemy);
 
-        messageSender.send(new ChooseTeam(player),textChannel);
-        messageSender.send(new ChooseTeam(playerEnemy),textChannel);
+        messageSender.send(new ChooseTeam(player), textChannel);
+        messageSender.send(new ChooseTeam(playerEnemy), textChannel);
 
 
       } catch (MyOwnException ignored) {
+        //Ignore.
       }
     }
   }

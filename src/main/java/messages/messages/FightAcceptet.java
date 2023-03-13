@@ -24,7 +24,7 @@ public class FightAcceptet extends MyMessage {
 
   @Override
   protected void startRoutine(Message message) throws MyOwnException {
-
+    //Ignore.
   }
 
   @Override
@@ -32,8 +32,11 @@ public class FightAcceptet extends MyMessage {
     EmbedBuilder embed = new EmbedBuilder();
     embed.setTitle("Herausforderung angenommen!");
     embed.setThumbnail("https://img.freepik.com/freie-ikonen/schwerter_318-781172.jpg");
-    embed.setDescription("%s hat die Herausforderung von %s angenommen. Wählt nun eure Teams aus.".formatted(enemy.getName(), user.getName()));
-    embed.addField("Auf dem Spiel stehen: ", "%s Geld, %s Stardust, %s Morphstein(e)".formatted(money,stardust,morphStones));
+    embed.setDescription(
+        "%s hat die Herausforderung von %s angenommen. Wählt nun eure Teams aus.".formatted(
+            enemy.getName(), user.getName()));
+    embed.addField("Auf dem Spiel stehen: ",
+        "%s Geld, %s Stardust, %s Morphstein(e)".formatted(money, stardust, morphStones));
     return embed;
   }
 }

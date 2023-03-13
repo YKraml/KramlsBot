@@ -9,20 +9,20 @@ import org.javacord.api.entity.message.embed.EmbedBuilder;
 
 public class AnimeSynopsis extends MyMessage {
 
-    private final AnimeFullById anime;
+  private final AnimeFullById anime;
 
-    public AnimeSynopsis(AnimeFullById anime) {
-        super();
-        this.anime = anime;
-    }
+  public AnimeSynopsis(AnimeFullById anime) {
+    super();
+    this.anime = anime;
+  }
 
-    @Override
-    protected void startRoutine(Message message) throws MyOwnException {
+  @Override
+  protected void startRoutine(Message message) throws MyOwnException {
+    //Just ignore.
+  }
 
-    }
-
-    @Override
-    protected EmbedBuilder getContent() throws MyOwnException {
-        return new AnimeSynopsisEmbed(anime);
-    }
+  @Override
+  protected EmbedBuilder getContent() throws MyOwnException {
+    return new AnimeSynopsisEmbed(anime);
+  }
 }

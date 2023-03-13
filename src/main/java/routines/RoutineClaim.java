@@ -2,6 +2,7 @@ package routines;
 
 import actions.listeners.commands.Answer;
 import exceptions.MyOwnException;
+import exceptions.messages.ReachedMaxWaifus;
 import java.util.Optional;
 import messages.MessageSender;
 import messages.MessageSenderImpl;
@@ -47,27 +48,20 @@ public class RoutineClaim extends Routine {
   @Override
   Answer start(RoutineRunner routineRunner) throws MyOwnException {
     Player player = playerLoader.getPlayerByUser(user);
+
+    if (player.getMaxWaifus() <= player.getMaxWaifus()) {
+      throw new MyOwnException(new ReachedMaxWaifus(player), null);
+    }
+
     Optional<Waifu> waifu = waifuSpawnManager.guessWaifu(server.getIdAsString(), guess);
-    if(waifu.isPresent()){
+    if (waifu.isPresent()) {
       player.addWaifu(waifu.get());
-      MessageSenderImpl result1;
-      synchronized (MessageSenderImpl.class) {
-        result1 = new MessageSenderImpl();
-      }
-      result1.send(new GuessedRight(player), channel);
-      MessageSenderImpl result;
-      synchronized (MessageSenderImpl.class) {
-        result = new MessageSenderImpl();
-      }
-      result.send(new WaifuStats(waifu.get(), player, playerLoader,
+      messageSender.send(new GuessedRight(player), channel);
+      messageSender.send(new WaifuStats(waifu.get(), player, playerLoader,
           waifuLoader, jikanFetcher, messageSender), channel);
       playerLoader.savePlayer(player);
-    }else {
-      MessageSenderImpl result;
-      synchronized (MessageSenderImpl.class) {
-        result = new MessageSenderImpl();
-      }
-      result.send(new GuessedWrong(player), channel);
+    } else {
+      messageSender.send(new GuessedWrong(player), channel);
     }
 
     return new Answer("Someone tried to claim a Waifu");

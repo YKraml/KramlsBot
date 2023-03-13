@@ -8,21 +8,23 @@ import waifu.model.Player;
 
 public class LostMoney extends MyMessage {
 
-    private final Player player;
-    private final long lostMoney;
+  private final Player player;
+  private final long lostMoney;
 
-    public LostMoney(Player player, long lostMoney) {
-        this.player = player;
-        this.lostMoney = lostMoney;
-    }
+  public LostMoney(Player player, long lostMoney) {
+    this.player = player;
+    this.lostMoney = lostMoney;
+  }
 
-    @Override
-    protected void startRoutine(Message message) throws MyOwnException {
+  @Override
+  protected void startRoutine(Message message) throws MyOwnException {
+    //Just ignore.
+  }
 
-    }
-
-    @Override
-    protected EmbedBuilder getContent() throws MyOwnException {
-        return this.convertStringToEmbed(player.getNameTag() + ", du hast " + lostMoney + " Euro verloren. Du hast jetzt " + player.getInventory().getMoney() + " Euro");
-    }
+  @Override
+  protected EmbedBuilder getContent() throws MyOwnException {
+    return this.convertStringToEmbed(
+        player.getNameTag() + ", du hast " + lostMoney + " Euro verloren. Du hast jetzt "
+            + player.getInventory().getMoney() + " Euro");
+  }
 }

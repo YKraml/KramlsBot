@@ -6,10 +6,6 @@ import exceptions.MyOwnException;
 
 public class RoutineRunner {
 
-  @Inject
-  public RoutineRunner() {
-  }
-
   public Answer startRoutine(Routine routine) throws MyOwnException {
     return routine.start(this);
   }

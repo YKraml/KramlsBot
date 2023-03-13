@@ -108,7 +108,7 @@ public class AnimeStartSongReactionListener extends
   @Override
   protected void reactToTooHighCountEmoji(TextChannel textChannel, int listPosition)
       throws MyOwnException {
-
+    //This just ignore;
   }
 
   @Override

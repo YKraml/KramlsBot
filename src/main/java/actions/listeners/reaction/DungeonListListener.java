@@ -32,6 +32,7 @@ public class DungeonListListener extends MyAbstractListListener<Dungeon> {
 
   @Override
   protected void updateMessage(Message message, int page) {
+    //Just ignore.
   }
 
   @Override

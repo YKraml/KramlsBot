@@ -10,9 +10,8 @@ import messages.MessageSender;
 import messages.messages.ButtonNotForYou;
 import messages.messages.ChangedPicture;
 import messages.messages.ImageNotFound;
-import messages.messages.NotEnoughStardust;
 import messages.messages.WaifuHasMaxLevel;
-import messages.messages.WaifuLEvelTooLow;
+import messages.messages.WaifuLevelTooLow;
 import messages.messages.WaifuRarityIncreased;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.channel.TextChannel;
@@ -124,14 +123,9 @@ public class WaifuEditListener extends MyAbstractReactionListener implements Rea
   }
 
   private void riseRarity(TextChannel textChannel, Message message) throws MyOwnException {
-    if (!player.getInventory().hasStardust(waifu.getRarity().getUpgradeCost())) {
-      messageSender.send(new NotEnoughStardust(player, waifu.getRarity().getUpgradeCost()),
-          textChannel);
-      return;
-    }
 
     if (waifu.getLevel() < waifu.getRarity().getNextRarity().getMinLevel()) {
-      messageSender.send(new WaifuLEvelTooLow(player, waifu), textChannel);
+      messageSender.send(new WaifuLevelTooLow(player, waifu), textChannel);
       return;
     }
 

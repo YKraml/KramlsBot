@@ -18,6 +18,7 @@ public class Inventory {
   }
 
   public Inventory() {
+    this(0,0,0,0);
   }
 
   public long getMoney() {

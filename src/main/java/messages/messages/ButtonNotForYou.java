@@ -19,7 +19,7 @@ public class ButtonNotForYou extends MyMessage {
 
   @Override
   protected void startRoutine(Message message) throws MyOwnException {
-
+    //Just ignore.
   }
 
   @Override

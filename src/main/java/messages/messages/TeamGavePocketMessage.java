@@ -12,13 +12,12 @@ public class TeamGavePocketMessage extends MyMessage {
   private final Team team;
 
   public TeamGavePocketMessage(Team team) {
-    super();
     this.team = team;
   }
 
   @Override
   protected void startRoutine(Message message) throws MyOwnException {
-
+    //Ignore.
   }
 
   @Override

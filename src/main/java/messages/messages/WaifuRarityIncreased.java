@@ -9,22 +9,21 @@ import waifu.model.Waifu;
 
 public class WaifuRarityIncreased extends MyMessage {
 
-    private final Waifu waifu;
-    private final Rarities rarity;
+  private final Waifu waifu;
+  private final Rarities rarity;
 
-    public WaifuRarityIncreased(Waifu waifu, Rarities rarity) {
-        super();
-        this.waifu = waifu;
-        this.rarity = rarity;
-    }
+  public WaifuRarityIncreased(Waifu waifu, Rarities rarity) {
+    this.waifu = waifu;
+    this.rarity = rarity;
+  }
 
-    @Override
-    protected void startRoutine(Message message) throws MyOwnException {
+  @Override
+  protected void startRoutine(Message message) throws MyOwnException {
+    //Ignore.
+  }
 
-    }
-
-    @Override
-    protected EmbedBuilder getContent() throws MyOwnException {
-        return this.convertStringToEmbed(waifu.getName() + " ist nun " + rarity + ".");
-    }
+  @Override
+  protected EmbedBuilder getContent() throws MyOwnException {
+    return this.convertStringToEmbed(waifu.getName() + " ist nun " + rarity + ".");
+  }
 }

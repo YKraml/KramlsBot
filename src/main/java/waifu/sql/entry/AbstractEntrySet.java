@@ -97,7 +97,7 @@ public abstract class AbstractEntrySet<EntryType extends AbstractEntrySet.Abstra
   public static class AbstractEntry {
 
     protected AbstractEntry(){
-
+      //This class can only be initiated by an EntrySet
     }
 
   }

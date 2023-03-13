@@ -16,14 +16,13 @@ public class TeamEnteredDungeon extends MyMessage {
   private final Dungeon dungeon;
 
   public TeamEnteredDungeon(Team team, Dungeon dungeon) {
-    super();
     this.dungeon = dungeon;
     this.team = team;
   }
 
   @Override
   protected void startRoutine(Message message) throws MyOwnException {
-
+    //Ignore.
   }
 
   @Override

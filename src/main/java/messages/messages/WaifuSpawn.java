@@ -9,20 +9,19 @@ import org.javacord.api.entity.message.embed.EmbedBuilder;
 
 public class WaifuSpawn extends MyMessage {
 
-    private final Waifu waifu;
+  private final Waifu waifu;
 
-    public WaifuSpawn(Waifu newWaifu) {
-        super();
-        this.waifu = newWaifu;
-    }
+  public WaifuSpawn(Waifu newWaifu) {
+    this.waifu = newWaifu;
+  }
 
-    @Override
-    protected void startRoutine(Message message) throws MyOwnException {
+  @Override
+  protected void startRoutine(Message message) throws MyOwnException {
+    //Ignore.
+  }
 
-    }
-
-    @Override
-    protected EmbedBuilder getContent() throws MyOwnException {
-        return new WaifuSpawnEmbed(waifu);
-    }
+  @Override
+  protected EmbedBuilder getContent() throws MyOwnException {
+    return new WaifuSpawnEmbed(waifu);
+  }
 }

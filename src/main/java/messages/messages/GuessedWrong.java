@@ -8,21 +8,21 @@ import org.javacord.api.entity.message.embed.EmbedBuilder;
 
 public class GuessedWrong extends MyMessage {
 
-    private final Player player;
+  private final Player player;
 
-    public GuessedWrong(Player player) {
-        super();
-        this.player = player;
-    }
+  public GuessedWrong(Player player) {
+    super();
+    this.player = player;
+  }
 
 
-    @Override
-    protected void startRoutine(Message message) throws MyOwnException {
+  @Override
+  protected void startRoutine(Message message) throws MyOwnException {
+    //Ignore.
+  }
 
-    }
-
-    @Override
-    protected EmbedBuilder getContent() throws MyOwnException {
-        return convertStringToEmbed(player.getNameTag() + ", du liegst falsch.");
-    }
+  @Override
+  protected EmbedBuilder getContent() throws MyOwnException {
+    return convertStringToEmbed(player.getNameTag() + ", du liegst falsch.");
+  }
 }

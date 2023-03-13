@@ -6,19 +6,20 @@ import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 
 public class WaifuNotFound extends MyMessage {
-    private final int waifuNumber;
-    public WaifuNotFound(int waifuNumber) {
-        super();
-        this.waifuNumber = waifuNumber;
-    }
 
-    @Override
-    protected void startRoutine(Message message) throws MyOwnException {
+  private final int waifuNumber;
 
-    }
+  public WaifuNotFound(int waifuNumber) {
+    this.waifuNumber = waifuNumber;
+  }
 
-    @Override
-    protected EmbedBuilder getContent() throws MyOwnException {
-        return this.convertStringToEmbed("Konnte Waifu mit der Nr. " + waifuNumber + " nicht finden.");
-    }
+  @Override
+  protected void startRoutine(Message message) throws MyOwnException {
+    //Ignore.
+  }
+
+  @Override
+  protected EmbedBuilder getContent() throws MyOwnException {
+    return this.convertStringToEmbed("Konnte Waifu mit der Nr. " + waifuNumber + " nicht finden.");
+  }
 }

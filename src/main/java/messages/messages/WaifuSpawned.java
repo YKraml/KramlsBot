@@ -8,20 +8,19 @@ import waifu.model.Player;
 
 public class WaifuSpawned extends MyMessage {
 
-    private final Player player;
+  private final Player player;
 
-    public WaifuSpawned(Player player) {
-        super();
-        this.player = player;
-    }
+  public WaifuSpawned(Player player) {
+    this.player = player;
+  }
 
-    @Override
-    protected void startRoutine(Message message) throws MyOwnException {
+  @Override
+  protected void startRoutine(Message message) throws MyOwnException {
+    //Ignore.
+  }
 
-    }
-
-    @Override
-    protected EmbedBuilder getContent() throws MyOwnException {
-        return this.convertStringToEmbed(player.getNameTag() + ", du hast eine neue Waifu erhalten:");
-    }
+  @Override
+  protected EmbedBuilder getContent() throws MyOwnException {
+    return this.convertStringToEmbed(player.getNameTag() + ", du hast eine neue Waifu erhalten:");
+  }
 }
