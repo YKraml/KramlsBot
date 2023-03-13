@@ -1,7 +1,6 @@
 package messages;
 
 import exceptions.MyOwnException;
-import messages.messages.ExceptionHappenedMessage;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.message.Message;
 

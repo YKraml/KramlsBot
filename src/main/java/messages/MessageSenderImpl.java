@@ -4,12 +4,10 @@ import exceptions.MyOwnException;
 import exceptions.messages.CouldNotGetContent;
 import exceptions.messages.CouldNotSendMessage;
 import exceptions.messages.CouldNotStartRoutine;
-import java.util.function.BiConsumer;
+import java.util.concurrent.CompletableFuture;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
-
-import java.util.concurrent.CompletableFuture;
 
 public class MessageSenderImpl implements MessageSender {
 
