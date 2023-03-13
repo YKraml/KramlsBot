@@ -19,7 +19,6 @@ public class GroupShowList extends ACommand {
 
   @Inject
   public GroupShowList(RoutineShowGroupListBuilder routineShowGroupListBuilder) {
-    super();
     this.routineShowGroupListBuilder = routineShowGroupListBuilder;
   }
 

@@ -19,7 +19,6 @@ public class ShowWaifuList extends ACommand {
 
   @Inject
   public ShowWaifuList(RoutineShowWaifuListBuilder routineShowWaifuListBuilder) {
-    super();
     this.routineShowWaifuListBuilder = routineShowWaifuListBuilder;
   }
 

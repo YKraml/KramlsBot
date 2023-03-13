@@ -11,7 +11,6 @@ public class ImageNotFound extends MyMessage {
   private final Waifu waifu;
 
   public ImageNotFound(Waifu waifu) {
-    super();
     this.waifu = waifu;
   }
 

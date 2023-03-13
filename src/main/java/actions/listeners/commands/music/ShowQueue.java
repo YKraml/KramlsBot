@@ -26,7 +26,6 @@ public class ShowQueue extends ACommand {
   @Inject
   public ShowQueue(MusicPlayerManager musicPlayerManager, PlayerLoader playerLoader,
       MessageSender messageSender) {
-    super();
     this.musicPlayerManager = musicPlayerManager;
     this.playerLoader = playerLoader;
     this.messageSender = messageSender;

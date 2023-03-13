@@ -18,7 +18,6 @@ public class SongQueueMessage extends MyMessage {
     private final PlayerLoader playerLoader;
 
     public SongQueueMessage(Queue queueByServer, MusicPlayerManager musicPlayerManager, PlayerLoader playerLoader) {
-        super();
         this.queue = queueByServer;
         this.musicPlayerManager = musicPlayerManager;
         this.playerLoader = playerLoader;

@@ -14,11 +14,6 @@ import org.javacord.api.entity.user.User;
 
 public class Disconnect extends ACommand {
 
-  @Inject
-  public Disconnect() {
-    super();
-  }
-
   @Override
   public String getName() {
     return "" + "disc";

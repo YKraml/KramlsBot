@@ -20,7 +20,6 @@ public class Stop extends ACommand {
 
   @Inject
   public Stop(MusicPlayerManager musicPlayerManager, GuessingGameManager guessingGameManager) {
-    super();
     this.musicPlayerManager = musicPlayerManager;
     this.guessingGameManager = guessingGameManager;
   }

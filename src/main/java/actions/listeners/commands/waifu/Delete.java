@@ -24,7 +24,6 @@ public class Delete extends ACommand {
 
   @Inject
   public Delete(WaifuLoader waifuLoader, MessageSender messageSender, PlayerLoader playerLoader) {
-    super();
     this.waifuLoader = waifuLoader;
     this.messageSender = messageSender;
     this.playerLoader = playerLoader;

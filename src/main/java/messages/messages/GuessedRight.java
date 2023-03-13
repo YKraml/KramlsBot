@@ -11,7 +11,6 @@ public class GuessedRight extends MyMessage {
   private final Player player;
 
   public GuessedRight(Player player) {
-    super();
     this.player = player;
   }
 

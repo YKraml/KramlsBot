@@ -23,7 +23,6 @@ public class GroupCreate extends ACommand {
 
   @Inject
   public GroupCreate(PlayerLoader playerLoader, MessageSender messageSender) {
-    super();
     this.playerLoader = playerLoader;
     this.messageSender = messageSender;
   }

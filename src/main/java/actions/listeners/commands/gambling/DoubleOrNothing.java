@@ -19,7 +19,6 @@ public class DoubleOrNothing extends ACommand {
 
   @Inject
   public DoubleOrNothing(RoutineDoubleOrNothingBuilder routineDoubleOrNothingBuilder) {
-    super();
     this.routineDoubleOrNothingBuilder = routineDoubleOrNothingBuilder;
   }
 

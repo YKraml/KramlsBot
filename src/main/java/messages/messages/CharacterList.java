@@ -14,7 +14,6 @@ public class CharacterList extends MyMessage {
     private final AnimeFullById anime;
 
     public CharacterList(AnimeCharacters animeCharacters, AnimeFullById anime) {
-        super();
         this.animeCharacters = animeCharacters;
         this.anime = anime;
     }

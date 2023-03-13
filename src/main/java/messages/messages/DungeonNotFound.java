@@ -10,7 +10,6 @@ public class DungeonNotFound extends MyMessage {
   private final int listPosition;
 
   public DungeonNotFound(int listPosition) {
-    super();
     this.listPosition = listPosition;
   }
 

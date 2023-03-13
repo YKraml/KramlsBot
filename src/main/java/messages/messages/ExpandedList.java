@@ -12,7 +12,6 @@ public class ExpandedList extends MyMessage {
   private final int cost;
 
   public ExpandedList(Player player, int costForUpgrade) {
-    super();
     this.cost = costForUpgrade;
     this.player = player;
   }

@@ -28,7 +28,6 @@ public class RoutineSpawnWaifuCommand extends Routine {
   public RoutineSpawnWaifuCommand(TextChannel channel, User user, WaifuBuilder waifuBuilder,
       PlayerLoader playerLoader, WaifuLoader waifuLoader, JikanFetcher jikanFetcher,
       MessageSender messageSender) {
-    super();
     this.channel = channel;
     this.user = user;
     this.waifuBuilder = waifuBuilder;
@@ -42,7 +41,8 @@ public class RoutineSpawnWaifuCommand extends Routine {
   Answer start(RoutineRunner routineRunner) throws MyOwnException {
     Player player = playerLoader.getPlayerByUser(user);
     if (player.getInventory().getMoney() < 1000) {
-      throw new MyOwnException(new NotEnoughResource(player.getInventory().getMoney(), 1000, "Geld"), null);
+      throw new MyOwnException(
+          new NotEnoughResource(player.getInventory().getMoney(), 1000, "Geld"), null);
     }
 
     Waifu waifu = waifuBuilder.createRandomWaifu();

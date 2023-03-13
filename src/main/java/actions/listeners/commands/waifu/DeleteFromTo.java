@@ -26,7 +26,6 @@ public class DeleteFromTo extends ACommand {
   @Inject
   public DeleteFromTo(WaifuLoader waifuLoader, PlayerLoader playerLoader,
       MessageSender messageSender) {
-    super();
     this.waifuLoader = waifuLoader;
     this.playerLoader = playerLoader;
     this.messageSender = messageSender;

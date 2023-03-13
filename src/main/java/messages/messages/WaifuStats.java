@@ -25,7 +25,6 @@ public class WaifuStats extends MyMessage {
 
   public WaifuStats(Waifu waifu, Player player, PlayerLoader playerLoader, WaifuLoader waifuLoader,
       JikanFetcher jikanFetcher, MessageSender messageSender) {
-    super();
     this.player = player;
     this.waifu = waifu;
     this.playerLoader = playerLoader;

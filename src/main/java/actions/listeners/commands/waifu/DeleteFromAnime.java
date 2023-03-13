@@ -27,7 +27,6 @@ public class DeleteFromAnime extends ACommand {
   @Inject
   public DeleteFromAnime(WaifuLoader waifuLoader, PlayerLoader playerLoader,
       MessageSender messageSender) {
-    super();
     this.waifuLoader = waifuLoader;
     this.playerLoader = playerLoader;
     this.messageSender = messageSender;

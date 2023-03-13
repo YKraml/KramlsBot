@@ -14,7 +14,6 @@ public class CharacterOverview extends MyMessage {
   private final Datum characterStaffEntry;
 
   public CharacterOverview(AnimeFullById anime, Datum characterStaffEntry) {
-    super();
     this.anime = anime;
     this.characterStaffEntry = characterStaffEntry;
   }

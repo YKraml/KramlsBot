@@ -29,7 +29,6 @@ public class AnimeOpenings extends MyMessage {
   public AnimeOpenings(AnimeFullById anime, AnimeThemes animeThemes, PlayerLoader playerLoader,
       JikanFetcher jikanFetcher, ChannelFinder channelFinder, YoutubeFetcher youtubeFetcher,
       MusicPlayerManager musicPlayerManager, MessageSender messageSender) {
-    super();
     this.anime = anime;
     this.animeThemes = animeThemes;
     this.playerLoader = playerLoader;

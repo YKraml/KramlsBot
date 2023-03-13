@@ -21,7 +21,6 @@ public class Stats extends ACommand {
 
   @Inject
   public Stats(MessageSender messageSender, PlayerLoader playerLoader) {
-    super();
     this.messageSender = messageSender;
     this.playerLoader = playerLoader;
   }

@@ -21,7 +21,6 @@ public class TeamExpand extends ACommand {
 
   @Inject
   public TeamExpand(PlayerLoader playerLoader) {
-    super();
     this.playerLoader = playerLoader;
   }
 

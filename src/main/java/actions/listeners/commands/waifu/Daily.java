@@ -20,7 +20,6 @@ public class Daily extends ACommand {
 
   @Inject
   public Daily(PlayerLoader playerLoader) {
-    super();
     this.playerLoader = playerLoader;
   }
 

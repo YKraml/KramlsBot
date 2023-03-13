@@ -12,7 +12,6 @@ public class AnimeSynopsis extends MyMessage {
   private final AnimeFullById anime;
 
   public AnimeSynopsis(AnimeFullById anime) {
-    super();
     this.anime = anime;
   }
 

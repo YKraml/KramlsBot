@@ -23,7 +23,6 @@ public class GroupDelete extends ACommand {
 
   @Inject
   public GroupDelete(GroupLoader groupLoader, PlayerLoader playerLoader) {
-    super();
     this.groupLoader = groupLoader;
     this.playerLoader = playerLoader;
   }

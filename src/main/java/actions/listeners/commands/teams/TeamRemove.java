@@ -23,7 +23,6 @@ public class TeamRemove extends ACommand {
 
   @Inject
   public TeamRemove(PlayerLoader playerLoader, TeamLoader teamLoader) {
-    super();
     this.playerLoader = playerLoader;
     this.teamLoader = teamLoader;
   }

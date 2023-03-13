@@ -21,7 +21,6 @@ public class DoubleOrNothingWithParameter extends ACommand {
   @Inject
   public DoubleOrNothingWithParameter(
       RoutineGamblingDoubleBuilder routineGamblingDoubleBuilder) {
-    super();
     this.routineGamblingDoubleBuilder = routineGamblingDoubleBuilder;
   }
 

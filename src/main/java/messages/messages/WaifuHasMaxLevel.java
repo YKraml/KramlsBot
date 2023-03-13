@@ -7,9 +7,6 @@ import org.javacord.api.entity.message.embed.EmbedBuilder;
 
 public class WaifuHasMaxLevel extends MyMessage {
 
-  public WaifuHasMaxLevel() {
-    super();
-  }
 
   @Override
   protected void startRoutine(Message message) throws MyOwnException {

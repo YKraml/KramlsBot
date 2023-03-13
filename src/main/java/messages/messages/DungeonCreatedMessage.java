@@ -12,7 +12,6 @@ public class DungeonCreatedMessage extends MyMessage {
   private final Dungeon dungeon;
 
   public DungeonCreatedMessage(Dungeon dungeon) {
-    super();
     this.dungeon = dungeon;
   }
 

@@ -29,7 +29,6 @@ public class TeamsList extends ACommand {
   @Inject
   public TeamsList(DungeonLoader dungeonLoader, PlayerLoader playerLoader,
       MessageSender messageSender, WaifuLoader waifuLoader, JikanFetcher jikanFetcher) {
-    super();
     this.dungeonLoader = dungeonLoader;
     this.playerLoader = playerLoader;
     this.messageSender = messageSender;

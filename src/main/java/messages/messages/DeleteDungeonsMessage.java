@@ -19,7 +19,6 @@ public class DeleteDungeonsMessage extends MyMessage {
 
   public DeleteDungeonsMessage(DungeonLoader dungeonLoader, MessageSender messageSender,
       String serverId) {
-    super();
     this.dungeonLoader = dungeonLoader;
     this.messageSender = messageSender;
     this.serverId = serverId;

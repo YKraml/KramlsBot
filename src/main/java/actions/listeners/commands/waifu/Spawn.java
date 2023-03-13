@@ -19,7 +19,6 @@ public class Spawn extends ACommand {
 
   @Inject
   public Spawn(RoutineSpawnWaifuCommandBuilder routineSpawnWaifuCommandBuilder) {
-    super();
     this.routineSpawnWaifuCommandBuilder = routineSpawnWaifuCommandBuilder;
   }
 

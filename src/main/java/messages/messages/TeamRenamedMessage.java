@@ -14,7 +14,6 @@ public class TeamRenamedMessage extends MyMessage {
   private final String newName;
 
   public TeamRenamedMessage(Player player, String oldName, String newName) {
-    super();
     this.player = player;
     this.oldName = oldName;
     this.newName = newName;

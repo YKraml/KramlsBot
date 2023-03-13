@@ -21,7 +21,6 @@ public class TeamRename extends ACommand {
 
   @Inject
   public TeamRename(PlayerLoader playerLoader) {
-    super();
     this.playerLoader = playerLoader;
   }
 

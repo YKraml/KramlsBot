@@ -21,7 +21,6 @@ public class DungeonList extends MyMessage {
 
     public DungeonList(Team team, List<Dungeon> dungeonList, PlayerLoader playerLoader,
         MessageSender messageSender) {
-        super();
         this.team = team;
         this.dungeonList = dungeonList;
         this.playerLoader = playerLoader;

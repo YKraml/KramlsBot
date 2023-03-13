@@ -20,7 +20,6 @@ public class Play extends ACommand {
 
   @Inject
   public Play(RoutineAddToQueueBuilder builder) {
-    super();
     this.builder = builder;
   }
 

@@ -20,7 +20,6 @@ public class AnimeInformation extends MyMessage {
 
   public AnimeInformation(AnimeFullById anime, JikanFetcher jikanFetcher,
       AnimeOpeningEndingReactionListenerBuilder animeOpeningEndingReactionListenerBuilder) {
-    super();
     this.anime = anime;
     this.jikanFetcher = jikanFetcher;
     this.animeOpeningEndingReactionListenerBuilder = animeOpeningEndingReactionListenerBuilder;

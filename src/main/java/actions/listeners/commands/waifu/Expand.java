@@ -23,7 +23,6 @@ public class Expand extends ACommand {
 
   @Inject
   public Expand(PlayerLoader playerLoader, MessageSender messageSender) {
-    super();
     this.playerLoader = playerLoader;
     this.messageSender = messageSender;
   }

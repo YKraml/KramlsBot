@@ -22,7 +22,6 @@ public class DeletedWaifuOverview extends MyMessage {
 
     public DeletedWaifuOverview(User user, WaifuLoader waifuLoader, MessageSender messageSender,
         PlayerLoader playerLoader) {
-        super();
         this.user = user;
         this.waifuLoader = waifuLoader;
         this.messageSender = messageSender;

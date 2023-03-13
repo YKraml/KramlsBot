@@ -13,27 +13,26 @@ import waifu.loader.PlayerLoader;
 
 public class SongAdded extends MyMessage {
 
-    private final QueueElement queueElement;
-    private final MusicPlayerManager musicPlayerManager;
-    private final PlayerLoader playerLoader;
+  private final QueueElement queueElement;
+  private final MusicPlayerManager musicPlayerManager;
+  private final PlayerLoader playerLoader;
 
-    public SongAdded(QueueElement queueElement, MusicPlayerManager musicPlayerManager,
-        PlayerLoader playerLoader) {
-        super();
-        this.queueElement = queueElement;
-        this.musicPlayerManager = musicPlayerManager;
-        this.playerLoader = playerLoader;
-    }
+  public SongAdded(QueueElement queueElement, MusicPlayerManager musicPlayerManager,
+      PlayerLoader playerLoader) {
+    this.queueElement = queueElement;
+    this.musicPlayerManager = musicPlayerManager;
+    this.playerLoader = playerLoader;
+  }
 
-    @Override
-    protected void startRoutine(Message message) throws MyOwnException {
-        message.addReaction(Emojis.INFORMATION_SOURCE.getEmoji());
-        message.addReactionAddListener(new SongAddedEmbedListener(musicPlayerManager, playerLoader));
-    }
+  @Override
+  protected void startRoutine(Message message) throws MyOwnException {
+    message.addReaction(Emojis.INFORMATION_SOURCE.getEmoji());
+    message.addReactionAddListener(new SongAddedEmbedListener(musicPlayerManager, playerLoader));
+  }
 
-    @Override
-    protected EmbedBuilder getContent() throws MyOwnException {
-        return new SongAddedEmbed(queueElement);
-    }
+  @Override
+  protected EmbedBuilder getContent() throws MyOwnException {
+    return new SongAddedEmbed(queueElement);
+  }
 
 }

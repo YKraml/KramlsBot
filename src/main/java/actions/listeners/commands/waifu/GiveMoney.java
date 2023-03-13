@@ -23,7 +23,6 @@ public class GiveMoney extends ACommand {
 
   @Inject
   public GiveMoney(PlayerLoader playerLoader, MessageSender messageSender) {
-    super();
     this.playerLoader = playerLoader;
     this.messageSender = messageSender;
   }

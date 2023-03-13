@@ -20,7 +20,6 @@ public class GiveWaifu extends ACommand {
 
   @Inject
   public GiveWaifu(RoutineGiveWaifuBuilder routineGiveWaifuBuilder) {
-    super();
     this.routineGiveWaifuBuilder = routineGiveWaifuBuilder;
   }
 

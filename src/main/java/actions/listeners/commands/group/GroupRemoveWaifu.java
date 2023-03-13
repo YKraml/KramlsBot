@@ -26,7 +26,6 @@ public class GroupRemoveWaifu extends ACommand {
   @Inject
   public GroupRemoveWaifu(GroupLoader groupLoader, MessageSender messageSender,
       PlayerLoader playerLoader) {
-    super();
     this.groupLoader = groupLoader;
     this.messageSender = messageSender;
     this.playerLoader = playerLoader;

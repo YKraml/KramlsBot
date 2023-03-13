@@ -21,7 +21,6 @@ public class CreateDungeon extends ACommand {
 
   @Inject
   public CreateDungeon(DungeonLoader dungeonLoader) {
-    super();
     this.dungeonLoader = dungeonLoader;
   }
 

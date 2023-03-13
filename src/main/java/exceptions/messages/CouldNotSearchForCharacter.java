@@ -7,7 +7,6 @@ public class CouldNotSearchForCharacter implements ExceptionMessage {
     private final String characterName;
 
     public CouldNotSearchForCharacter(String guessedName) {
-        super();
         this.characterName = guessedName;
     }
 

@@ -21,7 +21,6 @@ public class GroupAddWaifu extends ACommand {
 
   @Inject
   public GroupAddWaifu(PlayerLoader playerLoader) {
-    super();
     this.playerLoader = playerLoader;
   }
 

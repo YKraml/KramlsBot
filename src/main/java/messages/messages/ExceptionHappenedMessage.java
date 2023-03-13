@@ -11,7 +11,6 @@ public class ExceptionHappenedMessage extends MyMessage {
   private final MyOwnException myOwnException;
 
   public ExceptionHappenedMessage(MyOwnException myOwnException) {
-    super();
     this.myOwnException = myOwnException;
   }
 

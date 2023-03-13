@@ -21,7 +21,6 @@ public class Claim extends ACommand {
 
   @Inject
   public Claim(RoutineClaimBuilder routineClaimBuilder) {
-    super();
     this.routineClaimBuilder = routineClaimBuilder;
   }
 

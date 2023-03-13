@@ -10,7 +10,6 @@ public class GroupCreated extends MyMessage {
   private final String groupName;
 
   public GroupCreated(String groupName) {
-    super();
     this.groupName = groupName;
   }
 

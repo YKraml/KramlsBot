@@ -19,7 +19,6 @@ public class Songs extends ACommand {
 
   @Inject
   public Songs(RoutineShowSongsBuilder routineShowSongsBuilder) {
-    super();
     this.routineShowSongsBuilder = routineShowSongsBuilder;
   }
 

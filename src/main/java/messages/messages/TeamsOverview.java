@@ -25,7 +25,6 @@ public class TeamsOverview extends MyMessage {
 
   public TeamsOverview(User user, DungeonLoader dungeonLoader, PlayerLoader playerLoader,
       MessageSender messageSender, WaifuLoader waifuLoader, JikanFetcher jikanFetcher) {
-    super();
     this.user = user;
     this.dungeonLoader = dungeonLoader;
     this.playerLoader = playerLoader;

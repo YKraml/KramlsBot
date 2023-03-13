@@ -11,7 +11,6 @@ public class DungeonDeleted extends MyMessage {
   private final Dungeon dungeon;
 
   public DungeonDeleted(Dungeon dungeonToDelete) {
-    super();
     dungeon = dungeonToDelete;
   }
 
