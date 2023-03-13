@@ -5,7 +5,6 @@ import exceptions.MyOwnException;
 import exceptions.messages.ReachedMaxWaifus;
 import java.util.Optional;
 import messages.MessageSender;
-import messages.MessageSenderImpl;
 import messages.messages.GuessedRight;
 import messages.messages.GuessedWrong;
 import messages.messages.WaifuStats;

@@ -23,8 +23,6 @@ public class GroupListener extends MyAbstractListListener<Waifu> implements Reac
 
   private final Group group;
   private final Player player;
-  private int pageNumber;
-  private final int maxPages;
   private final PlayerLoader playerLoader;
   private final WaifuLoader waifuLoader;
   private final JikanFetcher jikanFetcher;
@@ -39,8 +37,6 @@ public class GroupListener extends MyAbstractListListener<Waifu> implements Reac
     this.waifuLoader = waifuLoader;
     this.jikanFetcher = jikanFetcher;
     this.messageSender = messageSender;
-    this.pageNumber = 0;
-    this.maxPages = group.getWaifuList().size() / 10 + 1;
   }
 
   @Override

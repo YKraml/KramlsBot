@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Optional;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.event.interaction.SlashCommandCreateEvent;
-import waifu.loader.PlayerLoader;
 
 /**
  * Klasse {@link CommandDistributor} managed alle Befehle.

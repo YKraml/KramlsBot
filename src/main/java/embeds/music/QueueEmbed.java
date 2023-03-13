@@ -1,11 +1,9 @@
 package embeds.music;
 
 import embeds.MyListEmbed;
-import java.util.function.Consumer;
-import music.queue.QueueElement;
-import music.queue.Queue;
-
 import java.nio.charset.StandardCharsets;
+import music.queue.Queue;
+import music.queue.QueueElement;
 
 public class QueueEmbed extends MyListEmbed<QueueElement> {
 

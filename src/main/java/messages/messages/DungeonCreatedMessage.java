@@ -1,7 +1,6 @@
 package messages.messages;
 
 import embeds.dungeon.DungeonCreatedEmbed;
-import embeds.dungeon.DungeonEmbed;
 import exceptions.MyOwnException;
 import messages.MyMessage;
 import org.javacord.api.entity.message.Message;

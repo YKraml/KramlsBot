@@ -1,6 +1,5 @@
 package waifu.sql.commands.team;
 
-import waifu.model.Player;
 import waifu.sql.commands.SQLCommandWithResult;
 import waifu.sql.entry.TeamEntrySet;
 

@@ -1,9 +1,8 @@
 package waifu.sql.commands.team;
 
-import java.text.MessageFormat;
 import java.util.Locale;
-import waifu.sql.commands.SQLCommandWithoutResult;
 import waifu.model.dungeon.Team;
+import waifu.sql.commands.SQLCommandWithoutResult;
 
 public class InsertTeamOrUpdate extends SQLCommandWithoutResult {
 

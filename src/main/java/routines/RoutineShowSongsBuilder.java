@@ -7,7 +7,6 @@ import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import waifu.loader.PlayerLoader;
-import waifu.model.Player;
 
 public class RoutineShowSongsBuilder {
 

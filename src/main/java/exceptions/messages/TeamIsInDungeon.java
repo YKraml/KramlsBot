@@ -1,7 +1,6 @@
 package exceptions.messages;
 
 import exceptions.ExceptionMessage;
-import waifu.model.Player;
 import waifu.model.dungeon.Team;
 
 public class TeamIsInDungeon implements ExceptionMessage {

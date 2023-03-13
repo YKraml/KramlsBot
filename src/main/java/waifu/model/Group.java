@@ -1,14 +1,11 @@
 package waifu.model;
 
 import embeds.DisplayableElement;
-
 import exceptions.MyOwnException;
 import java.util.Collections;
-import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Set;
 
 public class Group implements DisplayableElement {
 

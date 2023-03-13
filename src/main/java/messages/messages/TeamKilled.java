@@ -2,7 +2,6 @@ package messages.messages;
 
 import exceptions.MyOwnException;
 import messages.MyMessage;
-import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import waifu.model.dungeon.Inventory;

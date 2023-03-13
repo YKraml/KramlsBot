@@ -1,15 +1,11 @@
 package actions.listeners.reaction;
 
 import com.google.inject.Inject;
-import discord.ChannelFinder;
 import messages.MessageSender;
 import messages.messages.AnimeEndingsBuilder;
 import messages.messages.AnimeOpeningsBuilder;
 import model.jikan.anime.animeByIdFull.AnimeFullById;
-import music.audio.MusicPlayerManager;
 import waifu.JikanFetcher;
-import waifu.loader.PlayerLoader;
-import youtube.YoutubeFetcher;
 
 public class AnimeOpeningEndingReactionListenerBuilder {
 

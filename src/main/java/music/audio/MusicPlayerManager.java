@@ -2,7 +2,10 @@ package music.audio;
 
 import exceptions.MyOwnException;
 import exceptions.messages.QueueNonExisting;
-import java.util.function.Consumer;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Optional;
 import javax.inject.Singleton;
 import music.queue.Queue;
 import music.queue.QueueElement;
@@ -10,11 +13,6 @@ import org.javacord.api.entity.channel.ServerVoiceChannel;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.server.Server;
-
-import java.util.Collections;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Optional;
 
 @Singleton
 public final class MusicPlayerManager {

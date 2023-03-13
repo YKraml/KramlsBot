@@ -4,7 +4,6 @@ import exceptions.MyOwnException;
 import messages.MyMessage;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
-import waifu.model.Waifu;
 
 public class WaifuHasMaxLevel extends MyMessage {
 

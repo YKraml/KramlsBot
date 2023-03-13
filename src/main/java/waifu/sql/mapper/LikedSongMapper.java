@@ -1,9 +1,8 @@
 package waifu.sql.mapper;
 
-import exceptions.MyOwnException;
 import music.queue.QueueElement;
-import waifu.sql.entry.LikedSongEntrySet;
 import waifu.sql.entry.AbstractEntrySet;
+import waifu.sql.entry.LikedSongEntrySet;
 
 public class LikedSongMapper extends AbstractMapper<QueueElement, LikedSongEntrySet.LikedSongEntry> {
 
@@ -15,7 +14,7 @@ public class LikedSongMapper extends AbstractMapper<QueueElement, LikedSongEntry
     }
 
     @Override
-    QueueElement mapOneEntry(LikedSongEntrySet.LikedSongEntry entry) throws MyOwnException {
+    QueueElement mapOneEntry(LikedSongEntrySet.LikedSongEntry entry) {
         return new QueueElement(entry.getName(), entry.getUrl(), playerName);
     }
 }

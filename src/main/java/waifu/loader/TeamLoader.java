@@ -1,6 +1,5 @@
 package waifu.loader;
 
-import com.google.inject.Singleton;
 import exceptions.MyOwnException;
 import java.util.List;
 import waifu.model.Player;

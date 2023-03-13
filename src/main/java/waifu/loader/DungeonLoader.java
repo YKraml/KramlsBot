@@ -1,10 +1,8 @@
 package waifu.loader;
 
 import exceptions.MyOwnException;
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
-import javax.inject.Singleton;
 import waifu.model.dungeon.Dungeon;
 
 public interface DungeonLoader {

@@ -21,7 +21,7 @@ abstract class AbstractMapper<ObjectType, EntryType extends AbstractEntrySet.Abs
 
     }
 
-    abstract ObjectType mapOneEntry(EntryType entry) throws MyOwnException;
+    abstract ObjectType mapOneEntry(EntryType entry);
 
 
     public List<ObjectType> getList() throws MyOwnException {

@@ -1,14 +1,12 @@
 package embeds;
 
 import de.kraml.Main;
-import waifu.model.Waifu;
+import java.util.List;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.entity.permission.Role;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import waifu.model.Player;
-
-import java.util.List;
 
 public class StatEmbed extends EmbedBuilder {
 
