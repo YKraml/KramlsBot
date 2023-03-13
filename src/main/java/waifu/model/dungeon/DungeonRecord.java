@@ -1,12 +1,12 @@
 package waifu.model.dungeon;
 
-public class Record {
+public class DungeonRecord {
 
     private final Team team;
     private final RecordTypes recordType;
     private final long value;
 
-    public Record(Team team, long value, RecordTypes recordType) {
+    public DungeonRecord(Team team, long value, RecordTypes recordType) {
         this.team = team;
         this.value = value;
         this.recordType = recordType;
@@ -25,13 +25,13 @@ public class Record {
         return recordType;
     }
 
-    public boolean thisRecordIsWorseThen(Record record) {
+    public boolean thisRecordIsWorseThen(DungeonRecord dungeonRecord) {
 
-        if (!this.recordType.equals(record.recordType)) {
+        if (!this.recordType.equals(dungeonRecord.recordType)) {
             return false;
         }
 
-        return this.value < record.value;
+        return this.value < dungeonRecord.value;
     }
 
     public String print() {

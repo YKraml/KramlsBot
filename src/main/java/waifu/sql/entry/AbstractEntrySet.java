@@ -2,7 +2,10 @@ package waifu.sql.entry;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
 
 public abstract class AbstractEntrySet<EntryType extends AbstractEntrySet.AbstractEntry> implements
     Collection<EntryType> {
@@ -96,7 +99,7 @@ public abstract class AbstractEntrySet<EntryType extends AbstractEntrySet.Abstra
 
   public static class AbstractEntry {
 
-    protected AbstractEntry(){
+    protected AbstractEntry() {
       //This class can only be initiated by an EntrySet
     }
 

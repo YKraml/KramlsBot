@@ -5,13 +5,15 @@ import exceptions.MyOwnException;
 import exceptions.messages.TeamIsFull;
 import exceptions.messages.TeamIsInDungeon;
 import exceptions.messages.WaifuInTeam;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 import waifu.model.Player;
 import waifu.model.Waifu;
 import waifu.model.fighting.FightHistory;
 import waifu.model.fighting.Fighter;
-
-import java.util.*;
 import java.util.stream.Collectors;
 
 public class Team implements DisplayableElement {

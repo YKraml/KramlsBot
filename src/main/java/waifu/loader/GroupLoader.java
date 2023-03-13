@@ -2,6 +2,14 @@ package waifu.loader;
 
 import com.google.inject.Inject;
 import exceptions.MyOwnException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 import javax.inject.Singleton;
 import waifu.model.Group;
 import waifu.model.Player;
@@ -11,11 +19,14 @@ import waifu.sql.commands.group.DeleteGroup;
 import waifu.sql.commands.group.GroupExistst;
 import waifu.sql.commands.group.InsertGroup;
 import waifu.sql.commands.group.SelectGroupsByOwnerId;
-import waifu.sql.commands.group_waifu.*;
+import waifu.sql.commands.group_waifu.DeleteAllWaifusFromGroup;
+import waifu.sql.commands.group_waifu.DeleteWaifuFromGroup;
+import waifu.sql.commands.group_waifu.GroupWaifuExists;
+import waifu.sql.commands.group_waifu.InsertGroupWaifu;
+import waifu.sql.commands.group_waifu.SelectWaifusFromGroup;
 import waifu.sql.entry.GroupEntrySet;
 import waifu.sql.entry.GroupWaifuEntrySet;
 
-import java.util.*;
 
 @Singleton
 public final class GroupLoader {
@@ -66,7 +77,8 @@ public final class GroupLoader {
       Group group = new Group(groupEntry.getId(), groupEntry.getName());
       groupList.add(group);
 
-      GroupWaifuEntrySet groupWaifuEntrySet = sqlCommandExecutor.execute(new SelectWaifusFromGroup(group));
+      GroupWaifuEntrySet groupWaifuEntrySet = sqlCommandExecutor.execute(
+          new SelectWaifusFromGroup(group));
       for (GroupWaifuEntrySet.GroupWaifuEntry entry : groupWaifuEntrySet) {
         Optional<Waifu> waifu = waifuLoader.getWaifuById(entry.getIdWaifu());
         if (waifu.isPresent()) {

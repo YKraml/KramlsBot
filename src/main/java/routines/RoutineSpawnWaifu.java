@@ -88,7 +88,7 @@ public class RoutineSpawnWaifu extends Routine {
       Terminal.printLine(MessageFormat.format(message, server.getName(), newWaifu.getId()));
 
     } catch (MyOwnException e) {
-      MyOwnException spawnWaifuException = new MyOwnException(new CouldNotSpawnWaifu(), e);
+      MyOwnException spawnWaifuException = new MyOwnException(new CouldNotSpawnWaifu(server.getName()), e);
       MyMessage myMessage = new ExceptionHappenedMessage(spawnWaifuException);
       MessageSenderImpl result;
       synchronized (MessageSenderImpl.class) {

@@ -1,6 +1,7 @@
 package waifu.model;
 
-import java.awt.*;
+
+import java.awt.Color;
 
 public enum Rarities {
     COMMON("Common", 0, 100, 100, 0.5, Color.BLUE),

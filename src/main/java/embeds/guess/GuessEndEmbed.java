@@ -11,7 +11,12 @@ public class GuessEndEmbed extends EmbedBuilder {
 
         this.setTitle(anime.getData().getTitleEnglish());
 
-        String answers = possibleAnswers.toString().length() > 1000 ? possibleAnswers.toString().substring(0, 900) : possibleAnswers.toString();
+        String answers;
+        if (possibleAnswers.toString().length() > 1000) {
+            answers = possibleAnswers.toString().substring(0, 900);
+        } else {
+            answers = possibleAnswers.toString();
+        }
         this.addField("Moegliche Antworten", answers);
 
         this.addField("Gesuchter Song", songNam);

@@ -1,27 +1,27 @@
 package waifu.sql.commands.record;
 
 import waifu.model.dungeon.Dungeon;
-import waifu.model.dungeon.Record;
+import waifu.model.dungeon.DungeonRecord;
 import waifu.sql.commands.SQLCommandWithoutResult;
 
 public class InsertRecord extends SQLCommandWithoutResult {
 
 
     private final Dungeon dungeon;
-    private final Record record;
+    private final DungeonRecord dungeonRecord;
 
-    public InsertRecord(Dungeon dungeon, Record record) {
+    public InsertRecord(Dungeon dungeon, DungeonRecord dungeonRecord) {
         this.dungeon = dungeon;
-        this.record = record;
+        this.dungeonRecord = dungeonRecord;
     }
 
     @Override
     protected String getCommand() {
         return "insert into KRAMLSBOT.RECORD values ("
-                + "'" + record.getTeam().getId() + "'" + ","
+                + "'" + dungeonRecord.getTeam().getId() + "'" + ","
                 + "'" + dungeon.getChannelId() + "'" + ","
-                + "'" + record.getRecordType() + "'" + ","
-                + record.getValue()
+                + "'" + dungeonRecord.getRecordType() + "'" + ","
+                + dungeonRecord.getValue()
                 + ");";
     }
 }

@@ -5,7 +5,9 @@ import de.kraml.Terminal;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
@@ -28,7 +30,8 @@ public final class ConnectionPool {
   }
 
   private Connection createConnection() throws SQLException {
-    Terminal.printLine("Connection was created. There are %d connections. ".formatted(availableConnections.size() + usedConnections.size()));
+    Terminal.printLine("Connection was created. There are %d connections. ".formatted(
+        availableConnections.size() + usedConnections.size()));
     return DriverManager.getConnection(url, userName, password);
   }
 
@@ -36,8 +39,12 @@ public final class ConnectionPool {
   public Connection getConnection() throws SQLException {
 
     synchronized (availableConnections) {
-      Connection connection =
-          availableConnections.size() > 0 ? availableConnections.get(0) : createConnection();
+      Connection connection;
+      if (availableConnections.size() > 0) {
+        connection = availableConnections.get(0);
+      } else {
+        connection = createConnection();
+      }
 
       if (connection.isClosed()) {
         connection = createConnection();

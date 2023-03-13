@@ -12,14 +12,14 @@ public class Dungeon implements DisplayableElement {
   private final String channelId;
   private final String name;
   private final int difficulty;
-  private final List<Record> records;
+  private final List<DungeonRecord> dungeonRecords;
 
   public Dungeon(String serverId, String channelId, String name, int difficulty) {
     this.serverId = serverId;
     this.channelId = channelId;
     this.name = name;
     this.difficulty = difficulty;
-    this.records = Collections.synchronizedList(new ArrayList<>());
+    this.dungeonRecords = Collections.synchronizedList(new ArrayList<>());
   }
 
   public static Dungeon getHOME() {
@@ -34,8 +34,8 @@ public class Dungeon implements DisplayableElement {
     return name;
   }
 
-  public List<Record> getRecords() {
-    return Collections.unmodifiableList(records);
+  public List<DungeonRecord> getRecords() {
+    return Collections.unmodifiableList(dungeonRecords);
   }
 
   public String getServerId() {

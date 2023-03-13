@@ -3,12 +3,13 @@ package discord;
 import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import exceptions.messages.CouldNotUpdateRoles;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import waifu.loader.PlayerLoader;
 import waifu.model.Player;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
-
-import java.util.*;
 
 public class RoleChecker {
 

@@ -3,7 +3,7 @@ package embeds.dungeon;
 import de.kraml.Main;
 import java.util.List;
 import waifu.model.dungeon.Dungeon;
-import waifu.model.dungeon.Record;
+import waifu.model.dungeon.DungeonRecord;
 import waifu.model.dungeon.Team;
 import waifu.model.fighting.Fighter;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
@@ -16,8 +16,8 @@ public class DungeonEmbed extends EmbedBuilder {
     this.setColor(Main.COLOR);
 
     StringBuilder description = new StringBuilder("Rekorde: \n");
-    for (Record record : dungeon.getRecords()) {
-      description.append(record.print());
+    for (DungeonRecord dungeonRecord : dungeon.getRecords()) {
+      description.append(dungeonRecord.print());
       description.append("\n");
     }
     this.setDescription(description.toString());

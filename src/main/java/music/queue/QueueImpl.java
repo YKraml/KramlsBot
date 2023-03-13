@@ -23,7 +23,11 @@ public class QueueImpl implements Queue {
   @Override
   public void goToNextElement() {
     getCurrentElement().ifPresent(queueElement -> previousSongs.add(0, queueElement));
-    currentElement = nextSongs.isEmpty() ? null : nextSongs.remove(0);
+    if (nextSongs.isEmpty()) {
+      currentElement = null;
+    } else {
+      currentElement = nextSongs.remove(0);
+    }
   }
 
   @Override
