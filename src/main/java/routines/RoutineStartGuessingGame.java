@@ -71,15 +71,13 @@ public class RoutineStartGuessingGame extends Routine {
       String url = "https://www.youtube.com/watch?v=%s".formatted(
           youtubeFetcher.getIdByVideoName("Anime %s Song %s".formatted(animeTitle, song)));
 
-
       ServerVoiceChannel voiceChannel = channelFinder.getServerVoiceChannelByMember(server, user);
       QueueElement queueElement = new QueueElement(animeTitle, url, user.getName(), true);
       musicPlayerManager.playThisSongNext(voiceChannel, textChannel, queueElement);
 
       guessingGameManager.startGuessingGame(anime, url, song, serverId, difficulty);
       revealTimerBuilder.createRevealTimer(textChannel, serverId, url).startTimer();
-      messageSender.send(new GuessGameStarted(routineRunner, routineRevealBuilder,
-          guessingGameManager.getGuessingGameByServer(serverId)), textChannel);
+      messageSender.send(new GuessGameStarted(routineRunner, routineRevealBuilder), textChannel);
 
       return new Answer(
           "Someone started guessing game. Anime = '%s', Song = '%s', URL = '%s'".formatted(

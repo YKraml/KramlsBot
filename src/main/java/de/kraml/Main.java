@@ -1,6 +1,5 @@
 package de.kraml;
 
-import actions.listeners.commands.ACommand;
 import actions.listeners.commands.SlashCommandListener;
 import actions.listeners.join.JoinListener;
 import actions.timer.DungeonTickTask;
@@ -9,14 +8,9 @@ import actions.timer.SpawnWaifuTask;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import java.awt.Color;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import org.javacord.api.DiscordApi;
-import org.javacord.api.interaction.SlashCommand;
-import org.javacord.api.interaction.SlashCommandBuilder;
-import org.javacord.api.interaction.SlashCommandOption;
 
 
 public class Main {

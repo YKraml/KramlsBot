@@ -5,7 +5,6 @@ import discord.Emojis;
 import embeds.guess.GuessStartEmbed;
 import exceptions.MyOwnException;
 import messages.MyMessage;
-import music.guess.GuessingGame;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import routines.RoutineRevealBuilder;
@@ -15,13 +14,10 @@ public class GuessGameStarted extends MyMessage {
 
   private final RoutineRunner routineRunner;
   private final RoutineRevealBuilder routineRevealBuilder;
-  private final GuessingGame guessingGame;
 
-  public GuessGameStarted(RoutineRunner routineRunner, RoutineRevealBuilder routineRevealBuilder,
-      GuessingGame guessingGameManager) {
+  public GuessGameStarted(RoutineRunner routineRunner, RoutineRevealBuilder routineRevealBuilder) {
     this.routineRunner = routineRunner;
     this.routineRevealBuilder = routineRevealBuilder;
-    this.guessingGame = guessingGameManager;
   }
 
   @Override
