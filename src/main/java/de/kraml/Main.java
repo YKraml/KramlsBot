@@ -57,34 +57,6 @@ public class Main {
 
   }
 
-  private static void initSlashCommands(List<ACommand> commands) {
-
-    List<SlashCommand> slashCommands = discordApi.getGlobalSlashCommands().join();
-    for (SlashCommand slashCommand : slashCommands) {
-      slashCommand.deleteGlobal().whenComplete(
-          (unused, throwable) -> System.out.println("Deleted " + slashCommand.getName()));
-    }
-
-    List<SlashCommandBuilder> builders = new ArrayList<>();
-    for (ACommand abstractCommand : commands) {
-      if (slashCommands.stream()
-          .noneMatch(slashCommand -> abstractCommand.getName().equals(slashCommand.getName()))) {
-        String name = abstractCommand.getName();
-        String description = abstractCommand.getDescription();
-        List<SlashCommandOption> slashCommandOptions = abstractCommand.getSlashCommandOptions();
-        builders.add(SlashCommand.with(name, description, slashCommandOptions));
-        System.out.println("Added to List: " + name);
-      }
-    }
-    builders.forEach(slashCommandBuilder -> slashCommandBuilder.createGlobal(discordApi)
-        .whenComplete((slashCommand, throwable) -> {
-          if (throwable != null) {
-            System.out.println("Could not built. " + throwable.getMessage());
-          }
-          System.out.println("Built: " + slashCommand.getName());
-        }));
-  }
-
   public static DiscordApi getDiscordApi() {
     return discordApi;
   }

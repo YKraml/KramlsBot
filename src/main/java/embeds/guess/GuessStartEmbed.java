@@ -6,7 +6,7 @@ import org.javacord.api.entity.message.embed.EmbedBuilder;
 
 public class GuessStartEmbed extends EmbedBuilder {
 
-  public GuessStartEmbed(GuessingGame guessingGame) {
+  public GuessStartEmbed() {
 
     setTitle("Anime Song Ratespiel");
     setDescription("Ihr koennt jetzt den Namen des Songs erraten.");

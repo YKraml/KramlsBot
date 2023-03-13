@@ -34,7 +34,7 @@ public class GuessGameStarted extends MyMessage {
 
   @Override
   protected EmbedBuilder getContent() throws MyOwnException {
-    return new GuessStartEmbed(guessingGame);
+    return new GuessStartEmbed();
   }
 
 }

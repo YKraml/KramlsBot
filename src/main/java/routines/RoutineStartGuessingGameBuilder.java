@@ -26,7 +26,7 @@ public class RoutineStartGuessingGameBuilder {
   @Inject
   public RoutineStartGuessingGameBuilder(GuessingGameManager guessingGameManager,
       JikanFetcher jikanFetcher, YoutubeFetcher youtubeFetcher, ChannelFinder channelFinder,
-      MusicPlayerManager musicPlayerManager, MessageSender messageSender, PlayerLoader playerLoader,
+      MusicPlayerManager musicPlayerManager, MessageSender messageSender,
       RoutineRevealBuilder routineRevealBuilder) {
     this.guessingGameManager = guessingGameManager;
     this.jikanFetcher = jikanFetcher;
