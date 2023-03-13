@@ -105,27 +105,12 @@ public class Stats {
   }
 
   public void correctStats() {
+    correctNegativeValues();
+    correctLowBaseSum();
+    correctHighBaseSum();
+  }
 
-    if (this.baseHp < 0) {
-      this.baseHp = -this.baseHp;
-    }
-    if (this.baseAtt < 0) {
-      this.baseAtt = -this.baseAtt;
-    }
-    if (this.baseDef < 0) {
-      this.baseDef = -this.baseDef;
-    }
-    if (this.baseInit < 0) {
-      this.baseInit = -this.baseInit;
-    }
-
-    while (getBaseStatsSum() < this.rarity.getStatsSum()) {
-      this.baseHp = (int) (this.baseHp * 1.1);
-      this.baseAtt = (int) (this.baseAtt * 1.1);
-      this.baseDef = (int) (this.baseDef * 1.1);
-      this.baseInit = (int) (this.baseInit * 1.1);
-    }
-
+  private void correctHighBaseSum() {
     int n = 0;
     while (getBaseStatsSum() > this.rarity.getStatsSum()) {
       if (n % 4 == 0 && this.baseHp > 10) {
@@ -138,6 +123,30 @@ public class Stats {
         this.baseInit--;
       }
       n++;
+    }
+  }
+
+  private void correctLowBaseSum() {
+    while (getBaseStatsSum() < this.rarity.getStatsSum()) {
+      this.baseHp = (int) (this.baseHp * 1.1);
+      this.baseAtt = (int) (this.baseAtt * 1.1);
+      this.baseDef = (int) (this.baseDef * 1.1);
+      this.baseInit = (int) (this.baseInit * 1.1);
+    }
+  }
+
+  private void correctNegativeValues() {
+    if (this.baseHp < 0) {
+      this.baseHp = -this.baseHp;
+    }
+    if (this.baseAtt < 0) {
+      this.baseAtt = -this.baseAtt;
+    }
+    if (this.baseDef < 0) {
+      this.baseDef = -this.baseDef;
+    }
+    if (this.baseInit < 0) {
+      this.baseInit = -this.baseInit;
     }
   }
 

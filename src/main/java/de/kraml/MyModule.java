@@ -63,7 +63,6 @@ import waifu.sql.ConnectionPool;
 
 public class MyModule extends AbstractModule {
 
-
   @Override
   protected void configure() {
     bind(PlayerLoader.class).to(PlayerLoaderCached.class);
@@ -116,43 +115,13 @@ public class MyModule extends AbstractModule {
       DeleteDungeons deleteDungeons, Play play, Stop stop, ShowQueue showQueue, Songs songs,
       Fight fight) {
 
-    List<ACommand> commands = new ArrayList<>();
-    commands.add(disconnect);
-    commands.add(doubleOrNothing);
-    commands.add(doubleOrNothingWithParameter);
-    commands.add(startGuessingGame);
-    commands.add(guess);
-    commands.add(reveal);
-    commands.add(stats);
-    commands.add(daily);
-    commands.add(spawn);
-    commands.add(showWaifuList);
-    commands.add(claim);
-    commands.add(giveWaifu);
-    commands.add(merge);
-    commands.add(expand);
-    commands.add(deleteFromAnime);
-    commands.add(deleteFromTo);
-    commands.add(giveMoney);
-    commands.add(delete);
-    commands.add(groupCreate);
-    commands.add(groupAddWaifu);
-    commands.add(groupShowList);
-    commands.add(groupRemoveWaifu);
-    commands.add(groupDelete);
-    commands.add(teamAdd);
-    commands.add(teamRemove);
-    commands.add(teamCreate);
-    commands.add(teamExpand);
-    commands.add(teamsList);
-    commands.add(teamRename);
-    commands.add(createDungeon);
-    commands.add(deleteDungeons);
-    commands.add(play);
-    commands.add(stop);
-    commands.add(showQueue);
-    commands.add(songs);
-    commands.add(fight);
+    List<ACommand> commands = new ArrayList<>(
+        List.of(disconnect, doubleOrNothing, doubleOrNothingWithParameter, startGuessingGame, guess,
+            reveal, stats, daily, spawn, showWaifuList, claim, giveWaifu, merge, expand,
+            deleteFromAnime, deleteFromTo, giveMoney, delete, groupCreate, groupAddWaifu,
+            groupShowList, groupRemoveWaifu, groupDelete, teamAdd, teamRemove, teamCreate,
+            teamExpand, teamsList, teamRename, createDungeon, deleteDungeons, play, stop, showQueue,
+            songs, fight));
 
     commands.forEach(abstractCommand -> abstractCommand.setRoutineRunner(routineRunner));
 
