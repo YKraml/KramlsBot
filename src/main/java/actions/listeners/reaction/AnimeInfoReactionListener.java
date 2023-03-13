@@ -36,7 +36,8 @@ public class AnimeInfoReactionListener extends MyAbstractReactionListener implem
       Message message, User user, Emoji emoji) throws MyOwnException {
     if (emoji.equalsEmoji(Emojis.INFORMATION_SOURCE.getEmoji())) {
       messageSender.send(
-          new AnimeInformation(anime, jikanFetcher, animeOpeningEndingReactionListenerBuilder),
+          new AnimeInformation(anime, jikanFetcher, animeOpeningEndingReactionListenerBuilder,
+              messageSender),
           textChannel);
     }
   }

@@ -1,39 +1,37 @@
 package embeds.anime;
 
-import actions.listeners.reaction.Mapper;
 import embeds.DisplayableElement;
 import embeds.MyListEmbed;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import model.jikan.anime.animeByIdFull.AnimeFullById;
 import model.jikan.anime.animeCharacters.AnimeCharacters;
 import model.jikan.anime.animeCharacters.Datum;
 
 public class CharacterListEmbed extends MyListEmbed<DisplayableElement> {
 
-    public CharacterListEmbed(AnimeFullById anime, AnimeCharacters animeCharacters, int page) {
-        super("Charaktere von \"" + anime.getData().getTitleEnglish() + "\"", ((Mapper<Datum>) list -> {
+  public CharacterListEmbed(AnimeFullById anime, AnimeCharacters animeCharacters, int page) {
+    super("Charaktere von '%s'".formatted(anime.getData().getTitleEnglish()),
+        map(animeCharacters.getData()), page, true);
+    this.setThumbnail(anime.getData().getImages().getJpg().getImageUrl());
+  }
 
-            List<DisplayableElement> elements = new ArrayList<>();
-            list.forEach(entry -> elements.add(new DisplayableElement() {
-                @Override
-                public String getDisplayTitle() {
-                    return entry.getCharacter().getName();
-                }
+  private static List<DisplayableElement> map(List<Datum> list) {
+    return list.stream().map(entry -> new DisplayableElement() {
+      @Override
+      public String getDisplayTitle() {
+        return entry.getCharacter().getName();
+      }
 
-                @Override
-                public String getDisplayBody() {
-                    return entry.getRole();
-                }
+      @Override
+      public String getDisplayBody() {
+        return entry.getRole();
+      }
 
-                @Override
-                public String getDisplayImageUrl() {
-                    return entry.getCharacter().getImages().getJpg().getImageUrl();
-                }
-            }));
-
-            return elements;
-        }).map(animeCharacters.getData()), page, true);
-        this.setThumbnail(anime.getData().getImages().getJpg().getImageUrl());
-    }
+      @Override
+      public String getDisplayImageUrl() {
+        return entry.getCharacter().getImages().getJpg().getImageUrl();
+      }
+    }).collect(Collectors.toList());
+  }
 }

@@ -7,6 +7,8 @@ import exceptions.messages.CouldNotSpawnWaifu;
 import java.text.MessageFormat;
 import java.util.Optional;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.logging.Logger;
+import messages.MessageSender;
 import messages.MessageSenderImpl;
 import messages.MyMessage;
 import messages.messages.ExceptionHappenedMessage;
@@ -26,29 +28,49 @@ public class RoutineSpawnWaifu extends Routine {
   private final WaifuSpawnManager waifuSpawnManager;
   private final WaifuBuilder waifuBuilder;
   private final DiscordApi discordApi;
+  private final MessageSender messageSender;
 
   public RoutineSpawnWaifu(ScheduledExecutorService scheduledExecutorService,
-      WaifuSpawnManager waifuSpawnManager, WaifuBuilder waifuBuilder, DiscordApi discordApi) {
+      WaifuSpawnManager waifuSpawnManager, WaifuBuilder waifuBuilder, DiscordApi discordApi,
+      MessageSender messageSender) {
     this.scheduledExecutorService = scheduledExecutorService;
     this.waifuSpawnManager = waifuSpawnManager;
     this.waifuBuilder = waifuBuilder;
     this.discordApi = discordApi;
+    this.messageSender = messageSender;
   }
 
   @Override
   Answer start(RoutineRunner routineRunner) throws MyOwnException {
     for (Server server : discordApi.getServers()) {
-      scheduledExecutorService.submit(
-          () -> findSpawnChannel(server).ifPresent(textChannel -> {
-            try {
-              spawnWaifu(server, textChannel);
-            } catch (MyOwnException e) {
-              throw new RuntimeException(
-                  new MyOwnException(() -> "Exception while spawning Waifu", e));
-            }
-          }));
+      scheduledExecutorService.submit(() -> spawnWaifu(server));
     }
-    return new Answer("Spawned Waifu");
+    return new Answer("Spawned Waifus");
+  }
+
+  private void spawnWaifu(Server server) {
+    findSpawnChannel(server).ifPresent(textChannel -> {
+      try {
+
+        String serverId = server.getIdAsString();
+        Optional<Waifu> waifuOptional = waifuSpawnManager.getWaifu(serverId);
+        if (waifuOptional.isPresent()) {
+          messageSender.send(new WaifuToClaimWas(waifuOptional.get()), textChannel);
+        }
+
+        Waifu newWaifu = waifuBuilder.createRandomWaifu();
+        waifuSpawnManager.setWaifuToGuess(serverId, newWaifu);
+        messageSender.send(new WaifuSpawn(newWaifu), textChannel);
+
+        String message = "Waifu spawned. Server = ''{0}'', Waifu = ''{1}''";
+        Terminal.printLine(MessageFormat.format(message, server.getName(), newWaifu.getId()));
+
+      } catch (MyOwnException e) {
+        messageSender.sendSafe(new ExceptionHappenedMessage(
+            new MyOwnException(new CouldNotSpawnWaifu(server.getName()), e)), textChannel);
+      }
+
+    });
   }
 
   private Optional<TextChannel> findSpawnChannel(Server server) {
@@ -62,39 +84,4 @@ public class RoutineSpawnWaifu extends Routine {
     return Optional.empty();
   }
 
-  private void spawnWaifu(Server server, TextChannel textChannel)
-      throws MyOwnException {
-    try {
-
-      String serverId = server.getIdAsString();
-      Optional<Waifu> waifuOptional = waifuSpawnManager.getWaifu(serverId);
-      if (waifuOptional.isPresent()) {
-        MessageSenderImpl result;
-        synchronized (MessageSenderImpl.class) {
-          result = new MessageSenderImpl();
-        }
-        result.send(new WaifuToClaimWas(waifuOptional.get()), textChannel);
-      }
-
-      Waifu newWaifu = waifuBuilder.createRandomWaifu();
-      waifuSpawnManager.setWaifuToGuess(serverId, newWaifu);
-      MessageSenderImpl result;
-      synchronized (MessageSenderImpl.class) {
-        result = new MessageSenderImpl();
-      }
-      result.send(new WaifuSpawn(newWaifu), textChannel);
-
-      String message = "Waifu spawned. Server = ''{0}'', Waifu = ''{1}''";
-      Terminal.printLine(MessageFormat.format(message, server.getName(), newWaifu.getId()));
-
-    } catch (MyOwnException e) {
-      MyOwnException spawnWaifuException = new MyOwnException(new CouldNotSpawnWaifu(server.getName()), e);
-      MyMessage myMessage = new ExceptionHappenedMessage(spawnWaifuException);
-      MessageSenderImpl result;
-      synchronized (MessageSenderImpl.class) {
-        result = new MessageSenderImpl();
-      }
-      result.send(myMessage, textChannel);
-    }
-  }
 }

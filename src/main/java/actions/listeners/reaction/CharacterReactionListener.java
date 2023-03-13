@@ -3,6 +3,7 @@ package actions.listeners.reaction;
 import discord.Emojis;
 import exceptions.MyOwnException;
 import java.util.Comparator;
+import messages.MessageSender;
 import messages.MessageSenderImpl;
 import messages.messages.CharacterList;
 import model.jikan.anime.animeByIdFull.AnimeFullById;
@@ -22,10 +23,13 @@ public class CharacterReactionListener extends MyAbstractReactionListener implem
 
   private final AnimeFullById anime;
   private final JikanFetcher jikanFetcher;
+  private final MessageSender messageSender;
 
-  public CharacterReactionListener(AnimeFullById anime, JikanFetcher jikanFetcher) {
+  public CharacterReactionListener(AnimeFullById anime, JikanFetcher jikanFetcher,
+      MessageSender messageSender) {
     this.anime = anime;
     this.jikanFetcher = jikanFetcher;
+    this.messageSender = messageSender;
   }
 
   @Override
@@ -42,7 +46,7 @@ public class CharacterReactionListener extends MyAbstractReactionListener implem
       synchronized (MessageSenderImpl.class) {
         result = new MessageSenderImpl();
       }
-      result.send(new CharacterList(animeCharacters, anime), textChannel);
+      result.send(new CharacterList(animeCharacters, anime, messageSender), textChannel);
     }
   }
 
