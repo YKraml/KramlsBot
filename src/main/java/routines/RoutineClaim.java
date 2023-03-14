@@ -48,7 +48,7 @@ public class RoutineClaim extends Routine {
   Answer start(RoutineRunner routineRunner) throws MyOwnException {
     Player player = playerLoader.getPlayerByUser(user);
 
-    if (player.getMaxWaifus() <= player.getMaxWaifus()) {
+    if (player.getWaifuList().size() >= player.getMaxWaifus()) {
       throw new MyOwnException(new ReachedMaxWaifus(player), null);
     }
 
