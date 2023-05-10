@@ -116,10 +116,6 @@ public class Inventory {
     return this.money >= amount;
   }
 
-  public boolean hasStardust(long amount) {
-    return this.stardust >= amount;
-  }
-
   public void addCookies(long cookies) {
     this.cookies += cookies;
   }
@@ -135,6 +131,6 @@ public class Inventory {
     if (morphStones < amount) {
       throw new MyOwnException(new NotEnoughResource(morphStones, amount, "Morphsteine"), null);
     }
-    this.cookies -= amount;
+    this.morphStones -= amount;
   }
 }

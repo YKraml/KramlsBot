@@ -29,6 +29,9 @@ public class Main {
     userName = args[2];
     password = args[3];
 
+    //Logger
+    //BasicConfigurator.configure();
+
     Injector injector = Guice.createInjector(new MyModule());
 
     SlashCommandListener slashCommandListener = injector.getInstance(SlashCommandListener.class);
