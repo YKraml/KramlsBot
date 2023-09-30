@@ -29,9 +29,6 @@ public class Main {
     userName = args[2];
     password = args[3];
 
-    //Logger
-    //BasicConfigurator.configure();
-
     Injector injector = Guice.createInjector(new MyModule());
 
     SlashCommandListener slashCommandListener = injector.getInstance(SlashCommandListener.class);
@@ -50,8 +47,6 @@ public class Main {
     int timeInMinutes = givePointsTask.getTimeInMinutes();
     scheduler.scheduleAtFixedRate(givePointsTask, 5, timeInMinutes, TimeUnit.MINUTES);
     scheduler.scheduleAtFixedRate(dungeonTickTask, 5, 5, TimeUnit.MINUTES);
-
-
   }
 
   public static DiscordApi getDiscordApi() {

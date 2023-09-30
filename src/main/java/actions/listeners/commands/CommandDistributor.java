@@ -25,14 +25,6 @@ public final class CommandDistributor {
     this.commands = commands;
   }
 
-  private static Answer exceptionAnswer(Exception e, TextChannel channel, String message) {
-    e.printStackTrace();
-    MyOwnException ex = new MyOwnException(new CommandWentWrong(message), e);
-    channel.sendMessage(new ExceptionEmbed(ex));
-    Terminal.printError(ex);
-    return new Answer("Exception happened while executing a command.");
-  }
-
   public Answer distributeCommand(SlashCommandCreateEvent event) {
 
     String commandName = event.getSlashCommandInteraction().getCommandName();
@@ -43,6 +35,13 @@ public final class CommandDistributor {
         .orElseGet(() -> createCommandNotFoundAnswer(event, commandName));
   }
 
+  private Answer exceptionAnswer(Exception e, TextChannel channel, String message) {
+    MyOwnException ex = new MyOwnException(new CommandWentWrong(message), e);
+    channel.sendMessage(new ExceptionEmbed(ex));
+    Terminal.printError(ex);
+    return new Answer("Exception happened while executing a command.");
+  }
+
   private Answer createCommandNotFoundAnswer(SlashCommandCreateEvent event, String commandName) {
     String text = "Konnte den Befehl '%s' nicht finden.".formatted(commandName);
     event.getSlashCommandInteraction().createImmediateResponder().append(text).respond();
@@ -50,7 +49,8 @@ public final class CommandDistributor {
   }
 
   private Answer executeCommand(SlashCommandCreateEvent event, ACommand command) {
-    event.getSlashCommandInteraction().respondLater();
+    event.getSlashCommandInteraction().createImmediateResponder().respond();
+
     Answer answer;
     try {
       answer = command.execute(event);
@@ -59,9 +59,6 @@ public final class CommandDistributor {
           .map(textChannel -> exceptionAnswer(e, textChannel, command.getErrorMessage()))
           .orElse(new Answer("Channel nicht gefunden."));
     }
-
-    event.getSlashCommandInteraction().createFollowupMessageBuilder()
-        .append(command.getClass().getSimpleName()).send();
 
     return answer;
   }

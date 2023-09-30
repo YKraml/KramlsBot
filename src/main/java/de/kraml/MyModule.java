@@ -4,13 +4,6 @@ package de.kraml;
 import actions.listeners.commands.ACommand;
 import actions.listeners.commands.dungeon.CreateDungeon;
 import actions.listeners.commands.dungeon.DeleteDungeons;
-import actions.listeners.commands.teams.Fight;
-import actions.listeners.commands.teams.TeamAdd;
-import actions.listeners.commands.teams.TeamCreate;
-import actions.listeners.commands.teams.TeamExpand;
-import actions.listeners.commands.teams.TeamRemove;
-import actions.listeners.commands.teams.TeamRename;
-import actions.listeners.commands.teams.TeamsList;
 import actions.listeners.commands.gambling.DoubleOrNothing;
 import actions.listeners.commands.gambling.DoubleOrNothingWithParameter;
 import actions.listeners.commands.group.GroupAddWaifu;
@@ -25,7 +18,15 @@ import actions.listeners.commands.music.Play;
 import actions.listeners.commands.music.ShowQueue;
 import actions.listeners.commands.music.Songs;
 import actions.listeners.commands.music.Stop;
+import actions.listeners.commands.teams.Fight;
+import actions.listeners.commands.teams.TeamAdd;
+import actions.listeners.commands.teams.TeamCreate;
+import actions.listeners.commands.teams.TeamExpand;
+import actions.listeners.commands.teams.TeamRemove;
+import actions.listeners.commands.teams.TeamRename;
+import actions.listeners.commands.teams.TeamsList;
 import actions.listeners.commands.utility.Disconnect;
+import actions.listeners.commands.utility.IpAddress;
 import actions.listeners.commands.utility.Stats;
 import actions.listeners.commands.waifu.Claim;
 import actions.listeners.commands.waifu.Daily;
@@ -113,7 +114,7 @@ public class MyModule extends AbstractModule {
       TeamAdd teamAdd, TeamRemove teamRemove, TeamCreate teamCreate, TeamExpand teamExpand,
       TeamsList teamsList, TeamRename teamRename, CreateDungeon createDungeon,
       DeleteDungeons deleteDungeons, Play play, Stop stop, ShowQueue showQueue, Songs songs,
-      Fight fight) {
+      Fight fight, IpAddress ip) {
 
     List<ACommand> commands = new ArrayList<>(
         List.of(disconnect, doubleOrNothing, doubleOrNothingWithParameter, startGuessingGame, guess,
@@ -121,7 +122,7 @@ public class MyModule extends AbstractModule {
             deleteFromAnime, deleteFromTo, giveMoney, delete, groupCreate, groupAddWaifu,
             groupShowList, groupRemoveWaifu, groupDelete, teamAdd, teamRemove, teamCreate,
             teamExpand, teamsList, teamRename, createDungeon, deleteDungeons, play, stop, showQueue,
-            songs, fight));
+            songs, fight, ip));
 
     commands.forEach(abstractCommand -> abstractCommand.setRoutineRunner(routineRunner));
 
