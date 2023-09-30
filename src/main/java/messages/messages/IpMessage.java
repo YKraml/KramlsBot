@@ -15,7 +15,7 @@ public class IpMessage extends MyMessage {
 
   @Override
   protected void startRoutine(Message message) throws MyOwnException {
-
+    //Do nothing
   }
 
   @Override
