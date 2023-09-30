@@ -3,19 +3,17 @@ package waifu.model;
 public class Stats {
 
   public static final int MAX_STAR_LEVEL = 10;
-  private Rarities rarity;
-  private int level;
-  private int starLevel;
-  private int xp;
   private int baseHp;
   private int baseAtt;
   private int baseDef;
   private int baseInit;
+  private Rarities rarity;
+  private int starLevel;
+  private int xp;
 
-  public Stats(Rarities rarity, int level, int starLevel, int xp, int baseHp, int baseAtt,
+  public Stats(Rarities rarity, int starLevel, int xp, int baseHp, int baseAtt,
       int baseDef, int baseInit) {
     this.rarity = rarity;
-    this.level = level;
     this.starLevel = starLevel;
     this.xp = xp;
     this.baseHp = baseHp;
@@ -49,14 +47,11 @@ public class Stats {
   }
 
   public int getLevel() {
-    this.level = (int) Math.round(Math.pow(this.xp, 0.3333333333333));
+    int level = (int) Math.round(Math.pow(this.xp, 1 / 3d));
     return Math.max(level, 1);
   }
 
   public int getXp() {
-    if (this.level == 100) {
-      this.xp = 1000000;
-    }
     return xp;
   }
 
@@ -77,12 +72,14 @@ public class Stats {
   }
 
   public int calcStat(int baseStat) {
-    return baseStat + ((baseStat * level) / 25) + baseStat * this.starLevel;
+    return baseStat + ((baseStat * getLevel()) / 25) + baseStat * starLevel;
   }
 
   public void increaseRarity() {
     this.rarity = rarity.getNextRarity();
-    correctStats();
+    correctNegativeValues();
+    correctLowBaseSum();
+    correctHighBaseSum();
   }
 
   public int getStatsSum() {
@@ -98,16 +95,6 @@ public class Stats {
     if (this.xp > 1000000) {
       this.xp = 1000000;
     }
-    this.level = (int) Math.round(Math.pow(this.xp, 0.3334));
-    if (this.level == 100) {
-      this.xp = 1000000;
-    }
-  }
-
-  public void correctStats() {
-    correctNegativeValues();
-    correctLowBaseSum();
-    correctHighBaseSum();
   }
 
   private void correctHighBaseSum() {
@@ -124,6 +111,7 @@ public class Stats {
       }
       n++;
     }
+
   }
 
   private void correctLowBaseSum() {

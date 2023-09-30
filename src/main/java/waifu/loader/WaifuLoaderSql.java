@@ -46,13 +46,13 @@ public final class WaifuLoaderSql implements WaifuLoader {
   public List<Waifu> getWaifusFromPlayer(Player player) throws MyOwnException {
     List<Waifu> waifus = new ArrayList<>();
 
-    WaifuCharacterEntrySet entries = sqlCommandExecutor.execute(new SelectWaifuJoinedCharacter(
-        player.getId()));
+    WaifuCharacterEntrySet entries = sqlCommandExecutor.execute(
+        new SelectWaifuJoinedCharacter(player.getId()));
     entries.forEach(e -> waifus.add(
         new Waifu(e.getId(), e.getIdMal(), e.getName(), e.getAnimeName(), e.getUrl(),
             e.getImageUrl(),
-            new Stats(Rarities.valueOf(e.getRarity().toUpperCase()), e.getLevel(), e.getStarLevel(),
-                e.getXp(), e.getBaseHp(), e.getBaseAtt(), e.getBaseDef(), e.getBaseInit()))));
+            new Stats(Rarities.valueOf(e.getRarity().toUpperCase()), e.getStarLevel(), e.getXp(),
+                e.getBaseHp(), e.getBaseAtt(), e.getBaseDef(), e.getBaseInit()))));
 
     waifuCache.addAll(waifus);
     return waifus;
@@ -100,9 +100,8 @@ public final class WaifuLoaderSql implements WaifuLoader {
   private Waifu createWaifu(WaifuEntrySet.WaifuEntry waifuEntry,
       CharacterEntrySet.CharacterEntry characterEntry) {
     Stats stats = new Stats(Rarities.valueOf(waifuEntry.getRarity().toUpperCase()),
-        waifuEntry.getLevel(), waifuEntry.getStarLevel(), waifuEntry.getXp(),
-        waifuEntry.getBaseHp(), waifuEntry.getBaseAtt(), waifuEntry.getBaseDef(),
-        waifuEntry.getBaseInit());
+        waifuEntry.getStarLevel(), waifuEntry.getXp(), waifuEntry.getBaseHp(),
+        waifuEntry.getBaseAtt(), waifuEntry.getBaseDef(), waifuEntry.getBaseInit());
     return new Waifu(waifuEntry.getId(), characterEntry.getIdMal(), characterEntry.getName(),
         characterEntry.getAnimeName(), characterEntry.getUrl(), waifuEntry.getImageUrl(), stats);
   }

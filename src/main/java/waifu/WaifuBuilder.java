@@ -3,13 +3,12 @@ package waifu;
 import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import exceptions.messages.CouldNotGetOriginFromCharachter;
+import java.util.UUID;
 import javax.inject.Singleton;
 import model.jikan.characters.characterFullById.CharacterFullById;
 import waifu.model.Rarities;
 import waifu.model.Stats;
 import waifu.model.Waifu;
-
-import java.util.UUID;
 
 @Singleton
 public final class WaifuBuilder {
@@ -29,7 +28,7 @@ public final class WaifuBuilder {
     String defaultImageUrl = animeCharacter.getData().getImages().getJpg().getImageUrl();
     String malId = String.valueOf(animeCharacter.getData().getMalId());
     String imageUrl = jikanFetcher.getRandomPictureByMalId(malId).orElse(defaultImageUrl);
-    
+
     return createWaifu(animeCharacter, imageUrl, 1);
   }
 
@@ -68,7 +67,7 @@ public final class WaifuBuilder {
     int baseDef = (int) (rarity.getStatsSum() * rBaseDef);
     int baseInit = (int) (rarity.getStatsSum() * rBaseInit);
 
-    return new Stats(rarity, level, starLevel, xp, baseHp, baseAtt, baseDef, baseInit);
+    return new Stats(rarity, starLevel, xp, baseHp, baseAtt, baseDef, baseInit);
   }
 
   private String getOrigin(CharacterFullById character) throws MyOwnException {

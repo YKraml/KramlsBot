@@ -22,7 +22,6 @@ public class RoutineStartFight extends Routine {
   private final long money;
   private final long stardust;
   private final long morphStones;
-
   private final MessageSender messageSender;
   private final TextChannel textChannel;
   private final PlayerLoader playerLoader;
