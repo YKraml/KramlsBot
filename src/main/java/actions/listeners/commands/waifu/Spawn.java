@@ -36,7 +36,7 @@ public class Spawn extends ACommand {
   protected Answer execute(DiscordApi api, Server server, TextChannel channel, User user,
       List<SlashCommandInteractionOption> arguments) throws MyOwnException {
 
-    return getRoutineRunner().startRoutine(
+    return getRoutineRunner().start(
         routineSpawnWaifuCommandBuilder.createRoutineSpawnWaifuCommand(channel, user));
   }
 

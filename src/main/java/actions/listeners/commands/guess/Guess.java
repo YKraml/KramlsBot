@@ -48,7 +48,7 @@ public class Guess extends ACommand {
       List<SlashCommandInteractionOption> arguments) throws MyOwnException {
     String guess = arguments.get(0).getStringValue().get();
 
-    return getRoutineRunner().startRoutine(
+    return getRoutineRunner().start(
         routineGuessBuilder.createRoutineGuess(server, channel, user, guess));
   }
 

@@ -43,7 +43,7 @@ public class GroupCreate extends ACommand {
 
     String groupName = arguments.get(0).getStringValue().get();
 
-    return getRoutineRunner().startRoutine(
+    return getRoutineRunner().start(
         new RoutineCreateGroup(groupName, user, playerLoader, messageSender, channel));
   }
 

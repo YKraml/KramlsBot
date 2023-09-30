@@ -29,7 +29,7 @@ public class SpawnWaifuTask extends SaveRunnable {
     scheduledExecutorService.schedule(this, timeInMinutes, TimeUnit.MINUTES);
     Terminal.printLine("Next waifu spawn in %d min.".formatted(timeInMinutes));
 
-    routineRunner.startRoutine(routineSpawnWaifuBuilder.createRoutineSpawnWaifu());
+    routineRunner.start(routineSpawnWaifuBuilder.createRoutineSpawnWaifu());
   }
 
 

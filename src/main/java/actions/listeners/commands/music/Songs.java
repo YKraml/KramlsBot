@@ -35,7 +35,7 @@ public class Songs extends ACommand {
   @Override
   protected Answer execute(DiscordApi api, Server server, TextChannel channel, User user,
       List<SlashCommandInteractionOption> arguments) throws MyOwnException {
-    return getRoutineRunner().startRoutine(
+    return getRoutineRunner().start(
         routineShowSongsBuilder.createRoutineShowSongs(server, channel, user));
   }
 

@@ -40,7 +40,7 @@ public class GiveWaifu extends ACommand {
     User receiver = arguments.get(0).getUserValue().get();
     int waifuNumber = arguments.get(1).getLongValue().get().intValue();
 
-    return getRoutineRunner().startRoutine(
+    return getRoutineRunner().start(
         routineGiveWaifuBuilder.createRoutineGiveWaifu(channel, user, receiver, waifuNumber));
   }
 

@@ -47,7 +47,7 @@ public class DeleteFromTo extends ACommand {
     int from = arguments.get(0).getLongValue().get().intValue();
     int to = arguments.get(1).getLongValue().get().intValue();
 
-    return getRoutineRunner().startRoutine(
+    return getRoutineRunner().start(
         new RoutineDeleteWaifusFromTo(user, from, to, waifuLoader, playerLoader, messageSender,
             channel));
   }

@@ -38,7 +38,7 @@ public class Play extends ACommand {
       List<SlashCommandInteractionOption> arguments) throws MyOwnException {
 
     String input = arguments.get(0).getStringValue().get();
-    return getRoutineRunner().startRoutine(
+    return getRoutineRunner().start(
         builder.createRoutineAddToQueue(server, channel, user, input));
   }
 

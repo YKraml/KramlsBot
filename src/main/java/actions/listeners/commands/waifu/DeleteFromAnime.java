@@ -56,7 +56,7 @@ public class DeleteFromAnime extends ACommand {
       List<SlashCommandInteractionOption> arguments) throws MyOwnException {
 
     String anime = arguments.get(0).getStringValue().get();
-    return getRoutineRunner().startRoutine(
+    return getRoutineRunner().start(
         new RoutineDeleteWaifusFromAnime(waifuLoader, playerLoader, user, anime, channel,
             messageSender));
   }

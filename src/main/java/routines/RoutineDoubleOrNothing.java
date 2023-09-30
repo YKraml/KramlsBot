@@ -26,7 +26,7 @@ public class RoutineDoubleOrNothing extends Routine {
   Answer start(RoutineRunner routineRunner) throws MyOwnException {
     Player player = playerLoader.getPlayerByUser(user);
     long wonMoney = player.getInventory().getMoney();
-    return routineRunner.startRoutine(
+    return routineRunner.start(
         builder.createRoutineDoubleOrNothingWithParameter(user, wonMoney, channel));
   }
 }

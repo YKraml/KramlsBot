@@ -40,7 +40,7 @@ public class TeamExpand extends ACommand {
 
     String teamName = arguments.get(0).getStringValue().get();
 
-    return getRoutineRunner().startRoutine(
+    return getRoutineRunner().start(
         new RoutineExpandTeam(user, teamName, channel, playerLoader));
   }
 

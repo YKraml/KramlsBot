@@ -43,7 +43,7 @@ public class TeamRemove extends ACommand {
     String teamName = arguments.get(0).getStringValue().get();
     int waifuNumber = arguments.get(1).getLongValue().get().intValue();
 
-    return getRoutineRunner().startRoutine(
+    return getRoutineRunner().start(
         new RoutineRemoveFromTeam(user, teamName, waifuNumber, channel, playerLoader,
             teamLoader));
   }

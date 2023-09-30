@@ -71,10 +71,8 @@ public class IpAddress extends ACommand {
 
     for (String urlString : URLS) {
       try {
-        URL url = new URL(urlString);
-        BufferedReader in = new BufferedReader(
-            new InputStreamReader(url.openStream(), StandardCharsets.UTF_8));
-        return in.readLine();
+        return new BufferedReader(new InputStreamReader(new URL(urlString).openStream(),
+            StandardCharsets.UTF_8)).readLine();
       } catch (IOException ignore) {
         //Do nothing
       }

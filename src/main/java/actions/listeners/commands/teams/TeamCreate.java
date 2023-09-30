@@ -39,7 +39,7 @@ public class TeamCreate extends ACommand {
       List<SlashCommandInteractionOption> arguments) throws MyOwnException {
     String teamName = arguments.get(0).getStringValue().get();
 
-    return getRoutineRunner().startRoutine(
+    return getRoutineRunner().start(
         new RoutineCreateTeam(channel, user, teamName, playerLoader));
   }
 

@@ -48,7 +48,7 @@ public class GroupRemoveWaifu extends ACommand {
     String groupName = arguments.get(0).getStringValue().get();
     int waifuNumber = arguments.get(1).getLongValue().get().intValue();
 
-    return getRoutineRunner().startRoutine(
+    return getRoutineRunner().start(
         new RoutineRemoveFromGroup(user, groupName, waifuNumber, channel, groupLoader,
             messageSender, playerLoader));
   }

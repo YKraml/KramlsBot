@@ -54,7 +54,7 @@ public class GiveMoney extends ACommand {
     User receiver = arguments.get(0).getUserValue().get();
     int money = arguments.get(1).getLongValue().get().intValue();
 
-    return getRoutineRunner().startRoutine(
+    return getRoutineRunner().start(
         new RoutineGiveMoney(playerLoader, channel, user, receiver, money, messageSender));
   }
 

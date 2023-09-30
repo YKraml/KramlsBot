@@ -41,7 +41,7 @@ public class GroupAddWaifu extends ACommand {
     String groupName = arguments.get(0).getStringValue().get();
     int waifuId = arguments.get(1).getLongValue().get().intValue();
 
-    return getRoutineRunner().startRoutine(
+    return getRoutineRunner().start(
         new RoutineAddWaifuToGroup(user, groupName, waifuId, channel, playerLoader));
   }
 

@@ -42,7 +42,7 @@ public class GroupDelete extends ACommand {
       List<SlashCommandInteractionOption> arguments) throws MyOwnException {
     String groupName = arguments.get(0).getStringValue().get();
 
-    return getRoutineRunner().startRoutine(
+    return getRoutineRunner().start(
         new RoutineDeleteGroup(user, groupName, channel, groupLoader, playerLoader));
   }
 

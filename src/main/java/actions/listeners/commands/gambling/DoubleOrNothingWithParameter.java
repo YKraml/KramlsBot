@@ -39,7 +39,7 @@ public class DoubleOrNothingWithParameter extends ACommand {
       List<SlashCommandInteractionOption> arguments) throws MyOwnException {
     int bettedMoney = Math.toIntExact(arguments.get(0).getLongValue().get());
 
-    return getRoutineRunner().startRoutine(
+    return getRoutineRunner().start(
         routineGamblingDoubleBuilder.createRoutineDoubleOrNothingWithParameter(user,
             bettedMoney, channel));
   }

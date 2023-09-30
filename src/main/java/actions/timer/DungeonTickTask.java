@@ -20,7 +20,7 @@ public class DungeonTickTask extends SaveRunnable {
 
   @Override
   public void runSave() throws MyOwnException {
-    routineRunner.startRoutine(routineDungeonTickBuilder.createRoutineDungeonTick());
+    routineRunner.start(routineDungeonTickBuilder.createRoutineDungeonTick());
     Terminal.printLine("Dungeon tick");
   }
 

@@ -20,7 +20,7 @@ public class GivePointsTask extends SaveRunnable {
 
   @Override
   public void runSave() throws Exception {
-    routineRunner.startRoutine(
+    routineRunner.start(
         routineGivePointsBuilder.createRoutineGivePoints(MONEY_PER_MINUTE, TIME_IN_MINUTES));
 
   }

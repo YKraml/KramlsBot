@@ -40,7 +40,7 @@ public class TeamRename extends ACommand {
     String oldName = arguments.get(0).getStringValue().get();
     String newName = arguments.get(1).getStringValue().get();
 
-    return getRoutineRunner().startRoutine(
+    return getRoutineRunner().start(
         new RoutineRenameTeam(user, playerLoader, channel, newName, oldName));
   }
 

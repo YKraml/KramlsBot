@@ -44,7 +44,7 @@ public class Merge extends ACommand {
     int waifuId1 = arguments.get(0).getLongValue().get().intValue();
     int waifuId2 = arguments.get(1).getLongValue().get().intValue();
 
-    return getRoutineRunner().startRoutine(
+    return getRoutineRunner().start(
         new RoutineMergeWaifus(channel, user, waifuId1, waifuId2, waifuLoader, playerLoader));
   }
 

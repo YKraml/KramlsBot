@@ -41,7 +41,7 @@ public class TeamAdd extends ACommand {
     String teamName = arguments.get(0).getStringValue().get();
     int waifuIndex = Math.toIntExact(arguments.get(1).getLongValue().get());
 
-    return getRoutineRunner().startRoutine(
+    return getRoutineRunner().start(
         new RoutineAddToTeam(playerLoader, channel, user, teamName, waifuIndex));
   }
 

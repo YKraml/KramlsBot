@@ -47,7 +47,7 @@ public class StartGuessingGame extends ACommand {
       difficulty = arguments.get(0).getLongValue().get().intValue();
     }
 
-    return getRoutineRunner().startRoutine(
+    return getRoutineRunner().start(
         builder.createRoutineStartGuessingGame(server, channel, user, difficulty,
             revealTimerbuilder));
   }

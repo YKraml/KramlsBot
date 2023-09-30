@@ -39,7 +39,7 @@ public class CreateDungeon extends ACommand {
       List<SlashCommandInteractionOption> arguments) throws MyOwnException {
     int difficulty = arguments.get(0).getLongValue().get().intValue();
     String name = arguments.get(1).getStringValue().get();
-    return getRoutineRunner().startRoutine(
+    return getRoutineRunner().start(
         new RoutineCreateDungeon(server, difficulty, name, channel, dungeonLoader));
   }
 

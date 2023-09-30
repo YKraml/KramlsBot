@@ -41,7 +41,7 @@ public class Claim extends ACommand {
 
     String guess = arguments.get(0).getStringValue().get();
 
-    return getRoutineRunner().startRoutine(
+    return getRoutineRunner().start(
         routineClaimBuilder.createRoutineClaim(server, channel, user, guess));
   }
 

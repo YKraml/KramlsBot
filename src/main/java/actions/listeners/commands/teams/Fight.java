@@ -56,7 +56,7 @@ public class Fight extends ACommand {
     long stardust = arguments.get(2).getLongValue().get();
     long morphStones = arguments.get(3).getLongValue().get();
 
-    return getRoutineRunner().startRoutine(
+    return getRoutineRunner().start(
         routineStartFightBuilder.createStartFightRoutine(user, enemy,
             money, stardust, morphStones, channel));
   }
