@@ -13,19 +13,17 @@ import java.util.concurrent.Executors;
 import java.util.function.BiConsumer;
 import javax.inject.Singleton;
 import waifu.model.Player;
-import waifu.sql.SQLCommandExecutor;
 
 @Singleton
 public class PlayerLoaderCached implements PlayerLoader {
 
-  private final PlayerLoader playerLoaderReal;
+  private final PlayerLoaderSql playerLoaderSql;
   private final Collection<Player> playerCache;
   private final ExecutorService executorService;
 
   @Inject
-  public PlayerLoaderCached(TeamLoader teamLoader, WaifuLoader waifuLoader,
-      GroupLoader groupLoader, SQLCommandExecutor sqlCommandExecutor) {
-    playerLoaderReal = new PlayerLoaderSql(teamLoader, waifuLoader, groupLoader, sqlCommandExecutor);
+  public PlayerLoaderCached(PlayerLoaderSql playerLoaderSql) {
+    this.playerLoaderSql = playerLoaderSql;
     playerCache = Collections.synchronizedList(new ArrayList<>());
     executorService = Executors.newFixedThreadPool(4);
   }
@@ -35,7 +33,7 @@ public class PlayerLoaderCached implements PlayerLoader {
 
     Runnable runnable = () -> {
       try {
-        playerLoaderReal.savePlayer(player);
+        playerLoaderSql.savePlayer(player);
       } catch (MyOwnException e) {
         throw new RuntimeException(e);
       }
@@ -62,7 +60,7 @@ public class PlayerLoaderCached implements PlayerLoader {
           return player;
         }
       }
-      Player player = playerLoaderReal.getPlayerById(userId);
+      Player player = playerLoaderSql.getPlayerById(userId);
       playerCache.add(player);
       return player;
     }

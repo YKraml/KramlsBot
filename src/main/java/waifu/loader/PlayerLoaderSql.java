@@ -1,5 +1,6 @@
 package waifu.loader;
 
+import com.google.inject.Inject;
 import de.kraml.Terminal;
 import exceptions.MyOwnException;
 import exceptions.messages.CouldNotLoadPlayer;
@@ -44,6 +45,7 @@ public class PlayerLoaderSql implements PlayerLoader {
 
   private final SQLCommandExecutor sqlCommandExecutor;
 
+  @Inject
   public PlayerLoaderSql(TeamLoader teamLoader, WaifuLoader waifuLoader, GroupLoader groupLoader,
       SQLCommandExecutor sqlCommandExecutor) {
     this.teamLoader = teamLoader;

@@ -59,15 +59,15 @@ import waifu.loader.PlayerLoaderCached;
 import waifu.loader.TeamLoader;
 import waifu.loader.TeamLoaderSql;
 import waifu.loader.WaifuLoader;
-import waifu.loader.WaifuLoaderSql;
+import waifu.loader.WaifuLoaderCached;
 import waifu.sql.ConnectionPool;
 
-public class MyModule extends AbstractModule {
+public class GuiceModule extends AbstractModule {
 
   @Override
   protected void configure() {
     bind(PlayerLoader.class).to(PlayerLoaderCached.class);
-    bind(WaifuLoader.class).to(WaifuLoaderSql.class);
+    bind(WaifuLoader.class).to(WaifuLoaderCached.class);
     bind(DungeonLoader.class).to(DungeonLoaderSql.class);
     bind(TeamLoader.class).to(TeamLoaderSql.class);
     bind(MessageSender.class).to(MessageSenderImpl.class);
@@ -104,6 +104,7 @@ public class MyModule extends AbstractModule {
   }
 
   @Provides
+  @Singleton
   List<ACommand> provideACommands(RoutineRunner routineRunner, Disconnect disconnect,
       DoubleOrNothing doubleOrNothing, DoubleOrNothingWithParameter doubleOrNothingWithParameter,
       StartGuessingGame startGuessingGame, Guess guess, Reveal reveal, Stats stats, Daily daily,

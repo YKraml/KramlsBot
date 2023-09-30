@@ -29,7 +29,7 @@ public class Main {
     userName = args[2];
     password = args[3];
 
-    Injector injector = Guice.createInjector(new MyModule());
+    Injector injector = Guice.createInjector(new GuiceModule());
 
     SlashCommandListener slashCommandListener = injector.getInstance(SlashCommandListener.class);
     JoinListener joinListener = injector.getInstance(JoinListener.class);

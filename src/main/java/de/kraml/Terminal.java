@@ -23,12 +23,14 @@ public final class Terminal {
     String text = date + "\n" + object + "\n";
     System.out.println(text);
     String consoleId = "858051641176752218";
-    Main.getDiscordApi().getTextChannelById(consoleId).ifPresent(channel -> channel.sendMessage(text));
+    Main.getDiscordApi().getTextChannelById(consoleId)
+        .ifPresent(channel -> channel.sendMessage(text));
   }
 
   public static void printError(MyOwnException e) {
 
     e.printStackTrace();
+    e.getInnerException().ifPresent(Throwable::printStackTrace);
     StringBuilder exceptionMessage;
 
     MyOwnException currentException = e;

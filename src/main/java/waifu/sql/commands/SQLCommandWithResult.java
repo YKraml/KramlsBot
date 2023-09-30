@@ -1,15 +1,14 @@
 package waifu.sql.commands;
 
+import de.kraml.Terminal;
 import exceptions.MyOwnException;
 import exceptions.messages.CouldNotExecuteMySQLQuery;
-import de.kraml.Terminal;
-import waifu.sql.ConnectionPool;
-import waifu.sql.entry.AbstractEntrySet;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import waifu.sql.ConnectionPool;
+import waifu.sql.entry.AbstractEntrySet;
 
 public abstract class SQLCommandWithResult<EntrySetType extends AbstractEntrySet<? extends AbstractEntrySet.AbstractEntry>> extends
     SQLCommand {
