@@ -2,7 +2,7 @@
   <configuration default="false" name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
     <option name="MAIN_CLASS_NAME" value="de.kraml.Main" />
     <module name="de.kraml.KramlsBot.main" />
-    <option name="PROGRAM_PARAMETERS" value="&quot;NzIyNTMxNjEyNTQxMzIxMzE5.GBsHAo.gfbM2wAO-YiwJwopI8Zc2o_zBmT1z1pu4wrlus&quot; &quot;217.24.230.45&quot; &quot;kraml&quot; &quot;KannaK.232.KannaK&quot;" />
+    <option name="PROGRAM_PARAMETERS" value="&quot;TOKEN&quot; &quot;217.24.230.45&quot; &quot;kraml&quot; &quot;KannaK.232.KannaK&quot;" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="de.kraml.*" />
