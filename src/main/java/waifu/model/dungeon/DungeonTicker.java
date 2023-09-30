@@ -122,7 +122,7 @@ public class DungeonTicker {
     int wonMoney = (int) (difficulty * (Math.random() * 20) + level);
     int wonStardust = (int) (difficulty * (Math.random() * 10) + level);
     int wonCookies = (int) (difficulty * 0.05 + Math.random());
-    int wonMorphStones = level % 100 == 99 && Math.random() < difficulty / 10d ? 1 : 0;
+    int wonMorphStones = Math.abs(level) % 100 == 99 && Math.random() < difficulty / 10d ? 1 : 0;
 
     team.getInventory().addMoney(wonMoney);
     team.getInventory().addStardust(wonStardust);
