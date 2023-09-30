@@ -7,15 +7,15 @@ import exceptions.MyOwnException;
 import java.util.List;
 import messages.MessageSender;
 import messages.messages.TeamsOverview;
+import org.javacord.api.DiscordApi;
+import org.javacord.api.entity.channel.TextChannel;
+import org.javacord.api.entity.server.Server;
+import org.javacord.api.entity.user.User;
 import org.javacord.api.interaction.SlashCommandInteractionOption;
 import org.javacord.api.interaction.SlashCommandOption;
 import waifu.JikanFetcher;
 import waifu.loader.DungeonLoader;
 import waifu.loader.PlayerLoader;
-import org.javacord.api.DiscordApi;
-import org.javacord.api.entity.channel.TextChannel;
-import org.javacord.api.entity.server.Server;
-import org.javacord.api.entity.user.User;
 import waifu.loader.WaifuLoader;
 
 public class TeamsList extends ACommand {
@@ -38,7 +38,7 @@ public class TeamsList extends ACommand {
 
   @Override
   public String getName() {
-    return "" + "teams";
+    return "teams";
   }
 
   @Override

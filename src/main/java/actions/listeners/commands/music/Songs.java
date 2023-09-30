@@ -5,13 +5,13 @@ import actions.listeners.commands.Answer;
 import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
-import org.javacord.api.interaction.SlashCommandInteractionOption;
-import org.javacord.api.interaction.SlashCommandOption;
-import routines.RoutineShowSongsBuilder;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
+import org.javacord.api.interaction.SlashCommandInteractionOption;
+import org.javacord.api.interaction.SlashCommandOption;
+import routines.RoutineShowSongsBuilder;
 
 public class Songs extends ACommand {
 
@@ -24,7 +24,7 @@ public class Songs extends ACommand {
 
   @Override
   public String getName() {
-    return "" + "songs";
+    return "songs";
   }
 
   @Override

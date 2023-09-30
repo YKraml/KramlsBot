@@ -26,7 +26,7 @@ public class Claim extends ACommand {
 
   @Override
   public String getName() {
-    return "" + "claim";
+    return "claim";
   }
 
   @Override

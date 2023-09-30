@@ -24,7 +24,7 @@ public class Spawn extends ACommand {
 
   @Override
   public String getName() {
-    return "" + "spawn";
+    return "spawn";
   }
 
   @Override

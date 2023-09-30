@@ -4,14 +4,14 @@ import actions.listeners.commands.ACommand;
 import actions.listeners.commands.Answer;
 import com.google.inject.Inject;
 import java.util.List;
-import org.javacord.api.interaction.SlashCommandInteractionOption;
-import org.javacord.api.interaction.SlashCommandOption;
+import music.audio.MusicPlayerManager;
+import music.guess.GuessingGameManager;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
-import music.audio.MusicPlayerManager;
-import music.guess.GuessingGameManager;
+import org.javacord.api.interaction.SlashCommandInteractionOption;
+import org.javacord.api.interaction.SlashCommandOption;
 
 public class Stop extends ACommand {
 
@@ -26,7 +26,7 @@ public class Stop extends ACommand {
 
   @Override
   public String getName() {
-    return "" + "stop";
+    return "stop";
   }
 
   @Override

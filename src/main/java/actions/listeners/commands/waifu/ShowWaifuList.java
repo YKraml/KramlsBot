@@ -24,7 +24,7 @@ public class ShowWaifuList extends ACommand {
 
   @Override
   public String getName() {
-    return "" + "waifus";
+    return "waifus";
   }
 
   @Override

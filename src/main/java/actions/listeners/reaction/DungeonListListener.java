@@ -1,18 +1,17 @@
 package actions.listeners.reaction;
 
 import exceptions.MyOwnException;
+import java.util.List;
 import messages.MessageSender;
 import messages.messages.DungeonNotFound;
 import messages.messages.TeamEnteredDungeon;
+import org.javacord.api.entity.channel.TextChannel;
+import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import waifu.loader.PlayerLoader;
 import waifu.model.dungeon.Dungeon;
 import waifu.model.dungeon.Team;
-import org.javacord.api.entity.channel.TextChannel;
-import org.javacord.api.entity.message.Message;
-
-import java.util.List;
 
 public class DungeonListListener extends MyAbstractListListener<Dungeon> {
 
@@ -42,7 +41,7 @@ public class DungeonListListener extends MyAbstractListListener<Dungeon> {
     Dungeon dungeon = dungeonList.get(listPosition);
     team.entersDungeon(dungeon, 1);
     playerLoader.savePlayer(team.getPlayer());
-    messageSender.send(new TeamEnteredDungeon(team, dungeon),textChannel);
+    messageSender.send(new TeamEnteredDungeon(team, dungeon), textChannel);
   }
 
   @Override

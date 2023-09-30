@@ -1,15 +1,13 @@
 package actions.listeners.reaction;
 
 import discord.ChannelFinder;
+import discord.Emojis;
 import embeds.music.QueueEmbed;
 import exceptions.MyOwnException;
 import java.util.Optional;
-import music.queue.QueueElement;
-import waifu.loader.PlayerLoader;
 import music.audio.MusicPlayerManager;
 import music.queue.Queue;
-import discord.Emojis;
-import waifu.model.Player;
+import music.queue.QueueElement;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.channel.ServerVoiceChannel;
 import org.javacord.api.entity.channel.TextChannel;
@@ -17,6 +15,8 @@ import org.javacord.api.entity.emoji.Emoji;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
+import waifu.loader.PlayerLoader;
+import waifu.model.Player;
 
 public class QueueListener extends MyAbstractReactionListener {
 
@@ -29,7 +29,6 @@ public class QueueListener extends MyAbstractReactionListener {
     this.queue = queue;
     this.playerLoader = playerLoader;
     this.musicPlayerManager = musicPlayerManager;
-    ;
   }
 
   @Override

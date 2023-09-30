@@ -6,15 +6,15 @@ import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
 import messages.MessageSender;
+import org.javacord.api.DiscordApi;
+import org.javacord.api.entity.channel.TextChannel;
+import org.javacord.api.entity.server.Server;
+import org.javacord.api.entity.user.User;
 import org.javacord.api.interaction.SlashCommandInteractionOption;
 import org.javacord.api.interaction.SlashCommandOption;
 import org.javacord.api.interaction.SlashCommandOptionType;
 import routines.RoutineRemoveFromGroup;
 import waifu.loader.GroupLoader;
-import org.javacord.api.DiscordApi;
-import org.javacord.api.entity.channel.TextChannel;
-import org.javacord.api.entity.server.Server;
-import org.javacord.api.entity.user.User;
 import waifu.loader.PlayerLoader;
 
 public class GroupRemoveWaifu extends ACommand {
@@ -33,7 +33,7 @@ public class GroupRemoveWaifu extends ACommand {
 
   @Override
   public String getName() {
-    return "" + "groups-remove";
+    return "groups-remove";
   }
 
   @Override

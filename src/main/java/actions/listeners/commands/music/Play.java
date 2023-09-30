@@ -5,14 +5,14 @@ import actions.listeners.commands.Answer;
 import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
-import org.javacord.api.interaction.SlashCommandInteractionOption;
-import org.javacord.api.interaction.SlashCommandOption;
-import org.javacord.api.interaction.SlashCommandOptionType;
-import routines.RoutineAddToQueueBuilder;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
+import org.javacord.api.interaction.SlashCommandInteractionOption;
+import org.javacord.api.interaction.SlashCommandOption;
+import org.javacord.api.interaction.SlashCommandOptionType;
+import routines.RoutineAddToQueueBuilder;
 
 public class Play extends ACommand {
 
@@ -25,7 +25,7 @@ public class Play extends ACommand {
 
   @Override
   public String getName() {
-    return "" + "play";
+    return "play";
   }
 
   @Override

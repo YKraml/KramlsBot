@@ -26,7 +26,7 @@ public class CreateDungeon extends ACommand {
 
   @Override
   public String getName() {
-    return "" + "dungeons-create";
+    return "dungeons-create";
   }
 
   @Override

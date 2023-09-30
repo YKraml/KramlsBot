@@ -27,7 +27,7 @@ public class Stats extends ACommand {
 
   @Override
   public String getName() {
-    return "" + "stats";
+    return "stats";
   }
 
   @Override

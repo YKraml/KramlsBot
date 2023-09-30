@@ -28,7 +28,7 @@ public class DeleteDungeons extends ACommand {
 
   @Override
   public String getName() {
-    return "" + "dungeons-delete";
+    return "dungeons-delete";
   }
 
   @Override

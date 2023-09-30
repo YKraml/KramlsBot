@@ -25,6 +25,6 @@ public class RevealTimerBuilder {
 
   public RevealTimer createRevealTimer(TextChannel channel, String serverId, String url) {
     return new RevealTimer(guessingGameManager, messageSender, guessGameEndBuilder, serverId, url,
-        channel,scheduledExecutorService);
+        channel, scheduledExecutorService);
   }
 }

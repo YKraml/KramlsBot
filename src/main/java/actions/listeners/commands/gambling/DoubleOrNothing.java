@@ -24,7 +24,7 @@ public class DoubleOrNothing extends ACommand {
 
   @Override
   public String getName() {
-    return "" + "gambling-alles-oder-nichts";
+    return "gambling-alles-oder-nichts";
   }
 
   @Override

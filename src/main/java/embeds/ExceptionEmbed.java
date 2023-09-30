@@ -1,8 +1,8 @@
 package embeds;
 
 import de.kraml.Main;
-import exceptions.MyOwnException;
 import discord.Emojis;
+import exceptions.MyOwnException;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 
 public class ExceptionEmbed extends EmbedBuilder {
@@ -17,7 +17,8 @@ public class ExceptionEmbed extends EmbedBuilder {
     this.addField(counter + " | " + e.getExceptionMessage().getClassName(),
         current.getExceptionMessage().getContent());
 
-    while (current.getInnerException().isPresent() && current.getInnerException().get() instanceof MyOwnException) {
+    while (current.getInnerException().isPresent() && current.getInnerException()
+        .get() instanceof MyOwnException) {
       current = (MyOwnException) current.getInnerException().get();
 
       String name = "%d | %s".formatted(++counter, current.getExceptionMessage().getClassName());

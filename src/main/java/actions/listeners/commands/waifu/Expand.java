@@ -6,14 +6,14 @@ import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
 import messages.MessageSender;
-import org.javacord.api.interaction.SlashCommandInteractionOption;
-import org.javacord.api.interaction.SlashCommandOption;
-import waifu.loader.PlayerLoader;
 import messages.messages.ExpandedList;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
+import org.javacord.api.interaction.SlashCommandInteractionOption;
+import org.javacord.api.interaction.SlashCommandOption;
+import waifu.loader.PlayerLoader;
 import waifu.model.Player;
 
 public class Expand extends ACommand {
@@ -29,7 +29,7 @@ public class Expand extends ACommand {
 
   @Override
   public String getName() {
-    return "" + "expand";
+    return "expand";
   }
 
   @Override

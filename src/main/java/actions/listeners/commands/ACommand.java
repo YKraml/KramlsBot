@@ -21,10 +21,6 @@ public abstract class ACommand {
   private final static long ADMIN_VALUE = 1 << 3;
   private RoutineRunner routineRunner;
 
-  public void setRoutineRunner(RoutineRunner routineRunner) {
-    this.routineRunner = routineRunner;
-  }
-
   public abstract String getName();
 
   public abstract String getDescription();
@@ -53,6 +49,10 @@ public abstract class ACommand {
 
   protected RoutineRunner getRoutineRunner() {
     return routineRunner;
+  }
+
+  public void setRoutineRunner(RoutineRunner routineRunner) {
+    this.routineRunner = routineRunner;
   }
 
   protected abstract Answer execute(DiscordApi api, Server server, TextChannel channel,

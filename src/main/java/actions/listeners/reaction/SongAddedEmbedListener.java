@@ -1,9 +1,9 @@
 package actions.listeners.reaction;
 
 import exceptions.MyOwnException;
-import music.audio.MusicPlayerManager;
 import messages.MessageSenderImpl;
 import messages.messages.SongQueueMessage;
+import music.audio.MusicPlayerManager;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.emoji.Emoji;
@@ -14,22 +14,22 @@ import waifu.loader.PlayerLoader;
 
 public class SongAddedEmbedListener extends MyAbstractReactionListener {
 
-    private final MusicPlayerManager musicPlayerManager;
-    private final PlayerLoader playerLoader;
+  private final MusicPlayerManager musicPlayerManager;
+  private final PlayerLoader playerLoader;
 
-    public SongAddedEmbedListener(MusicPlayerManager musicPlayerManager, PlayerLoader playerLoader) {
-        this.musicPlayerManager = musicPlayerManager;
-        this.playerLoader = playerLoader;
-    }
+  public SongAddedEmbedListener(MusicPlayerManager musicPlayerManager, PlayerLoader playerLoader) {
+    this.musicPlayerManager = musicPlayerManager;
+    this.playerLoader = playerLoader;
+  }
 
-    @Override
-    protected void startRoutine(DiscordApi discordApi, Server server, TextChannel textChannel,
-        Message message, User user, Emoji emoji) throws MyOwnException {
-        MessageSenderImpl result;
-        synchronized (MessageSenderImpl.class) {
-            result = new MessageSenderImpl();
-        }
-        result.send(new SongQueueMessage(musicPlayerManager.getQueueByServer(server),
-            musicPlayerManager, playerLoader), textChannel);
+  @Override
+  protected void startRoutine(DiscordApi discordApi, Server server, TextChannel textChannel,
+      Message message, User user, Emoji emoji) throws MyOwnException {
+    MessageSenderImpl result;
+    synchronized (MessageSenderImpl.class) {
+      result = new MessageSenderImpl();
     }
+    result.send(new SongQueueMessage(musicPlayerManager.getQueueByServer(server),
+        musicPlayerManager, playerLoader), textChannel);
+  }
 }

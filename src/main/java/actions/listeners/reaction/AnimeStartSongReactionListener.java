@@ -5,6 +5,8 @@ import embeds.DisplayableElement;
 import embeds.anime.AnimeSongEmbed;
 import exceptions.MyOwnException;
 import exceptions.messages.CouldNotFindSong;
+import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import messages.MessageSender;
@@ -24,9 +26,6 @@ import waifu.JikanFetcher;
 import waifu.loader.PlayerLoader;
 import youtube.YoutubeFetcher;
 import youtube.model.search.YoutubeSearch;
-
-import java.util.List;
-import java.util.Optional;
 
 public class AnimeStartSongReactionListener extends
     MyAbstractListListener<DisplayableElement> implements

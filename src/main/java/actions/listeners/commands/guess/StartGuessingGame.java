@@ -30,7 +30,7 @@ public class StartGuessingGame extends ACommand {
 
   @Override
   public String getName() {
-    return "" + "start-guess";
+    return "start-guess";
   }
 
   @Override

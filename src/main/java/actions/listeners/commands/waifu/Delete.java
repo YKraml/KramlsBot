@@ -7,14 +7,14 @@ import exceptions.MyOwnException;
 import java.util.List;
 import messages.MessageSender;
 import messages.messages.DeletedWaifuOverview;
-import org.javacord.api.interaction.SlashCommandInteractionOption;
-import org.javacord.api.interaction.SlashCommandOption;
-import waifu.loader.PlayerLoader;
-import waifu.loader.WaifuLoader;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
+import org.javacord.api.interaction.SlashCommandInteractionOption;
+import org.javacord.api.interaction.SlashCommandOption;
+import waifu.loader.PlayerLoader;
+import waifu.loader.WaifuLoader;
 
 public class Delete extends ACommand {
 
@@ -31,7 +31,7 @@ public class Delete extends ACommand {
 
   @Override
   public String getName() {
-    return "" + "waifus-delete";
+    return "waifus-delete";
   }
 
   @Override
@@ -42,7 +42,8 @@ public class Delete extends ACommand {
   @Override
   protected Answer execute(DiscordApi api, Server server, TextChannel channel, User user,
       List<SlashCommandInteractionOption> arguments) throws MyOwnException {
-    messageSender.send(new DeletedWaifuOverview(user, waifuLoader, messageSender, playerLoader), channel);
+    messageSender.send(new DeletedWaifuOverview(user, waifuLoader, messageSender, playerLoader),
+        channel);
     return new Answer("Someone ordered his Delete-List");
   }
 

@@ -1,21 +1,16 @@
 package actions.listeners.reaction;
 
+import discord.Emojis;
 import embeds.dungeon.TeamEmbed;
 import exceptions.MyOwnException;
-import discord.Emojis;
 import exceptions.messages.FighterNotFound;
 import exceptions.messages.TeamIsInDungeon;
+import java.util.List;
 import messages.MessageSender;
 import messages.messages.ButtonNotForYou;
 import messages.messages.DungeonList;
 import messages.messages.TeamGavePocketMessage;
 import messages.messages.WaifuStats;
-import waifu.JikanFetcher;
-import waifu.loader.DungeonLoader;
-import waifu.loader.PlayerLoader;
-import waifu.loader.WaifuLoader;
-import waifu.model.dungeon.Dungeon;
-import waifu.model.dungeon.Team;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.emoji.Emoji;
@@ -23,8 +18,12 @@ import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import org.javacord.api.listener.message.reaction.ReactionAddListener;
-
-import java.util.List;
+import waifu.JikanFetcher;
+import waifu.loader.DungeonLoader;
+import waifu.loader.PlayerLoader;
+import waifu.loader.WaifuLoader;
+import waifu.model.dungeon.Dungeon;
+import waifu.model.dungeon.Team;
 import waifu.model.fighting.Fighter;
 
 public class TeamEditListener extends MyAbstractListListener<Fighter> implements
@@ -71,7 +70,7 @@ public class TeamEditListener extends MyAbstractListListener<Fighter> implements
   @Override
   protected void startRoutine(DiscordApi discordApi, Server server, TextChannel textChannel,
       Message message, User user, Emoji emoji) throws MyOwnException {
-    super.startRoutine(discordApi,server,textChannel,message,user,emoji);
+    super.startRoutine(discordApi, server, textChannel, message, user, emoji);
 
     if (!user.getIdAsString().equals(team.getPlayer().getId())) {
       messageSender.send(new ButtonNotForYou(user.getMentionTag(), team.getPlayer().getNameTag()),

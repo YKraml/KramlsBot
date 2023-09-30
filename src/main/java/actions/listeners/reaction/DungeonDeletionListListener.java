@@ -43,12 +43,13 @@ public class DungeonDeletionListListener extends MyAbstractListListener<Dungeon>
 
     dungeonLoader.deleteDungeon(dungeonToDelete);
     messageSender.send(new DungeonDeleted(dungeonToDelete), textChannel);
-    textChannel.getApi().getServerChannelById(dungeonToDelete.getChannelId()).ifPresent(ServerChannel::delete);
+    textChannel.getApi().getServerChannelById(dungeonToDelete.getChannelId())
+        .ifPresent(ServerChannel::delete);
   }
 
   @Override
   protected void reactToTooHighCountEmoji(TextChannel textChannel, int listPosition)
       throws MyOwnException {
-    messageSender.send(new DungeonNotFound(listPosition),textChannel);
+    messageSender.send(new DungeonNotFound(listPosition), textChannel);
   }
 }

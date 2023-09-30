@@ -4,19 +4,18 @@ import actions.listeners.commands.ACommand;
 import actions.listeners.commands.Answer;
 import com.google.inject.Inject;
 import exceptions.MyOwnException;
+import java.util.List;
 import messages.MessageSender;
+import org.javacord.api.DiscordApi;
+import org.javacord.api.entity.channel.TextChannel;
+import org.javacord.api.entity.server.Server;
+import org.javacord.api.entity.user.User;
 import org.javacord.api.interaction.SlashCommandInteractionOption;
 import org.javacord.api.interaction.SlashCommandOption;
 import org.javacord.api.interaction.SlashCommandOptionType;
 import routines.RoutineDeleteWaifusFromAnime;
 import waifu.loader.PlayerLoader;
 import waifu.loader.WaifuLoader;
-import org.javacord.api.DiscordApi;
-import org.javacord.api.entity.channel.TextChannel;
-import org.javacord.api.entity.server.Server;
-import org.javacord.api.entity.user.User;
-
-import java.util.List;
 
 public class DeleteFromAnime extends ACommand {
 
@@ -34,7 +33,7 @@ public class DeleteFromAnime extends ACommand {
 
   @Override
   public String getName() {
-    return "" + "waifus-delete-from-anime";
+    return "waifus-delete-from-anime";
   }
 
   @Override

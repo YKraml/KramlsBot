@@ -25,6 +25,13 @@ public final class CommandDistributor {
     this.commands = commands;
   }
 
+  private static Answer exceptionAnswer(Exception e, TextChannel channel, String message) {
+    e.printStackTrace();
+    MyOwnException ex = new MyOwnException(new CommandWentWrong(message), e);
+    channel.sendMessage(new ExceptionEmbed(ex));
+    Terminal.printError(ex);
+    return new Answer("Exception happened while executing a command.");
+  }
 
   public Answer distributeCommand(SlashCommandCreateEvent event) {
 
@@ -57,14 +64,6 @@ public final class CommandDistributor {
         .append(command.getClass().getSimpleName()).send();
 
     return answer;
-  }
-
-  private static Answer exceptionAnswer(Exception e, TextChannel channel, String message) {
-    e.printStackTrace();
-    MyOwnException ex = new MyOwnException(new CommandWentWrong(message), e);
-    channel.sendMessage(new ExceptionEmbed(ex));
-    Terminal.printError(ex);
-    return new Answer("Exception happened while executing a command.");
   }
 
 

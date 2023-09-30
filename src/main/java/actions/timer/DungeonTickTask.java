@@ -1,10 +1,10 @@
 package actions.timer;
 
 import com.google.inject.Inject;
+import de.kraml.Terminal;
 import exceptions.MyOwnException;
 import routines.RoutineDungeonTickBuilder;
 import routines.RoutineRunner;
-import de.kraml.Terminal;
 
 public class DungeonTickTask extends SaveRunnable {
 

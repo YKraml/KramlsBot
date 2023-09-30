@@ -5,15 +5,15 @@ import actions.listeners.commands.Answer;
 import com.google.inject.Inject;
 import exceptions.MyOwnException;
 import java.util.List;
+import org.javacord.api.DiscordApi;
+import org.javacord.api.entity.channel.TextChannel;
+import org.javacord.api.entity.server.Server;
+import org.javacord.api.entity.user.User;
 import org.javacord.api.interaction.SlashCommandInteractionOption;
 import org.javacord.api.interaction.SlashCommandOption;
 import org.javacord.api.interaction.SlashCommandOptionType;
 import routines.RoutineRenameTeam;
 import waifu.loader.PlayerLoader;
-import org.javacord.api.DiscordApi;
-import org.javacord.api.entity.channel.TextChannel;
-import org.javacord.api.entity.server.Server;
-import org.javacord.api.entity.user.User;
 
 public class TeamRename extends ACommand {
 
@@ -26,7 +26,7 @@ public class TeamRename extends ACommand {
 
   @Override
   public String getName() {
-    return "" + "teams-rename";
+    return "teams-rename";
   }
 
   @Override

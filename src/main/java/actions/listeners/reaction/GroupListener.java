@@ -2,22 +2,21 @@ package actions.listeners.reaction;
 
 import embeds.group.GroupEmbed;
 import exceptions.MyOwnException;
+import java.util.ArrayList;
 import messages.MessageSender;
 import messages.messages.WaifuNotFound;
 import messages.messages.WaifuStats;
+import org.javacord.api.entity.channel.TextChannel;
+import org.javacord.api.entity.message.Message;
+import org.javacord.api.entity.server.Server;
+import org.javacord.api.entity.user.User;
+import org.javacord.api.listener.message.reaction.ReactionAddListener;
 import waifu.JikanFetcher;
 import waifu.loader.PlayerLoader;
 import waifu.loader.WaifuLoader;
 import waifu.model.Group;
 import waifu.model.Player;
 import waifu.model.Waifu;
-import org.javacord.api.entity.channel.TextChannel;
-import org.javacord.api.entity.message.Message;
-import org.javacord.api.entity.server.Server;
-import org.javacord.api.entity.user.User;
-import org.javacord.api.listener.message.reaction.ReactionAddListener;
-
-import java.util.ArrayList;
 
 public class GroupListener extends MyAbstractListListener<Waifu> implements ReactionAddListener {
 

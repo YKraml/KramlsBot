@@ -32,6 +32,7 @@ public class StartGuessingGameListener extends MyAbstractReactionListener {
     }
 
     message.removeReactionByEmoji(user, emoji);
-    routineRunner.startRoutine(routineRevealBuilder.createRoutineReveal(message.getServer().get(), textChannel));
+    routineRunner.startRoutine(
+        routineRevealBuilder.createRoutineReveal(message.getServer().get(), textChannel));
   }
 }
