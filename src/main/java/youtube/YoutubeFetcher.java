@@ -1,22 +1,21 @@
 package youtube;
 
+import exceptions.MyOwnException;
+import exceptions.messages.CouldNotFindVideo;
 import java.text.MessageFormat;
+import java.util.Optional;
 import javax.inject.Singleton;
 import youtube.model.playlist.Playlist;
 import youtube.model.search.YoutubeSearch;
-import exceptions.MyOwnException;
-import exceptions.messages.CouldNotFindVideo;
-
-import java.util.Optional;
 
 @Singleton
 public class YoutubeFetcher {
 
 
-  private final MyObjectMapper om;
+  private final MyObjectMapper mapper;
 
   public YoutubeFetcher() {
-    om = new MyObjectMapper();
+    mapper = new MyObjectMapper();
   }
 
 
@@ -26,19 +25,18 @@ public class YoutubeFetcher {
     String pattern = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q={0}&key=AIzaSyBBtGt-XPaS4U2Z5zDQ6sde4n8JD6f1avk";
     String data = APICaller.getData(MessageFormat.format(pattern, fixedTitle));
 
-    Optional<YoutubeSearch> search = om.map(data, YoutubeSearch.class);
+    YoutubeSearch search = mapper.map(data, YoutubeSearch.class);
 
-    if (search.isPresent() && (search.get().getItems() == null || search.get().getItems()
-        .isEmpty())) {
+    if (search.getItems() == null || search.getItems().isEmpty()) {
       return Optional.empty();
     }
-    return search;
+    return Optional.of(search);
   }
 
   public Optional<Playlist> getPlayListById(String id) throws MyOwnException {
     String pattern = "https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet%2CcontentDetails&maxResults=25&playlistId={0}&key=AIzaSyBBtGt-XPaS4U2Z5zDQ6sde4n8JD6f1avk";
     String data = APICaller.getData(MessageFormat.format(pattern, id));
-    return om.map(data, Playlist.class);
+    return Optional.ofNullable(mapper.map(data, Playlist.class));
   }
 
   public String getIdByVideoName(String name) throws MyOwnException {

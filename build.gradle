@@ -14,6 +14,9 @@ repositories {
     maven {
         url 'https://m2.dv8tion.net/releases'
     }
+    maven {
+      url 'https://jitpack.io'
+    }
 }
 
 //Fat jar
@@ -41,7 +44,7 @@ dependencies {
     //Discord Zeugs
     implementation 'org.javacord:javacord:3.8.0'
     implementation 'com.vdurmont:emoji-java:5.1.1'
-    implementation 'com.sedmelluq:lavaplayer:1.3.75'
+    implementation 'dev.arbjerg:lavaplayer:2.0.2'
 
     //SQL Zeugs
     implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.32'

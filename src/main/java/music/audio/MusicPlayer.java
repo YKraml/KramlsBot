@@ -7,6 +7,7 @@ import com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioSourceManager
 import embeds.music.QueueEmbed;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 import music.queue.Queue;
 import music.queue.QueueElement;
 import music.queue.QueueImpl;
@@ -18,12 +19,12 @@ import org.javacord.api.entity.message.Message;
 class MusicPlayer {
 
   private final static int MAX_MESSAGES = 3;
-  private ServerVoiceChannel serverVoiceChannel;
   private final AudioPlayerManager audioPlayerManager;
   private final AudioPlayer audioPlayer;
   private final MyAudioLoadResultListener audioLoadResultHandler;
   private final Queue queue;
   private final List<Message> messages;
+  private ServerVoiceChannel serverVoiceChannel;
   private AudioConnection audioConnection;
 
   private MusicPlayer(AudioPlayerManager audioPlayerManager, AudioPlayer audioPlayer,
@@ -125,7 +126,11 @@ class MusicPlayer {
 
   private void playCurrentQueueElement() {
     resetAudioConnection();
+    Consumer<String> stringConsumer = url -> {
+      audioPlayerManager.loadItem(url,
+          audioLoadResultHandler);
+    };
     queue.getCurrentElement().map(QueueElement::getUrl)
-        .ifPresent(url -> audioPlayerManager.loadItem(url, audioLoadResultHandler));
+        .ifPresent(stringConsumer);
   }
 }
