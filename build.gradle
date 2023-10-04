@@ -61,7 +61,7 @@ dependencies {
 
 git {
     implementation 'https://github.com/YKraml/AnimeFetcher.git', {
-        tag '1.9'
+        tag '1.10'
     }
 }
 
