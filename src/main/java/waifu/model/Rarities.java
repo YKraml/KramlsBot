@@ -4,10 +4,10 @@ package waifu.model;
 import java.awt.Color;
 
 public enum Rarities {
-  COMMON("Üblich", 0, 100, 100, 1, Color.BLUE, 5),
-  RARE("Selten", 25, 1000, 150, 0.50, Color.GREEN, 0),
-  EPIC("Episch", 50, 10000, 200, 0.15, Color.MAGENTA, 500),
-  LEGENDARY("Legendär", 80, 100000, 300, 0.02, Color.YELLOW, 5000),
+  COMMON("Common", 0, 100, 100, 1, Color.BLUE, 5),
+  RARE("Rare", 25, 1000, 150, 0.50, Color.GREEN, 0),
+  EPIC("Epic", 50, 10000, 200, 0.15, Color.MAGENTA, 500),
+  LEGENDARY("Legendary", 80, 100000, 300, 0.02, Color.YELLOW, 5000),
   MYTHICAL("Mystisch", 100, Integer.MAX_VALUE, 400, 0, Color.WHITE, 5000);
 
   private final String name;
