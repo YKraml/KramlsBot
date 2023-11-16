@@ -34,10 +34,8 @@ public final class MusicPlayerManager {
         return Optional.ofNullable(players.get(server));
     }
 
-    public void addToQueue(Server server, ServerVoiceChannel voiceChannel, TextChannel textChannel,
-                           QueueElement queueElement) {
-        getPlayerByServer(server).ifPresentOrElse(musicPlayer -> musicPlayer.addSongToQue(queueElement),
-                () -> createPlayer(server, voiceChannel, textChannel).addSongToQue(queueElement));
+    public void addToQueue(Server server, ServerVoiceChannel voiceChannel, TextChannel textChannel, QueueElement queueElement) {
+        getPlayerByServer(server).ifPresentOrElse(musicPlayer -> musicPlayer.addSongToQue(queueElement), () -> createPlayer(server, voiceChannel, textChannel).addSongToQue(queueElement));
     }
 
     public void startPlaying(ServerVoiceChannel voiceChannel, TextChannel textChannel) {
@@ -73,20 +71,16 @@ public final class MusicPlayerManager {
         });
     }
 
-    public void playThisSongNext(ServerVoiceChannel voiceChannel, TextChannel textChannel,
-                                 QueueElement queueElement) {
+    public void playThisSongNext(ServerVoiceChannel voiceChannel, TextChannel textChannel, QueueElement queueElement) {
 
-        MusicPlayer musicPlayer = getPlayerByServer(voiceChannel.getServer())
-                .orElseGet(() -> createPlayer(voiceChannel.getServer(), voiceChannel, textChannel));
+        MusicPlayer musicPlayer = getPlayerByServer(voiceChannel.getServer()).orElseGet(() -> createPlayer(voiceChannel.getServer(), voiceChannel, textChannel));
         musicPlayer.setServerVoiceChannel(voiceChannel);
         musicPlayer.setTextChannel(textChannel);
         musicPlayer.playNow(queueElement);
     }
 
     public Queue getQueueByServer(Server server) throws MyOwnException {
-        return getPlayerByServer(server)
-                .orElseThrow(() -> new MyOwnException(new QueueNonExisting(server), null))
-                .getQueue();
+        return getPlayerByServer(server).orElseThrow(() -> new MyOwnException(new QueueNonExisting(server), null)).getQueue();
     }
 
     public void stopPlaying(Server server) {
@@ -94,13 +88,16 @@ public final class MusicPlayerManager {
         players.remove(server);
     }
 
-    public void addQueueMessage(Message message) {
-        message.getServer().flatMap(this::getPlayerByServer)
-                .ifPresent(player -> player.addQueueMessage(message));
+    public void addQueueMessage(Message message, Observer observer) {
+        message.getServer().flatMap(this::getPlayerByServer).ifPresent(player -> {
+            player.addObserver(observer);
+            player.addQueueMessage(message);
+        });
+
+
     }
 
-    private MusicPlayer createPlayer(Server server, ServerVoiceChannel serverVoiceChannel,
-                                     TextChannel textChannel) {
+    private MusicPlayer createPlayer(Server server, ServerVoiceChannel serverVoiceChannel, TextChannel textChannel) {
         MusicPlayer musicPlayer = MusicPlayer.createMusicPlayer(serverVoiceChannel, textChannel, messageSender);
         players.put(server, musicPlayer);
         return musicPlayer;

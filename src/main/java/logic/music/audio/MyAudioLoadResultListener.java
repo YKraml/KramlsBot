@@ -25,7 +25,7 @@ class MyAudioLoadResultListener implements AudioLoadResultHandler {
 
     @Override
     public void trackLoaded(AudioTrack track) {
-        musicPlayer.updateMessages();
+        musicPlayer.messageObservers();
         player.playTrack(track);
     }
 

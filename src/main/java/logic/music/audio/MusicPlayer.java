@@ -12,13 +12,12 @@ import org.javacord.api.audio.AudioConnection;
 import org.javacord.api.entity.channel.ServerVoiceChannel;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.message.Message;
-import ui.embeds.music.QueueEmbed;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-class MusicPlayer {
+class MusicPlayer extends Observable {
 
     private final static int MAX_MESSAGES = 3;
     private final AudioPlayerManager audioPlayerManager;
@@ -65,9 +64,6 @@ class MusicPlayer {
         }
     }
 
-    public void updateMessages() {
-        new Thread(() -> messages.forEach(message -> message.edit(new QueueEmbed(queue)))).start();
-    }
 
     Queue getQueue() {
         return queue;
@@ -75,7 +71,7 @@ class MusicPlayer {
 
     void addSongToQue(QueueElement queueElement) {
         queue.addToEnd(queueElement);
-        updateMessages();
+        messageObservers();
     }
 
     public void start() {
