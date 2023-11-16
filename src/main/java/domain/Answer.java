@@ -1,4 +1,4 @@
-package ui.commands;
+package domain;
 
 
 public final class Answer {

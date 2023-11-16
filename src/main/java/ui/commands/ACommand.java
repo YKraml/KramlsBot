@@ -1,5 +1,6 @@
 package ui.commands;
 
+import domain.Answer;
 import domain.exceptions.MyOwnException;
 import domain.exceptions.messages.CouldNotGetChannel;
 import domain.exceptions.messages.CouldNotGetServer;

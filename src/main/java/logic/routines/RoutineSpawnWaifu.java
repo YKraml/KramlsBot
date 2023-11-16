@@ -9,7 +9,7 @@ import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.channel.ServerTextChannel;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
-import ui.commands.Answer;
+import domain.Answer;
 import ui.messages.MessageSender;
 import ui.messages.messages.ExceptionHappenedMessage;
 import ui.messages.messages.WaifuSpawn;

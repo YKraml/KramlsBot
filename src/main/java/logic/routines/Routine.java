@@ -1,7 +1,7 @@
 package logic.routines;
 
 import domain.exceptions.MyOwnException;
-import ui.commands.Answer;
+import domain.Answer;
 
 public abstract class Routine {
 

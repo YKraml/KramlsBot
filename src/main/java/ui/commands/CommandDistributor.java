@@ -1,6 +1,7 @@
 package ui.commands;
 
 import com.google.inject.Inject;
+import domain.Answer;
 import domain.exceptions.MyOwnException;
 import domain.exceptions.messages.CommandWentWrong;
 import org.javacord.api.entity.channel.TextChannel;

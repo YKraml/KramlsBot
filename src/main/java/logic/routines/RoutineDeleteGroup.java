@@ -8,7 +8,7 @@ import logic.waifu.GroupLoader;
 import logic.waifu.PlayerLoader;
 import org.javacord.api.entity.message.Messageable;
 import org.javacord.api.entity.user.User;
-import ui.commands.Answer;
+import domain.Answer;
 
 public class RoutineDeleteGroup extends Routine {
 

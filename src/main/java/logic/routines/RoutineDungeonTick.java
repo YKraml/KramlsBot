@@ -8,7 +8,7 @@ import logic.waifu.DungeonLoader;
 import logic.waifu.PlayerLoader;
 import logic.waifu.TeamLoader;
 import org.javacord.api.entity.channel.TextChannel;
-import ui.commands.Answer;
+import domain.Answer;
 import ui.embeds.dungeon.DungeonEmbed;
 import util.ChannelFinder;
 

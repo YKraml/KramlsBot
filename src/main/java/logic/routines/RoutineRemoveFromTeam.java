@@ -8,7 +8,7 @@ import logic.waifu.PlayerLoader;
 import logic.waifu.TeamLoader;
 import org.javacord.api.entity.message.Messageable;
 import org.javacord.api.entity.user.User;
-import ui.commands.Answer;
+import domain.Answer;
 
 import java.util.Optional;
 

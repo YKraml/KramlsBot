@@ -10,7 +10,7 @@ import org.javacord.api.entity.user.User;
 import org.javacord.api.interaction.SlashCommandInteractionOption;
 import org.javacord.api.interaction.SlashCommandOption;
 import ui.commands.ACommand;
-import ui.commands.Answer;
+import domain.Answer;
 import ui.messages.MessageSender;
 
 import java.util.List;

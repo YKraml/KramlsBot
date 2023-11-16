@@ -11,7 +11,7 @@ import org.javacord.api.interaction.SlashCommandInteractionOption;
 import org.javacord.api.interaction.SlashCommandOption;
 import org.javacord.api.interaction.SlashCommandOptionType;
 import ui.commands.ACommand;
-import ui.commands.Answer;
+import domain.Answer;
 
 import java.util.List;
 

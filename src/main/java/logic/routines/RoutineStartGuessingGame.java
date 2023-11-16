@@ -12,7 +12,7 @@ import org.javacord.api.entity.channel.ServerVoiceChannel;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
-import ui.commands.Answer;
+import domain.Answer;
 import ui.messages.MessageSender;
 import ui.messages.messages.GuessGameStarted;
 import ui.timer.RevealTimerBuilder;

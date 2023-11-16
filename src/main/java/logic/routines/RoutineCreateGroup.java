@@ -6,7 +6,7 @@ import domain.waifu.Player;
 import logic.waifu.PlayerLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.user.User;
-import ui.commands.Answer;
+import domain.Answer;
 import ui.messages.MessageSender;
 import ui.messages.messages.GroupCreated;
 
