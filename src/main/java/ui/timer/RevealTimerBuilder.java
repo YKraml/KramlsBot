@@ -3,7 +3,7 @@ package ui.timer;
 import com.google.inject.Inject;
 import logic.music.guess.GuessingGameManager;
 import org.javacord.api.entity.channel.TextChannel;
-import ui.messages.MessageSender;
+import logic.MessageSender;
 import ui.messages.messages.GuessGameEndBuilder;
 
 import java.util.concurrent.ScheduledExecutorService;

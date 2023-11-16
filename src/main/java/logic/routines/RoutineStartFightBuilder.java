@@ -3,7 +3,7 @@ package logic.routines;
 import logic.waifu.PlayerLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.user.User;
-import ui.messages.MessageSender;
+import logic.MessageSender;
 
 import javax.inject.Inject;
 

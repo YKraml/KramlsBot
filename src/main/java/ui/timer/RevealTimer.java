@@ -4,7 +4,7 @@ import domain.GuessingGame;
 import domain.exceptions.MyOwnException;
 import logic.music.guess.GuessingGameManager;
 import org.javacord.api.entity.channel.TextChannel;
-import ui.messages.MessageSender;
+import logic.MessageSender;
 import ui.messages.messages.GuessGameEndBuilder;
 import ui.messages.messages.TimeIsUpMessage;
 

@@ -7,7 +7,7 @@ import logic.waifu.PlayerLoader;
 import logic.waifu.WaifuLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import domain.Answer;
-import ui.messages.MessageSender;
+import logic.MessageSender;
 import ui.messages.MessageSenderImpl;
 import ui.messages.messages.WaifuStats;
 

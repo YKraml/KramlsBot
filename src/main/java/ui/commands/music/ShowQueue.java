@@ -13,7 +13,7 @@ import org.javacord.api.interaction.SlashCommandInteractionOption;
 import org.javacord.api.interaction.SlashCommandOption;
 import ui.commands.ACommand;
 import domain.Answer;
-import ui.messages.MessageSender;
+import logic.MessageSender;
 import ui.messages.messages.SongQueueMessage;
 
 import java.util.List;

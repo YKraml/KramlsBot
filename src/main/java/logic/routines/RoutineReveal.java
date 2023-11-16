@@ -6,7 +6,7 @@ import logic.music.guess.GuessingGameManager;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
 import domain.Answer;
-import ui.messages.MessageSender;
+import logic.MessageSender;
 import ui.messages.messages.GuessGameEndBuilder;
 
 public class RoutineReveal extends Routine {

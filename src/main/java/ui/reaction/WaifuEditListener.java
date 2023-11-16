@@ -15,7 +15,7 @@ import org.javacord.api.entity.user.User;
 import org.javacord.api.listener.message.reaction.ReactionAddListener;
 import ui.embeds.waifu.WaifuDeletedEmbed;
 import ui.embeds.waifu.WaifuEmbed;
-import ui.messages.MessageSender;
+import logic.MessageSender;
 import ui.messages.messages.*;
 import util.Emojis;
 import util.Terminal;

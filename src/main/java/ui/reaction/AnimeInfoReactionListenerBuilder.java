@@ -3,7 +3,7 @@ package ui.reaction;
 import com.google.inject.Inject;
 import logic.waifu.JikanFetcher;
 import model.jikan.anime.animeByIdFull.AnimeFullById;
-import ui.messages.MessageSender;
+import logic.MessageSender;
 
 public class AnimeInfoReactionListenerBuilder {
 

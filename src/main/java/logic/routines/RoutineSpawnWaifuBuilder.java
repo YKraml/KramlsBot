@@ -4,7 +4,7 @@ import com.google.inject.Inject;
 import logic.waifu.WaifuBuilder;
 import logic.waifu.WaifuSpawnManager;
 import org.javacord.api.DiscordApi;
-import ui.messages.MessageSender;
+import logic.MessageSender;
 
 import java.util.concurrent.ScheduledExecutorService;
 

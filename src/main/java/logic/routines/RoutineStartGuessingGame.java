@@ -13,7 +13,7 @@ import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import domain.Answer;
-import ui.messages.MessageSender;
+import logic.MessageSender;
 import ui.messages.messages.GuessGameStarted;
 import ui.timer.RevealTimerBuilder;
 import util.ChannelFinder;

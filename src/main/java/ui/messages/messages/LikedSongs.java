@@ -9,7 +9,7 @@ import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import ui.embeds.music.LikedSongsEmbed;
-import ui.messages.MessageSender;
+import logic.MessageSender;
 import ui.messages.MyMessage;
 import ui.reaction.SongsListReactionListener;
 

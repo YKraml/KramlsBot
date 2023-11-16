@@ -9,7 +9,7 @@ import logic.waifu.PlayerLoader;
 import logic.waifu.TeamLoader;
 import logic.waifu.WaifuBuilder;
 import org.javacord.api.entity.channel.TextChannel;
-import ui.messages.MessageSender;
+import logic.MessageSender;
 import ui.messages.messages.TeamIsLow;
 import ui.messages.messages.TeamKilled;
 import util.ChannelFinder;

@@ -8,7 +8,7 @@ import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.user.User;
 import org.javacord.api.event.message.reaction.ReactionAddEvent;
 import domain.Answer;
-import ui.messages.MessageSender;
+import logic.MessageSender;
 import ui.messages.messages.ChooseTeam;
 import ui.messages.messages.FightAcceptet;
 import ui.messages.messages.FightDeclined;

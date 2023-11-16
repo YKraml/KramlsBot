@@ -6,7 +6,7 @@ import model.jikan.anime.animeCharacters.AnimeCharacters;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import ui.embeds.anime.CharacterListEmbed;
-import ui.messages.MessageSender;
+import logic.MessageSender;
 import ui.messages.MyMessage;
 import ui.reaction.CharacterListListener;
 

@@ -10,7 +10,7 @@ import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import org.javacord.api.listener.message.reaction.ReactionAddListener;
-import ui.messages.MessageSender;
+import logic.MessageSender;
 import ui.messages.messages.AnimeInformation;
 import util.Emojis;
 

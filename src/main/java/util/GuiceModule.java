@@ -26,7 +26,7 @@ import ui.commands.utility.Disconnect;
 import ui.commands.utility.IpAddress;
 import ui.commands.utility.Stats;
 import ui.commands.waifu.*;
-import ui.messages.MessageSender;
+import logic.MessageSender;
 import ui.messages.MessageSenderImpl;
 
 import javax.inject.Singleton;

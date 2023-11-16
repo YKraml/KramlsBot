@@ -9,7 +9,7 @@ import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import ui.embeds.dungeon.DungeonsDeletionListEmbed;
-import ui.messages.MessageSender;
+import logic.MessageSender;
 import ui.messages.messages.DungeonDeleted;
 import ui.messages.messages.DungeonNotFound;
 

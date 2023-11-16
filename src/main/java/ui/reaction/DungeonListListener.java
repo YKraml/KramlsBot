@@ -8,7 +8,7 @@ import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
-import ui.messages.MessageSender;
+import logic.MessageSender;
 import ui.messages.messages.DungeonNotFound;
 import ui.messages.messages.TeamEnteredDungeon;
 

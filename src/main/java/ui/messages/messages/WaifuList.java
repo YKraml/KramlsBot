@@ -8,7 +8,7 @@ import logic.waifu.WaifuLoader;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import ui.embeds.waifu.WaifuListEmbed;
-import ui.messages.MessageSender;
+import logic.MessageSender;
 import ui.messages.MyMessage;
 import ui.reaction.WaifuListListener;
 import util.Emojis;

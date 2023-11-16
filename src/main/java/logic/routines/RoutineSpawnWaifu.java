@@ -10,7 +10,7 @@ import org.javacord.api.entity.channel.ServerTextChannel;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
 import domain.Answer;
-import ui.messages.MessageSender;
+import logic.MessageSender;
 import ui.messages.messages.ExceptionHappenedMessage;
 import ui.messages.messages.WaifuSpawn;
 import ui.messages.messages.WaifuToClaimWas;

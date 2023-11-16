@@ -7,7 +7,7 @@ import logic.waifu.WaifuBuilder;
 import logic.waifu.WaifuLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.user.User;
-import ui.messages.MessageSender;
+import logic.MessageSender;
 
 public class RoutineSpawnWaifuCommandBuilder {
 

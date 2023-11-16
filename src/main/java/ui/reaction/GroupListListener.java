@@ -11,7 +11,7 @@ import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import ui.embeds.group.GroupsListEmbed;
-import ui.messages.MessageSender;
+import logic.MessageSender;
 import ui.messages.MessageSenderImpl;
 import ui.messages.messages.GroupNotFound;
 import ui.messages.messages.GroupOverview;

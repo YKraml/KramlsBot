@@ -13,7 +13,7 @@ import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import org.javacord.api.listener.message.reaction.ReactionAddListener;
 import ui.embeds.group.GroupEmbed;
-import ui.messages.MessageSender;
+import logic.MessageSender;
 import ui.messages.messages.WaifuNotFound;
 import ui.messages.messages.WaifuStats;
 

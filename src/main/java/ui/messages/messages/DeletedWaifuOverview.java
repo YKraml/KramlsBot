@@ -8,7 +8,7 @@ import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.entity.user.User;
 import ui.embeds.waifu.DeleteWaifuListEmbed;
-import ui.messages.MessageSender;
+import logic.MessageSender;
 import ui.messages.MyMessage;
 import ui.reaction.DeleteWaifuListListener;
 import util.Emojis;

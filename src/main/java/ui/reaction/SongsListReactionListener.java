@@ -11,7 +11,7 @@ import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import ui.embeds.music.LikedSongsEmbed;
-import ui.messages.MessageSender;
+import logic.MessageSender;
 import ui.messages.messages.SongAdded;
 import util.ChannelFinder;
 

@@ -7,7 +7,7 @@ import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.user.User;
 import domain.Answer;
 import ui.embeds.LostMoney;
-import ui.messages.MessageSender;
+import logic.MessageSender;
 import ui.messages.messages.WonMoney;
 
 import java.util.concurrent.ThreadLocalRandom;

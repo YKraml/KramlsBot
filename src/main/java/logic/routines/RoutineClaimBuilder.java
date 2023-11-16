@@ -8,7 +8,7 @@ import logic.waifu.WaifuSpawnManager;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
-import ui.messages.MessageSender;
+import logic.MessageSender;
 
 public class RoutineClaimBuilder {
 

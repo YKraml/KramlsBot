@@ -6,7 +6,7 @@ import logic.waifu.DungeonLoader;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import ui.embeds.dungeon.DungeonsDeletionListEmbed;
-import ui.messages.MessageSender;
+import logic.MessageSender;
 import ui.messages.MyMessage;
 import ui.reaction.DungeonDeletionListListener;
 

@@ -9,7 +9,7 @@ import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import domain.DisplayableElement;
 import ui.embeds.anime.CharacterListEmbed;
-import ui.messages.MessageSender;
+import logic.MessageSender;
 import ui.messages.messages.CharacterOverview;
 
 import java.util.List;

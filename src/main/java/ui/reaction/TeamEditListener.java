@@ -18,7 +18,7 @@ import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import org.javacord.api.listener.message.reaction.ReactionAddListener;
 import ui.embeds.dungeon.TeamEmbed;
-import ui.messages.MessageSender;
+import logic.MessageSender;
 import ui.messages.messages.ButtonNotForYou;
 import ui.messages.messages.DungeonList;
 import ui.messages.messages.TeamGavePocketMessage;

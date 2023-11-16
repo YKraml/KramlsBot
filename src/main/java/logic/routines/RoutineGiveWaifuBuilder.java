@@ -4,7 +4,7 @@ import com.google.inject.Inject;
 import logic.waifu.PlayerLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.user.User;
-import ui.messages.MessageSender;
+import logic.MessageSender;
 
 public class RoutineGiveWaifuBuilder {
     private final PlayerLoader playerLoader;
