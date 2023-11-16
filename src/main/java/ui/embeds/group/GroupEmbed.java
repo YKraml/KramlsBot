@@ -4,7 +4,7 @@ import domain.waifu.Group;
 import domain.waifu.Player;
 import domain.waifu.Waifu;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
-import util.Emojis;
+import ui.Emojis;
 import util.Main;
 
 import java.util.Iterator;

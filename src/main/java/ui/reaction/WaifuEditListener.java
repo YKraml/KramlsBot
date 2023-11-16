@@ -17,8 +17,8 @@ import org.javacord.api.listener.message.reaction.ReactionAddListener;
 import ui.embeds.waifu.WaifuDeletedEmbed;
 import ui.embeds.waifu.WaifuEmbed;
 import ui.messages.messages.*;
-import util.Emojis;
-import util.Terminal;
+import ui.Emojis;
+import ui.Terminal;
 
 import java.util.Optional;
 

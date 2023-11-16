@@ -14,8 +14,8 @@ import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import ui.embeds.music.QueueEmbed;
-import util.ChannelFinder;
-import util.Emojis;
+import logic.ChannelFinder;
+import ui.Emojis;
 
 import java.util.Optional;
 

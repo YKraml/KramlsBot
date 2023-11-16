@@ -4,7 +4,7 @@ import com.google.inject.Inject;
 import domain.exceptions.MyOwnException;
 import logic.routines.RoutineRunner;
 import logic.routines.RoutineSpawnWaifuBuilder;
-import util.Terminal;
+import ui.Terminal;
 
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;

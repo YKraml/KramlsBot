@@ -11,7 +11,7 @@ import org.javacord.api.entity.user.User;
 import ui.embeds.waifu.DeleteWaifuListEmbed;
 import ui.messages.MyMessageAbs;
 import ui.reaction.DeleteWaifuListListener;
-import util.Emojis;
+import ui.Emojis;
 
 public class DeletedWaifuOverview extends MyMessageAbs {
 

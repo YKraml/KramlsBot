@@ -3,7 +3,7 @@ package ui.commands;
 import com.google.inject.Inject;
 import org.javacord.api.event.interaction.SlashCommandCreateEvent;
 import org.javacord.api.listener.interaction.SlashCommandCreateListener;
-import util.Terminal;
+import ui.Terminal;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;

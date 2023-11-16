@@ -10,7 +10,7 @@ import logic.youtube.YoutubeFetcher;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
-import util.ChannelFinder;
+import logic.ChannelFinder;
 
 public class RoutineStartGuessingGameBuilder {
 

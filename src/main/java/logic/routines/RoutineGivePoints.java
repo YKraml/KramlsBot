@@ -8,7 +8,7 @@ import logic.waifu.PlayerLoader;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.channel.ServerVoiceChannel;
 import org.javacord.api.entity.server.Server;
-import util.Terminal;
+import ui.Terminal;
 
 public class RoutineGivePoints extends Routine {
 

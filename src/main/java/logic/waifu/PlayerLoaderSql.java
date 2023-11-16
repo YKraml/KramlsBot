@@ -26,7 +26,7 @@ import domain.waifu.Group;
 import domain.waifu.Player;
 import domain.waifu.Waifu;
 import domain.waifu.dungeon.Team;
-import util.Terminal;
+import ui.Terminal;
 
 import javax.inject.Singleton;
 import java.util.ArrayList;

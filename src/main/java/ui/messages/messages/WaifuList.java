@@ -11,7 +11,7 @@ import org.javacord.api.entity.message.embed.EmbedBuilder;
 import ui.embeds.waifu.WaifuListEmbed;
 import ui.messages.MyMessageAbs;
 import ui.reaction.WaifuListListener;
-import util.Emojis;
+import ui.Emojis;
 
 public class WaifuList extends MyMessageAbs {
 

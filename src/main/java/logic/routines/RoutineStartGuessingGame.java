@@ -16,7 +16,7 @@ import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import ui.messages.messages.GuessGameStarted;
-import util.ChannelFinder;
+import logic.ChannelFinder;
 
 import java.util.ArrayList;
 import java.util.Collections;

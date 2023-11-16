@@ -12,7 +12,7 @@ import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import org.javacord.api.listener.message.reaction.ReactionAddListener;
 import ui.messages.messages.AnimeInformation;
-import util.Emojis;
+import ui.Emojis;
 
 public class AnimeInfoReactionListener extends MyAbstractReactionListener implements
         ReactionAddListener {

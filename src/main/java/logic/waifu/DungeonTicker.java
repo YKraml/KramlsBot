@@ -12,7 +12,7 @@ import logic.waifu.WaifuBuilder;
 import org.javacord.api.entity.channel.TextChannel;
 import ui.messages.messages.TeamIsLow;
 import ui.messages.messages.TeamKilled;
-import util.ChannelFinder;
+import logic.ChannelFinder;
 
 import java.util.ArrayList;
 import java.util.List;

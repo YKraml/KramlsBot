@@ -16,7 +16,7 @@ import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import ui.messages.messages.SongAdded;
-import util.ChannelFinder;
+import logic.ChannelFinder;
 
 public class RoutineAddToQueue extends Routine {
 

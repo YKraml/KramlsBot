@@ -4,7 +4,7 @@ import com.google.inject.Inject;
 import domain.exceptions.MyOwnException;
 import domain.exceptions.messages.CouldNotSavePlayer;
 import domain.waifu.Player;
-import util.Terminal;
+import ui.Terminal;
 
 import javax.inject.Singleton;
 import java.util.ArrayList;

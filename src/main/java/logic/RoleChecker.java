@@ -1,4 +1,4 @@
-package util;
+package logic;
 
 import com.google.inject.Inject;
 import domain.exceptions.MyOwnException;

@@ -1,4 +1,4 @@
-package util;
+package logic;
 
 import org.javacord.api.entity.permission.Role;
 import org.javacord.api.entity.server.Server;

@@ -15,7 +15,7 @@ import org.javacord.api.entity.user.User;
 import org.javacord.api.listener.message.reaction.ReactionAddListener;
 import ui.messages.MessageSenderImpl;
 import ui.messages.messages.CharacterList;
-import util.Emojis;
+import ui.Emojis;
 
 import java.util.Comparator;
 

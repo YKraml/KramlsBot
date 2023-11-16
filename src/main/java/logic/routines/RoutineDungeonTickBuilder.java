@@ -6,7 +6,7 @@ import logic.MessageSender;
 import logic.waifu.DungeonLoader;
 import logic.waifu.PlayerLoader;
 import logic.waifu.TeamLoader;
-import util.ChannelFinder;
+import logic.ChannelFinder;
 
 public class RoutineDungeonTickBuilder {
 

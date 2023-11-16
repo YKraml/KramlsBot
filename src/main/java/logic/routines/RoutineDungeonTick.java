@@ -11,13 +11,13 @@ import logic.waifu.PlayerLoader;
 import logic.waifu.TeamLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import ui.messages.messages.DungeonMessage;
-import util.ChannelFinder;
+import logic.ChannelFinder;
 
 import java.util.List;
 import java.util.Optional;
 
 public class RoutineDungeonTick extends Routine {
-    
+
     private final DungeonTicker dungeonTicker;
     private final ChannelFinder channelFinder;
     private final TeamLoader teamLoader;

@@ -2,7 +2,7 @@ package ui.embeds;
 
 import domain.DisplayableElement;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
-import util.Emojis;
+import ui.Emojis;
 import util.Main;
 
 import java.util.List;

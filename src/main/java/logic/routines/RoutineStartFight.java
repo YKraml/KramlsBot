@@ -13,7 +13,7 @@ import ui.messages.messages.ChooseTeam;
 import ui.messages.messages.FightAcceptet;
 import ui.messages.messages.FightDeclined;
 import ui.messages.messages.FightRequest;
-import util.Emojis;
+import ui.Emojis;
 
 public class RoutineStartFight extends Routine {
 

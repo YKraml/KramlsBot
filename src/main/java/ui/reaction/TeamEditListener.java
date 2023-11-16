@@ -23,7 +23,7 @@ import ui.messages.messages.ButtonNotForYou;
 import ui.messages.messages.DungeonList;
 import ui.messages.messages.TeamGavePocketMessage;
 import ui.messages.messages.WaifuStats;
-import util.Emojis;
+import ui.Emojis;
 
 import java.util.List;
 

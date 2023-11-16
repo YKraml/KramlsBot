@@ -4,7 +4,7 @@ import com.google.inject.Inject;
 import domain.exceptions.MyOwnException;
 import logic.routines.RoutineDungeonTickBuilder;
 import logic.routines.RoutineRunner;
-import util.Terminal;
+import ui.Terminal;
 
 public class DungeonTickRunnable extends SaveRunnable {
 
