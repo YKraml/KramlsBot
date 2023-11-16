@@ -7,6 +7,7 @@ import com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioSourceManager
 import domain.queue.Queue;
 import domain.queue.QueueElement;
 import domain.queue.QueueImpl;
+import logic.MessageSender;
 import org.javacord.api.audio.AudioConnection;
 import org.javacord.api.entity.channel.ServerVoiceChannel;
 import org.javacord.api.entity.channel.TextChannel;
@@ -40,12 +41,12 @@ class MusicPlayer {
     }
 
     static MusicPlayer createMusicPlayer(ServerVoiceChannel serverVoiceChannel,
-                                         TextChannel textChannel) {
+                                         TextChannel textChannel, MessageSender messageSender) {
 
         AudioPlayerManager audioPlayerManager = new DefaultAudioPlayerManager();
         AudioPlayer audioPlayer = audioPlayerManager.createPlayer();
         MyAudioLoadResultListener audioLoadResultHandler = new MyAudioLoadResultListener(audioPlayer,
-                textChannel);
+                textChannel, messageSender);
 
         MusicPlayer musicPlayer = new MusicPlayer(audioPlayerManager, audioPlayer,
                 audioLoadResultHandler, serverVoiceChannel);

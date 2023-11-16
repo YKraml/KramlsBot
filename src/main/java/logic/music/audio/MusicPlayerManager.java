@@ -4,11 +4,13 @@ import domain.exceptions.MyOwnException;
 import domain.exceptions.messages.QueueNonExisting;
 import domain.queue.Queue;
 import domain.queue.QueueElement;
+import logic.MessageSender;
 import org.javacord.api.entity.channel.ServerVoiceChannel;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.server.Server;
 
+import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -19,9 +21,12 @@ import java.util.Optional;
 public final class MusicPlayerManager {
 
     private final Map<Server, MusicPlayer> players;
+    private final MessageSender messageSender;
 
 
-    public MusicPlayerManager() {
+    @Inject
+    public MusicPlayerManager(MessageSender messageSender) {
+        this.messageSender = messageSender;
         this.players = Collections.synchronizedMap(new LinkedHashMap<>());
     }
 
@@ -96,7 +101,7 @@ public final class MusicPlayerManager {
 
     private MusicPlayer createPlayer(Server server, ServerVoiceChannel serverVoiceChannel,
                                      TextChannel textChannel) {
-        MusicPlayer musicPlayer = MusicPlayer.createMusicPlayer(serverVoiceChannel, textChannel);
+        MusicPlayer musicPlayer = MusicPlayer.createMusicPlayer(serverVoiceChannel, textChannel, messageSender);
         players.put(server, musicPlayer);
         return musicPlayer;
     }
