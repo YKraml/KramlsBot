@@ -1,18 +1,18 @@
-package domain.waifu.dungeon;
+package logic.waifu;
 
 import com.google.inject.Inject;
 import domain.exceptions.MyOwnException;
 import domain.waifu.Player;
 import domain.waifu.Waifu;
+import domain.waifu.dungeon.Dungeon;
+import domain.waifu.dungeon.Inventory;
+import domain.waifu.dungeon.Team;
 import domain.waifu.fighting.FightHistory;
+import logic.ChannelFinder;
 import logic.MessageSender;
-import logic.waifu.PlayerLoader;
-import logic.waifu.TeamLoader;
-import logic.waifu.WaifuBuilder;
 import org.javacord.api.entity.channel.TextChannel;
 import ui.messages.messages.TeamIsLow;
 import ui.messages.messages.TeamKilled;
-import logic.ChannelFinder;
 
 import java.util.ArrayList;
 import java.util.List;

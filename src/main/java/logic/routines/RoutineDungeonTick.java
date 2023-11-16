@@ -3,15 +3,15 @@ package logic.routines;
 import domain.Answer;
 import domain.exceptions.MyOwnException;
 import domain.waifu.dungeon.Dungeon;
-import domain.waifu.dungeon.DungeonTicker;
 import domain.waifu.dungeon.Team;
+import logic.ChannelFinder;
 import logic.MessageSender;
 import logic.waifu.DungeonLoader;
+import logic.waifu.DungeonTicker;
 import logic.waifu.PlayerLoader;
 import logic.waifu.TeamLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import ui.messages.messages.DungeonMessage;
-import logic.ChannelFinder;
 
 import java.util.List;
 import java.util.Optional;
