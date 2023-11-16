@@ -3,6 +3,7 @@ package ui.commands.dungeon;
 import com.google.inject.Inject;
 import domain.Answer;
 import domain.exceptions.MyOwnException;
+import logic.MessageSender;
 import logic.routines.RoutineCreateDungeon;
 import logic.waifu.DungeonLoader;
 import org.javacord.api.DiscordApi;
@@ -19,10 +20,12 @@ import java.util.List;
 public class CreateDungeon extends ACommand {
 
     private final DungeonLoader dungeonLoader;
+    private final MessageSender messageSender;
 
     @Inject
-    public CreateDungeon(DungeonLoader dungeonLoader) {
+    public CreateDungeon(DungeonLoader dungeonLoader, MessageSender messageSender) {
         this.dungeonLoader = dungeonLoader;
+        this.messageSender = messageSender;
     }
 
     @Override
@@ -41,7 +44,7 @@ public class CreateDungeon extends ACommand {
         int difficulty = arguments.get(0).getLongValue().get().intValue();
         String name = arguments.get(1).getStringValue().get();
         return getRoutineRunner().start(
-                new RoutineCreateDungeon(server, difficulty, name, channel, dungeonLoader));
+                new RoutineCreateDungeon(server, difficulty, name, channel, dungeonLoader, messageSender));
     }
 
     @Override
