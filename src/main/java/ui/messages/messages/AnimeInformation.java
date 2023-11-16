@@ -7,13 +7,13 @@ import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import ui.embeds.anime.AnimeEmbed;
 import logic.MessageSender;
-import ui.messages.MyMessage;
+import ui.messages.MyMessageAbs;
 import ui.reaction.AnimeOpeningEndingReactionListenerBuilder;
 import ui.reaction.CharacterReactionListener;
 import ui.reaction.SynopsisReactionListener;
 import util.Emojis;
 
-public class AnimeInformation extends MyMessage {
+public class AnimeInformation extends MyMessageAbs {
 
     private final AnimeFullById anime;
     private final JikanFetcher jikanFetcher;
@@ -30,7 +30,7 @@ public class AnimeInformation extends MyMessage {
     }
 
     @Override
-    protected void startRoutine(Message message) throws MyOwnException {
+    public void startRoutine(Message message) throws MyOwnException {
         message.addReaction(Emojis.MUSICAL_NOTE.getEmoji());
         message.addReaction(Emojis.NOTES.getEmoji());
         message.addReaction(Emojis.INFORMATION_SOURCE.getEmoji());
@@ -42,7 +42,7 @@ public class AnimeInformation extends MyMessage {
     }
 
     @Override
-    protected EmbedBuilder getContent() throws MyOwnException {
+    public EmbedBuilder getContent() throws MyOwnException {
         return new AnimeEmbed(anime);
     }
 

@@ -4,9 +4,9 @@ import domain.exceptions.MyOwnException;
 import domain.waifu.Player;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
-import ui.messages.MyMessage;
+import ui.messages.MyMessageAbs;
 
-public class GuessedRight extends MyMessage {
+public class GuessedRight extends MyMessageAbs {
 
     private final Player player;
 
@@ -15,12 +15,12 @@ public class GuessedRight extends MyMessage {
     }
 
     @Override
-    protected void startRoutine(Message message) throws MyOwnException {
+    public void startRoutine(Message message) throws MyOwnException {
         //Ignore.
     }
 
     @Override
-    protected EmbedBuilder getContent() throws MyOwnException {
+    public EmbedBuilder getContent() throws MyOwnException {
         return this.convertStringToEmbed(player.getNameTag() + ", du liegst richtig!");
     }
 }

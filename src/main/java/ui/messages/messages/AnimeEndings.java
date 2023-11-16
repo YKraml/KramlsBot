@@ -6,10 +6,10 @@ import model.jikan.anime.animeThemes.AnimeThemes;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import ui.embeds.anime.AnimeSongEmbed;
-import ui.messages.MyMessage;
+import ui.messages.MyMessageAbs;
 import ui.reaction.AnimeStartSongReactionListenerBuilder;
 
-public class AnimeEndings extends MyMessage {
+public class AnimeEndings extends MyMessageAbs {
 
     private final AnimeFullById anime;
     private final AnimeThemes animeThemes;
@@ -24,7 +24,7 @@ public class AnimeEndings extends MyMessage {
 
 
     @Override
-    protected void startRoutine(Message message) throws MyOwnException {
+    public void startRoutine(Message message) throws MyOwnException {
         this.addCountEmojis(message, animeThemes.getData().getEndings().size());
         message.addReactionAddListener(
                 animeStartSongReactionListenerBuilder.createAnimeStartSongReactionListener(anime,
@@ -33,7 +33,7 @@ public class AnimeEndings extends MyMessage {
     }
 
     @Override
-    protected EmbedBuilder getContent() throws MyOwnException {
+    public EmbedBuilder getContent() throws MyOwnException {
         return new AnimeSongEmbed("Openings", animeThemes.getData().getEndings(), 0);
 
     }

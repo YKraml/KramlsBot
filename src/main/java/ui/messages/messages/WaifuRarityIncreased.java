@@ -5,9 +5,9 @@ import domain.waifu.Rarities;
 import domain.waifu.Waifu;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
-import ui.messages.MyMessage;
+import ui.messages.MyMessageAbs;
 
-public class WaifuRarityIncreased extends MyMessage {
+public class WaifuRarityIncreased extends MyMessageAbs {
 
     private final Waifu waifu;
     private final Rarities rarity;
@@ -18,12 +18,12 @@ public class WaifuRarityIncreased extends MyMessage {
     }
 
     @Override
-    protected void startRoutine(Message message) throws MyOwnException {
+    public void startRoutine(Message message) throws MyOwnException {
         //Ignore.
     }
 
     @Override
-    protected EmbedBuilder getContent() throws MyOwnException {
+    public EmbedBuilder getContent() throws MyOwnException {
         return this.convertStringToEmbed(waifu.getName() + " ist nun " + rarity + ".");
     }
 }

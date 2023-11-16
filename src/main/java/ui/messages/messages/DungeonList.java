@@ -8,12 +8,12 @@ import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import ui.embeds.dungeon.DungeonListEmbed;
 import logic.MessageSender;
-import ui.messages.MyMessage;
+import ui.messages.MyMessageAbs;
 import ui.reaction.DungeonListListener;
 
 import java.util.List;
 
-public class DungeonList extends MyMessage {
+public class DungeonList extends MyMessageAbs {
     private final Team team;
     private final List<Dungeon> dungeonList;
     private final PlayerLoader playerLoader;
@@ -28,14 +28,14 @@ public class DungeonList extends MyMessage {
     }
 
     @Override
-    protected void startRoutine(Message message) throws MyOwnException {
+    public void startRoutine(Message message) throws MyOwnException {
         this.addCountEmojis(message, dungeonList.size());
         message.addReactionAddListener(new DungeonListListener(dungeonList, team, playerLoader,
                 messageSender));
     }
 
     @Override
-    protected EmbedBuilder getContent() throws MyOwnException {
+    public EmbedBuilder getContent() throws MyOwnException {
         return new DungeonListEmbed(dungeonList, 0);
     }
 

@@ -4,9 +4,9 @@ import domain.exceptions.MyOwnException;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.entity.user.User;
-import ui.messages.MyMessage;
+import ui.messages.MyMessageAbs;
 
-public class FightAcceptet extends MyMessage {
+public class FightAcceptet extends MyMessageAbs {
 
     private final User user;
     private final User enemy;
@@ -23,12 +23,12 @@ public class FightAcceptet extends MyMessage {
     }
 
     @Override
-    protected void startRoutine(Message message) throws MyOwnException {
+    public void startRoutine(Message message) throws MyOwnException {
         //Ignore.
     }
 
     @Override
-    protected EmbedBuilder getContent() throws MyOwnException {
+    public EmbedBuilder getContent() throws MyOwnException {
         EmbedBuilder embed = new EmbedBuilder();
         embed.setTitle("Herausforderung angenommen!");
         embed.setThumbnail("https://img.freepik.com/freie-ikonen/schwerter_318-781172.jpg");

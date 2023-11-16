@@ -11,10 +11,10 @@ import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.entity.user.User;
 import ui.embeds.dungeon.TeamsListEmbed;
 import logic.MessageSender;
-import ui.messages.MyMessage;
+import ui.messages.MyMessageAbs;
 import ui.reaction.TeamListListener;
 
-public class TeamsOverview extends MyMessage {
+public class TeamsOverview extends MyMessageAbs {
 
     private final User user;
     private final DungeonLoader dungeonLoader;
@@ -34,7 +34,7 @@ public class TeamsOverview extends MyMessage {
     }
 
     @Override
-    protected void startRoutine(Message message) throws MyOwnException {
+    public void startRoutine(Message message) throws MyOwnException {
         Player player = playerLoader.getPlayerByUser(user);
         addCountEmojis(message, player.getTeamList().size());
         message.addReactionAddListener(new TeamListListener(player, dungeonLoader, playerLoader,
@@ -42,7 +42,7 @@ public class TeamsOverview extends MyMessage {
     }
 
     @Override
-    protected EmbedBuilder getContent() throws MyOwnException {
+    public EmbedBuilder getContent() throws MyOwnException {
         Player player = playerLoader.getPlayerByUser(user);
         return new TeamsListEmbed(player, 0);
     }

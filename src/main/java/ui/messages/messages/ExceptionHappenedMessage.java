@@ -4,9 +4,9 @@ import domain.exceptions.MyOwnException;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import ui.embeds.ExceptionEmbed;
-import ui.messages.MyMessage;
+import ui.messages.MyMessageAbs;
 
-public class ExceptionHappenedMessage extends MyMessage {
+public class ExceptionHappenedMessage extends MyMessageAbs {
 
     private final MyOwnException myOwnException;
 
@@ -15,12 +15,12 @@ public class ExceptionHappenedMessage extends MyMessage {
     }
 
     @Override
-    protected void startRoutine(Message message) throws MyOwnException {
+    public void startRoutine(Message message) throws MyOwnException {
         //Ignore.
     }
 
     @Override
-    protected EmbedBuilder getContent() throws MyOwnException {
+    public EmbedBuilder getContent() throws MyOwnException {
         return new ExceptionEmbed(myOwnException);
     }
 }

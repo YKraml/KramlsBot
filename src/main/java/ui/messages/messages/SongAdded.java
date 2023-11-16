@@ -7,11 +7,11 @@ import logic.waifu.PlayerLoader;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import ui.embeds.music.SongAddedEmbed;
-import ui.messages.MyMessage;
+import ui.messages.MyMessageAbs;
 import ui.reaction.SongAddedEmbedListener;
 import util.Emojis;
 
-public class SongAdded extends MyMessage {
+public class SongAdded extends MyMessageAbs {
 
     private final QueueElement queueElement;
     private final MusicPlayerManager musicPlayerManager;
@@ -25,13 +25,13 @@ public class SongAdded extends MyMessage {
     }
 
     @Override
-    protected void startRoutine(Message message) throws MyOwnException {
+    public void startRoutine(Message message) throws MyOwnException {
         message.addReaction(Emojis.INFORMATION_SOURCE.getEmoji());
         message.addReactionAddListener(new SongAddedEmbedListener(musicPlayerManager, playerLoader));
     }
 
     @Override
-    protected EmbedBuilder getContent() throws MyOwnException {
+    public EmbedBuilder getContent() throws MyOwnException {
         return new SongAddedEmbed(queueElement);
     }
 

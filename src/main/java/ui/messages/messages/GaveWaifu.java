@@ -5,9 +5,9 @@ import domain.waifu.Player;
 import domain.waifu.Waifu;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
-import ui.messages.MyMessage;
+import ui.messages.MyMessageAbs;
 
-public class GaveWaifu extends MyMessage {
+public class GaveWaifu extends MyMessageAbs {
 
     private final Player player1;
     private final Player player2;
@@ -20,12 +20,12 @@ public class GaveWaifu extends MyMessage {
     }
 
     @Override
-    protected void startRoutine(Message message) throws MyOwnException {
+    public void startRoutine(Message message) throws MyOwnException {
         //Ignore.
     }
 
     @Override
-    protected EmbedBuilder getContent() throws MyOwnException {
+    public EmbedBuilder getContent() throws MyOwnException {
         return this.convertStringToEmbed(
                 player1.getNameTag() + " gab " + player2.getNameTag() + " \"" + waifu.getName() + "\"");
     }

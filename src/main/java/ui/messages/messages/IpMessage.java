@@ -3,9 +3,9 @@ package ui.messages.messages;
 import domain.exceptions.MyOwnException;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
-import ui.messages.MyMessage;
+import ui.messages.MyMessageAbs;
 
-public class IpMessage extends MyMessage {
+public class IpMessage extends MyMessageAbs {
 
     private final String ip;
 
@@ -14,12 +14,12 @@ public class IpMessage extends MyMessage {
     }
 
     @Override
-    protected void startRoutine(Message message) throws MyOwnException {
+    public void startRoutine(Message message) throws MyOwnException {
         //Do nothing
     }
 
     @Override
-    protected EmbedBuilder getContent() throws MyOwnException {
+    public EmbedBuilder getContent() throws MyOwnException {
         return convertStringToEmbed("Hier die IP-Adresse: " + ip);
     }
 }

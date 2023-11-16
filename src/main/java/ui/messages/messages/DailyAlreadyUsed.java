@@ -4,9 +4,9 @@ import domain.exceptions.MyOwnException;
 import domain.waifu.Player;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
-import ui.messages.MyMessage;
+import ui.messages.MyMessageAbs;
 
-public class DailyAlreadyUsed extends MyMessage {
+public class DailyAlreadyUsed extends MyMessageAbs {
 
     private final Player player;
     private final String newDate;
@@ -18,12 +18,12 @@ public class DailyAlreadyUsed extends MyMessage {
 
 
     @Override
-    protected void startRoutine(Message message) throws MyOwnException {
+    public void startRoutine(Message message) throws MyOwnException {
         //Ignore.
     }
 
     @Override
-    protected EmbedBuilder getContent() throws MyOwnException {
+    public EmbedBuilder getContent() throws MyOwnException {
         return convertStringToEmbed(
                 player.getNameTag() + ", du hast dein Daily schon heute (" + newDate + ") benutzt.");
     }

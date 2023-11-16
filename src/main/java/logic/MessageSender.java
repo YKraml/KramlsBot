@@ -3,7 +3,7 @@ package logic;
 import domain.exceptions.MyOwnException;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.message.Message;
-import ui.messages.MyMessage;
+import ui.messages.MyMessageAbs;
 
 public interface MessageSender {
 

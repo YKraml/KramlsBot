@@ -4,10 +4,10 @@ import domain.exceptions.MyOwnException;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.entity.user.User;
-import ui.messages.MyMessage;
+import ui.messages.MyMessageAbs;
 import util.Emojis;
 
-public class FightRequest extends MyMessage {
+public class FightRequest extends MyMessageAbs {
 
     private final User user;
     private final User enemy;
@@ -24,13 +24,13 @@ public class FightRequest extends MyMessage {
     }
 
     @Override
-    protected void startRoutine(Message message) throws MyOwnException {
+    public void startRoutine(Message message) throws MyOwnException {
         message.addReaction(Emojis.WHITE_CHECK_MARK.getEmoji());
         message.addReaction(Emojis.X.getEmoji());
     }
 
     @Override
-    protected EmbedBuilder getContent() throws MyOwnException {
+    public EmbedBuilder getContent() throws MyOwnException {
         EmbedBuilder embed = new EmbedBuilder();
         embed.setTitle("Kampfherausforderung!");
         embed.setThumbnail("https://img.freepik.com/freie-ikonen/schwerter_318-781172.jpg");

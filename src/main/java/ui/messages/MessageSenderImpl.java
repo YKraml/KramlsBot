@@ -5,6 +5,7 @@ import domain.exceptions.messages.CouldNotGetContent;
 import domain.exceptions.messages.CouldNotSendMessage;
 import domain.exceptions.messages.CouldNotStartRoutine;
 import logic.MessageSender;
+import logic.MyMessage;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;

@@ -10,11 +10,11 @@ import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import ui.embeds.dungeon.TeamEmbed;
 import logic.MessageSender;
-import ui.messages.MyMessage;
+import ui.messages.MyMessageAbs;
 import ui.reaction.TeamEditListener;
 import util.Emojis;
 
-public class TeamOverview extends MyMessage {
+public class TeamOverview extends MyMessageAbs {
 
     private final Team team;
     private final DungeonLoader dungeonLoader;
@@ -34,7 +34,7 @@ public class TeamOverview extends MyMessage {
     }
 
     @Override
-    protected void startRoutine(Message message) throws MyOwnException {
+    public void startRoutine(Message message) throws MyOwnException {
         message.addReaction(Emojis.MONEY_BAG.getEmoji());
         message.addReaction(Emojis.HOSPITAL.getEmoji());
         message.addReaction(Emojis.LEFTWARDS_ARROW_WITH_HOOK.getEmoji());
@@ -46,7 +46,7 @@ public class TeamOverview extends MyMessage {
     }
 
     @Override
-    protected EmbedBuilder getContent() throws MyOwnException {
+    public EmbedBuilder getContent() throws MyOwnException {
         return new TeamEmbed(team);
     }
 

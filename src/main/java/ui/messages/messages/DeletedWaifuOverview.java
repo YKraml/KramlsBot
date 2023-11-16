@@ -9,11 +9,11 @@ import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.entity.user.User;
 import ui.embeds.waifu.DeleteWaifuListEmbed;
 import logic.MessageSender;
-import ui.messages.MyMessage;
+import ui.messages.MyMessageAbs;
 import ui.reaction.DeleteWaifuListListener;
 import util.Emojis;
 
-public class DeletedWaifuOverview extends MyMessage {
+public class DeletedWaifuOverview extends MyMessageAbs {
 
     private final User user;
     private final WaifuLoader waifuLoader;
@@ -29,7 +29,7 @@ public class DeletedWaifuOverview extends MyMessage {
     }
 
     @Override
-    protected void startRoutine(Message message) throws MyOwnException {
+    public void startRoutine(Message message) throws MyOwnException {
         Player player = playerLoader.getPlayerByUser(user);
         this.addCountEmojis(message, player.getWaifuList().size());
         message.addReactionAddListener(new DeleteWaifuListListener(player, waifuLoader,
@@ -40,7 +40,7 @@ public class DeletedWaifuOverview extends MyMessage {
     }
 
     @Override
-    protected EmbedBuilder getContent() throws MyOwnException {
+    public EmbedBuilder getContent() throws MyOwnException {
         Player player = playerLoader.getPlayerByUser(user);
         return new DeleteWaifuListEmbed(player, 0);
     }

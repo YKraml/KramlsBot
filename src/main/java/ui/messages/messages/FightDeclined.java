@@ -4,9 +4,9 @@ import domain.exceptions.MyOwnException;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.entity.user.User;
-import ui.messages.MyMessage;
+import ui.messages.MyMessageAbs;
 
-public class FightDeclined extends MyMessage {
+public class FightDeclined extends MyMessageAbs {
 
     private final User user;
     private final User enemy;
@@ -17,12 +17,12 @@ public class FightDeclined extends MyMessage {
     }
 
     @Override
-    protected void startRoutine(Message message) throws MyOwnException {
+    public void startRoutine(Message message) throws MyOwnException {
         //Ignore.
     }
 
     @Override
-    protected EmbedBuilder getContent() throws MyOwnException {
+    public EmbedBuilder getContent() throws MyOwnException {
         return convertStringToEmbed(
                 "%s, %s hat deine Herausforderung abgelehnt.".formatted(user.getName(), enemy.getName()));
     }

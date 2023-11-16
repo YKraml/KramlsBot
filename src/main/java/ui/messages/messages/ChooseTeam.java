@@ -9,10 +9,10 @@ import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import ui.embeds.dungeon.TeamsListEmbed;
-import ui.messages.MyMessage;
+import ui.messages.MyMessageAbs;
 import ui.reaction.MyAbstractListListener;
 
-public class ChooseTeam extends MyMessage {
+public class ChooseTeam extends MyMessageAbs {
 
     private final Player player;
 
@@ -21,7 +21,7 @@ public class ChooseTeam extends MyMessage {
     }
 
     @Override
-    protected void startRoutine(Message message) throws MyOwnException {
+    public void startRoutine(Message message) throws MyOwnException {
 
         MyAbstractListListener<Team> listener = new MyAbstractListListener<>(player.getTeamList()) {
             @Override
@@ -46,7 +46,7 @@ public class ChooseTeam extends MyMessage {
     }
 
     @Override
-    protected EmbedBuilder getContent() throws MyOwnException {
+    public EmbedBuilder getContent() throws MyOwnException {
         return new TeamsListEmbed(player, 0);
     }
 }

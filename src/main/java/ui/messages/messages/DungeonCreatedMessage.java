@@ -5,9 +5,9 @@ import domain.waifu.dungeon.Dungeon;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import ui.embeds.dungeon.DungeonCreatedEmbed;
-import ui.messages.MyMessage;
+import ui.messages.MyMessageAbs;
 
-public class DungeonCreatedMessage extends MyMessage {
+public class DungeonCreatedMessage extends MyMessageAbs {
 
     private final Dungeon dungeon;
 
@@ -16,12 +16,12 @@ public class DungeonCreatedMessage extends MyMessage {
     }
 
     @Override
-    protected void startRoutine(Message message) throws MyOwnException {
+    public void startRoutine(Message message) throws MyOwnException {
         //Ignore.
     }
 
     @Override
-    protected EmbedBuilder getContent() throws MyOwnException {
+    public EmbedBuilder getContent() throws MyOwnException {
         return new DungeonCreatedEmbed(dungeon);
     }
 }

@@ -4,9 +4,9 @@ import domain.exceptions.MyOwnException;
 import domain.waifu.Player;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
-import ui.messages.MyMessage;
+import ui.messages.MyMessageAbs;
 
-public class GaveMoney extends MyMessage {
+public class GaveMoney extends MyMessageAbs {
 
     private final Player player1;
     private final Player player2;
@@ -20,12 +20,12 @@ public class GaveMoney extends MyMessage {
 
 
     @Override
-    protected void startRoutine(Message message) throws MyOwnException {
+    public void startRoutine(Message message) throws MyOwnException {
         //Ignore.
     }
 
     @Override
-    protected EmbedBuilder getContent() throws MyOwnException {
+    public EmbedBuilder getContent() throws MyOwnException {
         return this.convertStringToEmbed(
                 player1.getNameTag() + " gab " + player2.getNameTag() + " " + money + " Euro.");
     }

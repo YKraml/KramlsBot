@@ -10,10 +10,10 @@ import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import ui.embeds.music.LikedSongsEmbed;
 import logic.MessageSender;
-import ui.messages.MyMessage;
+import ui.messages.MyMessageAbs;
 import ui.reaction.SongsListReactionListener;
 
-public class LikedSongs extends MyMessage {
+public class LikedSongs extends MyMessageAbs {
     private final Player player;
     private final Server server;
     private final User user;
@@ -33,14 +33,14 @@ public class LikedSongs extends MyMessage {
 
 
     @Override
-    protected void startRoutine(Message message) throws MyOwnException {
+    public void startRoutine(Message message) throws MyOwnException {
         this.addCountEmojis(message, player.getLikedSongs().size());
         message.addReactionAddListener(new SongsListReactionListener(player, server, user,
                 musicPlayerManager, playerLoader, messageSender));
     }
 
     @Override
-    protected EmbedBuilder getContent() throws MyOwnException {
+    public EmbedBuilder getContent() throws MyOwnException {
         return new LikedSongsEmbed(player, 0);
     }
 

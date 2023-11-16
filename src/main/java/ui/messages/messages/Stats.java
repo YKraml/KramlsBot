@@ -8,9 +8,9 @@ import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import ui.embeds.StatEmbed;
-import ui.messages.MyMessage;
+import ui.messages.MyMessageAbs;
 
-public class Stats extends MyMessage {
+public class Stats extends MyMessageAbs {
 
 
     private final User user;
@@ -25,12 +25,12 @@ public class Stats extends MyMessage {
 
 
     @Override
-    protected void startRoutine(Message message) throws MyOwnException {
+    public void startRoutine(Message message) throws MyOwnException {
         //Ignore.
     }
 
     @Override
-    protected EmbedBuilder getContent() throws MyOwnException {
+    public EmbedBuilder getContent() throws MyOwnException {
         Player player = playerLoader.getPlayerByUser(user);
         return new StatEmbed(player, user, server);
     }

@@ -5,9 +5,9 @@ import domain.waifu.Player;
 import domain.waifu.Waifu;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
-import ui.messages.MyMessage;
+import ui.messages.MyMessageAbs;
 
-public class Merged extends MyMessage {
+public class Merged extends MyMessageAbs {
 
     private final Player player;
     private final Waifu waifu1;
@@ -19,12 +19,12 @@ public class Merged extends MyMessage {
 
 
     @Override
-    protected void startRoutine(Message message) throws MyOwnException {
+    public void startRoutine(Message message) throws MyOwnException {
         //Ignore.
     }
 
     @Override
-    protected EmbedBuilder getContent() throws MyOwnException {
+    public EmbedBuilder getContent() throws MyOwnException {
         return this.convertStringToEmbed(
                 player.getNameTag() + ", du hast zwei Waifus verbunden. \"" + waifu1.getName()
                         + "\" hat nun das Sternenlevel " + waifu1.getStarLevel());

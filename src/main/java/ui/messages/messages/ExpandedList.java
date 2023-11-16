@@ -4,9 +4,9 @@ import domain.exceptions.MyOwnException;
 import domain.waifu.Player;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
-import ui.messages.MyMessage;
+import ui.messages.MyMessageAbs;
 
-public class ExpandedList extends MyMessage {
+public class ExpandedList extends MyMessageAbs {
 
     private final Player player;
     private final int cost;
@@ -18,12 +18,12 @@ public class ExpandedList extends MyMessage {
 
 
     @Override
-    protected void startRoutine(Message message) throws MyOwnException {
+    public void startRoutine(Message message) throws MyOwnException {
         //Ignore.
     }
 
     @Override
-    protected EmbedBuilder getContent() throws MyOwnException {
+    public EmbedBuilder getContent() throws MyOwnException {
         return this.convertStringToEmbed(
                 "%s, du kannst jetzt Waifus %d lagern. Das Upgrade hat dich %d Euro gekostet.".formatted(
                         player.getNameTag(), player.getMaxWaifus(), cost));

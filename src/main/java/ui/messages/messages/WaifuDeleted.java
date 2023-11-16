@@ -5,9 +5,9 @@ import domain.waifu.Player;
 import domain.waifu.Waifu;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
-import ui.messages.MyMessage;
+import ui.messages.MyMessageAbs;
 
-public class WaifuDeleted extends MyMessage {
+public class WaifuDeleted extends MyMessageAbs {
 
     private final Player player;
     private final Waifu waifu;
@@ -23,12 +23,12 @@ public class WaifuDeleted extends MyMessage {
 
 
     @Override
-    protected void startRoutine(Message message) throws MyOwnException {
+    public void startRoutine(Message message) throws MyOwnException {
         //Ignore.
     }
 
     @Override
-    protected EmbedBuilder getContent() throws MyOwnException {
+    public EmbedBuilder getContent() throws MyOwnException {
         return this.convertStringToEmbed(
                 player.getNameTag() + ", du hast " + waifu.getName() + " zerstoert. Du hast " + stardust
                         + " Startdust und " + cookies + " Cookies erhalten.");

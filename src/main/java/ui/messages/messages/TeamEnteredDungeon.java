@@ -5,9 +5,9 @@ import domain.waifu.dungeon.Dungeon;
 import domain.waifu.dungeon.Team;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
-import ui.messages.MyMessage;
+import ui.messages.MyMessageAbs;
 
-public class TeamEnteredDungeon extends MyMessage {
+public class TeamEnteredDungeon extends MyMessageAbs {
 
     private final Team team;
     private final Dungeon dungeon;
@@ -18,12 +18,12 @@ public class TeamEnteredDungeon extends MyMessage {
     }
 
     @Override
-    protected void startRoutine(Message message) throws MyOwnException {
+    public void startRoutine(Message message) throws MyOwnException {
         //Ignore.
     }
 
     @Override
-    protected EmbedBuilder getContent() throws MyOwnException {
+    public EmbedBuilder getContent() throws MyOwnException {
         return this.convertStringToEmbed(
                 "%s, das Team '%s' hat den Dungeon '%s' betreten.".formatted(team.getPlayer().getNameTag(),
                         team.getName(), dungeon.getName()));

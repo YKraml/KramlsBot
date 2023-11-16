@@ -6,11 +6,11 @@ import logic.routines.RoutineRunner;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import ui.embeds.guess.GuessStartEmbed;
-import ui.messages.MyMessage;
+import ui.messages.MyMessageAbs;
 import ui.reaction.StartGuessingGameListener;
 import util.Emojis;
 
-public class GuessGameStarted extends MyMessage {
+public class GuessGameStarted extends MyMessageAbs {
 
     private final RoutineRunner routineRunner;
     private final RoutineRevealBuilder routineRevealBuilder;
@@ -21,7 +21,7 @@ public class GuessGameStarted extends MyMessage {
     }
 
     @Override
-    protected void startRoutine(Message message) throws MyOwnException {
+    public void startRoutine(Message message) throws MyOwnException {
         String revealEmoji = Emojis.INFORMATION_SOURCE.getEmoji();
         message.addReaction(revealEmoji);
         message.addReactionAddListener(new StartGuessingGameListener(revealEmoji, routineRunner,
@@ -29,7 +29,7 @@ public class GuessGameStarted extends MyMessage {
     }
 
     @Override
-    protected EmbedBuilder getContent() throws MyOwnException {
+    public EmbedBuilder getContent() throws MyOwnException {
         return new GuessStartEmbed();
     }
 

@@ -5,9 +5,9 @@ import domain.waifu.Waifu;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import ui.embeds.waifu.WaifuSpawnEmbed;
-import ui.messages.MyMessage;
+import ui.messages.MyMessageAbs;
 
-public class WaifuSpawn extends MyMessage {
+public class WaifuSpawn extends MyMessageAbs {
 
     private final Waifu waifu;
 
@@ -16,12 +16,12 @@ public class WaifuSpawn extends MyMessage {
     }
 
     @Override
-    protected void startRoutine(Message message) throws MyOwnException {
+    public void startRoutine(Message message) throws MyOwnException {
         //Ignore.
     }
 
     @Override
-    protected EmbedBuilder getContent() throws MyOwnException {
+    public EmbedBuilder getContent() throws MyOwnException {
         return new WaifuSpawnEmbed(waifu);
     }
 }

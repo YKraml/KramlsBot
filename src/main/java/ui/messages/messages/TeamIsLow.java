@@ -4,9 +4,9 @@ import domain.exceptions.MyOwnException;
 import domain.waifu.dungeon.Team;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
-import ui.messages.MyMessage;
+import ui.messages.MyMessageAbs;
 
-public class TeamIsLow extends MyMessage {
+public class TeamIsLow extends MyMessageAbs {
 
     private final Team team;
 
@@ -15,12 +15,12 @@ public class TeamIsLow extends MyMessage {
     }
 
     @Override
-    protected void startRoutine(Message message) throws MyOwnException {
+    public void startRoutine(Message message) throws MyOwnException {
         //Ignore.
     }
 
     @Override
-    protected EmbedBuilder getContent() throws MyOwnException {
+    public EmbedBuilder getContent() throws MyOwnException {
         String pattern = "%s, dein Team \"%s\" hat nur noch %d%% HP.";
         String message = pattern.formatted(team.getPlayer().getNameTag(),
                 team.getName(), team.getHpPercentage());

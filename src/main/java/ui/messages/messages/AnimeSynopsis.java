@@ -5,9 +5,9 @@ import model.jikan.anime.animeByIdFull.AnimeFullById;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import ui.embeds.anime.AnimeSynopsisEmbed;
-import ui.messages.MyMessage;
+import ui.messages.MyMessageAbs;
 
-public class AnimeSynopsis extends MyMessage {
+public class AnimeSynopsis extends MyMessageAbs {
 
     private final AnimeFullById anime;
 
@@ -16,12 +16,12 @@ public class AnimeSynopsis extends MyMessage {
     }
 
     @Override
-    protected void startRoutine(Message message) throws MyOwnException {
+    public void startRoutine(Message message) throws MyOwnException {
         //Just ignore.
     }
 
     @Override
-    protected EmbedBuilder getContent() throws MyOwnException {
+    public EmbedBuilder getContent() throws MyOwnException {
         return new AnimeSynopsisEmbed(anime);
     }
 }

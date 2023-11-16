@@ -10,10 +10,10 @@ import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import ui.embeds.group.GroupEmbed;
 import logic.MessageSender;
-import ui.messages.MyMessage;
+import ui.messages.MyMessageAbs;
 import ui.reaction.GroupListener;
 
-public class GroupOverview extends MyMessage {
+public class GroupOverview extends MyMessageAbs {
 
     private final Group group;
     private final Player player;
@@ -33,14 +33,14 @@ public class GroupOverview extends MyMessage {
     }
 
     @Override
-    protected void startRoutine(Message message) throws MyOwnException {
+    public void startRoutine(Message message) throws MyOwnException {
         this.addCountEmojis(message, group.getWaifuList().size());
         message.addReactionAddListener(new GroupListener(group, player, playerLoader, waifuLoader,
                 jikanFetcher, messageSender));
     }
 
     @Override
-    protected EmbedBuilder getContent() throws MyOwnException {
+    public EmbedBuilder getContent() throws MyOwnException {
         return new GroupEmbed(group, player, 0);
     }
 

@@ -10,11 +10,11 @@ import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import ui.embeds.waifu.WaifuEmbed;
 import logic.MessageSender;
-import ui.messages.MyMessage;
+import ui.messages.MyMessageAbs;
 import ui.reaction.WaifuEditListener;
 import util.Emojis;
 
-public class WaifuStats extends MyMessage {
+public class WaifuStats extends MyMessageAbs {
 
     private final Player player;
     private final Waifu waifu;
@@ -34,7 +34,7 @@ public class WaifuStats extends MyMessage {
     }
 
     @Override
-    protected void startRoutine(Message message) throws MyOwnException {
+    public void startRoutine(Message message) throws MyOwnException {
         message.addReaction(Emojis.COOKIE.getEmoji());
         message.addReaction(Emojis.CUPCAKE.getEmoji());
         message.addReaction(Emojis.STAR2.getEmoji());
@@ -45,7 +45,7 @@ public class WaifuStats extends MyMessage {
     }
 
     @Override
-    protected EmbedBuilder getContent() throws MyOwnException {
+    public EmbedBuilder getContent() throws MyOwnException {
         return new WaifuEmbed(waifu);
     }
 }
