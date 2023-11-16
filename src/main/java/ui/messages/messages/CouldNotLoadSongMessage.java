@@ -8,7 +8,7 @@ import ui.messages.MyMessageAbs;
 public class CouldNotLoadSongMessage extends MyMessageAbs {
     @Override
     public void startRoutine(Message message) throws MyOwnException {
-
+        //Do Nothing
     }
 
     @Override

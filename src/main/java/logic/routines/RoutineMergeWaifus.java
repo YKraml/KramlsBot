@@ -7,11 +7,11 @@ import domain.exceptions.messages.WaifuStarLevelAlreadyMax;
 import domain.waifu.Player;
 import domain.waifu.Stats;
 import domain.waifu.Waifu;
+import logic.MessageSender;
 import logic.waifu.PlayerLoader;
 import logic.waifu.WaifuLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.user.User;
-import ui.messages.MessageSenderImpl;
 import ui.messages.messages.Merged;
 import ui.messages.messages.WaifusAreDifferent;
 
@@ -25,15 +25,17 @@ public class RoutineMergeWaifus extends Routine {
     private final TextChannel channel;
     private final WaifuLoader waifuLoader;
     private final PlayerLoader playerLoader;
+    private final MessageSender messageSender;
 
     public RoutineMergeWaifus(TextChannel channel, User user, int waifuId1, int waifuId2,
-                              WaifuLoader waifuLoader, PlayerLoader playerLoader) {
+                              WaifuLoader waifuLoader, PlayerLoader playerLoader, MessageSender messageSender) {
         this.channel = channel;
         this.user = user;
         this.waifuId1 = waifuId1;
         this.waifuId2 = waifuId2;
         this.waifuLoader = waifuLoader;
         this.playerLoader = playerLoader;
+        this.messageSender = messageSender;
     }
 
     @Override
@@ -57,18 +59,10 @@ public class RoutineMergeWaifus extends Routine {
         if (waifu1.getIdMal().equals(waifu2.getIdMal())) {
             waifuLoader.deleteWaifu(waifu2, player);
             waifu1.raiseStarLevelBy(waifu2.getStarLevel() + 1);
-            MessageSenderImpl result;
-            synchronized (MessageSenderImpl.class) {
-                result = new MessageSenderImpl();
-            }
-            result.send(new Merged(player, waifu1), channel);
+            messageSender.send(new Merged(player, waifu1), channel);
             playerLoader.savePlayer(player);
         } else {
-            MessageSenderImpl result;
-            synchronized (MessageSenderImpl.class) {
-                result = new MessageSenderImpl();
-            }
-            result.send(new WaifusAreDifferent(player), channel);
+            messageSender.send(new WaifusAreDifferent(player), channel);
         }
 
 

@@ -3,6 +3,7 @@ package ui.commands.waifu;
 import com.google.inject.Inject;
 import domain.Answer;
 import domain.exceptions.MyOwnException;
+import logic.MessageSender;
 import logic.routines.RoutineMergeWaifus;
 import logic.waifu.PlayerLoader;
 import logic.waifu.WaifuLoader;
@@ -21,11 +22,13 @@ public class Merge extends ACommand {
 
     private final WaifuLoader waifuLoader;
     private final PlayerLoader playerLoader;
+    private final MessageSender messageSender;
 
     @Inject
-    public Merge(WaifuLoader waifuLoader, PlayerLoader playerLoader) {
+    public Merge(WaifuLoader waifuLoader, PlayerLoader playerLoader, MessageSender messageSender) {
         this.waifuLoader = waifuLoader;
         this.playerLoader = playerLoader;
+        this.messageSender = messageSender;
     }
 
     @Override
@@ -39,22 +42,17 @@ public class Merge extends ACommand {
     }
 
     @Override
-    protected Answer execute(DiscordApi api, Server server, TextChannel channel, User user,
-                             List<SlashCommandInteractionOption> arguments) throws MyOwnException {
+    protected Answer execute(DiscordApi api, Server server, TextChannel channel, User user, List<SlashCommandInteractionOption> arguments) throws MyOwnException {
 
         int waifuId1 = arguments.get(0).getLongValue().get().intValue();
         int waifuId2 = arguments.get(1).getLongValue().get().intValue();
 
-        return getRoutineRunner().start(
-                new RoutineMergeWaifus(channel, user, waifuId1, waifuId2, waifuLoader, playerLoader));
+        return getRoutineRunner().start(new RoutineMergeWaifus(channel, user, waifuId1, waifuId2, waifuLoader, playerLoader, messageSender));
     }
 
     @Override
     public List<SlashCommandOption> getSlashCommandOptions() {
-        return List.of(SlashCommandOption.create(SlashCommandOptionType.LONG, "StarWaifuId",
-                        "Id der zu erhaltenen Waifu", true),
-                SlashCommandOption.create(SlashCommandOptionType.LONG, "DeleteWaifuId",
-                        "Id der zu löschenden Waifu", true));
+        return List.of(SlashCommandOption.create(SlashCommandOptionType.LONG, "StarWaifuId", "Id der zu erhaltenen Waifu", true), SlashCommandOption.create(SlashCommandOptionType.LONG, "DeleteWaifuId", "Id der zu löschenden Waifu", true));
     }
 
     @Override
