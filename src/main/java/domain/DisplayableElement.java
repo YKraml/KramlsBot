@@ -1,4 +1,4 @@
-package ui.embeds;
+package domain;
 
 public interface DisplayableElement {
 

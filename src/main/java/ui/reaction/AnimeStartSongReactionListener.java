@@ -12,7 +12,7 @@ import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import org.javacord.api.listener.message.reaction.ReactionAddListener;
-import ui.embeds.DisplayableElement;
+import domain.DisplayableElement;
 import ui.embeds.anime.AnimeSongEmbed;
 
 import java.util.List;

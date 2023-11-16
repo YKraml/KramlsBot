@@ -1,6 +1,6 @@
 package domain.waifu.dungeon;
 
-import ui.embeds.DisplayableElement;
+import domain.DisplayableElement;
 
 import java.util.ArrayList;
 import java.util.Collections;

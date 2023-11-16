@@ -12,7 +12,6 @@ public class CouldNotSendMessage implements ExceptionMessage {
 
     @Override
     public String getContent() {
-
         return "Could not send Message. Type = " + messageName;
     }
 }

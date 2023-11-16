@@ -1,6 +1,6 @@
 package domain.queue;
 
-import ui.embeds.DisplayableElement;
+import domain.DisplayableElement;
 
 public class QueueElement implements DisplayableElement, Comparable<QueueElement> {
 

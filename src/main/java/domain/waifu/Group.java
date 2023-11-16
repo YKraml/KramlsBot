@@ -1,7 +1,7 @@
 package domain.waifu;
 
 import domain.exceptions.MyOwnException;
-import ui.embeds.DisplayableElement;
+import domain.DisplayableElement;
 
 import java.util.Collections;
 import java.util.LinkedList;

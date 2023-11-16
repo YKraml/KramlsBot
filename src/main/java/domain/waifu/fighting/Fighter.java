@@ -2,7 +2,7 @@ package domain.waifu.fighting;
 
 import domain.waifu.Rarities;
 import domain.waifu.Waifu;
-import ui.embeds.DisplayableElement;
+import domain.DisplayableElement;
 
 import static java.lang.Math.floor;
 

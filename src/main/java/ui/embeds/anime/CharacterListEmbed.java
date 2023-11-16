@@ -3,7 +3,7 @@ package ui.embeds.anime;
 import model.jikan.anime.animeByIdFull.AnimeFullById;
 import model.jikan.anime.animeCharacters.AnimeCharacters;
 import model.jikan.anime.animeCharacters.Datum;
-import ui.embeds.DisplayableElement;
+import domain.DisplayableElement;
 import ui.embeds.MyListEmbed;
 
 import java.util.List;

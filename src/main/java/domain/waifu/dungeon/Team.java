@@ -8,7 +8,7 @@ import domain.waifu.Player;
 import domain.waifu.Waifu;
 import domain.waifu.fighting.FightHistory;
 import domain.waifu.fighting.Fighter;
-import ui.embeds.DisplayableElement;
+import domain.DisplayableElement;
 
 import java.util.ArrayList;
 import java.util.Collections;
