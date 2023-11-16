@@ -1,8 +1,8 @@
 package database.sql.mapper;
 
 import database.sql.entry.AbstractEntrySet;
-import domain.queue.QueueElement;
 import database.sql.entry.LikedSongEntrySet;
+import domain.queue.QueueElement;
 
 public class LikedSongMapper extends AbstractMapper<QueueElement, LikedSongEntrySet.LikedSongEntry> {
 

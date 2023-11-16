@@ -1,8 +1,8 @@
 package database.sql.commands.group;
 
 import database.sql.commands.SQLCommandWithResult;
-import domain.waifu.Player;
 import database.sql.entry.GroupEntrySet;
+import domain.waifu.Player;
 
 public class SelectGroupsByOwnerId extends SQLCommandWithResult<GroupEntrySet> {
 

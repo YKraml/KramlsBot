@@ -1,7 +1,7 @@
 package ui.embeds.waifu;
 
-import org.javacord.api.entity.message.embed.EmbedBuilder;
 import domain.waifu.Waifu;
+import org.javacord.api.entity.message.embed.EmbedBuilder;
 
 public class WaifuSpawnEmbed extends EmbedBuilder {
     public WaifuSpawnEmbed(Waifu waifu) {

@@ -7,9 +7,8 @@ public class FightHistory {
 
     private final Fighter fighter1;
     private final Fighter fighter2;
-    private Fighter winner;
-
     private final List<Attack> history;
+    private Fighter winner;
 
     public FightHistory(Fighter fighter1, Fighter fighter2) {
         this.fighter1 = fighter1;
@@ -36,12 +35,12 @@ public class FightHistory {
         return history;
     }
 
-    public void setWinner(Fighter winner) {
-        this.winner = winner;
-    }
-
     public Fighter getWinner() {
         return winner;
+    }
+
+    public void setWinner(Fighter winner) {
+        this.winner = winner;
     }
 
     @Override

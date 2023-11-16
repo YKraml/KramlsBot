@@ -1,17 +1,18 @@
 package domain.exceptions.messages;
 
-import domain.waifu.Player;
 import domain.exceptions.ExceptionMessage;
+import domain.waifu.Player;
 
 public class CouldNotSavePlayer implements ExceptionMessage {
 
-  private final Player player;
-  public CouldNotSavePlayer(Player player) {
-    this.player = player;
-  }
+    private final Player player;
 
-  @Override
-  public String getContent() {
-    return "Could not save player. Name = " + player.getName();
-  }
+    public CouldNotSavePlayer(Player player) {
+        this.player = player;
+    }
+
+    @Override
+    public String getContent() {
+        return "Could not save player. Name = " + player.getName();
+    }
 }

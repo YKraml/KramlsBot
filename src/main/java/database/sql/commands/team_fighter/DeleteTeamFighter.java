@@ -1,7 +1,7 @@
 package database.sql.commands.team_fighter;
 
-import domain.waifu.Waifu;
 import database.sql.commands.SQLCommandWithoutResult;
+import domain.waifu.Waifu;
 
 public class DeleteTeamFighter extends SQLCommandWithoutResult {
 
@@ -14,6 +14,6 @@ public class DeleteTeamFighter extends SQLCommandWithoutResult {
     @Override
     protected String getCommand() {
         return "delete from KRAMLSBOT.TEAM_FIGHTER where KRAMLSBOT.TEAM_FIGHTER.idWaifu like " + "'"
-            + waifu.getId() + "'" + ";";
+                + waifu.getId() + "'" + ";";
     }
 }

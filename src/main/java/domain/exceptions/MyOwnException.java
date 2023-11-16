@@ -2,7 +2,7 @@ package domain.exceptions;
 
 import java.util.Optional;
 
-public class MyOwnException extends Exception{
+public class MyOwnException extends Exception {
 
     private final Exception previousException;
     private final ExceptionMessage message;

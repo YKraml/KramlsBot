@@ -4,6 +4,7 @@ import domain.exceptions.ExceptionMessage;
 
 public class CouldNotFindWaifu implements ExceptionMessage {
     private final int waifuId;
+
     public CouldNotFindWaifu(int waifuId) {
         this.waifuId = waifuId;
     }

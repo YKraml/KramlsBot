@@ -14,6 +14,6 @@ public class DeleteWaifu extends SQLCommandWithoutResult {
     @Override
     protected String getCommand() {
         return "delete from KRAMLSBOT.WAIFU where KRAMLSBOT.WAIFU.id like " + "'"
-            + waifu.getId() + "'" + ";";
+                + waifu.getId() + "'" + ";";
     }
 }

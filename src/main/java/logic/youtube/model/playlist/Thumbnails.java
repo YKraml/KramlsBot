@@ -1,5 +1,6 @@
 package logic.youtube.model.playlist;
-public class Thumbnails{
+
+public class Thumbnails {
 
     public Default defaul;
     public Medium medium;

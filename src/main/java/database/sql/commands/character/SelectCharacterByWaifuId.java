@@ -15,6 +15,6 @@ public class SelectCharacterByWaifuId extends SQLCommandWithResult<CharacterEntr
     @Override
     protected String getCommand() {
         return "select * from KRAMLSBOT.CHARACTER left join KRAMLSBOT.WAIFU on CHARACTER.idMal = WAIFU.idMal where WAIFU.id like " + "'"
-            + waifuId + "'" + ";";
+                + waifuId + "'" + ";";
     }
 }

@@ -1,5 +1,6 @@
 package logic.youtube.model.playlist;
-public class Maxres{
+
+public class Maxres {
     public String url;
     public int width;
     public int height;

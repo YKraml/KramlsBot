@@ -15,6 +15,6 @@ public class LikedSongExists extends SQLCommandCheckExistence {
     @Override
     protected String getCommand() {
         return "select * from KRAMLSBOT.SONG where userId like " + "'" + userId + "'" + " and url like " + "'"
-            + url + "'" + ";";
+                + url + "'" + ";";
     }
 }

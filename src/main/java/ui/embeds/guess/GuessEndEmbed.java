@@ -1,9 +1,10 @@
 package ui.embeds.guess;
 
-import util.Main;
-import java.util.Collection;
 import model.jikan.anime.animeByIdFull.AnimeFullById;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
+import util.Main;
+
+import java.util.Collection;
 
 public class GuessEndEmbed extends EmbedBuilder {
 

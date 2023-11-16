@@ -1,17 +1,17 @@
 package ui.messages.messages;
 
-import ui.messages.MessageSender;
-import ui.messages.MyMessage;
-import ui.reaction.SongsListReactionListener;
-import ui.embeds.music.LikedSongsEmbed;
 import domain.exceptions.MyOwnException;
+import domain.waifu.Player;
 import logic.music.audio.MusicPlayerManager;
+import logic.waifu.PlayerLoader;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
-import logic.waifu.PlayerLoader;
-import domain.waifu.Player;
+import ui.embeds.music.LikedSongsEmbed;
+import ui.messages.MessageSender;
+import ui.messages.MyMessage;
+import ui.reaction.SongsListReactionListener;
 
 public class LikedSongs extends MyMessage {
     private final Player player;
@@ -22,7 +22,7 @@ public class LikedSongs extends MyMessage {
     private final MusicPlayerManager musicPlayerManager;
 
     public LikedSongs(Player player, Server server, User user, PlayerLoader playerLoader,
-        MessageSender messageSender, MusicPlayerManager musicPlayerManager) {
+                      MessageSender messageSender, MusicPlayerManager musicPlayerManager) {
         this.player = player;
         this.server = server;
         this.user = user;
@@ -36,7 +36,7 @@ public class LikedSongs extends MyMessage {
     protected void startRoutine(Message message) throws MyOwnException {
         this.addCountEmojis(message, player.getLikedSongs().size());
         message.addReactionAddListener(new SongsListReactionListener(player, server, user,
-            musicPlayerManager, playerLoader, messageSender));
+                musicPlayerManager, playerLoader, messageSender));
     }
 
     @Override

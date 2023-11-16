@@ -2,13 +2,13 @@ package domain.queue;
 
 import ui.embeds.DisplayableElement;
 
-public class QueueElement implements DisplayableElement, Comparable<QueueElement>{
+public class QueueElement implements DisplayableElement, Comparable<QueueElement> {
 
     private final String name;
     private final String url;
     private final String playerName;
-    private String imageUrl;
     private final boolean secret;
+    private String imageUrl;
 
     public QueueElement(String name, String url, String playerName) {
         this.name = name;

@@ -3,13 +3,14 @@ package util;
 import com.google.inject.Inject;
 import domain.exceptions.MyOwnException;
 import domain.exceptions.messages.CouldNotUpdateRoles;
+import domain.waifu.Player;
+import logic.waifu.PlayerLoader;
+import org.javacord.api.entity.server.Server;
+import org.javacord.api.entity.user.User;
+
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import logic.waifu.PlayerLoader;
-import domain.waifu.Player;
-import org.javacord.api.entity.server.Server;
-import org.javacord.api.entity.user.User;
 
 public class RoleChecker {
 

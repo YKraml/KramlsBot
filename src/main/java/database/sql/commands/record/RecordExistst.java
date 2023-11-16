@@ -1,8 +1,8 @@
 package database.sql.commands.record;
 
+import database.sql.commands.SQLCommandCheckExistence;
 import domain.waifu.dungeon.Dungeon;
 import domain.waifu.dungeon.DungeonRecord;
-import database.sql.commands.SQLCommandCheckExistence;
 
 public class RecordExistst extends SQLCommandCheckExistence {
 

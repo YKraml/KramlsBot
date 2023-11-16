@@ -1,8 +1,8 @@
 package ui.embeds.dungeon;
 
-import ui.embeds.MyListEmbed;
 import domain.waifu.Player;
 import domain.waifu.dungeon.Team;
+import ui.embeds.MyListEmbed;
 
 public class TeamsListEmbed extends MyListEmbed<Team> {
 

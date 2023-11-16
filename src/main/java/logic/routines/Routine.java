@@ -1,10 +1,10 @@
 package logic.routines;
 
-import ui.commands.Answer;
 import domain.exceptions.MyOwnException;
+import ui.commands.Answer;
 
 public abstract class Routine {
 
-  abstract Answer start(RoutineRunner routineRunner) throws MyOwnException;
+    abstract Answer start(RoutineRunner routineRunner) throws MyOwnException;
 
 }

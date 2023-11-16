@@ -1,7 +1,7 @@
-
 package logic.youtube.model.search;
 
 import java.util.List;
+
 public class YoutubeSearch {
 
     private String kind;

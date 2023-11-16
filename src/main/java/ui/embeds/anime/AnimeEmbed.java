@@ -1,8 +1,8 @@
 package ui.embeds.anime;
 
-import util.Main;
 import model.jikan.anime.animeByIdFull.AnimeFullById;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
+import util.Main;
 
 public class AnimeEmbed extends EmbedBuilder {
 
@@ -24,7 +24,7 @@ public class AnimeEmbed extends EmbedBuilder {
                 + DELIMITER + "Popularity: " + anime.getData().getPopularity()
                 + DELIMITER + "Ranked: " + anime.getData().getRank()
         );
-      this.setColor(Main.COLOR);
+        this.setColor(Main.COLOR);
         this.setUrl(anime.getData().getUrl());
 
         if (anime.getData().getSynopsis().length() > 200) {

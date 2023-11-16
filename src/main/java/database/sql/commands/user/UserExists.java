@@ -1,7 +1,7 @@
 package database.sql.commands.user;
 
-import domain.waifu.Player;
 import database.sql.commands.SQLCommandCheckExistence;
+import domain.waifu.Player;
 
 public class UserExists extends SQLCommandCheckExistence {
 

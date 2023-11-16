@@ -1,7 +1,7 @@
 package database.sql.commands.group;
 
-import domain.waifu.Group;
 import database.sql.commands.SQLCommandCheckExistence;
+import domain.waifu.Group;
 
 public class GroupExistst extends SQLCommandCheckExistence {
 

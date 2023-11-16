@@ -1,9 +1,9 @@
 package ui.embeds.waifu;
 
-import util.Main;
-import org.javacord.api.entity.message.embed.EmbedBuilder;
 import domain.waifu.Player;
 import domain.waifu.Waifu;
+import org.javacord.api.entity.message.embed.EmbedBuilder;
+import util.Main;
 
 public class WaifuDeletedEmbed extends EmbedBuilder {
 
@@ -23,9 +23,9 @@ public class WaifuDeletedEmbed extends EmbedBuilder {
     }
 
     private void init() {
-      setColor(Main.COLOR);
+        setColor(Main.COLOR);
         setTitle("\"" + deletedWaifu.getName() + "\" verkauft. ");
         setDescription(
-            player.getNameTag() + ", du hast " + newStardust + " Stardust und " + newCookies + " Cookies erhalten.");
+                player.getNameTag() + ", du hast " + newStardust + " Stardust und " + newCookies + " Cookies erhalten.");
     }
 }

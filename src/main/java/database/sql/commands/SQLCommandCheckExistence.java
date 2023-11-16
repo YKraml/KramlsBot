@@ -13,27 +13,27 @@ import java.sql.Statement;
 public abstract class SQLCommandCheckExistence extends SQLCommand {
 
 
-  public boolean executeCommand(ConnectionPool connectionPool) throws MyOwnException {
+    public boolean executeCommand(ConnectionPool connectionPool) throws MyOwnException {
 
-    boolean resultExists = false;
-    Connection connection = null;
+        boolean resultExists = false;
+        Connection connection = null;
 
-    try {
-      connection = connectionPool.getConnection();
-      Statement statement = connection.createStatement();
-      ResultSet resultSet = statement.executeQuery(this.getCommand());
-      if (resultSet.next()) {
-        resultExists = true;
-      }
-      statement.close();
-    } catch (SQLException e) {
-      Terminal.printError("Could not execute \"" + this.getCommand() + "\"");
-      connectionPool.giveConnection(connection);
-      throw new MyOwnException(new CouldNotExecuteMySQLQuery(this.getCommand()), e);
+        try {
+            connection = connectionPool.getConnection();
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(this.getCommand());
+            if (resultSet.next()) {
+                resultExists = true;
+            }
+            statement.close();
+        } catch (SQLException e) {
+            Terminal.printError("Could not execute \"" + this.getCommand() + "\"");
+            connectionPool.giveConnection(connection);
+            throw new MyOwnException(new CouldNotExecuteMySQLQuery(this.getCommand()), e);
+        }
+
+        connectionPool.giveConnection(connection);
+
+        return resultExists;
     }
-
-    connectionPool.giveConnection(connection);
-
-    return resultExists;
-  }
 }

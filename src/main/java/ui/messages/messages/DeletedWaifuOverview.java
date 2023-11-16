@@ -1,17 +1,17 @@
 package ui.messages.messages;
 
+import domain.exceptions.MyOwnException;
+import domain.waifu.Player;
+import logic.waifu.PlayerLoader;
+import logic.waifu.WaifuLoader;
+import org.javacord.api.entity.message.Message;
+import org.javacord.api.entity.message.embed.EmbedBuilder;
+import org.javacord.api.entity.user.User;
+import ui.embeds.waifu.DeleteWaifuListEmbed;
 import ui.messages.MessageSender;
 import ui.messages.MyMessage;
 import ui.reaction.DeleteWaifuListListener;
-import ui.embeds.waifu.DeleteWaifuListEmbed;
-import domain.exceptions.MyOwnException;
 import util.Emojis;
-import org.javacord.api.entity.user.User;
-import logic.waifu.PlayerLoader;
-import logic.waifu.WaifuLoader;
-import domain.waifu.Player;
-import org.javacord.api.entity.message.Message;
-import org.javacord.api.entity.message.embed.EmbedBuilder;
 
 public class DeletedWaifuOverview extends MyMessage {
 
@@ -21,7 +21,7 @@ public class DeletedWaifuOverview extends MyMessage {
     private final PlayerLoader playerLoader;
 
     public DeletedWaifuOverview(User user, WaifuLoader waifuLoader, MessageSender messageSender,
-        PlayerLoader playerLoader) {
+                                PlayerLoader playerLoader) {
         this.user = user;
         this.waifuLoader = waifuLoader;
         this.messageSender = messageSender;
@@ -33,7 +33,7 @@ public class DeletedWaifuOverview extends MyMessage {
         Player player = playerLoader.getPlayerByUser(user);
         this.addCountEmojis(message, player.getWaifuList().size());
         message.addReactionAddListener(new DeleteWaifuListListener(player, waifuLoader,
-            messageSender));
+                messageSender));
         message.addReaction(Emojis.COOKIE.getEmoji());
         message.addReaction(Emojis.STAR2.getEmoji());
         message.addReaction(Emojis.ABC.getEmoji());

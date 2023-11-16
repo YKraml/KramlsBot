@@ -1,17 +1,17 @@
 package ui.messages.messages;
 
-import ui.messages.MessageSender;
-import ui.messages.MyMessage;
-import ui.reaction.GroupListener;
-import ui.embeds.group.GroupEmbed;
 import domain.exceptions.MyOwnException;
-import org.javacord.api.entity.message.Message;
-import org.javacord.api.entity.message.embed.EmbedBuilder;
+import domain.waifu.Group;
+import domain.waifu.Player;
 import logic.waifu.JikanFetcher;
 import logic.waifu.PlayerLoader;
 import logic.waifu.WaifuLoader;
-import domain.waifu.Group;
-import domain.waifu.Player;
+import org.javacord.api.entity.message.Message;
+import org.javacord.api.entity.message.embed.EmbedBuilder;
+import ui.embeds.group.GroupEmbed;
+import ui.messages.MessageSender;
+import ui.messages.MyMessage;
+import ui.reaction.GroupListener;
 
 public class GroupOverview extends MyMessage {
 
@@ -23,7 +23,7 @@ public class GroupOverview extends MyMessage {
     private final MessageSender messageSender;
 
     public GroupOverview(Group group, Player player, PlayerLoader playerLoader,
-        WaifuLoader waifuLoader, JikanFetcher jikanFetcher, MessageSender messageSender) {
+                         WaifuLoader waifuLoader, JikanFetcher jikanFetcher, MessageSender messageSender) {
         this.group = group;
         this.player = player;
         this.playerLoader = playerLoader;
@@ -36,7 +36,7 @@ public class GroupOverview extends MyMessage {
     protected void startRoutine(Message message) throws MyOwnException {
         this.addCountEmojis(message, group.getWaifuList().size());
         message.addReactionAddListener(new GroupListener(group, player, playerLoader, waifuLoader,
-            jikanFetcher, messageSender));
+                jikanFetcher, messageSender));
     }
 
     @Override

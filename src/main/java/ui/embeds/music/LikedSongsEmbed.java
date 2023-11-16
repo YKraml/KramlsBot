@@ -1,8 +1,8 @@
 package ui.embeds.music;
 
-import ui.embeds.MyListEmbed;
 import domain.queue.QueueElement;
 import domain.waifu.Player;
+import ui.embeds.MyListEmbed;
 
 public class LikedSongsEmbed extends MyListEmbed<QueueElement> {
 

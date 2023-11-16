@@ -1,7 +1,7 @@
 package domain.exceptions.messages;
 
-import domain.waifu.Waifu;
 import domain.exceptions.ExceptionMessage;
+import domain.waifu.Waifu;
 
 public class WaifuAlreadyInList implements ExceptionMessage {
 

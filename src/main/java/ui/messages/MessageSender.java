@@ -6,7 +6,7 @@ import org.javacord.api.entity.message.Message;
 
 public interface MessageSender {
 
-  Message send(MyMessage myMessage, TextChannel textChannel) throws MyOwnException;
+    Message send(MyMessage myMessage, TextChannel textChannel) throws MyOwnException;
 
-  void sendSafe(MyMessage myMessage, TextChannel textChannel);
+    void sendSafe(MyMessage myMessage, TextChannel textChannel);
 }

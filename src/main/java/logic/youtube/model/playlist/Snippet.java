@@ -2,7 +2,7 @@ package logic.youtube.model.playlist;
 
 import java.util.Date;
 
-public class Snippet{
+public class Snippet {
     public Date publishedAt;
     public String channelId;
     public String title;

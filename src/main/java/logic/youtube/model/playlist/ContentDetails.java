@@ -2,7 +2,7 @@ package logic.youtube.model.playlist;
 
 import java.util.Date;
 
-public class ContentDetails{
+public class ContentDetails {
 
     public String videoId;
     public Date videoPublishedAt;

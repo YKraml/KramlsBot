@@ -4,7 +4,7 @@ public interface ExceptionMessage {
 
     String getContent();
 
-    default String getClassName(){
+    default String getClassName() {
         return this.getClass().getSimpleName();
     }
 }

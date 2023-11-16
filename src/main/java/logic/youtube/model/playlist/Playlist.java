@@ -1,4 +1,5 @@
 package logic.youtube.model.playlist;
+
 import java.util.List;
 
 public class Playlist {

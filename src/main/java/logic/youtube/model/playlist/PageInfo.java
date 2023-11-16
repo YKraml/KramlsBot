@@ -1,5 +1,6 @@
 package logic.youtube.model.playlist;
-public class PageInfo{
+
+public class PageInfo {
     public int totalResults;
     public int resultsPerPage;
 

@@ -7,12 +7,12 @@ public class GroupEntrySet extends AbstractEntrySet<GroupEntrySet.GroupEntry> {
 
     @Override
     public void addSingleResult(ResultSet resultSet) throws SQLException {
-            String id = resultSet.getString(1);
-            String name = resultSet.getString(2);
-            String owner = resultSet.getString(3);
+        String id = resultSet.getString(1);
+        String name = resultSet.getString(2);
+        String owner = resultSet.getString(3);
 
-            GroupEntry groupEntry = new GroupEntry(id, name, owner);
-            this.addEntry(groupEntry);
+        GroupEntry groupEntry = new GroupEntry(id, name, owner);
+        this.addEntry(groupEntry);
 
 
     }

@@ -1,4 +1,3 @@
-
 package logic.youtube.model.search;
 
 public class PageInfo {

@@ -14,6 +14,6 @@ public class DeleteWaifuFromAllGroups extends SQLCommandWithoutResult {
     @Override
     protected String getCommand() {
         return "delete from KRAMLSBOT.GROUP_WAIFU where KRAMLSBOT.GROUP_WAIFU.idWaifu like " + "'" + waifu.getId() + "'"
-            + ";";
+                + ";";
     }
 }

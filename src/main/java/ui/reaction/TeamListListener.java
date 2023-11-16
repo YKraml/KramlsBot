@@ -1,61 +1,61 @@
 package ui.reaction;
 
-import ui.embeds.dungeon.TeamsListEmbed;
 import domain.exceptions.MyOwnException;
-import ui.messages.MessageSender;
-import ui.messages.MessageSenderImpl;
-import ui.messages.messages.TeamOverview;
+import domain.waifu.Player;
+import domain.waifu.dungeon.Team;
+import logic.waifu.DungeonLoader;
+import logic.waifu.JikanFetcher;
+import logic.waifu.PlayerLoader;
+import logic.waifu.WaifuLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
-import logic.waifu.JikanFetcher;
-import logic.waifu.DungeonLoader;
-import logic.waifu.PlayerLoader;
-import logic.waifu.WaifuLoader;
-import domain.waifu.Player;
-import domain.waifu.dungeon.Team;
+import ui.embeds.dungeon.TeamsListEmbed;
+import ui.messages.MessageSender;
+import ui.messages.MessageSenderImpl;
+import ui.messages.messages.TeamOverview;
 
 public class TeamListListener extends MyAbstractListListener<Team> {
 
-  private final Player player;
-  private final DungeonLoader dungeonLoader;
-  private final PlayerLoader playerLoader;
-  private final MessageSender messageSender;
-  private final WaifuLoader waifuLoader;
-  private final JikanFetcher jikanFetcher;
+    private final Player player;
+    private final DungeonLoader dungeonLoader;
+    private final PlayerLoader playerLoader;
+    private final MessageSender messageSender;
+    private final WaifuLoader waifuLoader;
+    private final JikanFetcher jikanFetcher;
 
-  public TeamListListener(Player player, DungeonLoader dungeonLoader, PlayerLoader playerLoader,
-      MessageSender messageSender, WaifuLoader waifuLoader, JikanFetcher jikanFetcher) {
-    super(player.getTeamList());
-    this.player = player;
-    this.dungeonLoader = dungeonLoader;
-    this.playerLoader = playerLoader;
-    this.messageSender = messageSender;
-    this.waifuLoader = waifuLoader;
-    this.jikanFetcher = jikanFetcher;
-  }
-
-  @Override
-  protected void updateMessage(Message message, int page) {
-    message.edit(new TeamsListEmbed(player, page));
-  }
-
-  @Override
-  protected void reactToCountEmoji(Server server, TextChannel textChannel, User user,
-      int listPosition) throws MyOwnException {
-    Team team = player.getTeamList().get(listPosition);
-    MessageSenderImpl result;
-    synchronized (MessageSenderImpl.class) {
-      result = new MessageSenderImpl();
+    public TeamListListener(Player player, DungeonLoader dungeonLoader, PlayerLoader playerLoader,
+                            MessageSender messageSender, WaifuLoader waifuLoader, JikanFetcher jikanFetcher) {
+        super(player.getTeamList());
+        this.player = player;
+        this.dungeonLoader = dungeonLoader;
+        this.playerLoader = playerLoader;
+        this.messageSender = messageSender;
+        this.waifuLoader = waifuLoader;
+        this.jikanFetcher = jikanFetcher;
     }
-    result.send(new TeamOverview(team, dungeonLoader, playerLoader, messageSender, waifuLoader,
-        jikanFetcher), textChannel);
-  }
 
-  @Override
-  protected void reactToTooHighCountEmoji(TextChannel textChannel, int listPosition) {
-    textChannel.sendMessage(
-        player.getNameTag() + ", konnte Team \"" + listPosition + "\" nicht finden.");
-  }
+    @Override
+    protected void updateMessage(Message message, int page) {
+        message.edit(new TeamsListEmbed(player, page));
+    }
+
+    @Override
+    protected void reactToCountEmoji(Server server, TextChannel textChannel, User user,
+                                     int listPosition) throws MyOwnException {
+        Team team = player.getTeamList().get(listPosition);
+        MessageSenderImpl result;
+        synchronized (MessageSenderImpl.class) {
+            result = new MessageSenderImpl();
+        }
+        result.send(new TeamOverview(team, dungeonLoader, playerLoader, messageSender, waifuLoader,
+                jikanFetcher), textChannel);
+    }
+
+    @Override
+    protected void reactToTooHighCountEmoji(TextChannel textChannel, int listPosition) {
+        textChannel.sendMessage(
+                player.getNameTag() + ", konnte Team \"" + listPosition + "\" nicht finden.");
+    }
 }

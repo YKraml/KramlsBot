@@ -1,7 +1,7 @@
 package ui.embeds.dungeon;
 
-import ui.embeds.MyListEmbed;
 import domain.waifu.dungeon.Dungeon;
+import ui.embeds.MyListEmbed;
 
 import java.util.List;
 

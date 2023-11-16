@@ -1,8 +1,8 @@
 package database.sql.commands.group_waifu;
 
 import database.sql.commands.SQLCommandWithResult;
-import domain.waifu.Group;
 import database.sql.entry.GroupWaifuEntrySet;
+import domain.waifu.Group;
 
 public class SelectWaifusFromGroup extends SQLCommandWithResult<GroupWaifuEntrySet> {
 
@@ -16,6 +16,6 @@ public class SelectWaifusFromGroup extends SQLCommandWithResult<GroupWaifuEntryS
     @Override
     protected String getCommand() {
         return "select * from KRAMLSBOT.GROUP_WAIFU where idGroup like " + "'" + group.getId() + "'"
-            + ";";
+                + ";";
     }
 }

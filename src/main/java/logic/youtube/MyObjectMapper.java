@@ -10,22 +10,22 @@ import domain.exceptions.messages.CouldNotMap;
 
 public class MyObjectMapper {
 
-  private final ObjectMapper objectMapper;
+    private final ObjectMapper objectMapper;
 
-  public MyObjectMapper() {
-    this.objectMapper = JsonMapper.builder()
-        .configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true)
-        .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false).build();
-  }
-
-
-  public <T> T map(String data, Class<T> t) throws MyOwnException {
-
-    try {
-      return objectMapper.readValue(data, t);
-    } catch (JsonProcessingException e) {
-      throw new MyOwnException(new CouldNotMap(data, t.getSimpleName(), e), null);
+    public MyObjectMapper() {
+        this.objectMapper = JsonMapper.builder()
+                .configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true)
+                .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false).build();
     }
-  }
+
+
+    public <T> T map(String data, Class<T> t) throws MyOwnException {
+
+        try {
+            return objectMapper.readValue(data, t);
+        } catch (JsonProcessingException e) {
+            throw new MyOwnException(new CouldNotMap(data, t.getSimpleName(), e), null);
+        }
+    }
 
 }

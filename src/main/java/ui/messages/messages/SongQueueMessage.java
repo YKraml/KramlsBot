@@ -1,15 +1,15 @@
 package ui.messages.messages;
 
-import ui.reaction.QueueListener;
-import ui.embeds.music.QueueEmbed;
 import domain.exceptions.MyOwnException;
-import logic.music.audio.MusicPlayerManager;
 import domain.queue.Queue;
-import ui.messages.MyMessage;
-import util.Emojis;
+import logic.music.audio.MusicPlayerManager;
+import logic.waifu.PlayerLoader;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
-import logic.waifu.PlayerLoader;
+import ui.embeds.music.QueueEmbed;
+import ui.messages.MyMessage;
+import ui.reaction.QueueListener;
+import util.Emojis;
 
 public class SongQueueMessage extends MyMessage {
 

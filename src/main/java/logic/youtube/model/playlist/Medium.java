@@ -1,5 +1,6 @@
 package logic.youtube.model.playlist;
-public class Medium{
+
+public class Medium {
     public String url;
     public int width;
     public int height;

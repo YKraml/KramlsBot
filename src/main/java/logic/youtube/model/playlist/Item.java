@@ -1,5 +1,6 @@
 package logic.youtube.model.playlist;
-public class Item{
+
+public class Item {
     public String kind;
     public String etag;
     public String id;

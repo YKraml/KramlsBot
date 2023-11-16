@@ -1,10 +1,10 @@
 package ui.timer;
 
 import com.google.inject.Inject;
-import util.Terminal;
 import domain.exceptions.MyOwnException;
 import logic.routines.RoutineDungeonTickBuilder;
 import logic.routines.RoutineRunner;
+import util.Terminal;
 
 public class DungeonTickRunnable extends SaveRunnable {
 

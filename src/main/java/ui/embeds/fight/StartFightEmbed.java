@@ -1,12 +1,12 @@
 package ui.embeds.fight;
 
-import util.Main;
 import domain.waifu.Player;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
+import util.Main;
 
 public class StartFightEmbed extends EmbedBuilder {
 
-    public StartFightEmbed(Player player1, Player player2){
+    public StartFightEmbed(Player player1, Player player2) {
 
         this.setTitle(player1.getName() + " fordert " + player2.getName() + " zum Kampf heraus.");
         this.setColor(Main.COLOR);

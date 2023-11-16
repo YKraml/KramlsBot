@@ -1,7 +1,7 @@
 package domain.exceptions.messages;
 
-import domain.waifu.dungeon.Dungeon;
 import domain.exceptions.ExceptionMessage;
+import domain.waifu.dungeon.Dungeon;
 
 public class CouldNotPlaceTeamIntoDungeon implements ExceptionMessage {
 
