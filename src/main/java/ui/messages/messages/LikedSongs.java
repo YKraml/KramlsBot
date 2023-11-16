@@ -2,6 +2,7 @@ package ui.messages.messages;
 
 import domain.exceptions.MyOwnException;
 import domain.waifu.Player;
+import logic.MessageSender;
 import logic.music.audio.MusicPlayerManager;
 import logic.waifu.PlayerLoader;
 import org.javacord.api.entity.message.Message;
@@ -9,7 +10,6 @@ import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import ui.embeds.music.LikedSongsEmbed;
-import logic.MessageSender;
 import ui.messages.MyMessageAbs;
 import ui.reaction.SongsListReactionListener;
 

@@ -2,6 +2,7 @@ package ui.commands.waifu;
 
 
 import com.google.inject.Inject;
+import domain.Answer;
 import domain.exceptions.MyOwnException;
 import logic.routines.RoutineClaimBuilder;
 import org.javacord.api.DiscordApi;
@@ -12,7 +13,6 @@ import org.javacord.api.interaction.SlashCommandInteractionOption;
 import org.javacord.api.interaction.SlashCommandOption;
 import org.javacord.api.interaction.SlashCommandOptionType;
 import ui.commands.ACommand;
-import domain.Answer;
 
 import java.util.List;
 

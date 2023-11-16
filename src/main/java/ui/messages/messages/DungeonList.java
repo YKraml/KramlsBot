@@ -3,11 +3,11 @@ package ui.messages.messages;
 import domain.exceptions.MyOwnException;
 import domain.waifu.dungeon.Dungeon;
 import domain.waifu.dungeon.Team;
+import logic.MessageSender;
 import logic.waifu.PlayerLoader;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import ui.embeds.dungeon.DungeonListEmbed;
-import logic.MessageSender;
 import ui.messages.MyMessageAbs;
 import ui.reaction.DungeonListListener;
 

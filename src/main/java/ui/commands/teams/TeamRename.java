@@ -1,6 +1,7 @@
 package ui.commands.teams;
 
 import com.google.inject.Inject;
+import domain.Answer;
 import domain.exceptions.MyOwnException;
 import logic.routines.RoutineRenameTeam;
 import logic.waifu.PlayerLoader;
@@ -12,7 +13,6 @@ import org.javacord.api.interaction.SlashCommandInteractionOption;
 import org.javacord.api.interaction.SlashCommandOption;
 import org.javacord.api.interaction.SlashCommandOptionType;
 import ui.commands.ACommand;
-import domain.Answer;
 
 import java.util.List;
 

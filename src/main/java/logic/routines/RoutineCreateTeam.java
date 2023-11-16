@@ -1,5 +1,6 @@
 package logic.routines;
 
+import domain.Answer;
 import domain.exceptions.MyOwnException;
 import domain.waifu.Player;
 import domain.waifu.dungeon.Inventory;
@@ -7,7 +8,6 @@ import domain.waifu.dungeon.Team;
 import logic.waifu.PlayerLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.user.User;
-import domain.Answer;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

@@ -1,12 +1,12 @@
 package ui.messages.messages;
 
 import domain.exceptions.MyOwnException;
+import logic.MessageSender;
 import logic.waifu.JikanFetcher;
 import model.jikan.anime.animeByIdFull.AnimeFullById;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import ui.embeds.anime.AnimeEmbed;
-import logic.MessageSender;
 import ui.messages.MyMessageAbs;
 import ui.reaction.AnimeOpeningEndingReactionListenerBuilder;
 import ui.reaction.CharacterReactionListener;

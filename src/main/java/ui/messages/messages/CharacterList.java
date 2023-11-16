@@ -1,12 +1,12 @@
 package ui.messages.messages;
 
 import domain.exceptions.MyOwnException;
+import logic.MessageSender;
 import model.jikan.anime.animeByIdFull.AnimeFullById;
 import model.jikan.anime.animeCharacters.AnimeCharacters;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import ui.embeds.anime.CharacterListEmbed;
-import logic.MessageSender;
 import ui.messages.MyMessageAbs;
 import ui.reaction.CharacterListListener;
 

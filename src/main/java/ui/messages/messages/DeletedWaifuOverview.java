@@ -2,13 +2,13 @@ package ui.messages.messages;
 
 import domain.exceptions.MyOwnException;
 import domain.waifu.Player;
+import logic.MessageSender;
 import logic.waifu.PlayerLoader;
 import logic.waifu.WaifuLoader;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.entity.user.User;
 import ui.embeds.waifu.DeleteWaifuListEmbed;
-import logic.MessageSender;
 import ui.messages.MyMessageAbs;
 import ui.reaction.DeleteWaifuListListener;
 import util.Emojis;

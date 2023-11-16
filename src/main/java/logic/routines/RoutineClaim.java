@@ -1,9 +1,11 @@
 package logic.routines;
 
+import domain.Answer;
 import domain.exceptions.MyOwnException;
 import domain.exceptions.messages.ReachedMaxWaifus;
 import domain.waifu.Player;
 import domain.waifu.Waifu;
+import logic.MessageSender;
 import logic.waifu.JikanFetcher;
 import logic.waifu.PlayerLoader;
 import logic.waifu.WaifuLoader;
@@ -11,8 +13,6 @@ import logic.waifu.WaifuSpawnManager;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
-import domain.Answer;
-import logic.MessageSender;
 import ui.messages.messages.GuessedRight;
 import ui.messages.messages.GuessedWrong;
 import ui.messages.messages.WaifuStats;

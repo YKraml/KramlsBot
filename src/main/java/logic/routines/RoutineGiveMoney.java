@@ -1,12 +1,12 @@
 package logic.routines;
 
+import domain.Answer;
 import domain.exceptions.MyOwnException;
 import domain.waifu.Player;
+import logic.MessageSender;
 import logic.waifu.PlayerLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.user.User;
-import domain.Answer;
-import logic.MessageSender;
 import ui.messages.messages.GaveMoney;
 
 public class RoutineGiveMoney extends Routine {

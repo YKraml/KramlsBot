@@ -1,5 +1,6 @@
 package ui.reaction;
 
+import domain.DisplayableElement;
 import domain.exceptions.MyOwnException;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.channel.TextChannel;
@@ -7,7 +8,6 @@ import org.javacord.api.entity.emoji.Emoji;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
-import domain.DisplayableElement;
 import util.Emojis;
 
 import java.util.List;

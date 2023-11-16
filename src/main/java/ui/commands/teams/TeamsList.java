@@ -1,7 +1,9 @@
 package ui.commands.teams;
 
 import com.google.inject.Inject;
+import domain.Answer;
 import domain.exceptions.MyOwnException;
+import logic.MessageSender;
 import logic.waifu.DungeonLoader;
 import logic.waifu.JikanFetcher;
 import logic.waifu.PlayerLoader;
@@ -13,8 +15,6 @@ import org.javacord.api.entity.user.User;
 import org.javacord.api.interaction.SlashCommandInteractionOption;
 import org.javacord.api.interaction.SlashCommandOption;
 import ui.commands.ACommand;
-import domain.Answer;
-import logic.MessageSender;
 import ui.messages.messages.TeamsOverview;
 
 import java.util.List;

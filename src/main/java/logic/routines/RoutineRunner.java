@@ -1,7 +1,7 @@
 package logic.routines;
 
-import domain.exceptions.MyOwnException;
 import domain.Answer;
+import domain.exceptions.MyOwnException;
 
 public class RoutineRunner {
 

@@ -1,7 +1,9 @@
 package ui.commands.waifu;
 
 import com.google.inject.Inject;
+import domain.Answer;
 import domain.exceptions.MyOwnException;
+import logic.MessageSender;
 import logic.routines.RoutineDeleteWaifusFromAnime;
 import logic.waifu.PlayerLoader;
 import logic.waifu.WaifuLoader;
@@ -13,8 +15,6 @@ import org.javacord.api.interaction.SlashCommandInteractionOption;
 import org.javacord.api.interaction.SlashCommandOption;
 import org.javacord.api.interaction.SlashCommandOptionType;
 import ui.commands.ACommand;
-import domain.Answer;
-import logic.MessageSender;
 
 import java.util.List;
 

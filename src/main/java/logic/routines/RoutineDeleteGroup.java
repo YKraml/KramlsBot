@@ -1,5 +1,6 @@
 package logic.routines;
 
+import domain.Answer;
 import domain.exceptions.MyOwnException;
 import domain.exceptions.messages.CouldNotFindGroup;
 import domain.waifu.Group;
@@ -8,7 +9,6 @@ import logic.waifu.GroupLoader;
 import logic.waifu.PlayerLoader;
 import org.javacord.api.entity.message.Messageable;
 import org.javacord.api.entity.user.User;
-import domain.Answer;
 
 public class RoutineDeleteGroup extends Routine {
 

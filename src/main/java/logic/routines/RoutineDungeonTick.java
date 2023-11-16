@@ -1,5 +1,6 @@
 package logic.routines;
 
+import domain.Answer;
 import domain.exceptions.MyOwnException;
 import domain.waifu.dungeon.Dungeon;
 import domain.waifu.dungeon.DungeonTicker;
@@ -8,7 +9,6 @@ import logic.waifu.DungeonLoader;
 import logic.waifu.PlayerLoader;
 import logic.waifu.TeamLoader;
 import org.javacord.api.entity.channel.TextChannel;
-import domain.Answer;
 import ui.embeds.dungeon.DungeonEmbed;
 import util.ChannelFinder;
 

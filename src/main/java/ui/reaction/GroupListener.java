@@ -4,6 +4,7 @@ import domain.exceptions.MyOwnException;
 import domain.waifu.Group;
 import domain.waifu.Player;
 import domain.waifu.Waifu;
+import logic.MessageSender;
 import logic.waifu.JikanFetcher;
 import logic.waifu.PlayerLoader;
 import logic.waifu.WaifuLoader;
@@ -13,7 +14,6 @@ import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import org.javacord.api.listener.message.reaction.ReactionAddListener;
 import ui.embeds.group.GroupEmbed;
-import logic.MessageSender;
 import ui.messages.messages.WaifuNotFound;
 import ui.messages.messages.WaifuStats;
 

@@ -1,12 +1,12 @@
 package logic.routines;
 
 import com.google.inject.Inject;
+import logic.MessageSender;
 import logic.music.guess.GuessingGameManager;
 import logic.waifu.PlayerLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
-import logic.MessageSender;
 import ui.messages.messages.GuessGameEndBuilder;
 
 public class RoutineGuessBuilder {

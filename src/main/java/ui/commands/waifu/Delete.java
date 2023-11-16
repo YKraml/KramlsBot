@@ -1,7 +1,9 @@
 package ui.commands.waifu;
 
 import com.google.inject.Inject;
+import domain.Answer;
 import domain.exceptions.MyOwnException;
+import logic.MessageSender;
 import logic.waifu.PlayerLoader;
 import logic.waifu.WaifuLoader;
 import org.javacord.api.DiscordApi;
@@ -11,8 +13,6 @@ import org.javacord.api.entity.user.User;
 import org.javacord.api.interaction.SlashCommandInteractionOption;
 import org.javacord.api.interaction.SlashCommandOption;
 import ui.commands.ACommand;
-import domain.Answer;
-import logic.MessageSender;
 import ui.messages.messages.DeletedWaifuOverview;
 
 import java.util.List;

@@ -1,5 +1,6 @@
 package ui.commands.teams;
 
+import domain.Answer;
 import domain.exceptions.MyOwnException;
 import logic.routines.RoutineStartFightBuilder;
 import org.javacord.api.DiscordApi;
@@ -10,7 +11,6 @@ import org.javacord.api.interaction.SlashCommandInteractionOption;
 import org.javacord.api.interaction.SlashCommandOption;
 import org.javacord.api.interaction.SlashCommandOptionType;
 import ui.commands.ACommand;
-import domain.Answer;
 
 import javax.inject.Inject;
 import java.util.List;

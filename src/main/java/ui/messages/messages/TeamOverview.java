@@ -2,6 +2,7 @@ package ui.messages.messages;
 
 import domain.exceptions.MyOwnException;
 import domain.waifu.dungeon.Team;
+import logic.MessageSender;
 import logic.waifu.DungeonLoader;
 import logic.waifu.JikanFetcher;
 import logic.waifu.PlayerLoader;
@@ -9,7 +10,6 @@ import logic.waifu.WaifuLoader;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import ui.embeds.dungeon.TeamEmbed;
-import logic.MessageSender;
 import ui.messages.MyMessageAbs;
 import ui.reaction.TeamEditListener;
 import util.Emojis;

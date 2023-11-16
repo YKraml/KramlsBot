@@ -1,9 +1,9 @@
 package ui.embeds.anime;
 
+import domain.DisplayableElement;
 import model.jikan.anime.animeByIdFull.AnimeFullById;
 import model.jikan.anime.animeCharacters.AnimeCharacters;
 import model.jikan.anime.animeCharacters.Datum;
-import domain.DisplayableElement;
 import ui.embeds.MyListEmbed;
 
 import java.util.List;

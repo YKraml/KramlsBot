@@ -1,15 +1,15 @@
 package ui.reaction;
 
+import domain.DisplayableElement;
 import domain.exceptions.MyOwnException;
+import logic.MessageSender;
 import model.jikan.anime.animeByIdFull.AnimeFullById;
 import model.jikan.anime.animeCharacters.AnimeCharacters;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
-import domain.DisplayableElement;
 import ui.embeds.anime.CharacterListEmbed;
-import logic.MessageSender;
 import ui.messages.messages.CharacterOverview;
 
 import java.util.List;

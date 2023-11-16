@@ -1,12 +1,12 @@
 package logic.routines;
 
+import domain.Answer;
 import domain.exceptions.MyOwnException;
 import domain.waifu.dungeon.Dungeon;
 import logic.waifu.DungeonLoader;
 import org.javacord.api.entity.channel.ServerTextChannel;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
-import domain.Answer;
 import ui.messages.MessageSenderImpl;
 import ui.messages.messages.DungeonCreatedMessage;
 

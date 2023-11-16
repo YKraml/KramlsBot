@@ -1,6 +1,7 @@
 package ui.commands.music;
 
 import com.google.inject.Inject;
+import domain.Answer;
 import logic.music.audio.MusicPlayerManager;
 import logic.music.guess.GuessingGameManager;
 import org.javacord.api.DiscordApi;
@@ -10,7 +11,6 @@ import org.javacord.api.entity.user.User;
 import org.javacord.api.interaction.SlashCommandInteractionOption;
 import org.javacord.api.interaction.SlashCommandOption;
 import ui.commands.ACommand;
-import domain.Answer;
 
 import java.util.List;
 

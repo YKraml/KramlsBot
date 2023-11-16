@@ -4,6 +4,7 @@ package util;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import database.sql.ConnectionPool;
+import logic.MessageSender;
 import logic.routines.RoutineRunner;
 import logic.waifu.*;
 import org.javacord.api.DiscordApi;
@@ -26,7 +27,6 @@ import ui.commands.utility.Disconnect;
 import ui.commands.utility.IpAddress;
 import ui.commands.utility.Stats;
 import ui.commands.waifu.*;
-import logic.MessageSender;
 import ui.messages.MessageSenderImpl;
 
 import javax.inject.Singleton;

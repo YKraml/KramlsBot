@@ -1,6 +1,7 @@
 package ui.commands.guess;
 
 import com.google.inject.Inject;
+import domain.Answer;
 import domain.exceptions.MyOwnException;
 import logic.routines.RoutineStartGuessingGameBuilder;
 import org.javacord.api.DiscordApi;
@@ -11,7 +12,6 @@ import org.javacord.api.interaction.SlashCommandInteractionOption;
 import org.javacord.api.interaction.SlashCommandOption;
 import org.javacord.api.interaction.SlashCommandOptionType;
 import ui.commands.ACommand;
-import domain.Answer;
 import ui.timer.RevealTimerBuilder;
 
 import java.util.List;

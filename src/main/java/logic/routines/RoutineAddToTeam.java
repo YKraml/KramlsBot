@@ -1,5 +1,6 @@
 package logic.routines;
 
+import domain.Answer;
 import domain.exceptions.MyOwnException;
 import domain.exceptions.messages.TeamIsInDungeon;
 import domain.exceptions.messages.TeamNotAddedWaifu;
@@ -10,7 +11,6 @@ import domain.waifu.dungeon.Team;
 import logic.waifu.PlayerLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.user.User;
-import domain.Answer;
 
 import java.util.Optional;
 

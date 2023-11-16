@@ -1,13 +1,13 @@
 package logic.routines;
 
+import domain.Answer;
 import domain.exceptions.MyOwnException;
 import domain.waifu.Player;
+import logic.MessageSender;
 import logic.waifu.JikanFetcher;
 import logic.waifu.PlayerLoader;
 import logic.waifu.WaifuLoader;
 import org.javacord.api.entity.channel.TextChannel;
-import domain.Answer;
-import logic.MessageSender;
 import ui.messages.MessageSenderImpl;
 import ui.messages.messages.WaifuStats;
 

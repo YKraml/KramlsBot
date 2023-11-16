@@ -2,6 +2,7 @@ package ui.reaction;
 
 import domain.exceptions.MyOwnException;
 import domain.waifu.dungeon.Dungeon;
+import logic.MessageSender;
 import logic.waifu.DungeonLoader;
 import org.javacord.api.entity.channel.ServerChannel;
 import org.javacord.api.entity.channel.TextChannel;
@@ -9,7 +10,6 @@ import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import ui.embeds.dungeon.DungeonsDeletionListEmbed;
-import logic.MessageSender;
 import ui.messages.messages.DungeonDeleted;
 import ui.messages.messages.DungeonNotFound;
 

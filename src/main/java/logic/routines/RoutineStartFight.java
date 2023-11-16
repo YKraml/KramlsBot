@@ -1,14 +1,14 @@
 package logic.routines;
 
+import domain.Answer;
 import domain.exceptions.MyOwnException;
 import domain.waifu.Player;
+import logic.MessageSender;
 import logic.waifu.PlayerLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.user.User;
 import org.javacord.api.event.message.reaction.ReactionAddEvent;
-import domain.Answer;
-import logic.MessageSender;
 import ui.messages.messages.ChooseTeam;
 import ui.messages.messages.FightAcceptet;
 import ui.messages.messages.FightDeclined;

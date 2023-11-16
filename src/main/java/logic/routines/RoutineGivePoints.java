@@ -1,13 +1,13 @@
 package logic.routines;
 
 import com.google.inject.Inject;
+import domain.Answer;
 import domain.exceptions.MyOwnException;
 import domain.waifu.Player;
 import logic.waifu.PlayerLoader;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.channel.ServerVoiceChannel;
 import org.javacord.api.entity.server.Server;
-import domain.Answer;
 import util.Terminal;
 
 public class RoutineGivePoints extends Routine {

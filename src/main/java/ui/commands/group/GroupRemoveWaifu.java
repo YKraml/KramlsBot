@@ -1,7 +1,9 @@
 package ui.commands.group;
 
 import com.google.inject.Inject;
+import domain.Answer;
 import domain.exceptions.MyOwnException;
+import logic.MessageSender;
 import logic.routines.RoutineRemoveFromGroup;
 import logic.waifu.GroupLoader;
 import logic.waifu.PlayerLoader;
@@ -13,8 +15,6 @@ import org.javacord.api.interaction.SlashCommandInteractionOption;
 import org.javacord.api.interaction.SlashCommandOption;
 import org.javacord.api.interaction.SlashCommandOptionType;
 import ui.commands.ACommand;
-import domain.Answer;
-import logic.MessageSender;
 
 import java.util.List;
 

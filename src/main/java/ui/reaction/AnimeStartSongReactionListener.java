@@ -1,5 +1,6 @@
 package ui.reaction;
 
+import domain.DisplayableElement;
 import domain.exceptions.MyOwnException;
 import logic.routines.RoutineAddToQueueBuilder;
 import logic.routines.RoutineRunner;
@@ -12,7 +13,6 @@ import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import org.javacord.api.listener.message.reaction.ReactionAddListener;
-import domain.DisplayableElement;
 import ui.embeds.anime.AnimeSongEmbed;
 
 import java.util.List;

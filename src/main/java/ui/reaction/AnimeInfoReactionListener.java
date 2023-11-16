@@ -1,6 +1,7 @@
 package ui.reaction;
 
 import domain.exceptions.MyOwnException;
+import logic.MessageSender;
 import logic.waifu.JikanFetcher;
 import model.jikan.anime.animeByIdFull.AnimeFullById;
 import org.javacord.api.DiscordApi;
@@ -10,7 +11,6 @@ import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import org.javacord.api.listener.message.reaction.ReactionAddListener;
-import logic.MessageSender;
 import ui.messages.messages.AnimeInformation;
 import util.Emojis;
 

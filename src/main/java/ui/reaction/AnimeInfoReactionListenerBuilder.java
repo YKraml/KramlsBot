@@ -1,9 +1,9 @@
 package ui.reaction;
 
 import com.google.inject.Inject;
+import logic.MessageSender;
 import logic.waifu.JikanFetcher;
 import model.jikan.anime.animeByIdFull.AnimeFullById;
-import logic.MessageSender;
 
 public class AnimeInfoReactionListenerBuilder {
 

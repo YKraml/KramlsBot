@@ -2,6 +2,7 @@ package ui.messages.messages;
 
 import domain.exceptions.MyOwnException;
 import domain.waifu.Player;
+import logic.MessageSender;
 import logic.waifu.DungeonLoader;
 import logic.waifu.JikanFetcher;
 import logic.waifu.PlayerLoader;
@@ -10,7 +11,6 @@ import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.entity.user.User;
 import ui.embeds.dungeon.TeamsListEmbed;
-import logic.MessageSender;
 import ui.messages.MyMessageAbs;
 import ui.reaction.TeamListListener;
 
