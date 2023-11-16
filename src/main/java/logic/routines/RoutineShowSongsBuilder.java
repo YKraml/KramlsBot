@@ -1,12 +1,12 @@
 package logic.routines;
 
 import com.google.inject.Inject;
+import logic.MessageSender;
 import logic.music.audio.MusicPlayerManager;
 import logic.waifu.PlayerLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
-import logic.MessageSender;
 
 public class RoutineShowSongsBuilder {
 

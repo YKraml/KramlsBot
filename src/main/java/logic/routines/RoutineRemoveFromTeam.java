@@ -1,5 +1,6 @@
 package logic.routines;
 
+import domain.Answer;
 import domain.exceptions.MyOwnException;
 import domain.waifu.Player;
 import domain.waifu.dungeon.Team;
@@ -8,7 +9,6 @@ import logic.waifu.PlayerLoader;
 import logic.waifu.TeamLoader;
 import org.javacord.api.entity.message.Messageable;
 import org.javacord.api.entity.user.User;
-import domain.Answer;
 
 import java.util.Optional;
 

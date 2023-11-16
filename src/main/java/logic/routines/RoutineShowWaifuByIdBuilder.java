@@ -1,11 +1,11 @@
 package logic.routines;
 
 import domain.waifu.Player;
+import logic.MessageSender;
 import logic.waifu.JikanFetcher;
 import logic.waifu.PlayerLoader;
 import logic.waifu.WaifuLoader;
 import org.javacord.api.entity.channel.TextChannel;
-import logic.MessageSender;
 
 public class RoutineShowWaifuByIdBuilder {
 

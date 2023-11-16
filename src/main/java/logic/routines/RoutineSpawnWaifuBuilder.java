@@ -1,10 +1,10 @@
 package logic.routines;
 
 import com.google.inject.Inject;
+import logic.MessageSender;
 import logic.waifu.WaifuBuilder;
 import logic.waifu.WaifuSpawnManager;
 import org.javacord.api.DiscordApi;
-import logic.MessageSender;
 
 import java.util.concurrent.ScheduledExecutorService;
 

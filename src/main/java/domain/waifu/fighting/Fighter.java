@@ -1,8 +1,8 @@
 package domain.waifu.fighting;
 
+import domain.DisplayableElement;
 import domain.waifu.Rarities;
 import domain.waifu.Waifu;
-import domain.DisplayableElement;
 
 import static java.lang.Math.floor;
 

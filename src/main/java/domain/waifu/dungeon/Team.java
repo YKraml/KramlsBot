@@ -1,5 +1,6 @@
 package domain.waifu.dungeon;
 
+import domain.DisplayableElement;
 import domain.exceptions.MyOwnException;
 import domain.exceptions.messages.TeamIsFull;
 import domain.exceptions.messages.TeamIsInDungeon;
@@ -8,7 +9,6 @@ import domain.waifu.Player;
 import domain.waifu.Waifu;
 import domain.waifu.fighting.FightHistory;
 import domain.waifu.fighting.Fighter;
-import domain.DisplayableElement;
 
 import java.util.ArrayList;
 import java.util.Collections;
