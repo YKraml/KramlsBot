@@ -1,4 +1,4 @@
-package ui.timer;
+package logic.timer;
 
 import domain.exceptions.MyOwnException;
 import util.Terminal;

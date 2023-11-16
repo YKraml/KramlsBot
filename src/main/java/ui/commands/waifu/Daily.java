@@ -3,6 +3,7 @@ package ui.commands.waifu;
 import com.google.inject.Inject;
 import domain.Answer;
 import domain.exceptions.MyOwnException;
+import logic.MessageSender;
 import logic.routines.RoutineCollectDaily;
 import logic.waifu.PlayerLoader;
 import org.javacord.api.DiscordApi;
@@ -18,10 +19,12 @@ import java.util.List;
 public class Daily extends ACommand {
 
     private final PlayerLoader playerLoader;
+    private final MessageSender messageSender;
 
     @Inject
-    public Daily(PlayerLoader playerLoader) {
+    public Daily(PlayerLoader playerLoader, MessageSender messageSender) {
         this.playerLoader = playerLoader;
+        this.messageSender = messageSender;
     }
 
     @Override
@@ -37,7 +40,7 @@ public class Daily extends ACommand {
     @Override
     protected Answer execute(DiscordApi api, Server server, TextChannel channel, User user,
                              List<SlashCommandInteractionOption> arguments) throws MyOwnException {
-        return getRoutineRunner().start(new RoutineCollectDaily(channel, user, playerLoader));
+        return getRoutineRunner().start(new RoutineCollectDaily(channel, user, playerLoader, messageSender));
     }
 
     @Override

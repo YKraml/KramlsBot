@@ -2,12 +2,12 @@ package util;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import logic.timer.DungeonTickRunnable;
+import logic.timer.GivePointsRunnable;
+import logic.timer.SpawnWaifuRunnable;
 import org.javacord.api.DiscordApi;
 import ui.commands.SlashCommandListener;
 import ui.join.JoinListener;
-import ui.timer.DungeonTickRunnable;
-import ui.timer.GivePointsRunnable;
-import ui.timer.SpawnWaifuRunnable;
 
 import java.awt.*;
 import java.util.concurrent.ScheduledExecutorService;

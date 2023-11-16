@@ -4,6 +4,7 @@ import com.google.inject.Inject;
 import domain.Answer;
 import domain.exceptions.MyOwnException;
 import logic.routines.RoutineStartGuessingGameBuilder;
+import logic.timer.RevealTimerBuilder;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
@@ -12,7 +13,6 @@ import org.javacord.api.interaction.SlashCommandInteractionOption;
 import org.javacord.api.interaction.SlashCommandOption;
 import org.javacord.api.interaction.SlashCommandOptionType;
 import ui.commands.ACommand;
-import ui.timer.RevealTimerBuilder;
 
 import java.util.List;
 import java.util.Random;

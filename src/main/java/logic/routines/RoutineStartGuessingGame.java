@@ -7,6 +7,7 @@ import domain.queue.QueueElement;
 import logic.MessageSender;
 import logic.music.audio.MusicPlayerManager;
 import logic.music.guess.GuessingGameManager;
+import logic.timer.RevealTimerBuilder;
 import logic.waifu.JikanFetcher;
 import logic.youtube.YoutubeFetcher;
 import model.jikan.anime.animeByIdFull.AnimeFullById;
@@ -15,7 +16,6 @@ import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import ui.messages.messages.GuessGameStarted;
-import ui.timer.RevealTimerBuilder;
 import util.ChannelFinder;
 
 import java.util.ArrayList;

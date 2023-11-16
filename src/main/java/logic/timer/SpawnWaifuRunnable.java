@@ -1,4 +1,4 @@
-package ui.timer;
+package logic.timer;
 
 import com.google.inject.Inject;
 import domain.exceptions.MyOwnException;

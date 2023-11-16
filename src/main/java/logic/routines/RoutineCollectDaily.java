@@ -3,10 +3,10 @@ package logic.routines;
 import domain.Answer;
 import domain.exceptions.MyOwnException;
 import domain.waifu.Player;
+import logic.MessageSender;
 import logic.waifu.PlayerLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.user.User;
-import ui.messages.MessageSenderImpl;
 import ui.messages.messages.DailyAlreadyUsed;
 import ui.messages.messages.DailyUsed;
 
@@ -18,11 +18,13 @@ public class RoutineCollectDaily extends Routine {
     private final User user;
     private final TextChannel channel;
     private final PlayerLoader playerLoader;
+    private final MessageSender messageSender;
 
-    public RoutineCollectDaily(TextChannel channel, User user, PlayerLoader playerLoader) {
+    public RoutineCollectDaily(TextChannel channel, User user, PlayerLoader playerLoader, MessageSender messageSender) {
         this.channel = channel;
         this.user = user;
         this.playerLoader = playerLoader;
+        this.messageSender = messageSender;
     }
 
     @Override
@@ -33,18 +35,9 @@ public class RoutineCollectDaily extends Routine {
 
         boolean alreadyClaimed = oldDate.equals(newDate);
         if (alreadyClaimed) {
-            MessageSenderImpl result;
-            synchronized (MessageSenderImpl.class) {
-                result = new MessageSenderImpl();
-            }
-            result.send(new DailyAlreadyUsed(player, newDate), channel);
+            messageSender.send(new DailyAlreadyUsed(player, newDate), channel);
         } else {
-
-            MessageSenderImpl result;
-            synchronized (MessageSenderImpl.class) {
-                result = new MessageSenderImpl();
-            }
-            result.send(new DailyUsed(player), channel);
+            messageSender.send(new DailyUsed(player), channel);
             player.setLastDaily(newDate);
             player.getInventory().addMoney(1000);
             player.getInventory().addStardust(100);

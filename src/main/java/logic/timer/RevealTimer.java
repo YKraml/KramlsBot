@@ -1,4 +1,4 @@
-package ui.timer;
+package logic.timer;
 
 import domain.GuessingGame;
 import domain.exceptions.MyOwnException;
