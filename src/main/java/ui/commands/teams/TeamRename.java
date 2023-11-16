@@ -3,6 +3,7 @@ package ui.commands.teams;
 import com.google.inject.Inject;
 import domain.Answer;
 import domain.exceptions.MyOwnException;
+import logic.MessageSender;
 import logic.routines.RoutineRenameTeam;
 import logic.waifu.PlayerLoader;
 import org.javacord.api.DiscordApi;
@@ -19,10 +20,12 @@ import java.util.List;
 public class TeamRename extends ACommand {
 
     private final PlayerLoader playerLoader;
+    private final MessageSender messageSender;
 
     @Inject
-    public TeamRename(PlayerLoader playerLoader) {
+    public TeamRename(PlayerLoader playerLoader, MessageSender messageSender) {
         this.playerLoader = playerLoader;
+        this.messageSender = messageSender;
     }
 
     @Override
@@ -42,7 +45,7 @@ public class TeamRename extends ACommand {
         String newName = arguments.get(1).getStringValue().get();
 
         return getRoutineRunner().start(
-                new RoutineRenameTeam(user, playerLoader, channel, newName, oldName));
+                new RoutineRenameTeam(user, playerLoader, channel, newName, oldName, messageSender));
     }
 
     @Override
