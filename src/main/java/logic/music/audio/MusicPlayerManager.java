@@ -89,10 +89,7 @@ public final class MusicPlayerManager {
     }
 
     public void addQueueMessage(Message message, Observer observer) {
-        message.getServer().flatMap(this::getPlayerByServer).ifPresent(player -> {
-            player.addObserver(observer);
-            player.addQueueMessage(message);
-        });
+        message.getServer().flatMap(this::getPlayerByServer).ifPresent(player -> player.addObserver(observer));
 
 
     }

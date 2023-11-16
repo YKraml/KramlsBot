@@ -11,10 +11,8 @@ import logic.MessageSender;
 import org.javacord.api.audio.AudioConnection;
 import org.javacord.api.entity.channel.ServerVoiceChannel;
 import org.javacord.api.entity.channel.TextChannel;
-import org.javacord.api.entity.message.Message;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.function.Consumer;
 
 class MusicPlayer extends Observable {
@@ -24,7 +22,6 @@ class MusicPlayer extends Observable {
     private final AudioPlayer audioPlayer;
     private final MyAudioLoadResultListener audioLoadResultHandler;
     private final Queue queue;
-    private final List<Message> messages;
     private ServerVoiceChannel serverVoiceChannel;
     private AudioConnection audioConnection;
 
@@ -36,7 +33,6 @@ class MusicPlayer extends Observable {
         this.audioLoadResultHandler = audioLoadResultHandler;
 
         this.queue = new QueueImpl(new ArrayList<>(), new ArrayList<>());
-        this.messages = new ArrayList<>();
     }
 
     static MusicPlayer createMusicPlayer(ServerVoiceChannel serverVoiceChannel,
@@ -55,13 +51,6 @@ class MusicPlayer extends Observable {
         audioLoadResultHandler.setMusicPlayer(musicPlayer);
 
         return musicPlayer;
-    }
-
-    public void addQueueMessage(Message message) {
-        this.messages.add(message);
-        if (messages.size() > MAX_MESSAGES) {
-            this.messages.remove(MAX_MESSAGES);
-        }
     }
 
 
