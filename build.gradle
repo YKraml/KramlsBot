@@ -28,7 +28,7 @@ jar {
     exclude 'META-INF/*.RSA', 'META-INF/*.SF', 'META-INF/*.DSA'
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     manifest {
-        attributes "Main-Class": "de.kraml.Main"
+        attributes "Main-Class": "util.Main"
     }
 
     from {
