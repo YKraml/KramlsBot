@@ -8,7 +8,6 @@ import logic.waifu.JikanFetcher;
 import logic.waifu.PlayerLoader;
 import logic.waifu.WaifuLoader;
 import org.javacord.api.entity.channel.TextChannel;
-import ui.messages.MessageSenderImpl;
 import ui.messages.messages.WaifuStats;
 
 public class RoutineShowWaifuById extends Routine {
@@ -36,11 +35,7 @@ public class RoutineShowWaifuById extends Routine {
     @Override
     Answer start(RoutineRunner routineRunner) throws MyOwnException {
         if (player.getWaifuList().size() >= index) {
-            MessageSenderImpl result;
-            synchronized (MessageSenderImpl.class) {
-                result = new MessageSenderImpl();
-            }
-            result.send(new WaifuStats(player.getWaifuList().get(index), player, playerLoader,
+            messageSender.send(new WaifuStats(player.getWaifuList().get(index), player, playerLoader,
                     waifuLoader, jikanFetcher, messageSender), channel);
         } else {
             channel.sendMessage(

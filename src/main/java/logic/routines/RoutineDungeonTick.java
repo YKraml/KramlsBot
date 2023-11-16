@@ -5,32 +5,33 @@ import domain.exceptions.MyOwnException;
 import domain.waifu.dungeon.Dungeon;
 import domain.waifu.dungeon.DungeonTicker;
 import domain.waifu.dungeon.Team;
+import logic.MessageSender;
 import logic.waifu.DungeonLoader;
 import logic.waifu.PlayerLoader;
 import logic.waifu.TeamLoader;
 import org.javacord.api.entity.channel.TextChannel;
-import ui.embeds.dungeon.DungeonEmbed;
+import ui.messages.messages.DungeonMessage;
 import util.ChannelFinder;
 
 import java.util.List;
 import java.util.Optional;
 
 public class RoutineDungeonTick extends Routine {
-
-
+    
     private final DungeonTicker dungeonTicker;
     private final ChannelFinder channelFinder;
     private final TeamLoader teamLoader;
     private final PlayerLoader playerLoader;
     private final DungeonLoader dungeonLoader;
+    private final MessageSender messageSender;
 
-    public RoutineDungeonTick(DungeonTicker dungeonTicker, ChannelFinder channelFinder,
-                              TeamLoader teamLoader, PlayerLoader playerLoader, DungeonLoader dungeonLoader) {
+    public RoutineDungeonTick(DungeonTicker dungeonTicker, ChannelFinder channelFinder, TeamLoader teamLoader, PlayerLoader playerLoader, DungeonLoader dungeonLoader, MessageSender messageSender) {
         this.dungeonTicker = dungeonTicker;
         this.channelFinder = channelFinder;
         this.teamLoader = teamLoader;
         this.playerLoader = playerLoader;
         this.dungeonLoader = dungeonLoader;
+        this.messageSender = messageSender;
     }
 
     @Override
@@ -46,7 +47,8 @@ public class RoutineDungeonTick extends Routine {
             if (teams.isEmpty()) {
                 continue;
             }
-            textChannel.ifPresent(channel -> channel.sendMessage(new DungeonEmbed(dungeon, teams)));
+
+            textChannel.ifPresent(channel -> messageSender.sendSafe(new DungeonMessage(dungeon, teams), channel));
         }
 
         return new Answer("Dungeon tick.");

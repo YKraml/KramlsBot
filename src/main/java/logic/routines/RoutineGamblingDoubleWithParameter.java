@@ -7,7 +7,7 @@ import logic.MessageSender;
 import logic.waifu.PlayerLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.user.User;
-import ui.embeds.LostMoney;
+import ui.messages.messages.LostMoney;
 import ui.messages.messages.WonMoney;
 
 import java.util.concurrent.ThreadLocalRandom;
