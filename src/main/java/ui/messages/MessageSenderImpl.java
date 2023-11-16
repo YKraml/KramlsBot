@@ -24,7 +24,7 @@ public class MessageSenderImpl implements MessageSender {
         }
 
         if (!textChannel.canYouWrite()) {
-            throw new MyOwnException(new CouldNotSendMessage(myMessage), null);
+            throw new MyOwnException(new CouldNotSendMessage(myMessage.getClass().getSimpleName()), null);
         }
 
         CompletableFuture<Message> sentMessageFuture = textChannel.sendMessage(content);

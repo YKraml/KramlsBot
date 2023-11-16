@@ -1,18 +1,18 @@
 package domain.exceptions.messages;
 
 import domain.exceptions.ExceptionMessage;
-import ui.messages.MyMessage;
 
 public class CouldNotSendMessage implements ExceptionMessage {
 
-    private final MyMessage myMessage;
+    private final String messageName;
 
-    public CouldNotSendMessage(MyMessage myMessage) {
-        this.myMessage = myMessage;
+    public CouldNotSendMessage(String messageName) {
+        this.messageName = messageName;
     }
 
     @Override
     public String getContent() {
-        return "Could not send Message. Type = " + myMessage.getClass().getSimpleName();
+
+        return "Could not send Message. Type = " + messageName;
     }
 }
