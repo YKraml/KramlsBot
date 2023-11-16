@@ -5,6 +5,7 @@ import domain.exceptions.messages.QueueNonExisting;
 import domain.queue.Queue;
 import domain.queue.QueueElement;
 import logic.MessageSender;
+import logic.Observer;
 import org.javacord.api.entity.channel.ServerVoiceChannel;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.message.Message;
@@ -72,7 +73,6 @@ public final class MusicPlayerManager {
     }
 
     public void playThisSongNext(ServerVoiceChannel voiceChannel, TextChannel textChannel, QueueElement queueElement) {
-
         MusicPlayer musicPlayer = getPlayerByServer(voiceChannel.getServer()).orElseGet(() -> createPlayer(voiceChannel.getServer(), voiceChannel, textChannel));
         musicPlayer.setServerVoiceChannel(voiceChannel);
         musicPlayer.setTextChannel(textChannel);

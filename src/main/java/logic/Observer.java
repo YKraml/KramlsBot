@@ -1,4 +1,4 @@
-package logic.music.audio;
+package logic;
 
 public interface Observer {
 

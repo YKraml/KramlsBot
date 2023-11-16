@@ -8,6 +8,7 @@ import domain.queue.Queue;
 import domain.queue.QueueElement;
 import domain.queue.QueueImpl;
 import logic.MessageSender;
+import logic.Observable;
 import org.javacord.api.audio.AudioConnection;
 import org.javacord.api.entity.channel.ServerVoiceChannel;
 import org.javacord.api.entity.channel.TextChannel;
@@ -17,7 +18,6 @@ import java.util.function.Consumer;
 
 class MusicPlayer extends Observable {
 
-    private final static int MAX_MESSAGES = 3;
     private final AudioPlayerManager audioPlayerManager;
     private final AudioPlayer audioPlayer;
     private final MyAudioLoadResultListener audioLoadResultHandler;
@@ -25,26 +25,21 @@ class MusicPlayer extends Observable {
     private ServerVoiceChannel serverVoiceChannel;
     private AudioConnection audioConnection;
 
-    private MusicPlayer(AudioPlayerManager audioPlayerManager, AudioPlayer audioPlayer,
-                        MyAudioLoadResultListener audioLoadResultHandler, ServerVoiceChannel serverVoiceChannel) {
+    private MusicPlayer(AudioPlayerManager audioPlayerManager, AudioPlayer audioPlayer, MyAudioLoadResultListener audioLoadResultHandler, ServerVoiceChannel serverVoiceChannel) {
         this.serverVoiceChannel = serverVoiceChannel;
         this.audioPlayerManager = audioPlayerManager;
         this.audioPlayer = audioPlayer;
         this.audioLoadResultHandler = audioLoadResultHandler;
-
         this.queue = new QueueImpl(new ArrayList<>(), new ArrayList<>());
     }
 
-    static MusicPlayer createMusicPlayer(ServerVoiceChannel serverVoiceChannel,
-                                         TextChannel textChannel, MessageSender messageSender) {
+    static MusicPlayer createMusicPlayer(ServerVoiceChannel serverVoiceChannel, TextChannel textChannel, MessageSender messageSender) {
 
         AudioPlayerManager audioPlayerManager = new DefaultAudioPlayerManager();
         AudioPlayer audioPlayer = audioPlayerManager.createPlayer();
-        MyAudioLoadResultListener audioLoadResultHandler = new MyAudioLoadResultListener(audioPlayer,
-                textChannel, messageSender);
+        MyAudioLoadResultListener audioLoadResultHandler = new MyAudioLoadResultListener(audioPlayer, textChannel, messageSender);
 
-        MusicPlayer musicPlayer = new MusicPlayer(audioPlayerManager, audioPlayer,
-                audioLoadResultHandler, serverVoiceChannel);
+        MusicPlayer musicPlayer = new MusicPlayer(audioPlayerManager, audioPlayer, audioLoadResultHandler, serverVoiceChannel);
 
         audioPlayerManager.registerSourceManager(new YoutubeAudioSourceManager());
         audioPlayer.addListener(new MyAudioEventListener(musicPlayer));
@@ -113,11 +108,7 @@ class MusicPlayer extends Observable {
 
     private void playCurrentQueueElement() {
         resetAudioConnection();
-        Consumer<String> stringConsumer = url -> {
-            audioPlayerManager.loadItem(url,
-                    audioLoadResultHandler);
-        };
-        queue.getCurrentElement().map(QueueElement::getUrl)
-                .ifPresent(stringConsumer);
+        Consumer<String> stringConsumer = url -> audioPlayerManager.loadItem(url, audioLoadResultHandler);
+        queue.getCurrentElement().map(QueueElement::getUrl).ifPresent(stringConsumer);
     }
 }
