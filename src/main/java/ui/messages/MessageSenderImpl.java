@@ -4,6 +4,7 @@ import domain.exceptions.MyOwnException;
 import domain.exceptions.messages.CouldNotGetContent;
 import domain.exceptions.messages.CouldNotSendMessage;
 import domain.exceptions.messages.CouldNotStartRoutine;
+import domain.queue.QueueElement;
 import domain.waifu.Player;
 import domain.waifu.Waifu;
 import domain.waifu.dungeon.Dungeon;
@@ -11,6 +12,7 @@ import domain.waifu.dungeon.Inventory;
 import domain.waifu.dungeon.Team;
 import logic.MessageSender;
 import logic.MyMessage;
+import logic.music.audio.MusicPlayerManager;
 import logic.routines.RoutineRevealBuilder;
 import logic.routines.RoutineRunner;
 import logic.waifu.JikanFetcher;
@@ -195,6 +197,21 @@ public class MessageSenderImpl implements MessageSender {
     @Override
     public void sendGaveMoney(TextChannel channel, Player giverPlayer, Player receiverPlayer, int money) throws MyOwnException {
         send(new GaveMoney(giverPlayer, receiverPlayer, money), channel);
+    }
+
+    @Override
+    public void sendSongAdded(TextChannel channel, QueueElement queueElement, MusicPlayerManager musicPlayerManager, PlayerLoader playerLoader) throws MyOwnException {
+        send(new SongAdded(queueElement, musicPlayerManager, playerLoader), channel);
+    }
+
+    @Override
+    public void sendGuessedWrong(TextChannel channel, Player player) throws MyOwnException {
+        send(new GuessedWrong(player), channel);
+    }
+
+    @Override
+    public void sendGroupCreated(TextChannel channel, String groupName) throws MyOwnException {
+        send(new GroupCreated(groupName), channel);
     }
 
 

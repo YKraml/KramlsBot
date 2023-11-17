@@ -13,9 +13,6 @@ import logic.waifu.WaifuSpawnManager;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
-import ui.messages.messages.GuessedRight;
-import ui.messages.messages.GuessedWrong;
-import ui.messages.messages.WaifuStats;
 
 import java.util.Optional;
 
@@ -31,9 +28,7 @@ public class RoutineClaim extends Routine {
     private final JikanFetcher jikanFetcher;
     private final MessageSender messageSender;
 
-    public RoutineClaim(Server server, TextChannel channel, User user, String guess,
-                        WaifuSpawnManager waifuSpawnManager, PlayerLoader playerLoader, WaifuLoader waifuLoader,
-                        JikanFetcher jikanFetcher, MessageSender messageSender) {
+    public RoutineClaim(Server server, TextChannel channel, User user, String guess, WaifuSpawnManager waifuSpawnManager, PlayerLoader playerLoader, WaifuLoader waifuLoader, JikanFetcher jikanFetcher, MessageSender messageSender) {
         this.server = server;
         this.channel = channel;
         this.user = user;
@@ -56,12 +51,11 @@ public class RoutineClaim extends Routine {
         Optional<Waifu> waifu = waifuSpawnManager.guessWaifu(server.getIdAsString(), guess);
         if (waifu.isPresent()) {
             player.addWaifu(waifu.get());
-            messageSender.send(new GuessedRight(player), channel);
-            messageSender.send(new WaifuStats(waifu.get(), player, playerLoader,
-                    waifuLoader, jikanFetcher, messageSender), channel);
+            messageSender.sendGuessedRight(channel, player);
+            messageSender.sendWaifuStats(channel, waifu.get(), player, playerLoader, waifuLoader, jikanFetcher, messageSender);
             playerLoader.savePlayer(player);
         } else {
-            messageSender.send(new GuessedWrong(player), channel);
+            messageSender.sendGuessedWrong(channel, player);
         }
 
         return new Answer("Someone tried to claim a Waifu");

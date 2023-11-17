@@ -8,7 +8,6 @@ import logic.MessageSender;
 import logic.waifu.PlayerLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.user.User;
-import ui.messages.messages.GroupCreated;
 
 import java.util.UUID;
 
@@ -36,7 +35,7 @@ public class RoutineCreateGroup extends Routine {
         Group group = new Group(id, groupName);
 
         player.addGroup(group);
-        messageSender.send(new GroupCreated(groupName), channel);
+        messageSender.sendGroupCreated(channel, groupName);
         playerLoader.savePlayer(player);
 
         return new Answer("Someone created a group");

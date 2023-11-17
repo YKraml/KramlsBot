@@ -1,11 +1,13 @@
 package logic;
 
 import domain.exceptions.MyOwnException;
+import domain.queue.QueueElement;
 import domain.waifu.Player;
 import domain.waifu.Waifu;
 import domain.waifu.dungeon.Dungeon;
 import domain.waifu.dungeon.Inventory;
 import domain.waifu.dungeon.Team;
+import logic.music.audio.MusicPlayerManager;
 import logic.routines.RoutineRevealBuilder;
 import logic.routines.RoutineRunner;
 import logic.waifu.JikanFetcher;
@@ -74,4 +76,10 @@ public interface MessageSender {
     void sendLostMoney(TextChannel channel, Player player, long bettedMoney) throws MyOwnException;
 
     void sendGaveMoney(TextChannel channel, Player giverPlayer, Player receiverPlayer, int money) throws MyOwnException;
+
+    void sendSongAdded(TextChannel channel, QueueElement queueElement, MusicPlayerManager musicPlayerManager, PlayerLoader playerLoader) throws MyOwnException;
+
+    void sendGuessedWrong(TextChannel channel, Player player) throws MyOwnException;
+
+    void sendGroupCreated(TextChannel channel, String groupName) throws MyOwnException;
 }

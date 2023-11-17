@@ -16,7 +16,6 @@ import org.javacord.api.entity.channel.ServerVoiceChannel;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
-import ui.messages.messages.SongAdded;
 
 public class RoutineAddToQueue extends Routine {
 
@@ -65,7 +64,7 @@ public class RoutineAddToQueue extends Routine {
         if (songNameIsVideo && !songNameIsPlaylist) {
             QueueElement queueElement = new QueueElement(TITLE_FILLER, input, user.getName());
             musicPlayerManager.addToQueue(server, voiceChannel, channel, queueElement);
-            messageSender.send(new SongAdded(queueElement, musicPlayerManager, playerLoader), channel);
+            messageSender.sendSongAdded(channel, queueElement, musicPlayerManager, playerLoader);
         } else if (songNameIsPlaylist) {
             addPlayListToQueue(input, voiceChannel);
         } else {
@@ -100,7 +99,7 @@ public class RoutineAddToQueue extends Routine {
         String title = item.getSnippet().getTitle();
         QueueElement queueElement = new QueueElement(title, url, user.getName());
         musicPlayerManager.addToQueue(server, voiceChannel, channel, queueElement);
-        messageSender.send(new SongAdded(queueElement, musicPlayerManager, playerLoader), channel);
+        messageSender.sendSongAdded(channel, queueElement, musicPlayerManager, playerLoader);
 
     }
 
