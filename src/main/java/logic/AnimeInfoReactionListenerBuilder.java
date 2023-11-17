@@ -1,7 +1,7 @@
 package logic;
 
 import model.jikan.anime.animeByIdFull.AnimeFullById;
-import ui.reaction.AnimeInfoReactionListener;
+import ui.reaction.AnimeInfoReactionListenerImpl;
 
 public interface AnimeInfoReactionListenerBuilder {
 

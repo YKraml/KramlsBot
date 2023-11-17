@@ -1,6 +1,7 @@
 package ui.reaction;
 
 import domain.exceptions.MyOwnException;
+import logic.AnimeInfoReactionListener;
 import logic.messages.MessageSender;
 import logic.waifu.JikanFetcher;
 import model.jikan.anime.animeByIdFull.AnimeFullById;
@@ -14,15 +15,15 @@ import org.javacord.api.listener.message.reaction.ReactionAddListener;
 import ui.messages.messages.AnimeInformation;
 import domain.Emojis;
 
-public class AnimeInfoReactionListener extends MyAbstractReactionListener implements
-        ReactionAddListener {
+public class AnimeInfoReactionListenerImpl extends MyAbstractReactionListener implements
+        ReactionAddListener, AnimeInfoReactionListener {
 
     private final AnimeFullById anime;
     private final JikanFetcher jikanFetcher;
     private final MessageSender messageSender;
     private final AnimeOpeningEndingReactionListenerBuilder animeOpeningEndingReactionListenerBuilder;
 
-    public AnimeInfoReactionListener(AnimeFullById anime, JikanFetcher jikanFetcher,
+    public AnimeInfoReactionListenerImpl(AnimeFullById anime, JikanFetcher jikanFetcher,
                                      MessageSender messageSender,
                                      AnimeOpeningEndingReactionListenerBuilder animeOpeningEndingReactionListenerBuilder) {
         this.anime = anime;

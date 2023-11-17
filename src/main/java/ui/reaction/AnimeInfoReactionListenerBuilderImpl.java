@@ -23,8 +23,8 @@ public class AnimeInfoReactionListenerBuilderImpl implements AnimeInfoReactionLi
 
 
     @Override
-    public AnimeInfoReactionListener createAnimeInfoReactionListener(AnimeFullById anime) {
-        return new AnimeInfoReactionListener(anime, jikanFetcher, messageSender,
+    public AnimeInfoReactionListenerImpl createAnimeInfoReactionListener(AnimeFullById anime) {
+        return new AnimeInfoReactionListenerImpl(anime, jikanFetcher, messageSender,
                 animeOpeningEndingReactionListenerBuilder);
     }
 }
