@@ -1,7 +1,7 @@
 package logic.timer;
 
 import domain.exceptions.MyOwnException;
-import ui.Terminal;
+import util.Terminal;
 
 public abstract class SaveRunnable implements Runnable {
 

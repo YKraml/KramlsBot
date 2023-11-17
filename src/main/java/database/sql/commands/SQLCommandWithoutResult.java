@@ -3,7 +3,7 @@ package database.sql.commands;
 import database.sql.ConnectionPool;
 import domain.exceptions.MyOwnException;
 import domain.exceptions.messages.CouldNotExecuteMySQLQuery;
-import ui.Terminal;
+import util.Terminal;
 
 import java.sql.Connection;
 import java.sql.SQLException;

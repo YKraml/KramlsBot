@@ -1,7 +1,6 @@
-package ui;
+package util;
 
 import domain.exceptions.MyOwnException;
-import util.Main;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

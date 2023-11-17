@@ -1,6 +1,6 @@
 package database.sql;
 
-import ui.Terminal;
+import util.Terminal;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;

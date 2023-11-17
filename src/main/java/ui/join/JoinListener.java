@@ -4,11 +4,11 @@ import com.google.inject.Inject;
 import domain.exceptions.MyOwnException;
 import domain.exceptions.messages.CouldNotGetJoinedPlayer;
 import domain.waifu.Player;
+import logic.RoleChecker;
 import logic.waifu.PlayerLoader;
 import org.javacord.api.event.channel.server.voice.ServerVoiceChannelMemberJoinEvent;
 import org.javacord.api.listener.channel.server.voice.ServerVoiceChannelMemberJoinListener;
-import logic.RoleChecker;
-import ui.Terminal;
+import util.Terminal;
 
 public class JoinListener implements ServerVoiceChannelMemberJoinListener {
 

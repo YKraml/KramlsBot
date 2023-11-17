@@ -14,11 +14,11 @@ import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import org.javacord.api.listener.message.reaction.ReactionAddListener;
+import ui.Emojis;
 import ui.embeds.waifu.WaifuDeletedEmbed;
 import ui.embeds.waifu.WaifuEmbed;
 import ui.messages.messages.*;
-import ui.Emojis;
-import ui.Terminal;
+import util.Terminal;
 
 import java.util.Optional;
 

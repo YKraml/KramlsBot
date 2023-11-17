@@ -7,7 +7,7 @@ import domain.exceptions.messages.CommandWentWrong;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.event.interaction.SlashCommandCreateEvent;
 import ui.embeds.ExceptionEmbed;
-import ui.Terminal;
+import util.Terminal;
 
 import java.util.List;
 import java.util.Optional;

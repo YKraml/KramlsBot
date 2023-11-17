@@ -4,7 +4,7 @@ import database.sql.ConnectionPool;
 import database.sql.entry.AbstractEntrySet;
 import domain.exceptions.MyOwnException;
 import domain.exceptions.messages.CouldNotExecuteMySQLQuery;
-import ui.Terminal;
+import util.Terminal;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
