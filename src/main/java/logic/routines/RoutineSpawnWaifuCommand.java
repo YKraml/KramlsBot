@@ -12,8 +12,6 @@ import logic.waifu.WaifuBuilder;
 import logic.waifu.WaifuLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.user.User;
-import ui.messages.messages.WaifuSpawned;
-import ui.messages.messages.WaifuStats;
 
 public class RoutineSpawnWaifuCommand extends Routine {
 
@@ -50,10 +48,8 @@ public class RoutineSpawnWaifuCommand extends Routine {
 
         player.getInventory().removeMoney(1000);
 
-        messageSender.send(new WaifuSpawned(player), channel);
-        messageSender.send(
-                new WaifuStats(waifu, player, playerLoader, waifuLoader, jikanFetcher, messageSender),
-                channel);
+        messageSender.sendWaifuSpawned(channel, player);
+        messageSender.sendWaifuStats(channel, waifu, player, playerLoader, waifuLoader, jikanFetcher, messageSender);
         playerLoader.savePlayer(player);
 
         return new Answer("Spawned a Waifu.");

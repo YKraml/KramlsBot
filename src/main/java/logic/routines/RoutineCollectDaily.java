@@ -7,8 +7,6 @@ import logic.MessageSender;
 import logic.waifu.PlayerLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.user.User;
-import ui.messages.messages.DailyAlreadyUsed;
-import ui.messages.messages.DailyUsed;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -35,9 +33,9 @@ public class RoutineCollectDaily extends Routine {
 
         boolean alreadyClaimed = oldDate.equals(newDate);
         if (alreadyClaimed) {
-            messageSender.send(new DailyAlreadyUsed(player, newDate), channel);
+            messageSender.sendDailyAlreadyUsed(channel, player, newDate);
         } else {
-            messageSender.send(new DailyUsed(player), channel);
+            messageSender.sendDailyUsed(channel, player);
             player.setLastDaily(newDate);
             player.getInventory().addMoney(1000);
             player.getInventory().addStardust(100);

@@ -16,7 +16,6 @@ import org.javacord.api.entity.channel.ServerVoiceChannel;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
-import ui.messages.messages.GuessGameStarted;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -37,11 +36,7 @@ public class RoutineStartGuessingGame extends Routine {
     private final RoutineRevealBuilder routineRevealBuilder;
     private final RevealTimerBuilder revealTimerBuilder;
 
-    public RoutineStartGuessingGame(Server server, TextChannel textChannel, User user, int difficulty,
-                                    GuessingGameManager guessingGameManager, JikanFetcher jikanFetcher,
-                                    YoutubeFetcher youtubeFetcher, ChannelFinder channelFinder,
-                                    MusicPlayerManager musicPlayerManager, MessageSender messageSender,
-                                    RoutineRevealBuilder routineRevealBuilder, RevealTimerBuilder revealTimerBuilder) {
+    public RoutineStartGuessingGame(Server server, TextChannel textChannel, User user, int difficulty, GuessingGameManager guessingGameManager, JikanFetcher jikanFetcher, YoutubeFetcher youtubeFetcher, ChannelFinder channelFinder, MusicPlayerManager musicPlayerManager, MessageSender messageSender, RoutineRevealBuilder routineRevealBuilder, RevealTimerBuilder revealTimerBuilder) {
         this.difficulty = difficulty;
         this.server = server;
         this.user = user;
@@ -76,8 +71,7 @@ public class RoutineStartGuessingGame extends Routine {
             String song = getRandomSong(anime);
             String animeTitle = anime.getData().getTitle();
 
-            String url = "https://www.youtube.com/watch?v=%s".formatted(
-                    youtubeFetcher.getIdByVideoName("Anime %s Song %s".formatted(animeTitle, song)));
+            String url = "https://www.youtube.com/watch?v=%s".formatted(youtubeFetcher.getIdByVideoName("Anime %s Song %s".formatted(animeTitle, song)));
 
             ServerVoiceChannel voiceChannel = channelFinder.getServerVoiceChannelByMember(server, user);
             QueueElement queueElement = new QueueElement(animeTitle, url, user.getName(), true);
@@ -85,11 +79,9 @@ public class RoutineStartGuessingGame extends Routine {
 
             guessingGameManager.startGuessingGame(anime, url, song, serverId, difficulty);
             revealTimerBuilder.createRevealTimer(textChannel, serverId, url).startTimer();
-            messageSender.send(new GuessGameStarted(routineRunner, routineRevealBuilder), textChannel);
+            messageSender.sendGuessGameStarted(textChannel, routineRunner, routineRevealBuilder);
 
-            return new Answer(
-                    "Someone started guessing game. Anime = '%s', Song = '%s', URL = '%s'".formatted(
-                            animeTitle, song, url));
+            return new Answer("Someone started guessing game. Anime = '%s', Song = '%s', URL = '%s'".formatted(animeTitle, song, url));
 
         } catch (Exception e) {
             guessingGameManager.removeGuessGame(serverId);

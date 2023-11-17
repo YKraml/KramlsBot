@@ -47,15 +47,15 @@ public class WaifuEditListener extends MyAbstractReactionListener implements Rea
 
         boolean buttonForUser = user.getIdAsString().equals(player.getId());
         if (!buttonForUser) {
-            messageSender.send(new ButtonNotForYou(user.getMentionTag(), player.getNameTag()),
-                    textChannel);
+            messageSender.send(new ButtonNotForYou(user.getMentionTag(), player.getNameTag()), textChannel
+            );
             return;
         }
 
         boolean userIsOwner = player.getWaifuList().contains(waifu);
         if (!userIsOwner) {
-            messageSender.send(new ButtonNotForYou(user.getMentionTag(), player.getNameTag()),
-                    textChannel);
+            messageSender.send(new ButtonNotForYou(user.getMentionTag(), player.getNameTag()), textChannel
+            );
             return;
         }
 

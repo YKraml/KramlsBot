@@ -6,13 +6,20 @@ import domain.exceptions.messages.CouldNotSendMessage;
 import domain.exceptions.messages.CouldNotStartRoutine;
 import domain.waifu.Player;
 import domain.waifu.Waifu;
+import domain.waifu.dungeon.Inventory;
+import domain.waifu.dungeon.Team;
 import logic.MessageSender;
 import logic.MyMessage;
+import logic.routines.RoutineRevealBuilder;
+import logic.routines.RoutineRunner;
+import logic.waifu.JikanFetcher;
+import logic.waifu.PlayerLoader;
+import logic.waifu.WaifuLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
-import ui.messages.messages.Merged;
-import ui.messages.messages.WaifusAreDifferent;
+import org.javacord.api.entity.user.User;
+import ui.messages.messages.*;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -66,6 +73,61 @@ public class MessageSenderImpl implements MessageSender {
     @Override
     public void sendWaifusAreDifferent(TextChannel channel, Player player) throws MyOwnException {
         send(new WaifusAreDifferent(player), channel);
+    }
+
+    @Override
+    public void sendGroupList(TextChannel channel, Player player, PlayerLoader playerLoader, WaifuLoader waifuLoader, JikanFetcher jikanFetcher, MessageSender messageSender) throws MyOwnException {
+        send(new GroupList(player, playerLoader, waifuLoader, jikanFetcher, messageSender), channel);
+    }
+
+    @Override
+    public void sendGuessGameStarted(TextChannel textChannel, RoutineRunner routineRunner, RoutineRevealBuilder routineRevealBuilder) throws MyOwnException {
+        send(new GuessGameStarted(routineRunner, routineRevealBuilder), textChannel);
+    }
+
+    @Override
+    public void sendSafeNoMatchForSongMessage(TextChannel channel) {
+        sendSafe(new NoMatchForSongMessage(), channel);
+    }
+
+    @Override
+    public void sendSafeCouldNotLoadSongMessage(TextChannel channel) {
+        sendSafe(new CouldNotLoadSongMessage(), channel);
+    }
+
+    @Override
+    public void sendWaifuSpawned(TextChannel channel, Player player) throws MyOwnException {
+        send(new WaifuSpawned(player), channel);
+    }
+
+    @Override
+    public void sendWaifuStats(TextChannel channel, Waifu waifu, Player player, PlayerLoader playerLoader, WaifuLoader waifuLoader, JikanFetcher jikanFetcher, MessageSender messageSender) throws MyOwnException {
+        send(new WaifuStats(waifu, player, playerLoader, waifuLoader, jikanFetcher, messageSender), channel);
+    }
+
+    @Override
+    public void sendTeamKilled(TextChannel channel, Team team, int level, Inventory inventory) throws MyOwnException {
+        send(new TeamKilled(team, level, inventory), channel);
+    }
+
+    @Override
+    public void sendTeamIsLow(TextChannel textChannel, Team team) throws MyOwnException {
+        send(new TeamIsLow(team), textChannel);
+    }
+
+    @Override
+    public void sendDailyAlreadyUsed(TextChannel channel, Player player, String newDate) throws MyOwnException {
+        send(new DailyAlreadyUsed(player, newDate), channel);
+    }
+
+    @Override
+    public void sendDailyUsed(TextChannel channel, Player player) throws MyOwnException {
+        send(new DailyUsed(player), channel);
+    }
+
+    @Override
+    public Message sendFightRequest(TextChannel textChannel, User user, User userEnemy, long money, long stardust, long morphStones) throws MyOwnException {
+        return send(new FightRequest(user, userEnemy, money, stardust, morphStones), textChannel);
     }
 
 

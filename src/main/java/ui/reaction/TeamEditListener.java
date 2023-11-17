@@ -74,8 +74,8 @@ public class TeamEditListener extends MyAbstractListListener<Fighter> implements
         super.startRoutine(discordApi, server, textChannel, message, user, emoji);
 
         if (!user.getIdAsString().equals(team.getPlayer().getId())) {
-            messageSender.send(new ButtonNotForYou(user.getMentionTag(), team.getPlayer().getNameTag()),
-                    textChannel);
+            messageSender.send(new ButtonNotForYou(user.getMentionTag(), team.getPlayer().getNameTag()), textChannel
+            );
             return;
         }
 
@@ -85,8 +85,8 @@ public class TeamEditListener extends MyAbstractListListener<Fighter> implements
             this.returnFromDungeon(textChannel, message);
         } else if (emoji.equalsEmoji(Emojis.CAMPING.getEmoji())) {
             List<Dungeon> dungeonList = dungeonLoader.getAllDungeonsFromServer(server.getIdAsString());
-            messageSender.send(new DungeonList(team, dungeonList, playerLoader, messageSender),
-                    textChannel);
+            messageSender.send(new DungeonList(team, dungeonList, playerLoader, messageSender), textChannel
+            );
         } else if (emoji.equalsEmoji(Emojis.ARROWS_COUNTERCLOCKWISE.getEmoji())) {
             message.edit(new TeamEmbed(team));
         } else if (emoji.equalsEmoji(Emojis.HOSPITAL.getEmoji())) {

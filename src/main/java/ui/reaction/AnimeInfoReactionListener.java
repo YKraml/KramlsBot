@@ -37,8 +37,8 @@ public class AnimeInfoReactionListener extends MyAbstractReactionListener implem
         if (emoji.equalsEmoji(Emojis.INFORMATION_SOURCE.getEmoji())) {
             messageSender.send(
                     new AnimeInformation(anime, jikanFetcher, animeOpeningEndingReactionListenerBuilder,
-                            messageSender),
-                    textChannel);
+                            messageSender), textChannel
+            );
         }
     }
 }

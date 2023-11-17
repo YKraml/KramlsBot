@@ -43,8 +43,8 @@ public class Delete extends ACommand {
     @Override
     protected Answer execute(DiscordApi api, Server server, TextChannel channel, User user,
                              List<SlashCommandInteractionOption> arguments) throws MyOwnException {
-        messageSender.send(new DeletedWaifuOverview(user, waifuLoader, messageSender, playerLoader),
-                channel);
+        messageSender.send(new DeletedWaifuOverview(user, waifuLoader, messageSender, playerLoader), channel
+        );
         return new Answer("Someone ordered his Delete-List");
     }
 

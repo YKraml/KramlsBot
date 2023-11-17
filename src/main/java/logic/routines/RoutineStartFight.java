@@ -7,7 +7,6 @@ import logic.waifu.PlayerLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.user.User;
-import ui.messages.messages.FightRequest;
 
 public class RoutineStartFight extends Routine {
 
@@ -37,8 +36,7 @@ public class RoutineStartFight extends Routine {
     Answer start(RoutineRunner routineRunner) throws MyOwnException {
 
         textChannel.sendMessage(userEnemy.getMentionTag());
-        Message fightRequestMessage = messageSender.send(
-                new FightRequest(user, userEnemy, money, stardust, morphStones), textChannel);
+        Message fightRequestMessage = messageSender.sendFightRequest(textChannel, user, userEnemy, money, stardust, morphStones);
 
         // TODO: 17.11.2023 Kampf neu machen. Idee: Angreifer wählt Waifu und möglicher Gewinn im voraus aus. Verteidiger akzektiert nur mit Waifu.
 

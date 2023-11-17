@@ -9,7 +9,6 @@ import logic.waifu.PlayerLoader;
 import logic.waifu.WaifuLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.user.User;
-import ui.messages.messages.GroupList;
 
 public class RoutineShowGroupList extends Routine {
 
@@ -33,8 +32,7 @@ public class RoutineShowGroupList extends Routine {
     @Override
     Answer start(RoutineRunner routineRunner) throws MyOwnException {
         Player player = playerLoader.getPlayerByUser(user);
-        messageSender.send(
-                new GroupList(player, playerLoader, waifuLoader, jikanFetcher, messageSender), channel);
+        messageSender.sendGroupList(channel, player, playerLoader, waifuLoader, jikanFetcher, messageSender);
 
         return new Answer("Showed someone his list.");
     }

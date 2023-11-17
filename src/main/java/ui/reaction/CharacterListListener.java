@@ -57,8 +57,8 @@ public class CharacterListListener extends MyAbstractListListener<DisplayableEle
     @Override
     protected void reactToCountEmoji(Server server, TextChannel textChannel, User user,
                                      int listPosition) throws MyOwnException {
-        messageSender.send(new CharacterOverview(anime, characterStaff.getData().get(listPosition)),
-                textChannel);
+        messageSender.send(new CharacterOverview(anime, characterStaff.getData().get(listPosition)), textChannel
+        );
     }
 
     @Override

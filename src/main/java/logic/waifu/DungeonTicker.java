@@ -11,8 +11,6 @@ import domain.waifu.fighting.FightHistory;
 import logic.ChannelFinder;
 import logic.MessageSender;
 import org.javacord.api.entity.channel.TextChannel;
-import ui.messages.messages.TeamIsLow;
-import ui.messages.messages.TeamKilled;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,7 +67,7 @@ public class DungeonTicker {
             Optional<TextChannel> textChannelOptional = channelFinder.getTextChannelById(
                     dungeon.getChannelId());
             if (textChannelOptional.isPresent()) {
-                messageSender.send(new TeamKilled(team, level, inventory), textChannelOptional.get());
+                messageSender.sendTeamKilled(textChannelOptional.get(), team, level, inventory);
             }
         }
     }
@@ -85,7 +83,7 @@ public class DungeonTicker {
                     dungeon.getChannelId());
             if (textChannelOptional.isPresent()) {
                 textChannelOptional.get().sendMessage(team.getPlayer().getNameTag());
-                messageSender.send(new TeamIsLow(team), textChannelOptional.get());
+                messageSender.sendTeamIsLow(textChannelOptional.get(), team);
             }
 
             team.setOwnerIsMessaged(true);

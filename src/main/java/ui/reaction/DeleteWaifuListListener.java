@@ -74,8 +74,8 @@ public class DeleteWaifuListListener extends MyAbstractListListener<Waifu> {
                                 Message message, User user, Emoji emoji) throws MyOwnException {
 
         if (!user.getIdAsString().equals(player.getId())) {
-            messageSender.send(new ButtonNotForYou(user.getMentionTag(), player.getNameTag()),
-                    textChannel);
+            messageSender.send(new ButtonNotForYou(user.getMentionTag(), player.getNameTag()), textChannel
+            );
             return;
         }
 

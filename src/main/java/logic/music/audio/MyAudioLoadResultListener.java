@@ -7,8 +7,6 @@ import com.sedmelluq.discord.lavaplayer.track.AudioPlaylist;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 import logic.MessageSender;
 import org.javacord.api.entity.channel.TextChannel;
-import ui.messages.messages.CouldNotLoadSongMessage;
-import ui.messages.messages.NoMatchForSongMessage;
 
 class MyAudioLoadResultListener implements AudioLoadResultHandler {
 
@@ -38,13 +36,13 @@ class MyAudioLoadResultListener implements AudioLoadResultHandler {
 
     @Override
     public void noMatches() {
-        messageSender.sendSafe(new NoMatchForSongMessage(), channel);
+        messageSender.sendSafeNoMatchForSongMessage(channel);
         musicPlayer.playNextSong();
     }
 
     @Override
     public void loadFailed(FriendlyException exception) {
-        messageSender.sendSafe(new CouldNotLoadSongMessage(), channel);
+        messageSender.sendSafeCouldNotLoadSongMessage(channel);
         musicPlayer.playNextSong();
     }
 
