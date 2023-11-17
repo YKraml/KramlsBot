@@ -1,7 +1,7 @@
 package domain.waifu;
 
 import domain.DisplayableElement;
-import ui.Emojis;
+import util.Emojis;
 
 public class Waifu implements DisplayableElement {
 

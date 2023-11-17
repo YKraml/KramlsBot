@@ -1,4 +1,4 @@
-package ui;
+package util;
 
 import com.vdurmont.emoji.EmojiParser;
 

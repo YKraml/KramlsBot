@@ -4,6 +4,7 @@ import domain.exceptions.MyOwnException;
 import domain.queue.Queue;
 import domain.queue.QueueElement;
 import domain.waifu.Player;
+import logic.ChannelFinder;
 import logic.music.audio.MusicPlayerManager;
 import logic.waifu.PlayerLoader;
 import org.javacord.api.DiscordApi;
@@ -14,8 +15,7 @@ import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import ui.embeds.music.QueueEmbed;
-import logic.ChannelFinder;
-import ui.Emojis;
+import util.Emojis;
 
 import java.util.Optional;
 

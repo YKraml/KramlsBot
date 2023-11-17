@@ -9,7 +9,7 @@ import org.javacord.api.entity.message.embed.EmbedBuilder;
 import ui.embeds.music.SongAddedEmbed;
 import ui.messages.MyMessageAbs;
 import ui.reaction.SongAddedEmbedListener;
-import ui.Emojis;
+import util.Emojis;
 
 public class SongAdded extends MyMessageAbs {
 

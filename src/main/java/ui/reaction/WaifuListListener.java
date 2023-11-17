@@ -17,7 +17,7 @@ import ui.embeds.waifu.WaifuListEmbed;
 import ui.messages.MessageSenderImpl;
 import ui.messages.messages.WaifuNotFound;
 import ui.messages.messages.WaifuStats;
-import ui.Emojis;
+import util.Emojis;
 
 import java.util.Comparator;
 

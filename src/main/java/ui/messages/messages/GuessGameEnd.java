@@ -7,7 +7,7 @@ import org.javacord.api.entity.message.embed.EmbedBuilder;
 import ui.embeds.guess.GuessEndEmbed;
 import ui.messages.MyMessageAbs;
 import ui.reaction.AnimeInfoReactionListenerBuilder;
-import ui.Emojis;
+import util.Emojis;
 
 public class GuessGameEnd extends MyMessageAbs {
 

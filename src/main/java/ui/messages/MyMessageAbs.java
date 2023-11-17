@@ -3,7 +3,7 @@ package ui.messages;
 import logic.MyMessage;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
-import ui.Emojis;
+import util.Emojis;
 import util.Main;
 
 public abstract class MyMessageAbs implements MyMessage {

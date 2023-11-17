@@ -2,7 +2,7 @@ package ui.embeds;
 
 import domain.exceptions.MyOwnException;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
-import ui.Emojis;
+import util.Emojis;
 import util.Main;
 
 public class ExceptionEmbed extends EmbedBuilder {

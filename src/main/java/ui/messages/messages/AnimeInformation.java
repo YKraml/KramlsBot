@@ -11,7 +11,7 @@ import ui.messages.MyMessageAbs;
 import ui.reaction.AnimeOpeningEndingReactionListenerBuilder;
 import ui.reaction.CharacterReactionListener;
 import ui.reaction.SynopsisReactionListener;
-import ui.Emojis;
+import util.Emojis;
 
 public class AnimeInformation extends MyMessageAbs {
 
