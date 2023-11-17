@@ -37,7 +37,7 @@ public class AnimeInformation extends MyMessageAbs {
         message.addReaction(Emojis.MAGE.getEmoji());
         message.addReactionAddListener(
                 animeOpeningEndingReactionListenerBuilder.createAnimeOpeningEndingReactionListener(anime));
-        message.addReactionAddListener(new SynopsisReactionListener(anime));
+        message.addReactionAddListener(new SynopsisReactionListener(anime, messageSender));
         message.addReactionAddListener(new CharacterReactionListener(anime, jikanFetcher, messageSender));
     }
 

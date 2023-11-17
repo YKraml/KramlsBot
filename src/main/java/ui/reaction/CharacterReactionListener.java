@@ -13,7 +13,6 @@ import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import org.javacord.api.listener.message.reaction.ReactionAddListener;
-import ui.messages.MessageSenderImpl;
 import ui.messages.messages.CharacterList;
 import util.Emojis;
 
@@ -43,11 +42,7 @@ public class CharacterReactionListener extends MyAbstractReactionListener implem
             Comparator<Datum> comparator = Comparator.comparing(Datum::getRole)
                     .thenComparing(o -> o.getCharacter().getName());
             animeCharacters.getData().sort(comparator);
-            MessageSenderImpl result;
-            synchronized (MessageSenderImpl.class) {
-                result = new MessageSenderImpl();
-            }
-            result.send(new CharacterList(animeCharacters, anime, messageSender), textChannel);
+            messageSender.send(new CharacterList(animeCharacters, anime, messageSender), textChannel);
         }
     }
 

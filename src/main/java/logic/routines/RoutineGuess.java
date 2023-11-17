@@ -10,7 +10,6 @@ import logic.waifu.PlayerLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
-import ui.messages.messages.GuessGameEndBuilder;
 
 public class RoutineGuess extends Routine {
 
@@ -21,11 +20,8 @@ public class RoutineGuess extends Routine {
     private final GuessingGameManager guessingGameManager;
     private final PlayerLoader playerLoader;
     private final MessageSender messageSender;
-    private final GuessGameEndBuilder guessGameEndBuilder;
 
-    public RoutineGuess(Server server, TextChannel channel, User user, String guess,
-                        GuessingGameManager guessingGameManager, PlayerLoader playerLoader,
-                        MessageSender messageSender, GuessGameEndBuilder guessGameEndBuilder) {
+    public RoutineGuess(Server server, TextChannel channel, User user, String guess, GuessingGameManager guessingGameManager, PlayerLoader playerLoader, MessageSender messageSender) {
         this.server = server;
         this.channel = channel;
         this.user = user;
@@ -33,7 +29,6 @@ public class RoutineGuess extends Routine {
         this.guessingGameManager = guessingGameManager;
         this.playerLoader = playerLoader;
         this.messageSender = messageSender;
-        this.guessGameEndBuilder = guessGameEndBuilder;
     }
 
     @Override
@@ -42,8 +37,7 @@ public class RoutineGuess extends Routine {
         boolean guessedRight = guessingGameManager.makeGuess(guess, server.getIdAsString());
         if (guessedRight) {
 
-            GuessingGame guessingGame = guessingGameManager.getGuessingGameByServer(
-                    server.getIdAsString());
+            GuessingGame guessingGame = guessingGameManager.getGuessingGameByServer(server.getIdAsString());
             guessingGameManager.removeGuessGame(server.getIdAsString());
 
             int wonMoney = 100 * guessingGame.getDifficulty();
@@ -53,7 +47,7 @@ public class RoutineGuess extends Routine {
 
             messageSender.sendGuessedRight(channel, player);
             messageSender.sendWonMoney(channel, player, wonMoney);
-            messageSender.send(guessGameEndBuilder.createGuessGameEnd(guessingGame), channel);
+            messageSender.sendGuessGameEnd(channel, guessingGame);
 
         } else {
             channel.sendMessage(player.getNameTag() + ", du lagst falsch!");

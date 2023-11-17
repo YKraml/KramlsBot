@@ -14,7 +14,6 @@ import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import ui.embeds.waifu.WaifuListEmbed;
-import ui.messages.MessageSenderImpl;
 import ui.messages.messages.WaifuNotFound;
 import ui.messages.messages.WaifuStats;
 import util.Emojis;
@@ -58,11 +57,7 @@ public class WaifuListListener extends MyAbstractListListener<Waifu> {
     @Override
     protected void reactToTooHighCountEmoji(TextChannel textChannel, int listPosition)
             throws MyOwnException {
-        MessageSenderImpl result;
-        synchronized (MessageSenderImpl.class) {
-            result = new MessageSenderImpl();
-        }
-        result.send(new WaifuNotFound(listPosition), textChannel);
+        messageSender.send(new WaifuNotFound(listPosition), textChannel);
     }
 
     @Override

@@ -28,6 +28,6 @@ public class RoutineGuessBuilder {
 
     public RoutineGuess createRoutineGuess(Server server, TextChannel channel, User user, String guess) {
         return new RoutineGuess(server, channel, user, guess, guessingGameManager, playerLoader,
-                messageSender, guessGameEndBuilder);
+                messageSender);
     }
 }

@@ -1,5 +1,6 @@
 package ui.messages;
 
+import domain.GuessingGame;
 import domain.exceptions.MyOwnException;
 import domain.exceptions.messages.CouldNotGetContent;
 import domain.exceptions.messages.CouldNotSendMessage;
@@ -25,11 +26,19 @@ import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import ui.messages.messages.*;
 
+import javax.inject.Inject;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class MessageSenderImpl implements MessageSender {
 
+
+    private final GuessGameEndBuilder guessGameEndBuilder;
+
+    @Inject
+    public MessageSenderImpl(GuessGameEndBuilder guessGameEndBuilder) {
+        this.guessGameEndBuilder = guessGameEndBuilder;
+    }
 
     @Override
     public Message send(MyMessage myMessage, TextChannel textChannel) throws MyOwnException {
@@ -202,7 +211,7 @@ public class MessageSenderImpl implements MessageSender {
 
     @Override
     public void sendSongAdded(TextChannel channel, QueueElement queueElement, MusicPlayerManager musicPlayerManager, PlayerLoader playerLoader) throws MyOwnException {
-        send(new SongAdded(queueElement, musicPlayerManager, playerLoader), channel);
+        send(new SongAdded(queueElement, musicPlayerManager, playerLoader, this), channel);
     }
 
     @Override
@@ -228,6 +237,11 @@ public class MessageSenderImpl implements MessageSender {
     @Override
     public void sendWaifuList(TextChannel channel, Player player, MessageSender messageSender, PlayerLoader playerLoader, WaifuLoader waifuLoader, JikanFetcher jikanFetcher) throws MyOwnException {
         send(new WaifuList(player, messageSender, playerLoader, waifuLoader, jikanFetcher), channel);
+    }
+
+    @Override
+    public void sendGuessGameEnd(TextChannel channel, GuessingGame guessingGame) throws MyOwnException {
+        send(guessGameEndBuilder.createGuessGameEnd(guessingGame), channel);
     }
 
 

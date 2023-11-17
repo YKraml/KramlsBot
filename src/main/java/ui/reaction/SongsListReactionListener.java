@@ -55,7 +55,7 @@ public class SongsListReactionListener extends MyAbstractListListener<QueueEleme
                 new ChannelFinder(textChannel.getApi()).getServerVoiceChannelByMember(
                         this.server, this.user), textChannel);
         messageSender.send(new SongAdded(player.getLikedSongs().get(listPosition),
-                musicPlayerManager, playerLoader), textChannel);
+                musicPlayerManager, playerLoader, messageSender), textChannel);
     }
 
     @Override

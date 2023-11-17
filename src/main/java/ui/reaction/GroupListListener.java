@@ -12,7 +12,6 @@ import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import ui.embeds.group.GroupsListEmbed;
-import ui.messages.MessageSenderImpl;
 import ui.messages.messages.GroupNotFound;
 import ui.messages.messages.GroupOverview;
 
@@ -43,22 +42,14 @@ public class GroupListListener extends MyAbstractListListener<Group> {
     protected void reactToCountEmoji(Server server, TextChannel textChannel, User user,
                                      int listPosition) throws MyOwnException {
         Group group = player.getGroupList().get(listPosition);
-        MessageSenderImpl result;
-        synchronized (MessageSenderImpl.class) {
-            result = new MessageSenderImpl();
-        }
-        result.send(new GroupOverview(group, player, playerLoader,
+        messageSender.send(new GroupOverview(group, player, playerLoader,
                 waifuLoader, jikanFetcher, messageSender), textChannel);
     }
 
     @Override
     protected void reactToTooHighCountEmoji(TextChannel textChannel, int listPosition)
             throws MyOwnException {
-        MessageSenderImpl result;
-        synchronized (MessageSenderImpl.class) {
-            result = new MessageSenderImpl();
-        }
-        result.send(new GroupNotFound(), textChannel);
+        messageSender.send(new GroupNotFound(), textChannel);
     }
 
 }

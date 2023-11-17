@@ -13,7 +13,6 @@ import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import ui.embeds.dungeon.TeamsListEmbed;
-import ui.messages.MessageSenderImpl;
 import ui.messages.messages.TeamOverview;
 
 public class TeamListListener extends MyAbstractListListener<Team> {
@@ -45,11 +44,7 @@ public class TeamListListener extends MyAbstractListListener<Team> {
     protected void reactToCountEmoji(Server server, TextChannel textChannel, User user,
                                      int listPosition) throws MyOwnException {
         Team team = player.getTeamList().get(listPosition);
-        MessageSenderImpl result;
-        synchronized (MessageSenderImpl.class) {
-            result = new MessageSenderImpl();
-        }
-        result.send(new TeamOverview(team, dungeonLoader, playerLoader, messageSender, waifuLoader,
+        messageSender.send(new TeamOverview(team, dungeonLoader, playerLoader, messageSender, waifuLoader,
                 jikanFetcher), textChannel);
     }
 

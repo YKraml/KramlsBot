@@ -12,7 +12,6 @@ import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import ui.embeds.waifu.DeleteWaifuListEmbed;
-import ui.messages.MessageSenderImpl;
 import ui.messages.messages.ButtonNotForYou;
 import ui.messages.messages.WaifuDeleted;
 import ui.messages.messages.WaifuNotFound;
@@ -51,23 +50,14 @@ public class DeleteWaifuListListener extends MyAbstractListListener<Waifu> {
         player.getInventory().addCookies(cookies);
 
         waifuLoader.deleteWaifu(waifu, player);
-
-        MessageSenderImpl result;
-        synchronized (MessageSenderImpl.class) {
-            result = new MessageSenderImpl();
-        }
-        result.send(new WaifuDeleted(player, waifu, stardust, cookies), textChannel);
+        messageSender.send(new WaifuDeleted(player, waifu, stardust, cookies), textChannel);
 
     }
 
     @Override
     protected void reactToTooHighCountEmoji(TextChannel textChannel, int listPosition)
             throws MyOwnException {
-        MessageSenderImpl result;
-        synchronized (MessageSenderImpl.class) {
-            result = new MessageSenderImpl();
-        }
-        result.send(new WaifuNotFound(listPosition), textChannel);
+        messageSender.send(new WaifuNotFound(listPosition), textChannel);
     }
 
     protected void startRoutine(DiscordApi discordApi, Server server, TextChannel textChannel,
