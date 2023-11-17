@@ -4,6 +4,7 @@ import domain.Answer;
 import domain.exceptions.MyOwnException;
 import domain.exceptions.messages.GuessingGameAlreadyExists;
 import domain.queue.QueueElement;
+import logic.ChannelFinder;
 import logic.MessageSender;
 import logic.music.audio.MusicPlayerManager;
 import logic.music.guess.GuessingGameManager;
@@ -16,7 +17,6 @@ import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import ui.messages.messages.GuessGameStarted;
-import logic.ChannelFinder;
 
 import java.util.ArrayList;
 import java.util.Collections;

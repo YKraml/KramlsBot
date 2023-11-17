@@ -12,8 +12,6 @@ import logic.waifu.PlayerLoader;
 import logic.waifu.WaifuLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.user.User;
-import ui.messages.messages.Merged;
-import ui.messages.messages.WaifusAreDifferent;
 
 import java.util.List;
 
@@ -59,10 +57,10 @@ public class RoutineMergeWaifus extends Routine {
         if (waifu1.getIdMal().equals(waifu2.getIdMal())) {
             waifuLoader.deleteWaifu(waifu2, player);
             waifu1.raiseStarLevelBy(waifu2.getStarLevel() + 1);
-            messageSender.send(new Merged(player, waifu1), channel);
+            messageSender.sendMerged(channel, player, waifu1);
             playerLoader.savePlayer(player);
         } else {
-            messageSender.send(new WaifusAreDifferent(player), channel);
+            messageSender.sendWaifusAreDifferent(channel, player);
         }
 
 

@@ -3,6 +3,7 @@ package ui.reaction;
 import domain.exceptions.MyOwnException;
 import domain.queue.QueueElement;
 import domain.waifu.Player;
+import logic.ChannelFinder;
 import logic.MessageSender;
 import logic.music.audio.MusicPlayerManager;
 import logic.waifu.PlayerLoader;
@@ -13,7 +14,6 @@ import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import ui.embeds.music.LikedSongsEmbed;
 import ui.messages.messages.SongAdded;
-import logic.ChannelFinder;
 
 public class SongsListReactionListener extends MyAbstractListListener<QueueElement> {
 
