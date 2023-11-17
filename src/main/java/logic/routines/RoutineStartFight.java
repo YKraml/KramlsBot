@@ -2,18 +2,12 @@ package logic.routines;
 
 import domain.Answer;
 import domain.exceptions.MyOwnException;
-import domain.waifu.Player;
 import logic.MessageSender;
 import logic.waifu.PlayerLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.user.User;
-import org.javacord.api.event.message.reaction.ReactionAddEvent;
-import ui.messages.messages.ChooseTeam;
-import ui.messages.messages.FightAcceptet;
-import ui.messages.messages.FightDeclined;
 import ui.messages.messages.FightRequest;
-import ui.Emojis;
 
 public class RoutineStartFight extends Routine {
 
@@ -46,45 +40,11 @@ public class RoutineStartFight extends Routine {
         Message fightRequestMessage = messageSender.send(
                 new FightRequest(user, userEnemy, money, stardust, morphStones), textChannel);
 
-        fightRequestMessage.addReactionAddListener(event -> handleEvent(fightRequestMessage, event));
+        // TODO: 17.11.2023 Kampf neu machen. Idee: Angreifer wählt Waifu und möglicher Gewinn im voraus aus. Verteidiger akzektiert nur mit Waifu.
 
         return new Answer(
                 "%s hat %s zum Kampf herausgefordert.".formatted(user.getName(), userEnemy.getName()));
     }
 
-    private void handleEvent(Message fightRequestMessage, ReactionAddEvent event) {
-        if (event.getUser().isPresent() && event.getUser().get().isBot()) {
-            return;
-        }
-
-        if (event.getEmoji().equalsEmoji(Emojis.X.getEmoji())) {
-            fightRequestMessage.delete();
-            textChannel.sendMessage(user.getMentionTag());
-            try {
-                messageSender.send(new FightDeclined(user, userEnemy), textChannel);
-            } catch (MyOwnException ignored) {
-                //Ignore.
-            }
-        }
-
-        if (event.getEmoji().equalsEmoji(Emojis.WHITE_CHECK_MARK.getEmoji())) {
-            fightRequestMessage.delete();
-            textChannel.sendMessage(user.getMentionTag());
-            try {
-                messageSender.send(new FightAcceptet(user, userEnemy, money, stardust, morphStones),
-                        textChannel);
-
-                Player player = playerLoader.getPlayerByUser(user);
-                Player playerEnemy = playerLoader.getPlayerByUser(userEnemy);
-
-                messageSender.send(new ChooseTeam(player), textChannel);
-                messageSender.send(new ChooseTeam(playerEnemy), textChannel);
-
-
-            } catch (MyOwnException ignored) {
-                //Ignore.
-            }
-        }
-    }
 
 }
