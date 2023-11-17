@@ -6,6 +6,7 @@ import domain.exceptions.messages.CouldNotGetContent;
 import domain.exceptions.messages.CouldNotSendMessage;
 import domain.exceptions.messages.CouldNotStartRoutine;
 import domain.queue.QueueElement;
+import domain.waifu.Group;
 import domain.waifu.Player;
 import domain.waifu.Waifu;
 import domain.waifu.dungeon.Dungeon;
@@ -242,6 +243,11 @@ public class MessageSenderImpl implements MessageSender {
     @Override
     public void sendGuessGameEnd(TextChannel channel, GuessingGame guessingGame) throws MyOwnException {
         send(guessGameEndBuilder.createGuessGameEnd(guessingGame), channel);
+    }
+
+    @Override
+    public void sendGroupOverview(TextChannel channel, Group group, Player player, PlayerLoader playerLoader, WaifuLoader waifuLoader, JikanFetcher jikanFetcher, MessageSender messageSender) throws MyOwnException {
+        send(new GroupOverview(group, player, playerLoader, waifuLoader, jikanFetcher, messageSender), channel);
     }
 
 

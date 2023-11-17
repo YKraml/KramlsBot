@@ -9,7 +9,6 @@ import logic.waifu.JikanFetcher;
 import logic.waifu.PlayerLoader;
 import logic.waifu.WaifuLoader;
 import org.javacord.api.entity.channel.TextChannel;
-import ui.messages.messages.GroupOverview;
 
 import java.util.Optional;
 
@@ -23,9 +22,7 @@ public class RoutineShowGroup extends Routine {
     private final MessageSender messageSender;
     private final TextChannel channel;
 
-    public RoutineShowGroup(Player player, String groupName, PlayerLoader playerLoader,
-                            WaifuLoader waifuLoader, JikanFetcher jikanFetcher, MessageSender messageSender,
-                            TextChannel channel) {
+    public RoutineShowGroup(Player player, String groupName, PlayerLoader playerLoader, WaifuLoader waifuLoader, JikanFetcher jikanFetcher, MessageSender messageSender, TextChannel channel) {
         this.player = player;
         this.groupName = groupName;
         this.playerLoader = playerLoader;
@@ -39,8 +36,7 @@ public class RoutineShowGroup extends Routine {
     Answer start(RoutineRunner routineRunner) throws MyOwnException {
         Optional<Group> group = player.getGroupByName(groupName);
         if (group.isPresent()) {
-            messageSender.send(new GroupOverview(group.get(), player, playerLoader, waifuLoader, jikanFetcher,
-                    messageSender), channel);
+            messageSender.sendGroupOverview(channel, group.get(), player, playerLoader, waifuLoader, jikanFetcher, messageSender);
         } else {
             channel.sendMessage("Konnte die Gruppe \"" + groupName + "\" nicht finden.");
         }

@@ -3,6 +3,7 @@ package logic;
 import domain.GuessingGame;
 import domain.exceptions.MyOwnException;
 import domain.queue.QueueElement;
+import domain.waifu.Group;
 import domain.waifu.Player;
 import domain.waifu.Waifu;
 import domain.waifu.dungeon.Dungeon;
@@ -92,4 +93,6 @@ public interface MessageSender {
     void sendWaifuList(TextChannel channel, Player player, MessageSender messageSender, PlayerLoader playerLoader, WaifuLoader waifuLoader, JikanFetcher jikanFetcher) throws MyOwnException;
 
     void sendGuessGameEnd(TextChannel channel, GuessingGame guessingGame) throws MyOwnException;
+
+    void sendGroupOverview(TextChannel channel, Group group, Player player, PlayerLoader playerLoader, WaifuLoader waifuLoader, JikanFetcher jikanFetcher, MessageSender messageSender) throws MyOwnException;
 }
