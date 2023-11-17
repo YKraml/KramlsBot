@@ -2,8 +2,8 @@ package ui.commands.music;
 
 import com.google.inject.Inject;
 import domain.Answer;
-import logic.music.audio.MusicPlayerManager;
-import logic.music.guess.GuessingGameManager;
+import logic.waifu.GuessingGameManager;
+import logic.MusicPlayerManager;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;

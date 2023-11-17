@@ -1,6 +1,7 @@
-package logic.waifu;
+package loader;
 
 import com.google.inject.Inject;
+import domain.WaifuLoader;
 import domain.exceptions.MyOwnException;
 import domain.waifu.Player;
 import domain.waifu.Waifu;

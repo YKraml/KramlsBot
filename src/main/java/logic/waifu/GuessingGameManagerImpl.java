@@ -1,10 +1,9 @@
-package logic.music.guess;
+package logic.waifu;
 
 import com.google.inject.Inject;
 import domain.GuessingGame;
 import domain.exceptions.MyOwnException;
 import domain.exceptions.messages.CouldNotGetGuessingGameByServer;
-import logic.waifu.JikanFetcher;
 import model.jikan.anime.animeByIdFull.AnimeFullById;
 import model.jikan.anime.animeByIdFull.Data;
 import model.jikan.anime.animeByIdFull.Entry;
@@ -15,18 +14,19 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Singleton
-public final class GuessingGameManager {
+public final class GuessingGameManagerImpl implements GuessingGameManager {
 
     private final List<GuessingGame> guessingGameList;
     private final JikanFetcher jikanFetcher;
 
     @Inject
-    public GuessingGameManager(JikanFetcher jikanFetcher) {
+    public GuessingGameManagerImpl(JikanFetcher jikanFetcher) {
         this.jikanFetcher = jikanFetcher;
         this.guessingGameList = Collections.synchronizedList(new ArrayList<>());
 
     }
 
+    @Override
     public synchronized void startGuessingGame(AnimeFullById anime, String url, String songName, String serverId,
                                                int difficulty) {
 
@@ -44,11 +44,13 @@ public final class GuessingGameManager {
         this.guessingGameList.add(guessingGame);
     }
 
+    @Override
     public void removeGuessGame(String serverId) {
         guessingGameList.removeIf(game -> game.getServer().equals(serverId));
     }
 
 
+    @Override
     public GuessingGame getGuessingGameByServer(String serverId) throws MyOwnException {
 
         for (GuessingGame guessingGame : this.guessingGameList) {
@@ -59,6 +61,7 @@ public final class GuessingGameManager {
         throw new MyOwnException(new CouldNotGetGuessingGameByServer(serverId), null);
     }
 
+    @Override
     public boolean makeGuess(String guess, String serverId) throws MyOwnException {
 
         List<String> guesses = new ArrayList<>();
@@ -70,6 +73,7 @@ public final class GuessingGameManager {
 
     }
 
+    @Override
     public boolean gameExists(String serverId) {
         for (GuessingGame guessingGame : this.guessingGameList) {
             if (guessingGame.getServer().equals(serverId)) {

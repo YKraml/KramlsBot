@@ -1,4 +1,4 @@
-package logic;
+package logic.messages;
 
 import domain.exceptions.MyOwnException;
 import org.javacord.api.entity.message.Message;

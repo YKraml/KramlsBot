@@ -1,6 +1,7 @@
-package logic.waifu;
+package loader;
 
 import com.google.inject.Inject;
+import domain.PlayerLoader;
 import domain.exceptions.MyOwnException;
 import domain.exceptions.messages.CouldNotSavePlayer;
 import domain.waifu.Player;

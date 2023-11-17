@@ -3,7 +3,7 @@ package ui.commands.utility;
 import com.google.inject.Inject;
 import domain.Answer;
 import domain.exceptions.MyOwnException;
-import logic.MessageSender;
+import logic.messages.MessageSender;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;

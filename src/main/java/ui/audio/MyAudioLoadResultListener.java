@@ -1,11 +1,11 @@
-package logic.music.audio;
+package ui.audio;
 
 import com.sedmelluq.discord.lavaplayer.player.AudioLoadResultHandler;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.tools.FriendlyException;
 import com.sedmelluq.discord.lavaplayer.track.AudioPlaylist;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
-import logic.MessageSender;
+import logic.messages.MessageSender;
 import org.javacord.api.entity.channel.TextChannel;
 
 class MyAudioLoadResultListener implements AudioLoadResultHandler {

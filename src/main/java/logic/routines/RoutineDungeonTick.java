@@ -4,12 +4,12 @@ import domain.Answer;
 import domain.exceptions.MyOwnException;
 import domain.waifu.dungeon.Dungeon;
 import domain.waifu.dungeon.Team;
-import logic.ChannelFinder;
-import logic.MessageSender;
-import logic.waifu.DungeonLoader;
+import logic.discord.ChannelFinder;
+import logic.messages.MessageSender;
+import domain.DungeonLoader;
 import logic.waifu.DungeonTicker;
-import logic.waifu.PlayerLoader;
-import logic.waifu.TeamLoader;
+import domain.PlayerLoader;
+import domain.TeamLoader;
 import org.javacord.api.entity.channel.TextChannel;
 
 import java.util.List;

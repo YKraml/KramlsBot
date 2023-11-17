@@ -2,8 +2,8 @@ package logic.timer;
 
 import domain.GuessingGame;
 import domain.exceptions.MyOwnException;
-import logic.MessageSender;
-import logic.music.guess.GuessingGameManager;
+import logic.waifu.GuessingGameManager;
+import logic.messages.MessageSender;
 import org.javacord.api.entity.channel.TextChannel;
 
 import java.util.concurrent.ScheduledExecutorService;

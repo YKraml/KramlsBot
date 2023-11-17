@@ -1,7 +1,7 @@
 package ui.reaction;
 
 import domain.exceptions.MyOwnException;
-import logic.MessageSender;
+import logic.messages.MessageSender;
 import logic.waifu.JikanFetcher;
 import model.jikan.anime.animeByIdFull.AnimeFullById;
 import model.jikan.anime.animeThemes.AnimeThemes;

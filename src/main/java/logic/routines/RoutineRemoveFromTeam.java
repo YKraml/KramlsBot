@@ -5,8 +5,8 @@ import domain.exceptions.MyOwnException;
 import domain.waifu.Player;
 import domain.waifu.dungeon.Team;
 import domain.waifu.fighting.Fighter;
-import logic.waifu.PlayerLoader;
-import logic.waifu.TeamLoader;
+import domain.PlayerLoader;
+import domain.TeamLoader;
 import org.javacord.api.entity.message.Messageable;
 import org.javacord.api.entity.user.User;
 

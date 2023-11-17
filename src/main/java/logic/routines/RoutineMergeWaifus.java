@@ -7,9 +7,9 @@ import domain.exceptions.messages.WaifuStarLevelAlreadyMax;
 import domain.waifu.Player;
 import domain.waifu.Stats;
 import domain.waifu.Waifu;
-import logic.MessageSender;
-import logic.waifu.PlayerLoader;
-import logic.waifu.WaifuLoader;
+import logic.messages.MessageSender;
+import domain.PlayerLoader;
+import domain.WaifuLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.user.User;
 

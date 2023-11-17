@@ -1,7 +1,7 @@
 package logic.routines;
 
 import com.google.inject.Inject;
-import logic.waifu.PlayerLoader;
+import domain.PlayerLoader;
 import org.javacord.api.DiscordApi;
 
 public class RoutineGivePointsBuilder {

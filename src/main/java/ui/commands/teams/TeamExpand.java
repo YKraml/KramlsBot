@@ -4,7 +4,7 @@ import com.google.inject.Inject;
 import domain.Answer;
 import domain.exceptions.MyOwnException;
 import logic.routines.RoutineExpandTeam;
-import logic.waifu.PlayerLoader;
+import domain.PlayerLoader;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;

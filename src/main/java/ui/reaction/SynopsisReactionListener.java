@@ -1,7 +1,7 @@
 package ui.reaction;
 
 import domain.exceptions.MyOwnException;
-import logic.MessageSender;
+import logic.messages.MessageSender;
 import model.jikan.anime.animeByIdFull.AnimeFullById;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.channel.TextChannel;

@@ -5,11 +5,11 @@ import domain.exceptions.MyOwnException;
 import domain.exceptions.messages.NotEnoughResource;
 import domain.waifu.Player;
 import domain.waifu.Waifu;
-import logic.MessageSender;
+import logic.messages.MessageSender;
 import logic.waifu.JikanFetcher;
-import logic.waifu.PlayerLoader;
+import domain.PlayerLoader;
 import logic.waifu.WaifuBuilder;
-import logic.waifu.WaifuLoader;
+import domain.WaifuLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.user.User;
 

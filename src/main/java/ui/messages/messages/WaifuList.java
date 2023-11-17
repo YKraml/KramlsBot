@@ -2,10 +2,10 @@ package ui.messages.messages;
 
 import domain.exceptions.MyOwnException;
 import domain.waifu.Player;
-import logic.MessageSender;
+import logic.messages.MessageSender;
 import logic.waifu.JikanFetcher;
-import logic.waifu.PlayerLoader;
-import logic.waifu.WaifuLoader;
+import domain.PlayerLoader;
+import domain.WaifuLoader;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import ui.embeds.waifu.WaifuListEmbed;

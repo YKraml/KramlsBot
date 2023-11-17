@@ -1,5 +1,6 @@
-package logic.waifu;
+package loader;
 
+import domain.PlayerLoader;
 import domain.exceptions.MyOwnException;
 import domain.waifu.Player;
 

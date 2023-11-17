@@ -8,8 +8,10 @@ import domain.waifu.dungeon.Dungeon;
 import domain.waifu.dungeon.Inventory;
 import domain.waifu.dungeon.Team;
 import domain.waifu.fighting.FightHistory;
-import logic.ChannelFinder;
-import logic.MessageSender;
+import domain.PlayerLoader;
+import domain.TeamLoader;
+import logic.discord.ChannelFinder;
+import logic.messages.MessageSender;
 import org.javacord.api.entity.channel.TextChannel;
 
 import java.util.ArrayList;

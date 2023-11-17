@@ -2,9 +2,9 @@ package ui.messages.messages;
 
 import domain.exceptions.MyOwnException;
 import domain.queue.QueueElement;
-import logic.MessageSender;
-import logic.music.audio.MusicPlayerManager;
-import logic.waifu.PlayerLoader;
+import logic.MusicPlayerManager;
+import logic.messages.MessageSender;
+import domain.PlayerLoader;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import ui.embeds.music.SongAddedEmbed;

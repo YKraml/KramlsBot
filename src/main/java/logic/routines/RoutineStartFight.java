@@ -2,8 +2,8 @@ package logic.routines;
 
 import domain.Answer;
 import domain.exceptions.MyOwnException;
-import logic.MessageSender;
-import logic.waifu.PlayerLoader;
+import logic.messages.MessageSender;
+import domain.PlayerLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.user.User;

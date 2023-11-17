@@ -1,4 +1,4 @@
-package logic.waifu;
+package loader;
 
 import com.google.inject.Inject;
 import database.sql.SQLCommandExecutor;
@@ -16,6 +16,9 @@ import database.sql.entry.TimeEntrySet;
 import database.sql.entry.UserEntrySet;
 import database.sql.mapper.LikedSongMapper;
 import database.sql.mapper.PlayerMapper;
+import domain.PlayerLoader;
+import domain.TeamLoader;
+import domain.WaifuLoader;
 import domain.exceptions.MyOwnException;
 import domain.exceptions.messages.CouldNotLoadPlayer;
 import domain.exceptions.messages.CouldNotSaveLikedSong;

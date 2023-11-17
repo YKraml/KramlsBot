@@ -1,4 +1,4 @@
-package logic;
+package logic.messages;
 
 public interface Observer {
 

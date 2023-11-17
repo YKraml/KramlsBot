@@ -2,7 +2,7 @@ package ui.reaction;
 
 import domain.DisplayableElement;
 import domain.exceptions.MyOwnException;
-import logic.MessageSender;
+import logic.messages.MessageSender;
 import model.jikan.anime.animeByIdFull.AnimeFullById;
 import model.jikan.anime.animeCharacters.AnimeCharacters;
 import org.javacord.api.entity.channel.TextChannel;

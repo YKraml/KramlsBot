@@ -1,12 +1,12 @@
 package logic.routines;
 
 import com.google.inject.Inject;
-import logic.ChannelFinder;
-import logic.MessageSender;
-import logic.waifu.DungeonLoader;
+import logic.discord.ChannelFinder;
+import logic.messages.MessageSender;
+import domain.DungeonLoader;
 import logic.waifu.DungeonTicker;
-import logic.waifu.PlayerLoader;
-import logic.waifu.TeamLoader;
+import domain.PlayerLoader;
+import domain.TeamLoader;
 
 public class RoutineDungeonTickBuilder {
 

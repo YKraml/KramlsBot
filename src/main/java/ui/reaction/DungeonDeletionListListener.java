@@ -2,8 +2,8 @@ package ui.reaction;
 
 import domain.exceptions.MyOwnException;
 import domain.waifu.dungeon.Dungeon;
-import logic.MessageSender;
-import logic.waifu.DungeonLoader;
+import logic.messages.MessageSender;
+import domain.DungeonLoader;
 import org.javacord.api.entity.channel.ServerChannel;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.message.Message;

@@ -1,10 +1,10 @@
 package logic.routines;
 
 import com.google.inject.Inject;
-import logic.ChannelFinder;
-import logic.MessageSender;
-import logic.music.audio.MusicPlayerManager;
-import logic.waifu.PlayerLoader;
+import logic.MusicPlayerManager;
+import logic.discord.ChannelFinder;
+import logic.messages.MessageSender;
+import domain.PlayerLoader;
 import logic.youtube.YoutubeFetcher;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;

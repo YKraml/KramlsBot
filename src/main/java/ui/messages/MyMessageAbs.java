@@ -1,6 +1,6 @@
 package ui.messages;
 
-import logic.MyMessage;
+import logic.messages.MyMessage;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import util.Emojis;

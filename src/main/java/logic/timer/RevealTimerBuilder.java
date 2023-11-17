@@ -1,8 +1,8 @@
 package logic.timer;
 
 import com.google.inject.Inject;
-import logic.MessageSender;
-import logic.music.guess.GuessingGameManager;
+import logic.waifu.GuessingGameManager;
+import logic.messages.MessageSender;
 import org.javacord.api.entity.channel.TextChannel;
 
 import java.util.concurrent.ScheduledExecutorService;

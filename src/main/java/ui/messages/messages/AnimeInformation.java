@@ -1,7 +1,7 @@
 package ui.messages.messages;
 
 import domain.exceptions.MyOwnException;
-import logic.MessageSender;
+import logic.messages.MessageSender;
 import logic.waifu.JikanFetcher;
 import model.jikan.anime.animeByIdFull.AnimeFullById;
 import org.javacord.api.entity.message.Message;

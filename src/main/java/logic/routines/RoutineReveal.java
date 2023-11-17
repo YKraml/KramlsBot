@@ -3,8 +3,8 @@ package logic.routines;
 import domain.Answer;
 import domain.GuessingGame;
 import domain.exceptions.MyOwnException;
-import logic.MessageSender;
-import logic.music.guess.GuessingGameManager;
+import logic.waifu.GuessingGameManager;
+import logic.messages.MessageSender;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
 

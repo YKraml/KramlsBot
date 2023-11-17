@@ -1,10 +1,10 @@
 package logic.routines;
 
 import com.google.inject.Inject;
-import logic.ChannelFinder;
-import logic.MessageSender;
-import logic.music.audio.MusicPlayerManager;
-import logic.music.guess.GuessingGameManager;
+import logic.waifu.GuessingGameManager;
+import logic.MusicPlayerManager;
+import logic.discord.ChannelFinder;
+import logic.messages.MessageSender;
 import logic.timer.RevealTimerBuilder;
 import logic.waifu.JikanFetcher;
 import logic.youtube.YoutubeFetcher;

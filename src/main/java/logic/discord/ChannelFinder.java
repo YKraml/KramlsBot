@@ -1,4 +1,4 @@
-package logic;
+package logic.discord;
 
 import com.google.inject.Inject;
 import domain.exceptions.MyOwnException;

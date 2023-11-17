@@ -1,4 +1,4 @@
-package logic.waifu;
+package loader;
 
 import com.google.inject.Inject;
 import database.sql.SQLCommandExecutor;
@@ -13,6 +13,7 @@ import domain.exceptions.MyOwnException;
 import domain.waifu.Group;
 import domain.waifu.Player;
 import domain.waifu.Waifu;
+import domain.WaifuLoader;
 
 import javax.inject.Singleton;
 import java.util.*;

@@ -2,8 +2,8 @@ package ui.messages.messages;
 
 import domain.exceptions.MyOwnException;
 import domain.waifu.dungeon.Dungeon;
-import logic.MessageSender;
-import logic.waifu.DungeonLoader;
+import logic.messages.MessageSender;
+import domain.DungeonLoader;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import ui.embeds.dungeon.DungeonsDeletionListEmbed;

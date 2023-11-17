@@ -1,10 +1,10 @@
 package logic.routines;
 
 import domain.waifu.Player;
-import logic.MessageSender;
+import logic.messages.MessageSender;
 import logic.waifu.JikanFetcher;
-import logic.waifu.PlayerLoader;
-import logic.waifu.WaifuLoader;
+import domain.PlayerLoader;
+import domain.WaifuLoader;
 import org.javacord.api.entity.channel.TextChannel;
 
 public class RoutineShowGroupBuilder {

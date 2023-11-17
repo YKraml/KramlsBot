@@ -1,10 +1,11 @@
-package logic.waifu;
+package loader;
 
 import database.sql.SQLCommandExecutor;
 import database.sql.commands.dungeon.DeleteDungeon;
 import database.sql.commands.dungeon.InsertDungeon;
 import database.sql.commands.dungeon.SelectAllDungeons;
 import database.sql.entry.DungeonEntrySet;
+import domain.DungeonLoader;
 import domain.exceptions.MyOwnException;
 import domain.waifu.dungeon.Dungeon;
 

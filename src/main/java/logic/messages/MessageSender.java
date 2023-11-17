@@ -1,4 +1,4 @@
-package logic;
+package logic.messages;
 
 import domain.GuessingGame;
 import domain.exceptions.MyOwnException;
@@ -9,12 +9,12 @@ import domain.waifu.Waifu;
 import domain.waifu.dungeon.Dungeon;
 import domain.waifu.dungeon.Inventory;
 import domain.waifu.dungeon.Team;
-import logic.music.audio.MusicPlayerManager;
+import logic.MusicPlayerManager;
 import logic.routines.RoutineRevealBuilder;
 import logic.routines.RoutineRunner;
 import logic.waifu.JikanFetcher;
-import logic.waifu.PlayerLoader;
-import logic.waifu.WaifuLoader;
+import domain.PlayerLoader;
+import domain.WaifuLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.server.Server;

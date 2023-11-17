@@ -5,7 +5,7 @@ import domain.exceptions.MyOwnException;
 import domain.waifu.Player;
 import domain.waifu.dungeon.Inventory;
 import domain.waifu.dungeon.Team;
-import logic.waifu.PlayerLoader;
+import domain.PlayerLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.user.User;
 

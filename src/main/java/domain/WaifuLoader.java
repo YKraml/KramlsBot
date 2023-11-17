@@ -1,4 +1,4 @@
-package logic.waifu;
+package domain;
 
 import domain.exceptions.MyOwnException;
 import domain.waifu.Player;

@@ -5,8 +5,8 @@ import domain.exceptions.MyOwnException;
 import domain.exceptions.messages.CouldNotFindGroup;
 import domain.waifu.Group;
 import domain.waifu.Player;
-import logic.waifu.GroupLoader;
-import logic.waifu.PlayerLoader;
+import loader.GroupLoader;
+import domain.PlayerLoader;
 import org.javacord.api.entity.message.Messageable;
 import org.javacord.api.entity.user.User;
 

@@ -8,7 +8,7 @@ import domain.exceptions.messages.TeamNotFound;
 import domain.waifu.Player;
 import domain.waifu.Waifu;
 import domain.waifu.dungeon.Team;
-import logic.waifu.PlayerLoader;
+import domain.PlayerLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.user.User;
 

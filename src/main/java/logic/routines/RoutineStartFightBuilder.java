@@ -1,7 +1,7 @@
 package logic.routines;
 
-import logic.MessageSender;
-import logic.waifu.PlayerLoader;
+import logic.messages.MessageSender;
+import domain.PlayerLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.user.User;
 

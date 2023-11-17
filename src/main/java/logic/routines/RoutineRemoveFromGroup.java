@@ -6,9 +6,9 @@ import domain.exceptions.messages.CouldNotFindGroup;
 import domain.waifu.Group;
 import domain.waifu.Player;
 import domain.waifu.Waifu;
-import logic.MessageSender;
-import logic.waifu.GroupLoader;
-import logic.waifu.PlayerLoader;
+import logic.messages.MessageSender;
+import loader.GroupLoader;
+import domain.PlayerLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.user.User;
 

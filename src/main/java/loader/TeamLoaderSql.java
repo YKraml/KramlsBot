@@ -1,4 +1,4 @@
-package logic.waifu;
+package loader;
 
 import com.google.inject.Inject;
 import database.sql.SQLCommandExecutor;
@@ -10,6 +10,9 @@ import database.sql.commands.team_fighter.InsertTeamFighterOrUpdate;
 import database.sql.commands.team_fighter.SelectWaifusFromTeam;
 import database.sql.entry.TeamEntrySet;
 import database.sql.entry.TeamFighterEntrySet;
+import domain.DungeonLoader;
+import domain.PlayerLoader;
+import domain.TeamLoader;
 import domain.exceptions.MyOwnException;
 import domain.waifu.Player;
 import domain.waifu.dungeon.Dungeon;

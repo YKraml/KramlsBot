@@ -1,9 +1,9 @@
 package ui.reaction;
 
 import domain.exceptions.MyOwnException;
-import logic.MessageSender;
-import logic.music.audio.MusicPlayerManager;
-import logic.waifu.PlayerLoader;
+import logic.MusicPlayerManager;
+import logic.messages.MessageSender;
+import domain.PlayerLoader;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.emoji.Emoji;

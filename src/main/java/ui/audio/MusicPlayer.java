@@ -1,4 +1,4 @@
-package logic.music.audio;
+package ui.audio;
 
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
@@ -7,8 +7,8 @@ import com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioSourceManager
 import domain.queue.Queue;
 import domain.queue.QueueElement;
 import domain.queue.QueueImpl;
-import logic.MessageSender;
-import logic.Observable;
+import logic.messages.MessageSender;
+import logic.messages.Observable;
 import org.javacord.api.audio.AudioConnection;
 import org.javacord.api.entity.channel.ServerVoiceChannel;
 import org.javacord.api.entity.channel.TextChannel;

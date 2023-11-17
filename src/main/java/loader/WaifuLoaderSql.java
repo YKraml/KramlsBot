@@ -1,4 +1,4 @@
-package logic.waifu;
+package loader;
 
 import database.sql.SQLCommandExecutor;
 import database.sql.commands.character.InsertCharacterOrIgnore;
@@ -13,6 +13,7 @@ import database.sql.entry.CharacterEntrySet;
 import database.sql.entry.WaifuCharacterEntrySet;
 import database.sql.entry.WaifuCharacterEntrySet.WaifuCharacterEntry;
 import database.sql.entry.WaifuEntrySet;
+import domain.WaifuLoader;
 import domain.exceptions.MyOwnException;
 import domain.waifu.Player;
 import domain.waifu.Rarities;

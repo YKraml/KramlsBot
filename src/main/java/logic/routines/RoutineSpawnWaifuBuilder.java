@@ -1,7 +1,7 @@
 package logic.routines;
 
 import com.google.inject.Inject;
-import logic.MessageSender;
+import logic.messages.MessageSender;
 import logic.waifu.WaifuBuilder;
 import logic.waifu.WaifuSpawnManager;
 import org.javacord.api.DiscordApi;

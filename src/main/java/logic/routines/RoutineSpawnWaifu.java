@@ -4,7 +4,7 @@ import domain.Answer;
 import domain.exceptions.MyOwnException;
 import domain.exceptions.messages.CouldNotSpawnWaifu;
 import domain.waifu.Waifu;
-import logic.MessageSender;
+import logic.messages.MessageSender;
 import logic.waifu.WaifuBuilder;
 import logic.waifu.WaifuSpawnManager;
 import org.javacord.api.DiscordApi;

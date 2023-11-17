@@ -1,7 +1,7 @@
 package ui.reaction;
 
 import com.google.inject.Inject;
-import logic.MessageSender;
+import logic.messages.MessageSender;
 import logic.waifu.JikanFetcher;
 import model.jikan.anime.animeByIdFull.AnimeFullById;
 

@@ -1,10 +1,10 @@
-package logic;
+package logic.discord;
 
 import com.google.inject.Inject;
 import domain.exceptions.MyOwnException;
 import domain.exceptions.messages.CouldNotUpdateRoles;
 import domain.waifu.Player;
-import logic.waifu.PlayerLoader;
+import domain.PlayerLoader;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 
