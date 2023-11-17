@@ -8,7 +8,6 @@ import logic.MessageSender;
 import logic.waifu.PlayerLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.user.User;
-import ui.messages.messages.TeamRenamedMessage;
 
 import java.util.Optional;
 
@@ -36,7 +35,7 @@ public class RoutineRenameTeam extends Routine {
         Optional<Team> team = player.getTeamByName(oldName);
         if (team.isPresent()) {
             team.get().setName(newName);
-            messageSender.send(new TeamRenamedMessage(player, oldName, newName), channel);
+            messageSender.sendTeamRenamedMessage(channel, player, oldName, newName);
             playerLoader.savePlayer(player);
         } else {
             channel.sendMessage(player.getNameTag() + ", konnte Team \"" + oldName + "\" nicht finden.");

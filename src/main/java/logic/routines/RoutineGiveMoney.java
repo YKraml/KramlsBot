@@ -7,7 +7,6 @@ import logic.MessageSender;
 import logic.waifu.PlayerLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.user.User;
-import ui.messages.messages.GaveMoney;
 
 public class RoutineGiveMoney extends Routine {
 
@@ -18,8 +17,7 @@ public class RoutineGiveMoney extends Routine {
     private final int money;
     private final MessageSender messageSender;
 
-    public RoutineGiveMoney(PlayerLoader playerLoader, TextChannel channel, User giverUser,
-                            User receiverUser, int money, MessageSender messageSender) {
+    public RoutineGiveMoney(PlayerLoader playerLoader, TextChannel channel, User giverUser, User receiverUser, int money, MessageSender messageSender) {
         this.playerLoader = playerLoader;
         this.channel = channel;
         this.giverUser = giverUser;
@@ -39,7 +37,7 @@ public class RoutineGiveMoney extends Routine {
         playerLoader.savePlayer(giverPlayer);
         playerLoader.savePlayer(receiverPlayer);
 
-        messageSender.send(new GaveMoney(giverPlayer, receiverPlayer, money), channel);
+        messageSender.sendGaveMoney(channel, giverPlayer, receiverPlayer, money);
 
         return new Answer("Someone gave someone Money.");
     }

@@ -3,6 +3,7 @@ package logic;
 import domain.exceptions.MyOwnException;
 import domain.waifu.Player;
 import domain.waifu.Waifu;
+import domain.waifu.dungeon.Dungeon;
 import domain.waifu.dungeon.Inventory;
 import domain.waifu.dungeon.Team;
 import logic.routines.RoutineRevealBuilder;
@@ -13,6 +14,8 @@ import logic.waifu.WaifuLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.user.User;
+
+import java.util.List;
 
 public interface MessageSender {
 
@@ -57,4 +60,18 @@ public interface MessageSender {
     void sendWaifuSpawn(TextChannel textChannel, Waifu newWaifu) throws MyOwnException;
 
     void sendSafeExceptionHappenedMessage(TextChannel textChannel, MyOwnException e);
+
+    void sendWaifusDeleted(TextChannel channel, Player player, int deletedWaifus, int stardust, int cookies) throws MyOwnException;
+
+    void sendTeamRenamedMessage(TextChannel channel, Player player, String oldName, String newName) throws MyOwnException;
+
+    void sendGuessedRight(TextChannel channel, Player player) throws MyOwnException;
+
+    void sendWonMoney(TextChannel channel, Player player, long wonMoney) throws MyOwnException;
+
+    void sendSafeDungeonMessage(TextChannel channel, Dungeon dungeon, List<Team> teams);
+
+    void sendLostMoney(TextChannel channel, Player player, long bettedMoney) throws MyOwnException;
+
+    void sendGaveMoney(TextChannel channel, Player giverPlayer, Player receiverPlayer, int money) throws MyOwnException;
 }

@@ -9,7 +9,6 @@ import logic.waifu.PlayerLoader;
 import logic.waifu.WaifuLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.user.User;
-import ui.messages.messages.WaifusDeleted;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -62,7 +61,7 @@ public class RoutineDeleteWaifusFromAnime extends Routine {
         player.getInventory().addStardust(stardust);
         playerLoader.savePlayer(player);
 
-        messageSender.send(new WaifusDeleted(player, deletedWaifus, stardust, cookies), channel);
+        messageSender.sendWaifusDeleted(channel, player, deletedWaifus, stardust, cookies);
 
         return new Answer("Someone deleted a Waifu");
     }

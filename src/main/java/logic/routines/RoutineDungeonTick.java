@@ -11,7 +11,6 @@ import logic.waifu.DungeonTicker;
 import logic.waifu.PlayerLoader;
 import logic.waifu.TeamLoader;
 import org.javacord.api.entity.channel.TextChannel;
-import ui.messages.messages.DungeonMessage;
 
 import java.util.List;
 import java.util.Optional;
@@ -48,7 +47,7 @@ public class RoutineDungeonTick extends Routine {
                 continue;
             }
 
-            textChannel.ifPresent(channel -> messageSender.sendSafe(new DungeonMessage(dungeon, teams), channel));
+            textChannel.ifPresent(channel -> messageSender.sendSafeDungeonMessage(channel, dungeon, teams));
         }
 
         return new Answer("Dungeon tick.");

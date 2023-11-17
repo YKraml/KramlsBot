@@ -11,8 +11,6 @@ import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import ui.messages.messages.GuessGameEndBuilder;
-import ui.messages.messages.GuessedRight;
-import ui.messages.messages.WonMoney;
 
 public class RoutineGuess extends Routine {
 
@@ -53,8 +51,8 @@ public class RoutineGuess extends Routine {
             player.getInventory().addMoney(wonMoney);
             playerLoader.savePlayer(player);
 
-            messageSender.send(new GuessedRight(player), channel);
-            messageSender.send(new WonMoney(player, wonMoney), channel);
+            messageSender.sendGuessedRight(channel, player);
+            messageSender.sendWonMoney(channel, player, wonMoney);
             messageSender.send(guessGameEndBuilder.createGuessGameEnd(guessingGame), channel);
 
         } else {

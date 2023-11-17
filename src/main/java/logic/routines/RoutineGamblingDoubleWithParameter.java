@@ -7,8 +7,6 @@ import logic.MessageSender;
 import logic.waifu.PlayerLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.user.User;
-import ui.messages.messages.LostMoney;
-import ui.messages.messages.WonMoney;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -36,9 +34,9 @@ public class RoutineGamblingDoubleWithParameter extends Routine {
 
         if (ThreadLocalRandom.current().nextDouble() >= 0.51) {
             player.getInventory().addMoney(bettedMoney * 2L);
-            messageSender.send(new WonMoney(player, bettedMoney), channel);
+            messageSender.sendWonMoney(channel, player, bettedMoney);
         } else {
-            messageSender.send(new LostMoney(player, bettedMoney), channel);
+            messageSender.sendLostMoney(channel, player, bettedMoney);
         }
 
         playerLoader.savePlayer(player);

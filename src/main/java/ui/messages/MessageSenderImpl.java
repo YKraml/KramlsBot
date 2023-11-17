@@ -6,6 +6,7 @@ import domain.exceptions.messages.CouldNotSendMessage;
 import domain.exceptions.messages.CouldNotStartRoutine;
 import domain.waifu.Player;
 import domain.waifu.Waifu;
+import domain.waifu.dungeon.Dungeon;
 import domain.waifu.dungeon.Inventory;
 import domain.waifu.dungeon.Team;
 import logic.MessageSender;
@@ -21,6 +22,7 @@ import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.entity.user.User;
 import ui.messages.messages.*;
 
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class MessageSenderImpl implements MessageSender {
@@ -158,6 +160,41 @@ public class MessageSenderImpl implements MessageSender {
     @Override
     public void sendSafeExceptionHappenedMessage(TextChannel textChannel, MyOwnException e) {
         sendSafe(new ExceptionHappenedMessage(e), textChannel);
+    }
+
+    @Override
+    public void sendWaifusDeleted(TextChannel channel, Player player, int deletedWaifus, int stardust, int cookies) throws MyOwnException {
+        send(new WaifusDeleted(player, deletedWaifus, stardust, cookies), channel);
+    }
+
+    @Override
+    public void sendTeamRenamedMessage(TextChannel channel, Player player, String oldName, String newName) throws MyOwnException {
+        send(new TeamRenamedMessage(player, oldName, newName), channel);
+    }
+
+    @Override
+    public void sendGuessedRight(TextChannel channel, Player player) throws MyOwnException {
+        send(new GuessedRight(player), channel);
+    }
+
+    @Override
+    public void sendWonMoney(TextChannel channel, Player player, long wonMoney) throws MyOwnException {
+        send(new WonMoney(player, wonMoney), channel);
+    }
+
+    @Override
+    public void sendSafeDungeonMessage(TextChannel channel, Dungeon dungeon, List<Team> teams) {
+        sendSafe(new DungeonMessage(dungeon, teams), channel);
+    }
+
+    @Override
+    public void sendLostMoney(TextChannel channel, Player player, long bettedMoney) throws MyOwnException {
+        send(new LostMoney(player, bettedMoney), channel);
+    }
+
+    @Override
+    public void sendGaveMoney(TextChannel channel, Player giverPlayer, Player receiverPlayer, int money) throws MyOwnException {
+        send(new GaveMoney(giverPlayer, receiverPlayer, money), channel);
     }
 
 
