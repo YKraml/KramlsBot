@@ -130,5 +130,35 @@ public class MessageSenderImpl implements MessageSender {
         return send(new FightRequest(user, userEnemy, money, stardust, morphStones), textChannel);
     }
 
+    @Override
+    public void sendGaveWaifu(TextChannel channel, Player senderPlayer, Player receiverPlayer, Waifu waifu) throws MyOwnException {
+        send(new GaveWaifu(senderPlayer, receiverPlayer, waifu), channel);
+    }
+
+    @Override
+    public void sendWaifuNotFound(TextChannel channel, int waifuNumber) throws MyOwnException {
+        send(new WaifuNotFound(waifuNumber), channel);
+    }
+
+    @Override
+    public void sendTimeIsUpMessage(TextChannel channel) throws MyOwnException {
+        send(new TimeIsUpMessage(), channel);
+    }
+
+    @Override
+    public void sendWaifuToClaimWas(TextChannel textChannel, Waifu waifu) throws MyOwnException {
+        send(new WaifuToClaimWas(waifu), textChannel);
+    }
+
+    @Override
+    public void sendWaifuSpawn(TextChannel textChannel, Waifu newWaifu) throws MyOwnException {
+        send(new WaifuSpawn(newWaifu), textChannel);
+    }
+
+    @Override
+    public void sendSafeExceptionHappenedMessage(TextChannel textChannel, MyOwnException e) {
+        sendSafe(new ExceptionHappenedMessage(e), textChannel);
+    }
+
 
 }

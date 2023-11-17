@@ -8,8 +8,6 @@ import logic.MessageSender;
 import logic.waifu.PlayerLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.user.User;
-import ui.messages.messages.GaveWaifu;
-import ui.messages.messages.WaifuNotFound;
 
 public class RoutineGiveWaifu extends Routine {
 
@@ -44,9 +42,9 @@ public class RoutineGiveWaifu extends Routine {
             playerLoader.savePlayer(receiverPlayer);
             playerLoader.savePlayer(senderPlayer);
 
-            messageSender.send(new GaveWaifu(senderPlayer, receiverPlayer, waifu), channel);
+            messageSender.sendGaveWaifu(channel, senderPlayer, receiverPlayer, waifu);
         } else {
-            messageSender.send(new WaifuNotFound(waifuNumber), channel);
+            messageSender.sendWaifuNotFound(channel, waifuNumber);
         }
 
         return new Answer("Someone gave a Waifu away to '%s'".formatted(receiverUser));

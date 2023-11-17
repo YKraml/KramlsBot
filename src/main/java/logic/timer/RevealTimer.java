@@ -6,7 +6,6 @@ import logic.MessageSender;
 import logic.music.guess.GuessingGameManager;
 import org.javacord.api.entity.channel.TextChannel;
 import ui.messages.messages.GuessGameEndBuilder;
-import ui.messages.messages.TimeIsUpMessage;
 
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -50,7 +49,7 @@ public class RevealTimer {
         boolean sameGameIsStillRunning = game.getUrl().equals(url);
         if (sameGameIsStillRunning) {
             guessingGameManager.removeGuessGame(serverId);
-            messageSender.send(new TimeIsUpMessage(), channel);
+            messageSender.sendTimeIsUpMessage(channel);
             messageSender.send(guessGameEndBuilder.createGuessGameEnd(game), channel);
         }
     }

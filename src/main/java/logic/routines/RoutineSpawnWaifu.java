@@ -11,9 +11,6 @@ import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.channel.ServerTextChannel;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
-import ui.messages.messages.ExceptionHappenedMessage;
-import ui.messages.messages.WaifuSpawn;
-import ui.messages.messages.WaifuToClaimWas;
 import util.Terminal;
 
 import java.text.MessageFormat;
@@ -28,9 +25,7 @@ public class RoutineSpawnWaifu extends Routine {
     private final DiscordApi discordApi;
     private final MessageSender messageSender;
 
-    public RoutineSpawnWaifu(ScheduledExecutorService scheduledExecutorService,
-                             WaifuSpawnManager waifuSpawnManager, WaifuBuilder waifuBuilder, DiscordApi discordApi,
-                             MessageSender messageSender) {
+    public RoutineSpawnWaifu(ScheduledExecutorService scheduledExecutorService, WaifuSpawnManager waifuSpawnManager, WaifuBuilder waifuBuilder, DiscordApi discordApi, MessageSender messageSender) {
         this.scheduledExecutorService = scheduledExecutorService;
         this.waifuSpawnManager = waifuSpawnManager;
         this.waifuBuilder = waifuBuilder;
@@ -53,19 +48,18 @@ public class RoutineSpawnWaifu extends Routine {
                 String serverId = server.getIdAsString();
                 Optional<Waifu> waifuOptional = waifuSpawnManager.getWaifu(serverId);
                 if (waifuOptional.isPresent()) {
-                    messageSender.send(new WaifuToClaimWas(waifuOptional.get()), textChannel);
+                    messageSender.sendWaifuToClaimWas(textChannel, waifuOptional.get());
                 }
 
                 Waifu newWaifu = waifuBuilder.createRandomWaifu();
                 waifuSpawnManager.setWaifuToGuess(serverId, newWaifu);
-                messageSender.send(new WaifuSpawn(newWaifu), textChannel);
+                messageSender.sendWaifuSpawn(textChannel, newWaifu);
 
                 String message = "Waifu spawned. Server = ''{0}'', Waifu = ''{1}''";
                 Terminal.printLine(MessageFormat.format(message, server.getName(), newWaifu.getId()));
 
             } catch (MyOwnException e) {
-                messageSender.sendSafe(new ExceptionHappenedMessage(
-                        new MyOwnException(new CouldNotSpawnWaifu(server.getName()), e)), textChannel);
+                messageSender.sendSafeExceptionHappenedMessage(textChannel, new MyOwnException(new CouldNotSpawnWaifu(server.getName()), e));
             }
 
         });

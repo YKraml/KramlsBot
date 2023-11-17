@@ -45,4 +45,16 @@ public interface MessageSender {
     void sendDailyUsed(TextChannel channel, Player player) throws MyOwnException;
 
     Message sendFightRequest(TextChannel textChannel, User user, User userEnemy, long money, long stardust, long morphStones) throws MyOwnException;
+
+    void sendGaveWaifu(TextChannel channel, Player senderPlayer, Player receiverPlayer, Waifu waifu) throws MyOwnException;
+
+    void sendWaifuNotFound(TextChannel channel, int waifuNumber) throws MyOwnException;
+
+    void sendTimeIsUpMessage(TextChannel channel) throws MyOwnException;
+
+    void sendWaifuToClaimWas(TextChannel textChannel, Waifu waifu) throws MyOwnException;
+
+    void sendWaifuSpawn(TextChannel textChannel, Waifu newWaifu) throws MyOwnException;
+
+    void sendSafeExceptionHappenedMessage(TextChannel textChannel, MyOwnException e);
 }
