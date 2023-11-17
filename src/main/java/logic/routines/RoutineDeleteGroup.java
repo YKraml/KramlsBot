@@ -1,12 +1,12 @@
 package logic.routines;
 
 import domain.Answer;
+import domain.GroupLoader;
+import domain.PlayerLoader;
 import domain.exceptions.MyOwnException;
 import domain.exceptions.messages.CouldNotFindGroup;
 import domain.waifu.Group;
 import domain.waifu.Player;
-import loader.GroupLoader;
-import domain.PlayerLoader;
 import org.javacord.api.entity.message.Messageable;
 import org.javacord.api.entity.user.User;
 

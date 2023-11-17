@@ -2,11 +2,11 @@ package ui.commands.group;
 
 import com.google.inject.Inject;
 import domain.Answer;
+import domain.GroupLoader;
+import domain.PlayerLoader;
 import domain.exceptions.MyOwnException;
 import logic.messages.MessageSender;
 import logic.routines.RoutineRemoveFromGroup;
-import loader.GroupLoader;
-import domain.PlayerLoader;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;

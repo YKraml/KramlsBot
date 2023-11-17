@@ -9,18 +9,19 @@ import database.sql.commands.group.SelectGroupsByOwnerId;
 import database.sql.commands.group_waifu.*;
 import database.sql.entry.GroupEntrySet;
 import database.sql.entry.GroupWaifuEntrySet;
+import domain.GroupLoader;
+import domain.WaifuLoader;
 import domain.exceptions.MyOwnException;
 import domain.waifu.Group;
 import domain.waifu.Player;
 import domain.waifu.Waifu;
-import domain.WaifuLoader;
 
 import javax.inject.Singleton;
 import java.util.*;
 
 
 @Singleton
-public final class GroupLoader {
+public final class GroupLoaderSql implements GroupLoader {
 
     private final Collection<Group> groupCache;
     private final WaifuLoader waifuLoader;
@@ -28,12 +29,13 @@ public final class GroupLoader {
 
 
     @Inject
-    public GroupLoader(WaifuLoader waifuLoader, SQLCommandExecutor sqlCommandExecutor) {
+    public GroupLoaderSql(WaifuLoader waifuLoader, SQLCommandExecutor sqlCommandExecutor) {
         this.waifuLoader = waifuLoader;
         this.sqlCommandExecutor = sqlCommandExecutor;
         groupCache = Collections.synchronizedSet(new HashSet<>());
     }
 
+    @Override
     public void saveGroup(Group group, Player owner) throws MyOwnException {
 
         if (!sqlCommandExecutor.execute(new GroupExistst(group))) {
@@ -49,16 +51,19 @@ public final class GroupLoader {
 
     }
 
+    @Override
     public void deleteGroup(Group group) throws MyOwnException {
         this.groupCache.remove(group);
         sqlCommandExecutor.execute(new DeleteAllWaifusFromGroup(group));
         sqlCommandExecutor.execute(new DeleteGroup(group));
     }
 
+    @Override
     public void deleteWaifuFromGroup(Group group, Waifu waifu) throws MyOwnException {
         sqlCommandExecutor.execute(new DeleteWaifuFromGroup(group, waifu));
     }
 
+    @Override
     public List<Group> getGroupsFromPlayer(Player player) throws MyOwnException {
         List<Group> groupList = new ArrayList<>();
 

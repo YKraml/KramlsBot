@@ -16,6 +16,7 @@ import database.sql.entry.TimeEntrySet;
 import database.sql.entry.UserEntrySet;
 import database.sql.mapper.LikedSongMapper;
 import database.sql.mapper.PlayerMapper;
+import domain.GroupLoader;
 import domain.PlayerLoader;
 import domain.TeamLoader;
 import domain.WaifuLoader;
