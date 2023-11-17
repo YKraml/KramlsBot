@@ -15,6 +15,7 @@ import logic.waifu.PlayerLoader;
 import logic.waifu.WaifuLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.message.Message;
+import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 
 import java.util.List;
@@ -82,4 +83,10 @@ public interface MessageSender {
     void sendGuessedWrong(TextChannel channel, Player player) throws MyOwnException;
 
     void sendGroupCreated(TextChannel channel, String groupName) throws MyOwnException;
+
+    void sendLikedSongs(TextChannel channel, Player player, Server server, User user, PlayerLoader playerLoader, MessageSender messageSender, MusicPlayerManager musicPlayerManager) throws MyOwnException;
+
+    void sendDungeonCreatedMessage(TextChannel channel, Dungeon dungeon) throws MyOwnException;
+
+    void sendWaifuList(TextChannel channel, Player player, MessageSender messageSender, PlayerLoader playerLoader, WaifuLoader waifuLoader, JikanFetcher jikanFetcher) throws MyOwnException;
 }

@@ -9,7 +9,6 @@ import logic.waifu.PlayerLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
-import ui.messages.messages.LikedSongs;
 
 public class RoutineShowSongs extends Routine {
 
@@ -33,8 +32,8 @@ public class RoutineShowSongs extends Routine {
     @Override
     Answer start(RoutineRunner routineRunner) throws MyOwnException {
         Player player = playerLoader.getPlayerByUser(user);
-        messageSender.send(new LikedSongs(player, server, user, playerLoader,
-                messageSender, musicPlayerManager), channel);
+        messageSender.sendLikedSongs(channel, player, server, user, playerLoader,
+                messageSender, musicPlayerManager);
 
         return new Answer("Someone showed his liked songs");
     }

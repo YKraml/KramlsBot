@@ -9,7 +9,6 @@ import logic.waifu.PlayerLoader;
 import logic.waifu.WaifuLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.user.User;
-import ui.messages.messages.WaifuList;
 
 public class RoutineShowWaifuList extends Routine {
 
@@ -33,7 +32,7 @@ public class RoutineShowWaifuList extends Routine {
     @Override
     Answer start(RoutineRunner routineRunner) throws MyOwnException {
         Player player = playerLoader.getPlayerByUser(user);
-        messageSender.send(new WaifuList(player, messageSender, playerLoader, waifuLoader, jikanFetcher), channel);
+        messageSender.sendWaifuList(channel, player, messageSender, playerLoader, waifuLoader, jikanFetcher);
 
         return new Answer("Someone showed his animeList");
     }

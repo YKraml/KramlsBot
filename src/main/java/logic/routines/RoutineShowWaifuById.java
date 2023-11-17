@@ -8,7 +8,6 @@ import logic.waifu.JikanFetcher;
 import logic.waifu.PlayerLoader;
 import logic.waifu.WaifuLoader;
 import org.javacord.api.entity.channel.TextChannel;
-import ui.messages.messages.WaifuStats;
 
 public class RoutineShowWaifuById extends Routine {
 
@@ -20,9 +19,7 @@ public class RoutineShowWaifuById extends Routine {
     private final MessageSender messageSender;
     private final TextChannel channel;
 
-    public RoutineShowWaifuById(Player player, int index, PlayerLoader playerLoader,
-                                WaifuLoader waifuLoader, JikanFetcher jikanFetcher, MessageSender messageSender,
-                                TextChannel channel) {
+    public RoutineShowWaifuById(Player player, int index, PlayerLoader playerLoader, WaifuLoader waifuLoader, JikanFetcher jikanFetcher, MessageSender messageSender, TextChannel channel) {
         this.player = player;
         this.index = index;
         this.playerLoader = playerLoader;
@@ -35,11 +32,9 @@ public class RoutineShowWaifuById extends Routine {
     @Override
     Answer start(RoutineRunner routineRunner) throws MyOwnException {
         if (player.getWaifuList().size() >= index) {
-            messageSender.send(new WaifuStats(player.getWaifuList().get(index), player, playerLoader,
-                    waifuLoader, jikanFetcher, messageSender), channel);
+            messageSender.sendWaifuStats(channel, player.getWaifuList().get(index), player, playerLoader, waifuLoader, jikanFetcher, messageSender);
         } else {
-            channel.sendMessage(
-                    "Die Zahl muss zwischen " + 0 + " und " + (player.getWaifuList().size() - 1) + " sein.");
+            channel.sendMessage("Die Zahl muss zwischen " + 0 + " und " + (player.getWaifuList().size() - 1) + " sein.");
         }
 
         return new Answer("Someone showed a Waifu.");

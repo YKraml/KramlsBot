@@ -8,7 +8,6 @@ import logic.waifu.DungeonLoader;
 import org.javacord.api.entity.channel.ServerTextChannel;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
-import ui.messages.messages.DungeonCreatedMessage;
 
 public class RoutineCreateDungeon extends Routine {
 
@@ -44,7 +43,7 @@ public class RoutineCreateDungeon extends Routine {
 
             dungeonLoader.createDungeon(dungeon);
 
-            messageSender.send(new DungeonCreatedMessage(dungeon), channel);
+            messageSender.sendDungeonCreatedMessage(channel, dungeon);
             return new Answer("Dungeon wurde erstellt. Dungeon = " + dungeon);
 
         } catch (MyOwnException e) {

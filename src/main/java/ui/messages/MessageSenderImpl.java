@@ -21,6 +21,7 @@ import logic.waifu.WaifuLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
+import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import ui.messages.messages.*;
 
@@ -212,6 +213,21 @@ public class MessageSenderImpl implements MessageSender {
     @Override
     public void sendGroupCreated(TextChannel channel, String groupName) throws MyOwnException {
         send(new GroupCreated(groupName), channel);
+    }
+
+    @Override
+    public void sendLikedSongs(TextChannel channel, Player player, Server server, User user, PlayerLoader playerLoader, MessageSender messageSender, MusicPlayerManager musicPlayerManager) throws MyOwnException {
+        send(new LikedSongs(player, server, user, playerLoader, messageSender, musicPlayerManager), channel);
+    }
+
+    @Override
+    public void sendDungeonCreatedMessage(TextChannel channel, Dungeon dungeon) throws MyOwnException {
+        send(new DungeonCreatedMessage(dungeon), channel);
+    }
+
+    @Override
+    public void sendWaifuList(TextChannel channel, Player player, MessageSender messageSender, PlayerLoader playerLoader, WaifuLoader waifuLoader, JikanFetcher jikanFetcher) throws MyOwnException {
+        send(new WaifuList(player, messageSender, playerLoader, waifuLoader, jikanFetcher), channel);
     }
 
 
