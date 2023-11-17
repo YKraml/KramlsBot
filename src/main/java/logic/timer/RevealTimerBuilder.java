@@ -6,7 +6,7 @@ import logic.messages.MessageSender;
 import org.javacord.api.entity.channel.TextChannel;
 
 import java.util.concurrent.ScheduledExecutorService;
-import ui.reaction.AnimeInfoReactionListenerBuilder;
+import logic.AnimeInfoReactionListenerBuilder;
 
 public class RevealTimerBuilder {
 

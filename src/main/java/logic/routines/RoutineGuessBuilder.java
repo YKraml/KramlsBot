@@ -7,7 +7,7 @@ import domain.PlayerLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
-import ui.reaction.AnimeInfoReactionListenerBuilder;
+import logic.AnimeInfoReactionListenerBuilder;
 
 public class RoutineGuessBuilder {
 

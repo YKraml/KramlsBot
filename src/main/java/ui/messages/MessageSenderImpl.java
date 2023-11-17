@@ -29,7 +29,7 @@ import ui.messages.messages.*;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import ui.reaction.AnimeInfoReactionListenerBuilder;
+import logic.AnimeInfoReactionListenerBuilder;
 
 public class MessageSenderImpl implements MessageSender {
 

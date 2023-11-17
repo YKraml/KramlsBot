@@ -21,7 +21,7 @@ import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 
 import java.util.List;
-import ui.reaction.AnimeInfoReactionListenerBuilder;
+import logic.AnimeInfoReactionListenerBuilder;
 
 public interface MessageSender {
 

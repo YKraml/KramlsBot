@@ -10,6 +10,7 @@ import domain.PlayerLoader;
 import domain.TeamLoader;
 import domain.WaifuLoader;
 import loader.*;
+import logic.AnimeInfoReactionListenerBuilder;
 import logic.MusicPlayerManager;
 import logic.waifu.GuessingGameManager;
 import logic.waifu.GuessingGameManagerImpl;
@@ -44,6 +45,7 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
+import ui.reaction.AnimeInfoReactionListenerBuilderImpl;
 
 public class GuiceModule extends AbstractModule {
 
@@ -57,6 +59,7 @@ public class GuiceModule extends AbstractModule {
         bind(GuessingGameManager.class).to(GuessingGameManagerImpl.class);
         bind(GroupLoader.class).to(GroupLoaderSql.class);
         bind(MusicPlayerManager.class).to(MusicPlayerManagerImpl.class);
+        bind(AnimeInfoReactionListenerBuilder.class).to(AnimeInfoReactionListenerBuilderImpl.class);
 
     }
 

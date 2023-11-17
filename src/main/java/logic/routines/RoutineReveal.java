@@ -7,7 +7,7 @@ import logic.waifu.GuessingGameManager;
 import logic.messages.MessageSender;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
-import ui.reaction.AnimeInfoReactionListenerBuilder;
+import logic.AnimeInfoReactionListenerBuilder;
 
 public class RoutineReveal extends Routine {
 
