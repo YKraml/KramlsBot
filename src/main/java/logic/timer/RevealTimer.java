@@ -5,7 +5,6 @@ import domain.exceptions.MyOwnException;
 import logic.MessageSender;
 import logic.music.guess.GuessingGameManager;
 import org.javacord.api.entity.channel.TextChannel;
-import ui.messages.messages.GuessGameEndBuilder;
 
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -14,18 +13,14 @@ public class RevealTimer {
 
     private final GuessingGameManager guessingGameManager;
     private final MessageSender messageSender;
-    private final GuessGameEndBuilder guessGameEndBuilder;
     private final String serverId;
     private final String url;
     private final TextChannel channel;
     private final ScheduledExecutorService scheduledExecutorService;
 
-    public RevealTimer(GuessingGameManager guessingGameManager, MessageSender messageSender,
-                       GuessGameEndBuilder guessGameEndBuilder, String serverId, String url, TextChannel channel,
-                       ScheduledExecutorService scheduledExecutorService) {
+    public RevealTimer(GuessingGameManager guessingGameManager, MessageSender messageSender, String serverId, String url, TextChannel channel, ScheduledExecutorService scheduledExecutorService) {
         this.guessingGameManager = guessingGameManager;
         this.messageSender = messageSender;
-        this.guessGameEndBuilder = guessGameEndBuilder;
         this.serverId = serverId;
         this.url = url;
         this.channel = channel;
@@ -50,7 +45,7 @@ public class RevealTimer {
         if (sameGameIsStillRunning) {
             guessingGameManager.removeGuessGame(serverId);
             messageSender.sendTimeIsUpMessage(channel);
-            messageSender.send(guessGameEndBuilder.createGuessGameEnd(game), channel);
+            messageSender.sendGuessGameEnd(channel, game);
         }
     }
 

@@ -9,7 +9,6 @@ import logic.waifu.PlayerLoader;
 import logic.waifu.WaifuLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.user.User;
-import ui.messages.messages.WaifusDeleted;
 
 import java.util.Collection;
 import java.util.LinkedList;
@@ -24,8 +23,7 @@ public class RoutineDeleteWaifusFromTo extends Routine {
     private final MessageSender messageSender;
     private final TextChannel channel;
 
-    public RoutineDeleteWaifusFromTo(User user, int from, int to, WaifuLoader waifuLoader,
-                                     PlayerLoader playerLoader, MessageSender messageSender, TextChannel channel) {
+    public RoutineDeleteWaifusFromTo(User user, int from, int to, WaifuLoader waifuLoader, PlayerLoader playerLoader, MessageSender messageSender, TextChannel channel) {
         this.user = user;
         this.from = from;
         this.to = to;
@@ -61,7 +59,7 @@ public class RoutineDeleteWaifusFromTo extends Routine {
         player.getInventory().addStardust(stardust);
         playerLoader.savePlayer(player);
 
-        messageSender.send(new WaifusDeleted(player, deletedWaifus, stardust, cookies), channel);
+        messageSender.sendWaifusDeleted(channel, player, deletedWaifus, stardust, cookies);
 
         return new Answer("Someone deleted a Waifu");
     }

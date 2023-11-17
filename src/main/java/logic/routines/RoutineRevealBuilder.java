@@ -5,25 +5,21 @@ import logic.MessageSender;
 import logic.music.guess.GuessingGameManager;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
-import ui.messages.messages.GuessGameEndBuilder;
 
 public class RoutineRevealBuilder {
 
 
     private final GuessingGameManager guessingGameManager;
     private final MessageSender messageSender;
-    private final GuessGameEndBuilder guessGameEndBuilder;
 
     @Inject
-    public RoutineRevealBuilder(GuessingGameManager guessingGameManager, MessageSender messageSender,
-                                GuessGameEndBuilder guessGameEndBuilder) {
+    public RoutineRevealBuilder(GuessingGameManager guessingGameManager, MessageSender messageSender) {
         this.guessingGameManager = guessingGameManager;
         this.messageSender = messageSender;
-        this.guessGameEndBuilder = guessGameEndBuilder;
     }
 
     public RoutineReveal createRoutineReveal(Server server, TextChannel channel) {
-        return new RoutineReveal(server, channel, guessingGameManager, messageSender,
-                guessGameEndBuilder);
+        return new RoutineReveal(server, channel, guessingGameManager, messageSender
+        );
     }
 }

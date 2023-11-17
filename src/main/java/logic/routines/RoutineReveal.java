@@ -7,7 +7,6 @@ import logic.MessageSender;
 import logic.music.guess.GuessingGameManager;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
-import ui.messages.messages.GuessGameEndBuilder;
 
 public class RoutineReveal extends Routine {
 
@@ -15,20 +14,18 @@ public class RoutineReveal extends Routine {
     private final Server server;
     private final GuessingGameManager guessingGameManager;
     private final MessageSender messageSender;
-    private final GuessGameEndBuilder guessGameEndBuilder;
 
-    public RoutineReveal(Server server, TextChannel channel, GuessingGameManager guessingGameManager, MessageSender messageSender, GuessGameEndBuilder guessGameEndBuilder) {
+    public RoutineReveal(Server server, TextChannel channel, GuessingGameManager guessingGameManager, MessageSender messageSender) {
         this.server = server;
         this.channel = channel;
         this.guessingGameManager = guessingGameManager;
         this.messageSender = messageSender;
-        this.guessGameEndBuilder = guessGameEndBuilder;
     }
 
     @Override
     Answer start(RoutineRunner routineRunner) throws MyOwnException {
         GuessingGame game = guessingGameManager.getGuessingGameByServer(server.getIdAsString());
-        messageSender.send(guessGameEndBuilder.createGuessGameEnd(game), channel);
+        messageSender.sendGuessGameEnd(channel, game);
         guessingGameManager.removeGuessGame(server.getIdAsString());
         return new Answer("Guessing game was terminated");
     }
