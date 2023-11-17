@@ -16,7 +16,7 @@ import org.javacord.api.entity.user.User;
 import ui.embeds.waifu.WaifuListEmbed;
 import ui.messages.messages.WaifuNotFound;
 import ui.messages.messages.WaifuStats;
-import util.Emojis;
+import domain.Emojis;
 
 import java.util.Comparator;
 

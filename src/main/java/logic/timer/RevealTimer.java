@@ -8,6 +8,7 @@ import org.javacord.api.entity.channel.TextChannel;
 
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import ui.reaction.AnimeInfoReactionListenerBuilder;
 
 public class RevealTimer {
 
@@ -17,14 +18,17 @@ public class RevealTimer {
     private final String url;
     private final TextChannel channel;
     private final ScheduledExecutorService scheduledExecutorService;
+    private final AnimeInfoReactionListenerBuilder animeInfoReactionListenerBuilder;
 
-    public RevealTimer(GuessingGameManager guessingGameManager, MessageSender messageSender, String serverId, String url, TextChannel channel, ScheduledExecutorService scheduledExecutorService) {
+    public RevealTimer(GuessingGameManager guessingGameManager, MessageSender messageSender, String serverId, String url, TextChannel channel, ScheduledExecutorService scheduledExecutorService,
+        AnimeInfoReactionListenerBuilder animeInfoReactionListenerBuilder) {
         this.guessingGameManager = guessingGameManager;
         this.messageSender = messageSender;
         this.serverId = serverId;
         this.url = url;
         this.channel = channel;
         this.scheduledExecutorService = scheduledExecutorService;
+        this.animeInfoReactionListenerBuilder = animeInfoReactionListenerBuilder;
     }
 
     public void startTimer() {
@@ -45,7 +49,7 @@ public class RevealTimer {
         if (sameGameIsStillRunning) {
             guessingGameManager.removeGuessGame(serverId);
             messageSender.sendTimeIsUpMessage(channel);
-            messageSender.sendGuessGameEnd(channel, game);
+            messageSender.sendGuessGameEnd(channel, game, animeInfoReactionListenerBuilder);
         }
     }
 

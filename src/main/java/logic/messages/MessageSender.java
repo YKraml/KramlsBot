@@ -21,6 +21,7 @@ import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 
 import java.util.List;
+import ui.reaction.AnimeInfoReactionListenerBuilder;
 
 public interface MessageSender {
 
@@ -92,7 +93,8 @@ public interface MessageSender {
 
     void sendWaifuList(TextChannel channel, Player player, MessageSender messageSender, PlayerLoader playerLoader, WaifuLoader waifuLoader, JikanFetcher jikanFetcher) throws MyOwnException;
 
-    void sendGuessGameEnd(TextChannel channel, GuessingGame guessingGame) throws MyOwnException;
+    void sendGuessGameEnd(TextChannel channel, GuessingGame guessingGame,
+        AnimeInfoReactionListenerBuilder animeInfoReactionListenerBuilder) throws MyOwnException;
 
     void sendGroupOverview(TextChannel channel, Group group, Player player, PlayerLoader playerLoader, WaifuLoader waifuLoader, JikanFetcher jikanFetcher, MessageSender messageSender) throws MyOwnException;
 }

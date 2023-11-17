@@ -8,7 +8,7 @@ import org.javacord.api.entity.emoji.Emoji;
 import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
-import util.Emojis;
+import domain.Emojis;
 
 import java.util.List;
 

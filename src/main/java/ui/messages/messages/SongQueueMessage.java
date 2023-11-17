@@ -10,7 +10,7 @@ import org.javacord.api.entity.message.embed.EmbedBuilder;
 import ui.embeds.music.QueueEmbed;
 import ui.messages.MyMessageAbs;
 import ui.reaction.QueueListener;
-import util.Emojis;
+import domain.Emojis;
 
 public class SongQueueMessage extends MyMessageAbs {
 

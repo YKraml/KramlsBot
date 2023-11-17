@@ -27,19 +27,12 @@ import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 import ui.messages.messages.*;
 
-import javax.inject.Inject;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import ui.reaction.AnimeInfoReactionListenerBuilder;
 
 public class MessageSenderImpl implements MessageSender {
 
-
-    private final GuessGameEndBuilder guessGameEndBuilder;
-
-    @Inject
-    public MessageSenderImpl(GuessGameEndBuilder guessGameEndBuilder) {
-        this.guessGameEndBuilder = guessGameEndBuilder;
-    }
 
     @Override
     public Message send(MyMessage myMessage, TextChannel textChannel) throws MyOwnException {
@@ -241,8 +234,9 @@ public class MessageSenderImpl implements MessageSender {
     }
 
     @Override
-    public void sendGuessGameEnd(TextChannel channel, GuessingGame guessingGame) throws MyOwnException {
-        send(guessGameEndBuilder.createGuessGameEnd(guessingGame), channel);
+    public void sendGuessGameEnd(TextChannel channel, GuessingGame guessingGame,
+        AnimeInfoReactionListenerBuilder animeInfoReactionListenerBuilder) throws MyOwnException {
+        send(new GuessGameEnd(guessingGame, animeInfoReactionListenerBuilder), channel);
     }
 
     @Override

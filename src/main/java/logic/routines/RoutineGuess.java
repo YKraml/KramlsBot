@@ -10,6 +10,7 @@ import domain.PlayerLoader;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
+import ui.reaction.AnimeInfoReactionListenerBuilder;
 
 public class RoutineGuess extends Routine {
 
@@ -20,8 +21,10 @@ public class RoutineGuess extends Routine {
     private final GuessingGameManager guessingGameManager;
     private final PlayerLoader playerLoader;
     private final MessageSender messageSender;
+    private final AnimeInfoReactionListenerBuilder animeInfoReactionListenerBuilder;
 
-    public RoutineGuess(Server server, TextChannel channel, User user, String guess, GuessingGameManager guessingGameManager, PlayerLoader playerLoader, MessageSender messageSender) {
+    public RoutineGuess(Server server, TextChannel channel, User user, String guess, GuessingGameManager guessingGameManager, PlayerLoader playerLoader, MessageSender messageSender,
+        AnimeInfoReactionListenerBuilder animeInfoReactionListenerBuilder) {
         this.server = server;
         this.channel = channel;
         this.user = user;
@@ -29,6 +32,7 @@ public class RoutineGuess extends Routine {
         this.guessingGameManager = guessingGameManager;
         this.playerLoader = playerLoader;
         this.messageSender = messageSender;
+        this.animeInfoReactionListenerBuilder = animeInfoReactionListenerBuilder;
     }
 
     @Override
@@ -47,7 +51,7 @@ public class RoutineGuess extends Routine {
 
             messageSender.sendGuessedRight(channel, player);
             messageSender.sendWonMoney(channel, player, wonMoney);
-            messageSender.sendGuessGameEnd(channel, guessingGame);
+            messageSender.sendGuessGameEnd(channel, guessingGame, animeInfoReactionListenerBuilder);
 
         } else {
             channel.sendMessage(player.getNameTag() + ", du lagst falsch!");

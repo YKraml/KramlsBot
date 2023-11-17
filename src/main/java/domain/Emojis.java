@@ -1,4 +1,4 @@
-package util;
+package domain;
 
 import com.vdurmont.emoji.EmojiParser;
 

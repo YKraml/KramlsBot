@@ -14,7 +14,7 @@ import org.javacord.api.entity.user.User;
 import org.javacord.api.listener.message.reaction.ReactionAddListener;
 import ui.messages.messages.AnimeEndingsBuilder;
 import ui.messages.messages.AnimeOpeningsBuilder;
-import util.Emojis;
+import domain.Emojis;
 
 public class AnimeOpeningEndingReactionListener extends MyAbstractReactionListener implements
         ReactionAddListener {

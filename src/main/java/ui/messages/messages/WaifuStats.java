@@ -12,7 +12,7 @@ import org.javacord.api.entity.message.embed.EmbedBuilder;
 import ui.embeds.waifu.WaifuEmbed;
 import ui.messages.MyMessageAbs;
 import ui.reaction.WaifuEditListener;
-import util.Emojis;
+import domain.Emojis;
 
 public class WaifuStats extends MyMessageAbs {
 

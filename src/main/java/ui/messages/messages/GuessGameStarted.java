@@ -8,7 +8,7 @@ import org.javacord.api.entity.message.embed.EmbedBuilder;
 import ui.embeds.guess.GuessStartEmbed;
 import ui.messages.MyMessageAbs;
 import ui.reaction.StartGuessingGameListener;
-import util.Emojis;
+import domain.Emojis;
 
 public class GuessGameStarted extends MyMessageAbs {
 

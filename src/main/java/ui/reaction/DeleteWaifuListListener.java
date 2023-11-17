@@ -15,7 +15,7 @@ import ui.embeds.waifu.DeleteWaifuListEmbed;
 import ui.messages.messages.ButtonNotForYou;
 import ui.messages.messages.WaifuDeleted;
 import ui.messages.messages.WaifuNotFound;
-import util.Emojis;
+import domain.Emojis;
 
 public class DeleteWaifuListListener extends MyAbstractListListener<Waifu> {
 

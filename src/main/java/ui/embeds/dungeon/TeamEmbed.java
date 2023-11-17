@@ -4,7 +4,7 @@ import domain.waifu.Waifu;
 import domain.waifu.dungeon.Team;
 import domain.waifu.fighting.Fighter;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
-import util.Emojis;
+import domain.Emojis;
 import util.Main;
 
 public class TeamEmbed extends EmbedBuilder {

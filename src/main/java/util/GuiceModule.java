@@ -5,16 +5,19 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import database.sql.ConnectionPool;
 import domain.DungeonLoader;
+import domain.GroupLoader;
 import domain.PlayerLoader;
 import domain.TeamLoader;
 import domain.WaifuLoader;
 import loader.*;
+import logic.MusicPlayerManager;
 import logic.waifu.GuessingGameManager;
 import logic.waifu.GuessingGameManagerImpl;
 import logic.messages.MessageSender;
 import logic.routines.RoutineRunner;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.DiscordApiBuilder;
+import ui.audio.MusicPlayerManagerImpl;
 import ui.commands.ACommand;
 import ui.commands.dungeon.CreateDungeon;
 import ui.commands.dungeon.DeleteDungeons;
@@ -52,6 +55,9 @@ public class GuiceModule extends AbstractModule {
         bind(TeamLoader.class).to(TeamLoaderSql.class);
         bind(MessageSender.class).to(MessageSenderImpl.class);
         bind(GuessingGameManager.class).to(GuessingGameManagerImpl.class);
+        bind(GroupLoader.class).to(GroupLoaderSql.class);
+        bind(MusicPlayerManager.class).to(MusicPlayerManagerImpl.class);
+
     }
 
     @Provides

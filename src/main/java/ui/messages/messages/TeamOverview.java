@@ -12,7 +12,7 @@ import org.javacord.api.entity.message.embed.EmbedBuilder;
 import ui.embeds.dungeon.TeamEmbed;
 import ui.messages.MyMessageAbs;
 import ui.reaction.TeamEditListener;
-import util.Emojis;
+import domain.Emojis;
 
 public class TeamOverview extends MyMessageAbs {
 

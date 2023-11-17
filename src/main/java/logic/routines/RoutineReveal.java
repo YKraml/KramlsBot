@@ -7,6 +7,7 @@ import logic.waifu.GuessingGameManager;
 import logic.messages.MessageSender;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.server.Server;
+import ui.reaction.AnimeInfoReactionListenerBuilder;
 
 public class RoutineReveal extends Routine {
 
@@ -14,18 +15,21 @@ public class RoutineReveal extends Routine {
     private final Server server;
     private final GuessingGameManager guessingGameManager;
     private final MessageSender messageSender;
+    private final AnimeInfoReactionListenerBuilder animeInfoReactionListenerBuilder;
 
-    public RoutineReveal(Server server, TextChannel channel, GuessingGameManager guessingGameManager, MessageSender messageSender) {
+    public RoutineReveal(Server server, TextChannel channel, GuessingGameManager guessingGameManager, MessageSender messageSender,
+        AnimeInfoReactionListenerBuilder animeInfoReactionListenerBuilder) {
         this.server = server;
         this.channel = channel;
         this.guessingGameManager = guessingGameManager;
         this.messageSender = messageSender;
+        this.animeInfoReactionListenerBuilder = animeInfoReactionListenerBuilder;
     }
 
     @Override
     Answer start(RoutineRunner routineRunner) throws MyOwnException {
         GuessingGame game = guessingGameManager.getGuessingGameByServer(server.getIdAsString());
-        messageSender.sendGuessGameEnd(channel, game);
+        messageSender.sendGuessGameEnd(channel, game, animeInfoReactionListenerBuilder);
         guessingGameManager.removeGuessGame(server.getIdAsString());
         return new Answer("Guessing game was terminated");
     }
