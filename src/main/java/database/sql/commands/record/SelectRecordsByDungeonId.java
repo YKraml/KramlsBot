@@ -6,15 +6,17 @@ import domain.waifu.dungeon.Dungeon;
 
 public class SelectRecordsByDungeonId extends SQLCommandWithResult<RecordEntrySet> {
 
-    private final Dungeon dungeon;
+  private final Dungeon dungeon;
 
-    public SelectRecordsByDungeonId(Dungeon dungeon) {
-        super(new RecordEntrySet());
-        this.dungeon = dungeon;
-    }
+  public SelectRecordsByDungeonId(Dungeon dungeon) {
+    super(new RecordEntrySet());
+    this.dungeon = dungeon;
+  }
 
-    @Override
-    protected String getCommand() {
-        return "select * from KRAMLSBOT.RECORD left join KRAMLSBOT.TEAM on TEAM.id like teamID where dungeonID like " + dungeon.getChannelId() + ";";
-    }
+  @Override
+  protected String getCommand() {
+    return
+        "select * from KRAMLSBOT.RECORD left join KRAMLSBOT.TEAM on TEAM.id like teamID where dungeonID like "
+            + dungeon.getChannelId() + ";";
+  }
 }

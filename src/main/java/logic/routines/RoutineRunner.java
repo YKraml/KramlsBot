@@ -5,8 +5,8 @@ import domain.exceptions.MyOwnException;
 
 public class RoutineRunner {
 
-    public Answer start(Routine routine) throws MyOwnException {
-        return routine.start(this);
-    }
+  public Answer start(Routine routine) throws MyOwnException {
+    return routine.start(this);
+  }
 
 }

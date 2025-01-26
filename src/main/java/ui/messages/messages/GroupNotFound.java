@@ -7,13 +7,13 @@ import ui.messages.MyMessageAbs;
 
 public class GroupNotFound extends MyMessageAbs {
 
-    @Override
-    public void startRoutine(Message message) throws MyOwnException {
-        //Ignore.
-    }
+  @Override
+  public void startRoutine(Message message) throws MyOwnException {
+    //Ignore.
+  }
 
-    @Override
-    public EmbedBuilder getContent() throws MyOwnException {
-        return this.convertStringToEmbed("Konnte die Gruppe  nicht finden.");
-    }
+  @Override
+  public EmbedBuilder getContent() throws MyOwnException {
+    return this.convertStringToEmbed("Konnte die Gruppe  nicht finden.");
+  }
 }

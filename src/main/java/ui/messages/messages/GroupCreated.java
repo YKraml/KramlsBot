@@ -7,19 +7,19 @@ import ui.messages.MyMessageAbs;
 
 public class GroupCreated extends MyMessageAbs {
 
-    private final String groupName;
+  private final String groupName;
 
-    public GroupCreated(String groupName) {
-        this.groupName = groupName;
-    }
+  public GroupCreated(String groupName) {
+    this.groupName = groupName;
+  }
 
-    @Override
-    public void startRoutine(Message message) throws MyOwnException {
-        //Ignore.
-    }
+  @Override
+  public void startRoutine(Message message) throws MyOwnException {
+    //Ignore.
+  }
 
-    @Override
-    public EmbedBuilder getContent() throws MyOwnException {
-        return this.convertStringToEmbed("Gruppe '%s' erstellt.".formatted(groupName));
-    }
+  @Override
+  public EmbedBuilder getContent() throws MyOwnException {
+    return this.convertStringToEmbed("Gruppe '%s' erstellt.".formatted(groupName));
+  }
 }

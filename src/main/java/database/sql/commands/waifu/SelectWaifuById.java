@@ -5,19 +5,19 @@ import database.sql.entry.WaifuEntrySet;
 
 public class SelectWaifuById extends SQLCommandWithResult<WaifuEntrySet> {
 
-    private final String waifuId;
+  private final String waifuId;
 
-    public SelectWaifuById(String waifuId) {
-        super(new WaifuEntrySet());
-        this.waifuId = waifuId;
-    }
+  public SelectWaifuById(String waifuId) {
+    super(new WaifuEntrySet());
+    this.waifuId = waifuId;
+  }
 
-    @Override
-    protected String getCommand() {
-        return "select * from "
-                + ("KRAMLSBOT" + "." + "WAIFU")
-                + " where id like "
-                + "'" + waifuId + "'"
-                + ";";
-    }
+  @Override
+  protected String getCommand() {
+    return "select * from "
+        + ("KRAMLSBOT" + "." + "WAIFU")
+        + " where id like "
+        + "'" + waifuId + "'"
+        + ";";
+  }
 }

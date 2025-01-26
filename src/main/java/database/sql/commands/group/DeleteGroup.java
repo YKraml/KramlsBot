@@ -5,14 +5,14 @@ import domain.waifu.Group;
 
 public class DeleteGroup extends SQLCommandWithoutResult {
 
-    private final Group group;
+  private final Group group;
 
-    public DeleteGroup(Group group) {
-        this.group = group;
-    }
+  public DeleteGroup(Group group) {
+    this.group = group;
+  }
 
-    @Override
-    protected String getCommand() {
-        return "delete from KRAMLSBOT.GROUP where id like " + group.getId() + ";";
-    }
+  @Override
+  protected String getCommand() {
+    return "delete from KRAMLSBOT.GROUP where id like " + group.getId() + ";";
+  }
 }

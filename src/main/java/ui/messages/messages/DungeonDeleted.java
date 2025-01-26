@@ -8,19 +8,19 @@ import ui.messages.MyMessageAbs;
 
 public class DungeonDeleted extends MyMessageAbs {
 
-    private final Dungeon dungeon;
+  private final Dungeon dungeon;
 
-    public DungeonDeleted(Dungeon dungeonToDelete) {
-        dungeon = dungeonToDelete;
-    }
+  public DungeonDeleted(Dungeon dungeonToDelete) {
+    dungeon = dungeonToDelete;
+  }
 
-    @Override
-    public void startRoutine(Message message) throws MyOwnException {
-        //Ignore.
-    }
+  @Override
+  public void startRoutine(Message message) throws MyOwnException {
+    //Ignore.
+  }
 
-    @Override
-    public EmbedBuilder getContent() throws MyOwnException {
-        return this.convertStringToEmbed("Dungeon '%s' wurde gelöscht.".formatted(dungeon.getName()));
-    }
+  @Override
+  public EmbedBuilder getContent() throws MyOwnException {
+    return this.convertStringToEmbed("Dungeon '%s' wurde gelöscht.".formatted(dungeon.getName()));
+  }
 }

@@ -6,13 +6,14 @@ import org.javacord.api.entity.message.embed.EmbedBuilder;
 import ui.messages.MyMessageAbs;
 
 public class NoMatchForSongMessage extends MyMessageAbs {
-    @Override
-    public void startRoutine(Message message) throws MyOwnException {
-        //Do Nothing
-    }
 
-    @Override
-    public EmbedBuilder getContent() throws MyOwnException {
-        return convertStringToEmbed("Kein Treffer für die Url.");
-    }
+  @Override
+  public void startRoutine(Message message) throws MyOwnException {
+    //Do Nothing
+  }
+
+  @Override
+  public EmbedBuilder getContent() throws MyOwnException {
+    return convertStringToEmbed("Kein Treffer für die Url.");
+  }
 }

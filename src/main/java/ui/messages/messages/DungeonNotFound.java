@@ -7,20 +7,20 @@ import ui.messages.MyMessageAbs;
 
 public class DungeonNotFound extends MyMessageAbs {
 
-    private final int listPosition;
+  private final int listPosition;
 
-    public DungeonNotFound(int listPosition) {
-        this.listPosition = listPosition;
-    }
+  public DungeonNotFound(int listPosition) {
+    this.listPosition = listPosition;
+  }
 
-    @Override
-    public void startRoutine(Message message) throws MyOwnException {
-        //Ignore.
-    }
+  @Override
+  public void startRoutine(Message message) throws MyOwnException {
+    //Ignore.
+  }
 
-    @Override
-    public EmbedBuilder getContent() throws MyOwnException {
-        return this.convertStringToEmbed(
-                "Konnte keinen Dungeon an der Stelle '%d' finden".formatted(listPosition));
-    }
+  @Override
+  public EmbedBuilder getContent() throws MyOwnException {
+    return this.convertStringToEmbed(
+        "Konnte keinen Dungeon an der Stelle '%d' finden".formatted(listPosition));
+  }
 }

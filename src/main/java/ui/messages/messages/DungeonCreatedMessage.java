@@ -9,19 +9,19 @@ import ui.messages.MyMessageAbs;
 
 public class DungeonCreatedMessage extends MyMessageAbs {
 
-    private final Dungeon dungeon;
+  private final Dungeon dungeon;
 
-    public DungeonCreatedMessage(Dungeon dungeon) {
-        this.dungeon = dungeon;
-    }
+  public DungeonCreatedMessage(Dungeon dungeon) {
+    this.dungeon = dungeon;
+  }
 
-    @Override
-    public void startRoutine(Message message) throws MyOwnException {
-        //Ignore.
-    }
+  @Override
+  public void startRoutine(Message message) throws MyOwnException {
+    //Ignore.
+  }
 
-    @Override
-    public EmbedBuilder getContent() throws MyOwnException {
-        return new DungeonCreatedEmbed(dungeon);
-    }
+  @Override
+  public EmbedBuilder getContent() throws MyOwnException {
+    return new DungeonCreatedEmbed(dungeon);
+  }
 }

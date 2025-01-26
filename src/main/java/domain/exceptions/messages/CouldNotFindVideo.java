@@ -4,14 +4,14 @@ import domain.exceptions.ExceptionMessage;
 
 public class CouldNotFindVideo implements ExceptionMessage {
 
-    private final String videoName;
+  private final String videoName;
 
-    public CouldNotFindVideo(String videoName) {
-        this.videoName = videoName;
-    }
+  public CouldNotFindVideo(String videoName) {
+    this.videoName = videoName;
+  }
 
-    @Override
-    public String getContent() {
-        return "Konnte kein Video mit dem Namen \"" + videoName + "\" finden.";
-    }
+  @Override
+  public String getContent() {
+    return "Konnte kein Video mit dem Namen \"" + videoName + "\" finden.";
+  }
 }

@@ -8,19 +8,23 @@ import util.Terminal;
 
 public class DungeonTickRunnable extends SaveRunnable {
 
-    private final RoutineRunner routineRunner;
-    private final RoutineDungeonTickBuilder routineDungeonTickBuilder;
+  private final RoutineRunner routineRunner;
+  private final RoutineDungeonTickBuilder routineDungeonTickBuilder;
+  private final Terminal terminal;
 
-    @Inject
-    public DungeonTickRunnable(RoutineRunner routineRunner, RoutineDungeonTickBuilder routineDungeonTickBuilder) {
-        this.routineRunner = routineRunner;
-        this.routineDungeonTickBuilder = routineDungeonTickBuilder;
-    }
+  @Inject
+  public DungeonTickRunnable(RoutineRunner routineRunner,
+      RoutineDungeonTickBuilder routineDungeonTickBuilder, Terminal terminal) {
+    super(terminal);
+    this.routineRunner = routineRunner;
+    this.routineDungeonTickBuilder = routineDungeonTickBuilder;
+    this.terminal = terminal;
+  }
 
-    @Override
-    public void runSave() throws MyOwnException {
-        routineRunner.start(routineDungeonTickBuilder.createRoutineDungeonTick());
-        Terminal.printLine("Dungeon tick");
-    }
+  @Override
+  public void runSave() throws MyOwnException {
+    routineRunner.start(routineDungeonTickBuilder.createRoutineDungeonTick());
+    terminal.printLine("Dungeon tick");
+  }
 
 }

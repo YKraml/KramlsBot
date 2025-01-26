@@ -7,19 +7,19 @@ import ui.messages.MyMessageAbs;
 
 public class IpMessage extends MyMessageAbs {
 
-    private final String ip;
+  private final String ip;
 
-    public IpMessage(String ip) {
-        this.ip = ip;
-    }
+  public IpMessage(String ip) {
+    this.ip = ip;
+  }
 
-    @Override
-    public void startRoutine(Message message) throws MyOwnException {
-        //Do nothing
-    }
+  @Override
+  public void startRoutine(Message message) throws MyOwnException {
+    //Do nothing
+  }
 
-    @Override
-    public EmbedBuilder getContent() throws MyOwnException {
-        return convertStringToEmbed("Hier die IP-Adresse: " + ip);
-    }
+  @Override
+  public EmbedBuilder getContent() throws MyOwnException {
+    return convertStringToEmbed("Hier die IP-Adresse: " + ip);
+  }
 }

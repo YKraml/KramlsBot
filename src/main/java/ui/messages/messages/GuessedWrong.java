@@ -8,20 +8,20 @@ import ui.messages.MyMessageAbs;
 
 public class GuessedWrong extends MyMessageAbs {
 
-    private final Player player;
+  private final Player player;
 
-    public GuessedWrong(Player player) {
-        this.player = player;
-    }
+  public GuessedWrong(Player player) {
+    this.player = player;
+  }
 
 
-    @Override
-    public void startRoutine(Message message) throws MyOwnException {
-        //Ignore.
-    }
+  @Override
+  public void startRoutine(Message message) throws MyOwnException {
+    //Ignore.
+  }
 
-    @Override
-    public EmbedBuilder getContent() throws MyOwnException {
-        return convertStringToEmbed(player.getNameTag() + ", du liegst falsch.");
-    }
+  @Override
+  public EmbedBuilder getContent() throws MyOwnException {
+    return convertStringToEmbed(player.getNameTag() + ", du liegst falsch.");
+  }
 }

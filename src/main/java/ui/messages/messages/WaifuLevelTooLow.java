@@ -9,23 +9,23 @@ import ui.messages.MyMessageAbs;
 
 public class WaifuLevelTooLow extends MyMessageAbs {
 
-    private final Player player;
-    private final Waifu waifu;
+  private final Player player;
+  private final Waifu waifu;
 
-    public WaifuLevelTooLow(Player player, Waifu waifu) {
-        this.player = player;
-        this.waifu = waifu;
-    }
+  public WaifuLevelTooLow(Player player, Waifu waifu) {
+    this.player = player;
+    this.waifu = waifu;
+  }
 
-    @Override
-    public void startRoutine(Message message) throws MyOwnException {
-        //Ignore.
-    }
+  @Override
+  public void startRoutine(Message message) throws MyOwnException {
+    //Ignore.
+  }
 
-    @Override
-    public EmbedBuilder getContent() throws MyOwnException {
-        return this.convertStringToEmbed(
-                player.getNameTag() + ", das level von \"" + waifu.getName() + "\" muss mindestens "
-                        + waifu.getRarity().getNextRarity().getMinLevel() + " sein.");
-    }
+  @Override
+  public EmbedBuilder getContent() throws MyOwnException {
+    return this.convertStringToEmbed(
+        player.getNameTag() + ", das level von \"" + waifu.getName() + "\" muss mindestens "
+            + waifu.getRarity().getNextRarity().getMinLevel() + " sein.");
+  }
 }

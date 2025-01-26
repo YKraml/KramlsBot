@@ -7,13 +7,13 @@ import ui.messages.MyMessageAbs;
 
 public class TimeIsUpMessage extends MyMessageAbs {
 
-    @Override
-    public void startRoutine(Message message) throws MyOwnException {
-        //Ignore.
-    }
+  @Override
+  public void startRoutine(Message message) throws MyOwnException {
+    //Ignore.
+  }
 
-    @Override
-    public EmbedBuilder getContent() throws MyOwnException {
-        return this.convertStringToEmbed("Zeit ist vorbei.");
-    }
+  @Override
+  public EmbedBuilder getContent() throws MyOwnException {
+    return this.convertStringToEmbed("Zeit ist vorbei.");
+  }
 }

@@ -5,14 +5,15 @@ import domain.exceptions.MyOwnException;
 import model.jikan.anime.animeByIdFull.AnimeFullById;
 
 public interface GuessingGameManager {
-    void startGuessingGame(AnimeFullById anime, String url, String songName, String serverId,
-                           int difficulty);
 
-    void removeGuessGame(String serverId);
+  void startGuessingGame(AnimeFullById anime, String url, String songName, String serverId,
+      int difficulty);
 
-    GuessingGame getGuessingGameByServer(String serverId) throws MyOwnException;
+  void removeGuessGame(String serverId);
 
-    boolean makeGuess(String guess, String serverId) throws MyOwnException;
+  GuessingGame getGuessingGameByServer(String serverId) throws MyOwnException;
 
-    boolean gameExists(String serverId);
+  boolean makeGuess(String guess, String serverId) throws MyOwnException;
+
+  boolean gameExists(String serverId);
 }

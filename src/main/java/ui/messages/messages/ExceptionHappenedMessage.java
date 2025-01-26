@@ -8,19 +8,19 @@ import ui.messages.MyMessageAbs;
 
 public class ExceptionHappenedMessage extends MyMessageAbs {
 
-    private final MyOwnException myOwnException;
+  private final MyOwnException myOwnException;
 
-    public ExceptionHappenedMessage(MyOwnException myOwnException) {
-        this.myOwnException = myOwnException;
-    }
+  public ExceptionHappenedMessage(MyOwnException myOwnException) {
+    this.myOwnException = myOwnException;
+  }
 
-    @Override
-    public void startRoutine(Message message) throws MyOwnException {
-        //Ignore.
-    }
+  @Override
+  public void startRoutine(Message message) throws MyOwnException {
+    //Ignore.
+  }
 
-    @Override
-    public EmbedBuilder getContent() throws MyOwnException {
-        return new ExceptionEmbed(myOwnException);
-    }
+  @Override
+  public EmbedBuilder getContent() throws MyOwnException {
+    return new ExceptionEmbed(myOwnException);
+  }
 }

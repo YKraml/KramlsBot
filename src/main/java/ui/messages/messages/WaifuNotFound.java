@@ -7,19 +7,19 @@ import ui.messages.MyMessageAbs;
 
 public class WaifuNotFound extends MyMessageAbs {
 
-    private final int waifuNumber;
+  private final int waifuNumber;
 
-    public WaifuNotFound(int waifuNumber) {
-        this.waifuNumber = waifuNumber;
-    }
+  public WaifuNotFound(int waifuNumber) {
+    this.waifuNumber = waifuNumber;
+  }
 
-    @Override
-    public void startRoutine(Message message) throws MyOwnException {
-        //Ignore.
-    }
+  @Override
+  public void startRoutine(Message message) throws MyOwnException {
+    //Ignore.
+  }
 
-    @Override
-    public EmbedBuilder getContent() throws MyOwnException {
-        return this.convertStringToEmbed("Konnte Waifu mit der Nr. " + waifuNumber + " nicht finden.");
-    }
+  @Override
+  public EmbedBuilder getContent() throws MyOwnException {
+    return this.convertStringToEmbed("Konnte Waifu mit der Nr. " + waifuNumber + " nicht finden.");
+  }
 }

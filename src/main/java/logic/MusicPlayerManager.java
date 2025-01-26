@@ -10,21 +10,24 @@ import org.javacord.api.entity.message.Message;
 import org.javacord.api.entity.server.Server;
 
 public interface MusicPlayerManager {
-    void addToQueue(Server server, ServerVoiceChannel voiceChannel, TextChannel textChannel, QueueElement queueElement);
 
-    void startPlaying(ServerVoiceChannel voiceChannel, TextChannel textChannel);
+  void addToQueue(Server server, ServerVoiceChannel voiceChannel, TextChannel textChannel,
+      QueueElement queueElement);
 
-    void playNextSong(ServerVoiceChannel serverVoiceChannel, TextChannel textChannel);
+  void startPlaying(ServerVoiceChannel voiceChannel, TextChannel textChannel);
 
-    void restartSong(ServerVoiceChannel voiceChannel, TextChannel textChannel);
+  void playNextSong(ServerVoiceChannel serverVoiceChannel, TextChannel textChannel);
 
-    void playPreviousSong(ServerVoiceChannel voiceChannel, TextChannel textChannel);
+  void restartSong(ServerVoiceChannel voiceChannel, TextChannel textChannel);
 
-    void playThisSongNext(ServerVoiceChannel voiceChannel, TextChannel textChannel, QueueElement queueElement);
+  void playPreviousSong(ServerVoiceChannel voiceChannel, TextChannel textChannel);
 
-    Queue getQueueByServer(Server server) throws MyOwnException;
+  void playThisSongNext(ServerVoiceChannel voiceChannel, TextChannel textChannel,
+      QueueElement queueElement);
 
-    void stopPlaying(Server server);
+  Queue getQueueByServer(Server server) throws MyOwnException;
 
-    void addQueueMessage(Message message, Observer observer);
+  void stopPlaying(Server server);
+
+  void addQueueMessage(Message message, Observer observer);
 }

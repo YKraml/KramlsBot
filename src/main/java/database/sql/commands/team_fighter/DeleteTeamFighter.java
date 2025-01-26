@@ -5,15 +5,15 @@ import domain.waifu.Waifu;
 
 public class DeleteTeamFighter extends SQLCommandWithoutResult {
 
-    private final Waifu waifu;
+  private final Waifu waifu;
 
-    public DeleteTeamFighter(Waifu waifu) {
-        this.waifu = waifu;
-    }
+  public DeleteTeamFighter(Waifu waifu) {
+    this.waifu = waifu;
+  }
 
-    @Override
-    protected String getCommand() {
-        return "delete from KRAMLSBOT.TEAM_FIGHTER where KRAMLSBOT.TEAM_FIGHTER.idWaifu like " + "'"
-                + waifu.getId() + "'" + ";";
-    }
+  @Override
+  protected String getCommand() {
+    return "delete from KRAMLSBOT.TEAM_FIGHTER where KRAMLSBOT.TEAM_FIGHTER.idWaifu like " + "'"
+        + waifu.getId() + "'" + ";";
+  }
 }

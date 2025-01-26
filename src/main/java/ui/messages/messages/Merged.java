@@ -9,24 +9,24 @@ import ui.messages.MyMessageAbs;
 
 public class Merged extends MyMessageAbs {
 
-    private final Player player;
-    private final Waifu waifu1;
+  private final Player player;
+  private final Waifu waifu1;
 
-    public Merged(Player player, Waifu waifu) {
-        this.player = player;
-        this.waifu1 = waifu;
-    }
+  public Merged(Player player, Waifu waifu) {
+    this.player = player;
+    this.waifu1 = waifu;
+  }
 
 
-    @Override
-    public void startRoutine(Message message) throws MyOwnException {
-        //Ignore.
-    }
+  @Override
+  public void startRoutine(Message message) throws MyOwnException {
+    //Ignore.
+  }
 
-    @Override
-    public EmbedBuilder getContent() throws MyOwnException {
-        return this.convertStringToEmbed(
-                player.getNameTag() + ", du hast zwei Waifus verbunden. \"" + waifu1.getName()
-                        + "\" hat nun das Sternenlevel " + waifu1.getStarLevel());
-    }
+  @Override
+  public EmbedBuilder getContent() throws MyOwnException {
+    return this.convertStringToEmbed(
+        player.getNameTag() + ", du hast zwei Waifus verbunden. \"" + waifu1.getName()
+            + "\" hat nun das Sternenlevel " + waifu1.getStarLevel());
+  }
 }

@@ -9,19 +9,19 @@ import ui.messages.MyMessageAbs;
 
 public class AnimeSynopsis extends MyMessageAbs {
 
-    private final AnimeFullById anime;
+  private final AnimeFullById anime;
 
-    public AnimeSynopsis(AnimeFullById anime) {
-        this.anime = anime;
-    }
+  public AnimeSynopsis(AnimeFullById anime) {
+    this.anime = anime;
+  }
 
-    @Override
-    public void startRoutine(Message message) throws MyOwnException {
-        //Just ignore.
-    }
+  @Override
+  public void startRoutine(Message message) throws MyOwnException {
+    //Just ignore.
+  }
 
-    @Override
-    public EmbedBuilder getContent() throws MyOwnException {
-        return new AnimeSynopsisEmbed(anime);
-    }
+  @Override
+  public EmbedBuilder getContent() throws MyOwnException {
+    return new AnimeSynopsisEmbed(anime);
+  }
 }

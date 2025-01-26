@@ -3,6 +3,7 @@ package ui.commands.waifu;
 import com.google.inject.Inject;
 import domain.Answer;
 import domain.exceptions.MyOwnException;
+import java.util.List;
 import logic.routines.RoutineSpawnWaifuCommandBuilder;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.channel.TextChannel;
@@ -12,48 +13,46 @@ import org.javacord.api.interaction.SlashCommandInteractionOption;
 import org.javacord.api.interaction.SlashCommandOption;
 import ui.commands.ACommand;
 
-import java.util.List;
-
 public class Spawn extends ACommand {
 
-    private final RoutineSpawnWaifuCommandBuilder routineSpawnWaifuCommandBuilder;
+  private final RoutineSpawnWaifuCommandBuilder routineSpawnWaifuCommandBuilder;
 
-    @Inject
-    public Spawn(RoutineSpawnWaifuCommandBuilder routineSpawnWaifuCommandBuilder) {
-        this.routineSpawnWaifuCommandBuilder = routineSpawnWaifuCommandBuilder;
-    }
+  @Inject
+  public Spawn(RoutineSpawnWaifuCommandBuilder routineSpawnWaifuCommandBuilder) {
+    this.routineSpawnWaifuCommandBuilder = routineSpawnWaifuCommandBuilder;
+  }
 
-    @Override
-    public String getName() {
-        return "spawn";
-    }
+  @Override
+  public String getName() {
+    return "spawn";
+  }
 
-    @Override
-    public String getDescription() {
-        return "Du erhaelst eine Waifu fuer 1000 Euro.";
-    }
+  @Override
+  public String getDescription() {
+    return "Du erhaelst eine Waifu fuer 1000 Euro.";
+  }
 
-    @Override
-    protected Answer execute(DiscordApi api, Server server, TextChannel channel, User user,
-                             List<SlashCommandInteractionOption> arguments) throws MyOwnException {
+  @Override
+  protected Answer execute(DiscordApi api, Server server, TextChannel channel, User user,
+      List<SlashCommandInteractionOption> arguments) throws MyOwnException {
 
-        return getRoutineRunner().start(
-                routineSpawnWaifuCommandBuilder.createRoutineSpawnWaifuCommand(channel, user));
-    }
+    return getRoutineRunner().start(
+        routineSpawnWaifuCommandBuilder.createRoutineSpawnWaifuCommand(channel, user));
+  }
 
-    @Override
-    public List<SlashCommandOption> getSlashCommandOptions() {
-        return List.of();
-    }
+  @Override
+  public List<SlashCommandOption> getSlashCommandOptions() {
+    return List.of();
+  }
 
 
-    @Override
-    protected String getErrorMessage() {
-        return "Konnte keine neue Waifu spawnen.";
-    }
+  @Override
+  protected String getErrorMessage() {
+    return "Konnte keine neue Waifu spawnen.";
+  }
 
-    @Override
-    protected boolean isForAdmins() {
-        return false;
-    }
+  @Override
+  protected boolean isForAdmins() {
+    return false;
+  }
 }

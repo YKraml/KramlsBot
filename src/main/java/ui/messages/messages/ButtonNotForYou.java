@@ -7,22 +7,22 @@ import ui.messages.MyMessageAbs;
 
 public class ButtonNotForYou extends MyMessageAbs {
 
-    private final String triedPlayer;
-    private final String forPlayer;
+  private final String triedPlayer;
+  private final String forPlayer;
 
-    public ButtonNotForYou(String triedPlayer, String forPlayer) {
-        this.triedPlayer = triedPlayer;
-        this.forPlayer = forPlayer;
-    }
+  public ButtonNotForYou(String triedPlayer, String forPlayer) {
+    this.triedPlayer = triedPlayer;
+    this.forPlayer = forPlayer;
+  }
 
 
-    @Override
-    public void startRoutine(Message message) throws MyOwnException {
-        //Just ignore.
-    }
+  @Override
+  public void startRoutine(Message message) throws MyOwnException {
+    //Just ignore.
+  }
 
-    @Override
-    public EmbedBuilder getContent() throws MyOwnException {
-        return this.convertStringToEmbed("%s, der Knopf ist fuer %s".formatted(triedPlayer, forPlayer));
-    }
+  @Override
+  public EmbedBuilder getContent() throws MyOwnException {
+    return this.convertStringToEmbed("%s, der Knopf ist fuer %s".formatted(triedPlayer, forPlayer));
+  }
 }

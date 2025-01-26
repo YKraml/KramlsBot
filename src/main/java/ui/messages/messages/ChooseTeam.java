@@ -14,39 +14,39 @@ import ui.reaction.MyAbstractListListener;
 
 public class ChooseTeam extends MyMessageAbs {
 
-    private final Player player;
+  private final Player player;
 
-    public ChooseTeam(Player player) {
-        this.player = player;
-    }
+  public ChooseTeam(Player player) {
+    this.player = player;
+  }
 
-    @Override
-    public void startRoutine(Message message) throws MyOwnException {
+  @Override
+  public void startRoutine(Message message) throws MyOwnException {
 
-        MyAbstractListListener<Team> listener = new MyAbstractListListener<>(player.getTeamList()) {
-            @Override
-            protected void updateMessage(Message message, int page) throws MyOwnException {
-                message.edit(new TeamsListEmbed(player, page));
-            }
+    MyAbstractListListener<Team> listener = new MyAbstractListListener<>(player.getTeamList()) {
+      @Override
+      protected void updateMessage(Message message, int page) throws MyOwnException {
+        message.edit(new TeamsListEmbed(player, page));
+      }
 
-            @Override
-            protected void reactToCountEmoji(Server server, TextChannel textChannel, User user,
-                                             int listPosition)
-                    throws MyOwnException {
-                // TODO: 07.03.2023 Nachdem das Team ausgewählt wurde, sollte irgendwie die Klasse RoutineStartFight davon in Erfahrung kommen.
-            }
+      @Override
+      protected void reactToCountEmoji(Server server, TextChannel textChannel, User user,
+          int listPosition)
+          throws MyOwnException {
+        // TODO: 07.03.2023 Nachdem das Team ausgewählt wurde, sollte irgendwie die Klasse RoutineStartFight davon in Erfahrung kommen.
+      }
 
-            @Override
-            protected void reactToTooHighCountEmoji(TextChannel textChannel, int listPosition) {
-                //Just ignore.
-            }
-        };
+      @Override
+      protected void reactToTooHighCountEmoji(TextChannel textChannel, int listPosition) {
+        //Just ignore.
+      }
+    };
 
-        message.addReactionAddListener(listener);
-    }
+    message.addReactionAddListener(listener);
+  }
 
-    @Override
-    public EmbedBuilder getContent() throws MyOwnException {
-        return new TeamsListEmbed(player, 0);
-    }
+  @Override
+  public EmbedBuilder getContent() throws MyOwnException {
+    return new TeamsListEmbed(player, 0);
+  }
 }

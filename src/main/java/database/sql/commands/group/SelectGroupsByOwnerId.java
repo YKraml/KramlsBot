@@ -6,16 +6,16 @@ import domain.waifu.Player;
 
 public class SelectGroupsByOwnerId extends SQLCommandWithResult<GroupEntrySet> {
 
-    private final Player player;
+  private final Player player;
 
-    public SelectGroupsByOwnerId(Player player) {
-        super(new GroupEntrySet());
-        this.player = player;
-    }
+  public SelectGroupsByOwnerId(Player player) {
+    super(new GroupEntrySet());
+    this.player = player;
+  }
 
 
-    @Override
-    protected String getCommand() {
-        return "select * from KRAMLSBOT.GROUP where owner like " + "'" + player.getId() + "'" + ";";
-    }
+  @Override
+  protected String getCommand() {
+    return "select * from KRAMLSBOT.GROUP where owner like " + "'" + player.getId() + "'" + ";";
+  }
 }

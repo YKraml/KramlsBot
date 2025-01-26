@@ -5,17 +5,17 @@ import java.util.Optional;
 
 public interface Queue {
 
-    Optional<QueueElement> getCurrentElement();
+  Optional<QueueElement> getCurrentElement();
 
-    List<QueueElement> getNextElements();
+  List<QueueElement> getNextElements();
 
-    void goToNextElement();
+  void goToNextElement();
 
-    void goToPreviousElement();
+  void goToPreviousElement();
 
-    void addToFront(QueueElement queueElement);
+  void addToFront(QueueElement queueElement);
 
-    void addToEnd(QueueElement queueElement);
+  void addToEnd(QueueElement queueElement);
 
 
 }

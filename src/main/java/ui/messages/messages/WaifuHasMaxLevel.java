@@ -8,13 +8,13 @@ import ui.messages.MyMessageAbs;
 public class WaifuHasMaxLevel extends MyMessageAbs {
 
 
-    @Override
-    public void startRoutine(Message message) throws MyOwnException {
-        //Ignore.
-    }
+  @Override
+  public void startRoutine(Message message) throws MyOwnException {
+    //Ignore.
+  }
 
-    @Override
-    public EmbedBuilder getContent() throws MyOwnException {
-        return this.convertStringToEmbed("Level 100 ist das maximale Level.");
-    }
+  @Override
+  public EmbedBuilder getContent() throws MyOwnException {
+    return this.convertStringToEmbed("Level 100 ist das maximale Level.");
+  }
 }

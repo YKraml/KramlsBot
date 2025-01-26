@@ -6,20 +6,20 @@ import domain.waifu.Player;
 
 public class InsertGroup extends SQLCommandWithoutResult {
 
-    private final Group group;
-    private final Player player;
+  private final Group group;
+  private final Player player;
 
-    public InsertGroup(Group group, Player player) {
-        this.group = group;
-        this.player = player;
-    }
+  public InsertGroup(Group group, Player player) {
+    this.group = group;
+    this.player = player;
+  }
 
-    @Override
-    protected String getCommand() {
-        return "insert into KRAMLSBOT.GROUP values ("
-                + "'" + group.getId() + "'" + ","
-                + "'" + group.getName() + "'" + ","
-                + "'" + player.getId() + "'"
-                + ");";
-    }
+  @Override
+  protected String getCommand() {
+    return "insert into KRAMLSBOT.GROUP values ("
+        + "'" + group.getId() + "'" + ","
+        + "'" + group.getName() + "'" + ","
+        + "'" + player.getId() + "'"
+        + ");";
+  }
 }

@@ -6,19 +6,19 @@ import domain.waifu.Waifu;
 
 public class InsertGroupWaifu extends SQLCommandWithoutResult {
 
-    private final Group group;
-    private final Waifu waifu;
+  private final Group group;
+  private final Waifu waifu;
 
-    public InsertGroupWaifu(Group group, Waifu waifu) {
-        this.group = group;
-        this.waifu = waifu;
-    }
+  public InsertGroupWaifu(Group group, Waifu waifu) {
+    this.group = group;
+    this.waifu = waifu;
+  }
 
-    @Override
-    protected String getCommand() {
-        return "insert into KRAMLSBOT.GROUP_WAIFU values ("
-                + "'" + group.getId() + "'" + ","
-                + "'" + waifu.getId() + "'" +
-                ");";
-    }
+  @Override
+  protected String getCommand() {
+    return "insert into KRAMLSBOT.GROUP_WAIFU values ("
+        + "'" + group.getId() + "'" + ","
+        + "'" + waifu.getId() + "'" +
+        ");";
+  }
 }

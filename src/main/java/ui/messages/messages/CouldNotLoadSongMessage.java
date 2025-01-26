@@ -6,13 +6,14 @@ import org.javacord.api.entity.message.embed.EmbedBuilder;
 import ui.messages.MyMessageAbs;
 
 public class CouldNotLoadSongMessage extends MyMessageAbs {
-    @Override
-    public void startRoutine(Message message) throws MyOwnException {
-        //Do Nothing
-    }
 
-    @Override
-    public EmbedBuilder getContent() throws MyOwnException {
-        return convertStringToEmbed("Laden fehlgeschlagen.");
-    }
+  @Override
+  public void startRoutine(Message message) throws MyOwnException {
+    //Do Nothing
+  }
+
+  @Override
+  public EmbedBuilder getContent() throws MyOwnException {
+    return convertStringToEmbed("Laden fehlgeschlagen.");
+  }
 }

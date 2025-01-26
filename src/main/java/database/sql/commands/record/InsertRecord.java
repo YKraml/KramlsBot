@@ -7,21 +7,21 @@ import domain.waifu.dungeon.DungeonRecord;
 public class InsertRecord extends SQLCommandWithoutResult {
 
 
-    private final Dungeon dungeon;
-    private final DungeonRecord dungeonRecord;
+  private final Dungeon dungeon;
+  private final DungeonRecord dungeonRecord;
 
-    public InsertRecord(Dungeon dungeon, DungeonRecord dungeonRecord) {
-        this.dungeon = dungeon;
-        this.dungeonRecord = dungeonRecord;
-    }
+  public InsertRecord(Dungeon dungeon, DungeonRecord dungeonRecord) {
+    this.dungeon = dungeon;
+    this.dungeonRecord = dungeonRecord;
+  }
 
-    @Override
-    protected String getCommand() {
-        return "insert into KRAMLSBOT.RECORD values ("
-                + "'" + dungeonRecord.getTeam().getId() + "'" + ","
-                + "'" + dungeon.getChannelId() + "'" + ","
-                + "'" + dungeonRecord.getRecordType() + "'" + ","
-                + dungeonRecord.getValue()
-                + ");";
-    }
+  @Override
+  protected String getCommand() {
+    return "insert into KRAMLSBOT.RECORD values ("
+        + "'" + dungeonRecord.getTeam().getId() + "'" + ","
+        + "'" + dungeon.getChannelId() + "'" + ","
+        + "'" + dungeonRecord.getRecordType() + "'" + ","
+        + dungeonRecord.getValue()
+        + ");";
+  }
 }

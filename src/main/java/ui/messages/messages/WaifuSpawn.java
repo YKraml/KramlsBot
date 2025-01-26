@@ -9,19 +9,19 @@ import ui.messages.MyMessageAbs;
 
 public class WaifuSpawn extends MyMessageAbs {
 
-    private final Waifu waifu;
+  private final Waifu waifu;
 
-    public WaifuSpawn(Waifu newWaifu) {
-        this.waifu = newWaifu;
-    }
+  public WaifuSpawn(Waifu newWaifu) {
+    this.waifu = newWaifu;
+  }
 
-    @Override
-    public void startRoutine(Message message) throws MyOwnException {
-        //Ignore.
-    }
+  @Override
+  public void startRoutine(Message message) throws MyOwnException {
+    //Ignore.
+  }
 
-    @Override
-    public EmbedBuilder getContent() throws MyOwnException {
-        return new WaifuSpawnEmbed(waifu);
-    }
+  @Override
+  public EmbedBuilder getContent() throws MyOwnException {
+    return new WaifuSpawnEmbed(waifu);
+  }
 }

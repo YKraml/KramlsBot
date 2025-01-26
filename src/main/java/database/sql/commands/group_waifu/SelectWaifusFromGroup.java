@@ -6,16 +6,16 @@ import domain.waifu.Group;
 
 public class SelectWaifusFromGroup extends SQLCommandWithResult<GroupWaifuEntrySet> {
 
-    private final Group group;
+  private final Group group;
 
-    public SelectWaifusFromGroup(Group group) {
-        super(new GroupWaifuEntrySet());
-        this.group = group;
-    }
+  public SelectWaifusFromGroup(Group group) {
+    super(new GroupWaifuEntrySet());
+    this.group = group;
+  }
 
-    @Override
-    protected String getCommand() {
-        return "select * from KRAMLSBOT.GROUP_WAIFU where idGroup like " + "'" + group.getId() + "'"
-                + ";";
-    }
+  @Override
+  protected String getCommand() {
+    return "select * from KRAMLSBOT.GROUP_WAIFU where idGroup like " + "'" + group.getId() + "'"
+        + ";";
+  }
 }

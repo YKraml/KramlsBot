@@ -5,15 +5,16 @@ import domain.waifu.Waifu;
 
 public class DeleteWaifuFromAllGroups extends SQLCommandWithoutResult {
 
-    private final Waifu waifu;
+  private final Waifu waifu;
 
-    public DeleteWaifuFromAllGroups(Waifu waifu) {
-        this.waifu = waifu;
-    }
+  public DeleteWaifuFromAllGroups(Waifu waifu) {
+    this.waifu = waifu;
+  }
 
-    @Override
-    protected String getCommand() {
-        return "delete from KRAMLSBOT.GROUP_WAIFU where KRAMLSBOT.GROUP_WAIFU.idWaifu like " + "'" + waifu.getId() + "'"
-                + ";";
-    }
+  @Override
+  protected String getCommand() {
+    return "delete from KRAMLSBOT.GROUP_WAIFU where KRAMLSBOT.GROUP_WAIFU.idWaifu like " + "'"
+        + waifu.getId() + "'"
+        + ";";
+  }
 }

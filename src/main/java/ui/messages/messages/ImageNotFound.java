@@ -8,19 +8,19 @@ import ui.messages.MyMessageAbs;
 
 public class ImageNotFound extends MyMessageAbs {
 
-    private final Waifu waifu;
+  private final Waifu waifu;
 
-    public ImageNotFound(Waifu waifu) {
-        this.waifu = waifu;
-    }
+  public ImageNotFound(Waifu waifu) {
+    this.waifu = waifu;
+  }
 
-    @Override
-    public void startRoutine(Message message) throws MyOwnException {
-        //Ignore.
-    }
+  @Override
+  public void startRoutine(Message message) throws MyOwnException {
+    //Ignore.
+  }
 
-    @Override
-    public EmbedBuilder getContent() throws MyOwnException {
-        return convertStringToEmbed("Konnte kein Bild zu '%s' finden.".formatted(waifu.getName()));
-    }
+  @Override
+  public EmbedBuilder getContent() throws MyOwnException {
+    return convertStringToEmbed("Konnte kein Bild zu '%s' finden.".formatted(waifu.getName()));
+  }
 }

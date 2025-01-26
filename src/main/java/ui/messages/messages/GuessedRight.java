@@ -8,19 +8,19 @@ import ui.messages.MyMessageAbs;
 
 public class GuessedRight extends MyMessageAbs {
 
-    private final Player player;
+  private final Player player;
 
-    public GuessedRight(Player player) {
-        this.player = player;
-    }
+  public GuessedRight(Player player) {
+    this.player = player;
+  }
 
-    @Override
-    public void startRoutine(Message message) throws MyOwnException {
-        //Ignore.
-    }
+  @Override
+  public void startRoutine(Message message) throws MyOwnException {
+    //Ignore.
+  }
 
-    @Override
-    public EmbedBuilder getContent() throws MyOwnException {
-        return this.convertStringToEmbed(player.getNameTag() + ", du liegst richtig!");
-    }
+  @Override
+  public EmbedBuilder getContent() throws MyOwnException {
+    return this.convertStringToEmbed(player.getNameTag() + ", du liegst richtig!");
+  }
 }

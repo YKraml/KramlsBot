@@ -8,23 +8,23 @@ import ui.messages.MyMessageAbs;
 
 public class DailyAlreadyUsed extends MyMessageAbs {
 
-    private final Player player;
-    private final String newDate;
+  private final Player player;
+  private final String newDate;
 
-    public DailyAlreadyUsed(Player player, String newDate) {
-        this.player = player;
-        this.newDate = newDate;
-    }
+  public DailyAlreadyUsed(Player player, String newDate) {
+    this.player = player;
+    this.newDate = newDate;
+  }
 
 
-    @Override
-    public void startRoutine(Message message) throws MyOwnException {
-        //Ignore.
-    }
+  @Override
+  public void startRoutine(Message message) throws MyOwnException {
+    //Ignore.
+  }
 
-    @Override
-    public EmbedBuilder getContent() throws MyOwnException {
-        return convertStringToEmbed(
-                player.getNameTag() + ", du hast dein Daily schon heute (" + newDate + ") benutzt.");
-    }
+  @Override
+  public EmbedBuilder getContent() throws MyOwnException {
+    return convertStringToEmbed(
+        player.getNameTag() + ", du hast dein Daily schon heute (" + newDate + ") benutzt.");
+  }
 }

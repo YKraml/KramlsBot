@@ -10,21 +10,21 @@ import ui.messages.MyMessageAbs;
 
 public class CharacterOverview extends MyMessageAbs {
 
-    private final AnimeFullById anime;
-    private final Datum characterStaffEntry;
+  private final AnimeFullById anime;
+  private final Datum characterStaffEntry;
 
-    public CharacterOverview(AnimeFullById anime, Datum characterStaffEntry) {
-        this.anime = anime;
-        this.characterStaffEntry = characterStaffEntry;
-    }
+  public CharacterOverview(AnimeFullById anime, Datum characterStaffEntry) {
+    this.anime = anime;
+    this.characterStaffEntry = characterStaffEntry;
+  }
 
-    @Override
-    public void startRoutine(Message message) throws MyOwnException {
-        //Ignore.
-    }
+  @Override
+  public void startRoutine(Message message) throws MyOwnException {
+    //Ignore.
+  }
 
-    @Override
-    public EmbedBuilder getContent() throws MyOwnException {
-        return new CharacterEmbed(anime, characterStaffEntry);
-    }
+  @Override
+  public EmbedBuilder getContent() throws MyOwnException {
+    return new CharacterEmbed(anime, characterStaffEntry);
+  }
 }

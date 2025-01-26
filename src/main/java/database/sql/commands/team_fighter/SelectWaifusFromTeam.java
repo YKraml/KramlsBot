@@ -6,16 +6,16 @@ import domain.waifu.dungeon.Team;
 
 public class SelectWaifusFromTeam extends SQLCommandWithResult<TeamFighterEntrySet> {
 
-    private final Team team;
+  private final Team team;
 
-    public SelectWaifusFromTeam(Team team) {
-        super(new TeamFighterEntrySet());
-        this.team = team;
-    }
+  public SelectWaifusFromTeam(Team team) {
+    super(new TeamFighterEntrySet());
+    this.team = team;
+  }
 
-    @Override
-    protected String getCommand() {
-        return "select * from KRAMLSBOT.TEAM_FIGHTER where idTeam like " + "'" + team.getId() + "'"
-                + ";";
-    }
+  @Override
+  protected String getCommand() {
+    return "select * from KRAMLSBOT.TEAM_FIGHTER where idTeam like " + "'" + team.getId() + "'"
+        + ";";
+  }
 }

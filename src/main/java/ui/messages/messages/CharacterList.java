@@ -11,26 +11,27 @@ import ui.messages.MyMessageAbs;
 import ui.reaction.CharacterListListener;
 
 public class CharacterList extends MyMessageAbs {
-    private final AnimeCharacters animeCharacters;
-    private final AnimeFullById anime;
-    private final MessageSender messageSender;
 
-    public CharacterList(AnimeCharacters animeCharacters, AnimeFullById anime,
-                         MessageSender messageSender) {
-        this.animeCharacters = animeCharacters;
-        this.anime = anime;
-        this.messageSender = messageSender;
-    }
+  private final AnimeCharacters animeCharacters;
+  private final AnimeFullById anime;
+  private final MessageSender messageSender;
 
-    @Override
-    public void startRoutine(Message message) throws MyOwnException {
-        this.addCountEmojis(message, animeCharacters.getData().size());
-        message.addReactionAddListener(new CharacterListListener(anime, animeCharacters,
-                messageSender));
-    }
+  public CharacterList(AnimeCharacters animeCharacters, AnimeFullById anime,
+      MessageSender messageSender) {
+    this.animeCharacters = animeCharacters;
+    this.anime = anime;
+    this.messageSender = messageSender;
+  }
 
-    @Override
-    public EmbedBuilder getContent() throws MyOwnException {
-        return new CharacterListEmbed(anime, animeCharacters, 0);
-    }
+  @Override
+  public void startRoutine(Message message) throws MyOwnException {
+    this.addCountEmojis(message, animeCharacters.getData().size());
+    message.addReactionAddListener(new CharacterListListener(anime, animeCharacters,
+        messageSender));
+  }
+
+  @Override
+  public EmbedBuilder getContent() throws MyOwnException {
+    return new CharacterListEmbed(anime, animeCharacters, 0);
+  }
 }

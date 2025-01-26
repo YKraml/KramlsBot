@@ -9,21 +9,21 @@ import ui.messages.MyMessageAbs;
 
 public class WaifuRarityIncreased extends MyMessageAbs {
 
-    private final Waifu waifu;
-    private final Rarities rarity;
+  private final Waifu waifu;
+  private final Rarities rarity;
 
-    public WaifuRarityIncreased(Waifu waifu, Rarities rarity) {
-        this.waifu = waifu;
-        this.rarity = rarity;
-    }
+  public WaifuRarityIncreased(Waifu waifu, Rarities rarity) {
+    this.waifu = waifu;
+    this.rarity = rarity;
+  }
 
-    @Override
-    public void startRoutine(Message message) throws MyOwnException {
-        //Ignore.
-    }
+  @Override
+  public void startRoutine(Message message) throws MyOwnException {
+    //Ignore.
+  }
 
-    @Override
-    public EmbedBuilder getContent() throws MyOwnException {
-        return this.convertStringToEmbed(waifu.getName() + " ist nun " + rarity + ".");
-    }
+  @Override
+  public EmbedBuilder getContent() throws MyOwnException {
+    return this.convertStringToEmbed(waifu.getName() + " ist nun " + rarity + ".");
+  }
 }

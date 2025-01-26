@@ -1,20 +1,20 @@
 package ui.embeds.guess;
 
 import org.javacord.api.entity.message.embed.EmbedBuilder;
-import util.Main;
+import util.Colors;
 
 public class GuessStartEmbed extends EmbedBuilder {
 
-    public GuessStartEmbed() {
+  public GuessStartEmbed() {
 
-        setTitle("Anime Song Ratespiel");
-        setDescription("Ihr koennt jetzt den Namen des Songs erraten.");
+    setTitle("Anime Song Ratespiel");
+    setDescription("Ihr koennt jetzt den Namen des Songs erraten.");
 
-        addField("/guess Titel", "Damit koennt ihr den Namen des Songs erraten.");
-        addField("/reveal", "Damit wird der Song offengelegt.");
+    addField("/guess Titel", "Damit koennt ihr den Namen des Songs erraten.");
+    addField("/reveal", "Damit wird der Song offengelegt.");
 
-        setColor(Main.COLOR);
+    setColor(Colors.COLOR);
 
-    }
+  }
 
 }

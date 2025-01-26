@@ -6,7 +6,7 @@ import ui.embeds.MyListEmbed;
 
 public class DeleteWaifuListEmbed extends MyListEmbed<Waifu> {
 
-    public DeleteWaifuListEmbed(Player player, int page) {
-        super("Druecke einen Knopf, um eine Waifu zu loeschen.", player.getWaifuList(), page, false);
-    }
+  public DeleteWaifuListEmbed(Player player, int page) {
+    super("Druecke einen Knopf, um eine Waifu zu loeschen.", player.getWaifuList(), page, false);
+  }
 }

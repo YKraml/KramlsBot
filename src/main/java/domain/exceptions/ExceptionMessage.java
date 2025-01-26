@@ -2,9 +2,9 @@ package domain.exceptions;
 
 public interface ExceptionMessage {
 
-    String getContent();
+  String getContent();
 
-    default String getClassName() {
-        return this.getClass().getSimpleName();
-    }
+  default String getClassName() {
+    return this.getClass().getSimpleName();
+  }
 }

@@ -2,10 +2,10 @@ package domain;
 
 public interface DisplayableElement {
 
-    String getDisplayTitle();
+  String getDisplayTitle();
 
-    String getDisplayBody();
+  String getDisplayBody();
 
-    String getDisplayImageUrl();
+  String getDisplayImageUrl();
 
 }

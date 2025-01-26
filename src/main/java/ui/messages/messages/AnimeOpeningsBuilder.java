@@ -7,16 +7,16 @@ import ui.reaction.AnimeStartSongReactionListenerBuilder;
 
 public class AnimeOpeningsBuilder {
 
-    private final AnimeStartSongReactionListenerBuilder animeStartSongReactionListenerBuilder;
+  private final AnimeStartSongReactionListenerBuilder animeStartSongReactionListenerBuilder;
 
-    @Inject
-    public AnimeOpeningsBuilder(
-            AnimeStartSongReactionListenerBuilder animeStartSongReactionListenerBuilder) {
-        this.animeStartSongReactionListenerBuilder = animeStartSongReactionListenerBuilder;
-    }
+  @Inject
+  public AnimeOpeningsBuilder(
+      AnimeStartSongReactionListenerBuilder animeStartSongReactionListenerBuilder) {
+    this.animeStartSongReactionListenerBuilder = animeStartSongReactionListenerBuilder;
+  }
 
 
-    public AnimeOpenings createAnimeOpenings(AnimeFullById anime, AnimeThemes animeThemes) {
-        return new AnimeOpenings(anime, animeThemes, animeStartSongReactionListenerBuilder);
-    }
+  public AnimeOpenings createAnimeOpenings(AnimeFullById anime, AnimeThemes animeThemes) {
+    return new AnimeOpenings(anime, animeThemes, animeStartSongReactionListenerBuilder);
+  }
 }
